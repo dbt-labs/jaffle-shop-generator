@@ -98,7 +98,7 @@ jobs:
         if: always()
         run: |
           . .venv/bin/activate
-          pip uninstall -y my-package
+          pip uninstall -y jaffle-shop-generator
 
   release:
     name: Release
