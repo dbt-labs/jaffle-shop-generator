@@ -27,7 +27,7 @@ def read_requirements(filename: str):
 # version.py defines the VERSION and VERSION_SHORT variables.
 # We use exec here so we don't import cached_path whilst setting up.
 VERSION = {}  # type: ignore
-with open("jaffle_shop_generator/version.py", "r") as version_file:
+with open("src/version.py", "r") as version_file:
     exec(version_file.read(), VERSION)
 
 setup(

@@ -9,7 +9,7 @@ on:
     branches:
       - main
     paths:
-      - 'jaffle_shop_generator/**'
+      - "src/**"
 
 jobs:
   changelog:
@@ -18,10 +18,10 @@ jobs:
     if: github.event_name == 'pull_request'
 
     steps:
-    - uses: actions/checkout@v1
+      - uses: actions/checkout@v1
 
-    - name: Check that CHANGELOG has been updated
-      run: |
-        # If this step fails, this means you haven't updated the CHANGELOG.md
-        # file with notes on your contribution.
-        git diff --name-only $(git merge-base origin/main HEAD) | grep '^CHANGELOG.md$' && echo "Thanks for helping keep our CHANGELOG up-to-date!"
+      - name: Check that CHANGELOG has been updated
+        run: |
+          # If this step fails, this means you haven't updated the CHANGELOG.md
+          # file with notes on your contribution.
+          git diff --name-only $(git merge-base origin/main HEAD) | grep '^CHANGELOG.md$' && echo "Thanks for helping keep our CHANGELOG up-to-date!"

@@ -9,31 +9,31 @@ Thanks for considering contributing! Please read this document to learn the vari
 First, do [a quick search](https://github.com/dbt-labs/jaffle-shop-generator/issues) to see whether your issue has already been reported.
 If your issue has already been reported, please comment on the existing issue.
 
-Otherwise, open [a new GitHub issue](https://github.com/dbt-labs/jaffle-shop-generator/issues).  Be sure to include a clear title
-and description.  The description should include as much relevant information as possible.  The description should
-explain how to reproduce the erroneous behavior as well as the behavior you expect to see.  Ideally you would include a
+Otherwise, open [a new GitHub issue](https://github.com/dbt-labs/jaffle-shop-generator/issues). Be sure to include a clear title
+and description. The description should include as much relevant information as possible. The description should
+explain how to reproduce the erroneous behavior as well as the behavior you expect to see. Ideally you would include a
 code sample or an executable test case demonstrating the expected behavior.
 
 ### Do you have a suggestion for an enhancement or new feature?
 
 We use GitHub issues to track feature requests. Before you create a feature request:
 
-* Make sure you have a clear idea of the enhancement you would like. If you have a vague idea, consider discussing
-it first on a GitHub issue.
-* Check the documentation to make sure your feature does not already exist.
-* Do [a quick search](https://github.com/dbt-labs/jaffle-shop-generator/issues) to see whether your feature has already been suggested.
+- Make sure you have a clear idea of the enhancement you would like. If you have a vague idea, consider discussing
+  it first on a GitHub issue.
+- Check the documentation to make sure your feature does not already exist.
+- Do [a quick search](https://github.com/dbt-labs/jaffle-shop-generator/issues) to see whether your feature has already been suggested.
 
 When creating your request, please:
 
-* Provide a clear title and description.
-* Explain why the enhancement would be useful. It may be helpful to highlight the feature in other libraries.
-* Include code examples to demonstrate how the enhancement would be used.
+- Provide a clear title and description.
+- Explain why the enhancement would be useful. It may be helpful to highlight the feature in other libraries.
+- Include code examples to demonstrate how the enhancement would be used.
 
 ## Making a pull request
 
 When you're ready to contribute code to address an open issue, please follow these guidelines to help us be able to review your pull request (PR) quickly.
 
-1. **Initial setup** (only do this once)
+1.  **Initial setup** (only do this once)
 
     <details><summary>Expand details 👇</summary><br/>
 
@@ -43,11 +43,11 @@ When you're ready to contribute code to address an open issue, please follow the
 
         git clone https://github.com/USERNAME/jaffle-shop-generator.git
 
-    or 
+    or
 
         git clone git@github.com:USERNAME/jaffle-shop-generator.git
 
-    At this point the local clone of your fork only knows that it came from *your* repo, github.com/USERNAME/jaffle-shop-generator.git, but doesn't know anything the *main* repo, [https://github.com/dbt-labs/jaffle-shop-generator.git](https://github.com/dbt-labs/jaffle-shop-generator). You can see this by running
+    At this point the local clone of your fork only knows that it came from _your_ repo, github.com/USERNAME/jaffle-shop-generator.git, but doesn't know anything the _main_ repo, [https://github.com/dbt-labs/jaffle-shop-generator.git](https://github.com/dbt-labs/jaffle-shop-generator). You can see this by running
 
         git remote -v
 
@@ -89,7 +89,7 @@ When you're ready to contribute code to address an open issue, please follow the
 
     </details>
 
-2. **Ensure your fork is up-to-date**
+2.  **Ensure your fork is up-to-date**
 
     <details><summary>Expand details 👇</summary><br/>
 
@@ -101,7 +101,7 @@ When you're ready to contribute code to address an open issue, please follow the
 
     </details>
 
-3. **Create a new branch to work on your fix or enhancement**
+3.  **Create a new branch to work on your fix or enhancement**
 
     <details><summary>Expand details 👇</summary><br/>
 
@@ -115,11 +115,11 @@ When you're ready to contribute code to address an open issue, please follow the
 
     </details>
 
-4. **Test your changes**
+4.  **Test your changes**
 
     <details><summary>Expand details 👇</summary><br/>
 
-    Our continuous integration (CI) testing runs [a number of checks](https://github.com/dbt-labs/jaffle-shop-generator/actions) for each pull request on [GitHub Actions](https://github.com/features/actions). You can run most of these tests locally, which is something you should do *before* opening a PR to help speed up the review process and make it easier for us.
+    Our continuous integration (CI) testing runs [a number of checks](https://github.com/dbt-labs/jaffle-shop-generator/actions) for each pull request on [GitHub Actions](https://github.com/features/actions). You can run most of these tests locally, which is something you should do _before_ opening a PR to help speed up the review process and make it easier for us.
 
     First, you should run [`isort`](https://github.com/PyCQA/isort) and [`black`](https://github.com/psf/black) to make sure you code is formatted consistently.
     Many IDEs support code formatters as plugins, so you may be able to setup isort and black to run automatically everytime you save.
@@ -139,7 +139,7 @@ When you're ready to contribute code to address an open issue, please follow the
 
     We also strive to maintain high test coverage, so most contributions should include additions to [the unit tests](https://github.com/dbt-labs/jaffle-shop-generator/tree/main/tests). These tests are run with [`pytest`](https://docs.pytest.org/en/latest/), which you can use to locally run any test modules that you've added or changed.
 
-    For example, if you've fixed a bug in `jaffle_shop_generator/a/b.py`, you can run the tests specific to that module with
+    For example, if you've fixed a bug in `src/a/b.py`, you can run the tests specific to that module with
 
         pytest -v tests/a/b_test.py
 

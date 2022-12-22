@@ -1,7 +1,7 @@
 .PHONY : docs
 docs :
 	rm -rf docs/build/
-	sphinx-autobuild -b html --watch jaffle_shop_generator/ docs/source/ docs/build/
+	sphinx-autobuild -b html --watch src/ docs/source/ docs/build/
 
 .PHONY : run-checks
 run-checks :
@@ -9,4 +9,4 @@ run-checks :
 	black --check .
 	flake8 .
 	mypy .
-	pytest -v --color=yes --doctest-modules tests/ jaffle_shop_generator/
+	pytest -v --color=yes --doctest-modules tests/ src/
