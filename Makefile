@@ -9,4 +9,4 @@ run-checks :
 	black --check .
 	flake8 .
 	mypy .
-	CUDA_VISIBLE_DEVICES='' pytest -v --color=yes --doctest-modules tests/ jaffle_shop_generator/
+	pytest -v --color=yes --doctest-modules tests/ jaffle_shop_generator/

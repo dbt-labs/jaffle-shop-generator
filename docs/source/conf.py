@@ -22,9 +22,9 @@ from jaffle_shop_generator import VERSION, VERSION_SHORT  # noqa: E402
 
 # -- Project information -----------------------------------------------------
 
-project = "jaffle-shop-generator"
-copyright = f"{datetime.today().year}, Allen Institute for Artificial Intelligence"
-author = "Allen Institute for Artificial Intelligence"
+project = "Jaffle Shop Generator"
+copyright = f"{datetime.today().year}, dbt Labs™️"
+author = "dbt Labs™️"
 version = VERSION_SHORT
 release = VERSION
 
@@ -82,7 +82,7 @@ typehints_defaults = "comma"
 #
 html_theme = "furo"
 
-html_title = f"jaffle-shop-generator v{VERSION}"
+html_title = f"Jaffle Shop Generator v{VERSION}"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
