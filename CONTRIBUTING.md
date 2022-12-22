@@ -145,7 +145,7 @@ When you're ready to contribute code to address an open issue, please follow the
 
     To check the code coverage locally in this example, you could run
 
-        pytest -v --cov jaffle_shop_generator.a.b tests/a/b_test.py
+        pytest -v --cov jafgen.a.b tests/a/b_test.py
 
     If your contribution involves additions to any public part of the API, we require that you write docstrings
     for each function, method, class, or module that you add.

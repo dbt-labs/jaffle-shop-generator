@@ -95,7 +95,6 @@ class Simulation(object):
         for i in tqdm(range(self.sim_days), desc="[SIM]"):
 
             for market in self.markets:
-                store = market.store.name
                 day = Day(i)
                 for order in (o for o in market.sim_day(day) if o is not None):
                     self.orders.append(order)
