@@ -1,8 +1,10 @@
+from typing import Any
+
 from jafgen.stores.supply import Supply
 
 
 class Stock(object):
-    stock = {}
+    stock: dict[Any, Any] = {}
 
     @classmethod
     def update(cls, stock_list):

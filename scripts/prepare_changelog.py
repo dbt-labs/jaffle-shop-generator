@@ -1,7 +1,7 @@
 from datetime import datetime
 from pathlib import Path
 
-from jaffle_shop_generator.version import VERSION
+from jafgen.version import VERSION
 
 
 def main():

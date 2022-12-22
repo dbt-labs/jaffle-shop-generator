@@ -38,13 +38,13 @@ class Customer(object):
         return Order(self, items, self.store, order_time)
 
     def get_order_items(self, day):
-        raise NotImplemented()
+        raise NotImplementedError()
 
     def get_order_time(self, store, day):
-        raise NotImplemented()
+        raise NotImplementedError()
 
     def p_buy_persona(self, day):
-        raise NotImplemented()
+        raise NotImplementedError()
 
     def sim_day(self, day):
         p_buy = self.p_buy(day)
