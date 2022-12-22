@@ -12,7 +12,7 @@ on:
     branches:
       - main
     tags:
-      - 'v*.*.*'
+      - "v*.*.*"
 
 env:
   # Change this to invalidate existing cache.
@@ -27,38 +27,38 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python: ['3.7', '3.10']
+        python: ["3.10"]
         task:
           - name: Test
             run: |
               pytest -v --color=yes tests/
 
         include:
-          - python: '3.10'
+          - python: "3.10"
             task:
               name: Lint
               run: flake8 .
 
-          - python: '3.10'
+          - python: "3.10"
             task:
               name: Type check
               run: mypy .
 
-          - python: '3.10'
+          - python: "3.10"
             task:
               name: Build
               run: |
                 python setup.py check
                 python setup.py bdist_wheel sdist
 
-          - python: '3.10'
+          - python: "3.10"
             task:
               name: Style
               run: |
                 isort --check .
                 black --check .
 
-          - python: '3.10'
+          - python: "3.10"
             task:
               name: Docs
               run: cd docs && make html
@@ -111,7 +111,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
       - name: Install requirements
         run: |

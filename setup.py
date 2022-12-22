@@ -54,6 +54,6 @@ setup(
     package_data={"jaffle_shop_generator": ["py.typed"]},
     install_requires=read_requirements("requirements.txt"),
     extras_require={"dev": read_requirements("dev-requirements.txt")},
-    python_requires=">=3.7",
+    python_requires=">=3.10",
     entry_points={"console_scripts": ["jafgen=jafgen.main:main"]},
 )
