@@ -2,7 +2,7 @@
 
 ## Steps
 
-1. Update the version in `src/version.py`.
+1. Update the version in `jafgen/version.py`.
 
 2. Run the release script:
 

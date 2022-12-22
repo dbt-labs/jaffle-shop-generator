@@ -1,6 +1,6 @@
 import uuid
 
-from customers.order_item import OrderItem
+from jafgen.customers.order_item import OrderItem
 
 
 class Order(object):

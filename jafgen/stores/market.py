@@ -2,7 +2,13 @@ import random
 
 import numpy as np
 
-from customers.customers import BrunchCrowd, Casuals, Commuter, RemoteWorker, Student
+from jafgen.customers.customers import (
+    BrunchCrowd,
+    Casuals,
+    Commuter,
+    RemoteWorker,
+    Student,
+)
 
 
 class Market(object):

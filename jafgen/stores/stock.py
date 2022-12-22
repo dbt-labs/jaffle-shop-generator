@@ -1,4 +1,4 @@
-from stores.supply import Supply
+from jafgen.stores.supply import Supply
 
 
 class Stock(object):

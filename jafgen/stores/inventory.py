@@ -1,6 +1,6 @@
 import random
 
-from stores.item import Item
+from jafgen.stores.item import Item
 
 
 class Inventory(object):

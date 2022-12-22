@@ -27,11 +27,11 @@ def read_requirements(filename: str):
 # version.py defines the VERSION and VERSION_SHORT variables.
 # We use exec here so we don't import cached_path whilst setting up.
 VERSION = {}  # type: ignore
-with open("src/version.py", "r") as version_file:
+with open("jafgen/version.py", "r") as version_file:
     exec(version_file.read(), VERSION)
 
 setup(
-    name="jaffle-shop-generator",
+    name="Jaffle Shop Generator",
     version=VERSION["VERSION"],
     description="",
     long_description=open("README.md").read(),
@@ -45,8 +45,8 @@ setup(
     ],
     keywords="",
     url="https://github.com/dbt-labs/jaffle-shop-generator",
-    author="Allen Institute for Artificial Intelligence",
-    author_email="contact@allenai.org",
+    author="dbt Labs™️",
+    author_email="winnie@dbtlabs.com",
     license="Apache",
     packages=find_packages(
         exclude=["*.tests", "*.tests.*", "tests.*", "tests"],
@@ -55,4 +55,5 @@ setup(
     install_requires=read_requirements("requirements.txt"),
     extras_require={"dev": read_requirements("dev-requirements.txt")},
     python_requires=">=3.7",
+    entry_points={"console_scripts": ["jafgen=jafgen.main:main"]},
 )

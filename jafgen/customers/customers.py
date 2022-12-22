@@ -4,8 +4,8 @@ import uuid
 import numpy as np
 from faker import Faker
 
-from customers.order import Order
-from stores.inventory import Inventory
+from jafgen.customers.order import Order
+from jafgen.stores.inventory import Inventory
 
 fake = Faker()
 Faker.seed(123456789)
