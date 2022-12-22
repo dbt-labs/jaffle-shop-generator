@@ -17,12 +17,6 @@ pip-wheel-metadata/
 .vscode/
 /*.iml
 
-
-# jupyter notebooks
-
-.ipynb_checkpoints
-
-
 # miscellaneous
 
 .cache/
@@ -48,3 +42,7 @@ __pycache__
 
 docs/build
 site/
+
+# data artifacts
+
+data/
