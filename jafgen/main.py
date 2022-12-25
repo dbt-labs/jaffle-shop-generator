@@ -10,6 +10,6 @@ from jafgen.simulation import Simulation
 
 
 def main():
-    sim = Simulation(1)
+    sim = Simulation(2)
     sim.run_simulation()
     sim.save_results()

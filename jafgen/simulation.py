@@ -115,9 +115,9 @@ class Simulation(object):
         # ask Drew about what the heck is up with the to_dict generator stuff
 
         # save output
-        df_customers.to_csv("./data/customers.csv")
-        df_items.to_csv("./data/items.csv")
-        df_orders.to_csv("./data/orders.csv")
-        df_products.to_csv("./data/products.csv")
-        df_stores.to_csv("./data/stores.csv")
-        df_supplies.to_csv("./data/supplies.csv")
+        df_customers.to_csv("./data/customers.csv", index=False)
+        df_items.to_csv("./data/items.csv", index=False)
+        df_orders.to_csv("./data/orders.csv", index=False)
+        df_products.to_csv("./data/products.csv", index=False)
+        df_stores.to_csv("./data/stores.csv", index=False)
+        df_supplies.to_csv("./data/supplies.csv", index=False)
