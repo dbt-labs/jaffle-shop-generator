@@ -88,7 +88,7 @@ class Simulation(object):
 
         self.customers = {}
         self.orders = []
-        self.sim_days = 365 * self.years
+        self.sim_days = round(365 * self.years)
 
     def run_simulation(self):
 

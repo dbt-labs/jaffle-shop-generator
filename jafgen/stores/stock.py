@@ -128,3 +128,6 @@ Stock.update(
         Supply(id="SUP-029", name="lime", cost=0.13, perishable=True, skus=["BEV-005"]),
     ]
 )
+
+for supply in Stock.stock:
+    print(Stock.stock[supply])
