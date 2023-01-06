@@ -1,3 +1,4 @@
+import os
 import uuid
 
 import pandas as pd
@@ -114,10 +115,13 @@ class Simulation(object):
         df_supplies = pd.DataFrame.from_dict(Stock.to_dict())
         # ask Drew about what the heck is up with the to_dict generator stuff
 
+        if not os.path.exists("./jaffle-data"):
+            os.makedirs("./jaffle-data")
+
         # save output
-        df_customers.to_csv("./data/customers.csv", index=False)
-        df_items.to_csv("./data/items.csv", index=False)
-        df_orders.to_csv("./data/orders.csv", index=False)
-        df_products.to_csv("./data/products.csv", index=False)
-        df_stores.to_csv("./data/stores.csv", index=False)
-        df_supplies.to_csv("./data/supplies.csv", index=False)
+        df_customers.to_csv("./jaffle-data/customers.csv", index=False)
+        df_items.to_csv("./jaffle-data/items.csv", index=False)
+        df_orders.to_csv("./jaffle-data/orders.csv", index=False)
+        df_products.to_csv("./jaffle-data/products.csv", index=False)
+        df_stores.to_csv("./jaffle-data/stores.csv", index=False)
+        df_supplies.to_csv("./jaffle-   data/supplies.csv", index=False)
