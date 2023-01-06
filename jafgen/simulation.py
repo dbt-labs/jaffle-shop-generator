@@ -89,7 +89,7 @@ class Simulation(object):
 
         self.customers = {}
         self.orders = []
-        self.sim_days = round(365 * self.years)
+        self.sim_days = 365 * self.years
 
     def run_simulation(self):
 
@@ -124,4 +124,4 @@ class Simulation(object):
         df_orders.to_csv("./jaffle-data/orders.csv", index=False)
         df_products.to_csv("./jaffle-data/products.csv", index=False)
         df_stores.to_csv("./jaffle-data/stores.csv", index=False)
-        df_supplies.to_csv("./jaffle-   data/supplies.csv", index=False)
+        df_supplies.to_csv("./jaffle-data/supplies.csv", index=False)
