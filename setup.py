@@ -31,7 +31,7 @@ with open("jafgen/version.py", "r") as version_file:
     exec(version_file.read(), VERSION)
 
 setup(
-    name="Jaffle Shop Generator",
+    name="jafgen",
     version=VERSION["VERSION"],
     description="",
     long_description=open("README.md").read(),
