@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [v0.3.1](https://github.com/dbt-labs/jaffle-shop-generator/releases/tag/v0.3.1) - 2023-01-17
+
+### Fixed
+
+- `--prefix` and `--years` are now optional and default to 'raw' and 2 respectively
+
 ## [v0.3.0](https://github.com/dbt-labs/jaffle-shop-generator/releases/tag/v0.3.0) - 2023-01-17
 
 ### Added
