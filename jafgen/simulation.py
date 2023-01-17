@@ -57,7 +57,7 @@ class HoursOfOperation(object):
 
 
 class Simulation(object):
-    def __init__(self, years, prefix):
+    def __init__(self, years=2, prefix="raw"):
         self.years = years
         self.scale = 100
         self.prefix = prefix
