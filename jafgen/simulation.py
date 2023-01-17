@@ -57,9 +57,10 @@ class HoursOfOperation(object):
 
 
 class Simulation(object):
-    def __init__(self, years):
+    def __init__(self, years, prefix):
         self.years = years
         self.scale = 100
+        self.prefix = prefix
         self.stores = [
             # id | name | popularity | opened | TAM | tax
             (str(uuid.uuid4()), "Philadelphia", 0.85, 0, 9 * self.scale, 0.06),
@@ -119,9 +120,31 @@ class Simulation(object):
             os.makedirs("./jaffle-data")
 
         # save output
-        df_customers.to_csv("./jaffle-data/customers.csv", index=False)
-        df_items.to_csv("./jaffle-data/items.csv", index=False)
-        df_orders.to_csv("./jaffle-data/orders.csv", index=False)
-        df_products.to_csv("./jaffle-data/products.csv", index=False)
-        df_stores.to_csv("./jaffle-data/stores.csv", index=False)
-        df_supplies.to_csv("./jaffle-data/supplies.csv", index=False)
+        df_customers.to_csv(
+            f"./jaffle-data/{self.prefix}_customers.csv",
+            header=df_customers.columns.to_list(),
+            index=False,
+        )
+        df_items.to_csv(
+            f"./jaffle-data/{self.prefix}_items.csv", header=df_items.columns.to_list(), index=False
+        )
+        df_orders.to_csv(
+            f"./jaffle-data/{self.prefix}_orders.csv",
+            header=df_orders.columns.to_list(),
+            index=False,
+        )
+        df_products.to_csv(
+            f"./jaffle-data/{self.prefix}_products.csv",
+            header=df_products.columns.to_list(),
+            index=False,
+        )
+        df_stores.to_csv(
+            f"./jaffle-data/{self.prefix}_stores.csv",
+            header=df_stores.columns.to_list(),
+            index=False,
+        )
+        df_supplies.to_csv(
+            f"./jaffle-data/{self.prefix}_supplies.csv",
+            header=df_supplies.columns.to_list(),
+            index=False,
+        )
