@@ -4,6 +4,14 @@ The Jaffle Shop Generator or `jafgen` is a python package with a simple command 
 
 ## Installation
 
+If you have [pipx](https://pypa.github.io/pipx/installation/) installed, `jafgen` is an ideal tool to use via pipx. You can generate 3 years of data without installing anything in the local workspace using the following:
+
+```shell
+pipx run jafgen [options]
+```
+
+You can also install jafgen into your project or workspace, ideally in a virtual environment.
+
 ```shell
 pip install jafgen
 ```
