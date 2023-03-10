@@ -18,7 +18,9 @@ pip install jafgen
 
 ## Use
 
-`jafgen` takes one argument, years, which sets the length of time the simulation generates synthetic data for.
+`jafgen` takes two optional arguments:
+- `--years` sets the length of time the simulation generates synthetic data for. It defaults to 2.
+- `--prefix` sets a prefix for the generated files in the format `[prefix]_[file_name].csv`. It defaults to `raw`.
 
 ```shell
 # generate a simulation spanning 3 years from 2016-2019
