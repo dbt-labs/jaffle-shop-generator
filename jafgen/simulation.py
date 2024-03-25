@@ -2,7 +2,7 @@ import os
 import uuid
 
 import pandas as pd
-from tqdm import tqdm
+from rich.progress import track
 
 from jafgen.curves import Day
 from jafgen.stores.inventory import Inventory
@@ -71,7 +71,14 @@ class Simulation(object):
         ]
 
         self.markets = []
-        for store_id, store_name, popularity, opened_date, market_size, tax in self.stores:
+        for (
+            store_id,
+            store_name,
+            popularity,
+            opened_date,
+            market_size,
+            tax,
+        ) in self.stores:
             market = Market(
                 Store(
                     store_id=store_id,
@@ -93,9 +100,7 @@ class Simulation(object):
         self.sim_days = 365 * self.years
 
     def run_simulation(self):
-
-        for i in tqdm(range(self.sim_days), desc="[SIM]"):
-
+        for i in track(range(self.sim_days), description="🥪Pressing fresh jaffles..."):
             for market in self.markets:
                 day = Day(i)
                 for order in (o for o in market.sim_day(day) if o is not None):
@@ -111,7 +116,9 @@ class Simulation(object):
         df_items = pd.DataFrame.from_dict(
             item.to_dict() for order in self.orders for item in order.items
         )
-        df_stores = pd.DataFrame.from_dict(market.store.to_dict() for market in self.markets)
+        df_stores = pd.DataFrame.from_dict(
+            market.store.to_dict() for market in self.markets
+        )
         df_products = pd.DataFrame.from_dict(Inventory.to_dict())
         df_supplies = pd.DataFrame.from_dict(Stock.to_dict())
         # ask Drew about what the heck is up with the to_dict generator stuff
@@ -126,7 +133,9 @@ class Simulation(object):
             index=False,
         )
         df_items.to_csv(
-            f"./jaffle-data/{self.prefix}_items.csv", header=df_items.columns.to_list(), index=False
+            f"./jaffle-data/{self.prefix}_items.csv",
+            header=df_items.columns.to_list(),
+            index=False,
         )
         df_orders.to_csv(
             f"./jaffle-data/{self.prefix}_orders.csv",
