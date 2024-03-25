@@ -1,0 +1,6 @@
+ruff
+pytest
+numpy
+pandas
+Faker
+tqdm

@@ -1,5 +1,0 @@
-# Add your own dependencies to this file.
-numpy==1.24.0
-pandas==1.5.2
-Faker==15.3.4
-tqdm==4.64.1
