@@ -2,10 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
-
+    branches: ["main"]
 
 jobs:
   build:
@@ -15,21 +14,16 @@ jobs:
       matrix:
         python-version: ["3.11"]
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        python3 -m pip install uv
-        uv pip install -r requirements.txt --system
-    - name: Lint with ruff
-      run: ruff check
-    - name: Test with pytest
-      env:
-        OPEN_AI_API_KEY: ${{ secrets.OPEN_AI_API_KEY }}
-        GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-        ANTHROPIC_API_KEY: ${{ secrets.GROQ_API_KEY }}
-        GITHUB_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PAT }}
-      run: pytest
+      - uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python3 -m pip install uv
+          uv pip install -r requirements.txt --system
+      - name: Lint with ruff
+        run: ruff check
+      - name: Test with pytest
+        run: pytest
