@@ -1,34 +1,69 @@
 import datetime
-
+from abc import ABC, abstractmethod
 import numpy as np
 
 
-class Curve:
+class Curve(ABC):
+    @property
+    @abstractmethod
+    def Domain(self):
+        raise NotImplementedError
+
+    @abstractmethod
+    def TranslateDomain(self, date):
+        raise NotImplementedError
+
+    @abstractmethod
+    def Expr(self, x):
+        raise NotImplementedError
+
     @classmethod
     def eval(cls, date):
-        x = cls.TranslateDomain(date)
-        x_mod = x % len(cls.Domain)
-        x_translated = cls.Domain[x_mod]
-        return cls.Expr(x_translated)
+        instance = cls()
+        domain_value = instance.TranslateDomain(date)
+        domain_index = domain_value % len(instance.Domain)
+        translated_value = instance.Domain[domain_index]
+        return instance.Expr(translated_value)
 
 
 class AnnualCurve(Curve):
-    Domain = np.linspace(0, 2 * np.pi, 365)
-    TranslateDomain = lambda date: date.timetuple().tm_yday
-    Expr = lambda x: (np.cos(x) + 1) / 10 + 0.8
+    @property
+    def Domain(self):
+        return np.linspace(0, 2 * np.pi, 365)
+
+    def TranslateDomain(self, date):
+        return date.timetuple().tm_yday
+
+    def Expr(self, x):
+        return (np.cos(x) + 1) / 10 + 0.8
 
 
 class WeekendCurve(Curve):
-    Domain = tuple(range(6))
-    TranslateDomain = lambda date: date.weekday() - 1
-    Expr = lambda x: 0.6 if x >= 6 else 1
+    @property
+    def Domain(self):
+        return tuple(range(6))
+
+    def TranslateDomain(self, date):
+        return date.weekday() - 1
+
+    def Expr(self, x):
+        if x >= 6:
+            return 0.6
+        else:
+            return 1.0
 
 
 class GrowthCurve(Curve):
-    Domain = tuple(range(500))
-    TranslateDomain = lambda date: (date.year - 2016) * 12 + date.month
-    # ~ aim for ~20% growth/year
-    Expr = lambda x: 1 + (x / 12) * 0.2
+    @property
+    def Domain(self):
+        return tuple(range(500))
+
+    def TranslateDomain(self, date):
+        return (date.year - 2016) * 12 + date.month
+
+    def Expr(self, x):
+        # ~ aim for ~20% growth/year
+        return 1 + (x / 12) * 0.2
 
 
 class Day(object):
@@ -40,11 +75,6 @@ class Day(object):
     def __init__(self, date_index, minutes=0):
         self.date_index = date_index
         self.date = self.EPOCH + datetime.timedelta(days=date_index, minutes=minutes)
-
-        self.day_of_week = self._get_day_of_week(self.date)
-        self.is_weekend = self._is_weekend(self.date)
-        self.season = self._get_season(self.date)
-
         self.effects = [
             self.SEASONAL_MONTHLY_CURVE.eval(self.date),
             self.WEEKEND_CURVE.eval(self.date),
@@ -63,16 +93,19 @@ class Day(object):
         # weekend_effect = 0.8 if date.is_weekend else 1
         # summer_effect = 0.7 if date.season == 'summer' else 1
 
-    def _get_day_of_week(self, date):
-        return date.weekday()
+    @property
+    def day_of_week(self):
+        return self.date.weekday()
 
-    def _is_weekend(self, date):
+    @property
+    def is_weekend(self):
         # 5 + 6 are weekends
-        return date.weekday() >= 5
+        return self.date.weekday() >= 5
 
-    def _get_season(self, date):
-        month_no = date.month
-        day_no = date.day
+    @property
+    def season(self):
+        month_no = self.date.month
+        day_no = self.date.day
 
         if month_no in (1, 2) or (month_no == 3 and day_no < 21):
             return "winter"
