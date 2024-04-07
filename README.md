@@ -1,6 +1,15 @@
 # 🥪 Jaffle Shop Generator 🏭
 
-The Jaffle Shop Generator or `jafgen` is a python package with a simple command line tool for generating a synthetic data set suitable for analytics engineering practice or demonstrations.
+The Jaffle Shop Generator or `jafgen` is a simple command line tool for generating synthetic datasets suitable for analytics engineering practice or demonstrations. The data is generated in CSV format and is designed to be used with a relational database. It follows a simple schema, with tables for:
+
+- Customers
+- Orders from those Customers
+- Products
+- Order Items of those Products
+- Supplies needed for those Products
+- Store Locations
+
+It uses some straightforward math to create seasonality and trends in the data, for instance weekends being less busy than weekdays, customers having certain preferences, and new store locations opening over time. We plan to add more data types and complexity as the codebase evolves.
 
 ## Installation
 
@@ -42,4 +51,18 @@ Coming soon.
 
 ## Contribution
 
-Coming soon.
+We welcome contribution to the project! It's relatively simple to get started, just clone the repo, spin up a virtual environment, and install the dependencies:
+
+```shell
+gh repo clone dbt-labs/jaffle-shop-generator
+# You ARE using `uv`, right? If not, check it out! https://astral.sh/uv
+uv venv
+# Install the package requirements
+uv pip install -r requirements.txt
+# Install the dev tooling (ruff and pytest)
+uv pip install -r dev-requirements.txt
+# Install the package in editable mode
+uv pip install -e .
+```
+
+Working out from the `jafgen` command, you can see the main entrypoint in `jaffle_shop_generator/cli.py`. This calls the simulation found in `jafgen/simulation.py`. The simulation is where most of the magic happens.
