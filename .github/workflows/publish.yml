@@ -17,6 +17,14 @@ jobs:
       - name: Install pypa/build
         run: |
           python3 -m pip install build --user
+          python3 -m pip install uv
+      - name: Install dependencies
+        run: |
+          uv pip install -r requirements.txt --system
+      - name: Lint code
+        run: ruff check
+      - name: Run tests
+        run: pytest
       - name: Build a binary wheel and a source tarball
         run: python3 -m build
       - name: Store the distribution packages

@@ -30,6 +30,7 @@ pytz==2024.1
 rich==13.7.1
     # via typer
 ruff==0.3.4
+setuptools==69.2.0
 shellingham==1.5.4
     # via typer
 six==1.16.0
