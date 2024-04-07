@@ -38,7 +38,7 @@ jobs:
     name: Publish to PyPI
     needs:
       - build
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     environment:
       name: release
       url: https://pypi.org/p/jaffle-shop-generator
