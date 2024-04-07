@@ -109,7 +109,7 @@ class Simulation(object):
                     if order.customer.customer_id not in self.customers:
                         self.customers[order.customer.customer_id] = order.customer
 
-    def save_results(self):
+    def save_results(self) -> None:
         stock: Stock = Stock()
         entities: dict[str, pd.DataFrame] = {
             "customers": pd.DataFrame.from_dict(

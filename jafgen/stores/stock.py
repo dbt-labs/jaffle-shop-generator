@@ -16,7 +16,7 @@ class Stock(object):
                 cls.stock[sku].append(supply)
 
     @classmethod
-    def to_dict(cls):
+    def to_dict(cls) -> list[dict[str, Any]]:
         all_items = []
         for key in cls.stock:
             all_items += [item.to_dict(key) for item in cls.stock[key]]
@@ -74,7 +74,9 @@ Stock.update(
             perishable=False,
             skus=["BEV-001", "BEV-002", "BEV-003", "BEV-004", "BEV-005"],
         ),
-        Supply(id="SUP-008", name="chai mix", cost=0.98, perishable=True, skus=["BEV-002"]),
+        Supply(
+            id="SUP-008", name="chai mix", cost=0.98, perishable=True, skus=["BEV-002"]
+        ),
         Supply(
             id="SUP-009",
             name="bread",
@@ -89,9 +91,15 @@ Stock.update(
             perishable=True,
             skus=["JAF-002", "JAF-003", "JAF-004", "JAF-005"],
         ),
-        Supply(id="SUP-011", name="nutella", cost=0.46, perishable=True, skus=["JAF-001"]),
-        Supply(id="SUP-012", name="banana", cost=0.13, perishable=True, skus=["JAF-001"]),
-        Supply(id="SUP-013", name="beef stew", cost=1.69, perishable=True, skus=["JAF-002"]),
+        Supply(
+            id="SUP-011", name="nutella", cost=0.46, perishable=True, skus=["JAF-001"]
+        ),
+        Supply(
+            id="SUP-012", name="banana", cost=0.13, perishable=True, skus=["JAF-001"]
+        ),
+        Supply(
+            id="SUP-013", name="beef stew", cost=1.69, perishable=True, skus=["JAF-002"]
+        ),
         Supply(
             id="SUP-014",
             name="lamb and pork bratwurst",
@@ -106,23 +114,65 @@ Stock.update(
             perishable=True,
             skus=["JAF-003"],
         ),
-        Supply(id="SUP-016", name="mustard", cost=0.07, perishable=True, skus=["JAF-003"]),
-        Supply(id="SUP-017", name="pulled pork", cost=2.15, perishable=True, skus=["JAF-004"]),
-        Supply(id="SUP-018", name="pineapple", cost=0.26, perishable=True, skus=["JAF-004"]),
-        Supply(id="SUP-019", name="melon", cost=0.33, perishable=True, skus=["JAF-005"]),
-        Supply(id="SUP-020", name="minced beef", cost=1.24, perishable=True, skus=["JAF-005"]),
         Supply(
-            id="SUP-021", name="ghost pepper sauce", cost=0.2, perishable=True, skus=["JAF-004"]
-        ),
-        Supply(id="SUP-022", name="mango", cost=0.32, perishable=True, skus=["BEV-001"]),
-        Supply(id="SUP-023", name="tangerine", cost=0.2, perishable=True, skus=["BEV-001"]),
-        Supply(id="SUP-024", name="oatmilk", cost=0.11, perishable=True, skus=["BEV-002"]),
-        Supply(id="SUP-025", name="whey protein", cost=0.36, perishable=True, skus=["BEV-002"]),
-        Supply(
-            id="SUP-026", name="coffee", cost=0.52, perishable=True, skus=["BEV-003", "BEV-004"]
+            id="SUP-016", name="mustard", cost=0.07, perishable=True, skus=["JAF-003"]
         ),
         Supply(
-            id="SUP-027", name="french vanilla syrup", cost=0.72, perishable=True, skus=["BEV-003"]
+            id="SUP-017",
+            name="pulled pork",
+            cost=2.15,
+            perishable=True,
+            skus=["JAF-004"],
+        ),
+        Supply(
+            id="SUP-018", name="pineapple", cost=0.26, perishable=True, skus=["JAF-004"]
+        ),
+        Supply(
+            id="SUP-019", name="melon", cost=0.33, perishable=True, skus=["JAF-005"]
+        ),
+        Supply(
+            id="SUP-020",
+            name="minced beef",
+            cost=1.24,
+            perishable=True,
+            skus=["JAF-005"],
+        ),
+        Supply(
+            id="SUP-021",
+            name="ghost pepper sauce",
+            cost=0.2,
+            perishable=True,
+            skus=["JAF-004"],
+        ),
+        Supply(
+            id="SUP-022", name="mango", cost=0.32, perishable=True, skus=["BEV-001"]
+        ),
+        Supply(
+            id="SUP-023", name="tangerine", cost=0.2, perishable=True, skus=["BEV-001"]
+        ),
+        Supply(
+            id="SUP-024", name="oatmilk", cost=0.11, perishable=True, skus=["BEV-002"]
+        ),
+        Supply(
+            id="SUP-025",
+            name="whey protein",
+            cost=0.36,
+            perishable=True,
+            skus=["BEV-002"],
+        ),
+        Supply(
+            id="SUP-026",
+            name="coffee",
+            cost=0.52,
+            perishable=True,
+            skus=["BEV-003", "BEV-004"],
+        ),
+        Supply(
+            id="SUP-027",
+            name="french vanilla syrup",
+            cost=0.72,
+            perishable=True,
+            skus=["BEV-003"],
         ),
         Supply(id="SUP-028", name="kiwi", cost=0.2, perishable=True, skus=["BEV-005"]),
         Supply(id="SUP-029", name="lime", cost=0.13, perishable=True, skus=["BEV-005"]),

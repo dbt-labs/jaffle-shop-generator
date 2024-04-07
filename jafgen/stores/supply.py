@@ -1,3 +1,6 @@
+from typing import Any
+
+
 class Supply(object):
     def __init__(self, id, name, cost, perishable, skus):
         self.id = id
@@ -12,7 +15,7 @@ class Supply(object):
     def __repr__(self):
         return self.__str__()
 
-    def to_dict(self, sku):
+    def to_dict(self, sku) -> dict[str, Any]:
         return {
             "id": self.id,
             "name": self.name,

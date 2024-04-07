@@ -24,7 +24,7 @@ class Inventory(object):
         return [random.choice(cls.inventory["beverage"]) for i in range(count)]
 
     @classmethod
-    def to_dict(cls):
+    def to_dict(cls) -> list[dict[str, Any]]:
         all_items = []
         for key in cls.inventory:
             all_items += [item.to_dict() for item in cls.inventory[key]]

@@ -1,5 +1,6 @@
 import random
 import uuid
+from typing import Any
 
 import numpy as np
 from faker import Faker
@@ -55,7 +56,7 @@ class Customer(object):
         else:
             return None
 
-    def to_dict(self):
+    def to_dict(self) -> dict[str, Any]:
         return {
             "id": self.customer_id,
             "name": self.name,

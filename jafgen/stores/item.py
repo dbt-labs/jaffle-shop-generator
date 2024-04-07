@@ -1,3 +1,6 @@
+from typing import Any
+
+
 class Item(object):
     def __init__(self, sku, name, description, type, price):
         self.sku = sku
@@ -12,7 +15,7 @@ class Item(object):
     def __repr__(self):
         return self.__str__()
 
-    def to_dict(self):
+    def to_dict(self) -> dict[str, Any]:
         return {
             "sku": self.sku,
             "name": self.name,

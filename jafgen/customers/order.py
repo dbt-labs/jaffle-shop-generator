@@ -1,4 +1,5 @@
 import uuid
+from typing import Any
 
 from jafgen.customers.order_item import OrderItem
 
@@ -17,7 +18,7 @@ class Order(object):
     def __str__(self):
         return f"{self.customer.name} bought {str(self.items)} at {self.day}"
 
-    def to_dict(self):
+    def to_dict(self) -> dict[str, Any]:
         return {
             "id": self.order_id,
             "customer": self.customer.customer_id,
