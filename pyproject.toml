@@ -3,7 +3,7 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "jaffle-shop-generator"
+name = "jafgen"
 version = "0.4.6"
 authors = [{ name = "gwenwindflower", email = "gwenwindflower@gmail.com" }]
 dependencies = ["numpy", "pandas", "Faker", "typer[all]"]

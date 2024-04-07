@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 
 setup(
-    name="jaffle-shop-generator",
+    name="jafgen",
     version="0.4.1",
     packages=find_packages(
         exclude=["*.tests", "*.tests.*", "tests.*", "tests"],
