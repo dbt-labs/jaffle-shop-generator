@@ -10,7 +10,7 @@ def parse_requirements(filename):
 requirements = parse_requirements("requirements.in")
 setup(
     name="jaffle-shop-generator",
-    version="0.2",
+    version="0.4.0",
     packages=find_packages(
         exclude=["*.tests", "*.tests.*", "tests.*", "tests"],
     ),
