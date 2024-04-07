@@ -30,5 +30,5 @@ class Order(object):
             "order_total": int(self.order_total * 100),
         }
 
-    def items_to_dict(self):
-        return [i.to_dict(self.order_id) for i in self.items]
+    def items_to_dict(self) -> list[dict[str, Any]]:
+        return [item.to_dict() for item in self.items]

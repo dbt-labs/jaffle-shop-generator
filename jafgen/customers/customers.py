@@ -1,5 +1,6 @@
 import random
 import uuid
+from abc import ABC, abstractmethod
 from typing import Any
 
 import numpy as np
@@ -12,7 +13,7 @@ fake = Faker()
 Faker.seed(123456789)
 
 
-class Customer(object):
+class Customer(ABC):
     def __init__(self, store):
         self.customer_id = str(uuid.uuid4())
         self.store = store
@@ -38,12 +39,15 @@ class Customer(object):
 
         return Order(self, items, self.store, order_time)
 
+    @abstractmethod
     def get_order_items(self, day):
         raise NotImplementedError()
 
-    def get_order_time(self, store, day):
+    @abstractmethod
+    def get_order_time(self, day):
         raise NotImplementedError()
 
+    @abstractmethod
     def p_buy_persona(self, day):
         raise NotImplementedError()
 
