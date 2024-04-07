@@ -1,7 +1,4 @@
-ruff
-pytest
 numpy
 pandas
 Faker
-setuptools
 typer[all]

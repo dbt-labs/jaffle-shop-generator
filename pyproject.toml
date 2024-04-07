@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jaffle-shop-generator"
+version = "0.4.1"
+dependencies = ["numpy", "pandas", "Faker", "typer[all]"]
+
+[tool.setuptools.packages.find]
+exclude = ["*.tests", "*.tests.*", "tests.*", "tests"]
+
+[project.scripts]
+jafgen = "jafgen.cli:app"
+
+[project.optional-dependencies]
+dev = ["ruff", "pytest"]
