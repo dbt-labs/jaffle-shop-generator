@@ -7,7 +7,7 @@ app = typer.Typer()
 
 
 @app.command()
-def main(
+def run(
     years: Annotated[
         int, typer.Argument(help="Number of years to simulate. Default is 1.")
     ] = 1,

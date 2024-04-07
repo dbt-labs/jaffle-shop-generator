@@ -3,5 +3,4 @@ pytest
 numpy
 pandas
 Faker
-tqdm
 typer[all]

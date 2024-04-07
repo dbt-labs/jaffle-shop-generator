@@ -15,6 +15,6 @@ setup(
         exclude=["*.tests", "*.tests.*", "tests.*", "tests"],
     ),
     package_dir={"jafgen": "jafgen"},
-    entry_points={"console_scripts": ["jafgen = jafgen.main:main"]},
+    entry_points={"console_scripts": ["jafgen = jafgen.cli:app"]},
     install_requires=requirements,
 )

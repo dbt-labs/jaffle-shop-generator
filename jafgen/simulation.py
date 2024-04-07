@@ -5,7 +5,6 @@ import pandas as pd
 from rich.progress import track
 
 from jafgen.curves import Day
-from jafgen.stores.inventory import Inventory
 from jafgen.stores.market import Market
 from jafgen.stores.stock import Stock
 from jafgen.stores.store import Store
@@ -57,7 +56,7 @@ class HoursOfOperation(object):
 
 
 class Simulation(object):
-    def __init__(self, years=2, prefix="raw"):
+    def __init__(self, years, prefix):
         self.years = years
         self.scale = 100
         self.prefix = prefix
@@ -100,7 +99,9 @@ class Simulation(object):
         self.sim_days = 365 * self.years
 
     def run_simulation(self):
-        for i in track(range(self.sim_days), description="🥪Pressing fresh jaffles..."):
+        for i in track(
+            range(self.sim_days), description="🥪 Pressing fresh jaffles..."
+        ):
             for market in self.markets:
                 day = Day(i)
                 for order in (o for o in market.sim_day(day) if o is not None):
@@ -109,51 +110,30 @@ class Simulation(object):
                         self.customers[order.customer.customer_id] = order.customer
 
     def save_results(self):
-        df_customers = pd.DataFrame.from_dict(
-            customer.to_dict() for customer in self.customers.values()
-        )
-        df_orders = pd.DataFrame.from_dict(order.to_dict() for order in self.orders)
-        df_items = pd.DataFrame.from_dict(
-            item.to_dict() for order in self.orders for item in order.items
-        )
-        df_stores = pd.DataFrame.from_dict(
-            market.store.to_dict() for market in self.markets
-        )
-        df_products = pd.DataFrame.from_dict(Inventory.to_dict())
-        df_supplies = pd.DataFrame.from_dict(Stock.to_dict())
-        # ask Drew about what the heck is up with the to_dict generator stuff
-
+        stock: Stock = Stock()
+        entities: dict[str, pd.DataFrame] = {
+            "customers": pd.DataFrame.from_dict(
+                (customer.to_dict() for customer in self.customers.values())
+            ),
+            "orders": pd.DataFrame.from_dict(
+                (order.to_dict() for order in self.orders)
+            ),
+            "items": pd.DataFrame.from_dict(
+                (item.to_dict() for order in self.orders for item in order.items)
+            ),
+            "stores": pd.DataFrame.from_dict(
+                (market.store.to_dict() for market in self.markets)
+            ),
+            "supplies": pd.DataFrame.from_dict(stock.to_dict()),
+        }
         if not os.path.exists("./jaffle-data"):
             os.makedirs("./jaffle-data")
-
         # save output
-        df_customers.to_csv(
-            f"./jaffle-data/{self.prefix}_customers.csv",
-            header=df_customers.columns.to_list(),
-            index=False,
-        )
-        df_items.to_csv(
-            f"./jaffle-data/{self.prefix}_items.csv",
-            header=df_items.columns.to_list(),
-            index=False,
-        )
-        df_orders.to_csv(
-            f"./jaffle-data/{self.prefix}_orders.csv",
-            header=df_orders.columns.to_list(),
-            index=False,
-        )
-        df_products.to_csv(
-            f"./jaffle-data/{self.prefix}_products.csv",
-            header=df_products.columns.to_list(),
-            index=False,
-        )
-        df_stores.to_csv(
-            f"./jaffle-data/{self.prefix}_stores.csv",
-            header=df_stores.columns.to_list(),
-            index=False,
-        )
-        df_supplies.to_csv(
-            f"./jaffle-data/{self.prefix}_supplies.csv",
-            header=df_supplies.columns.to_list(),
-            index=False,
-        )
+        for entity, df in track(
+            entities.items(), description="🚚 Delivering jaffles..."
+        ):
+            df.to_csv(
+                f"./jaffle-data/{self.prefix}_{entity}.csv",
+                header=df.columns.to_list(),
+                index=False,
+            )
