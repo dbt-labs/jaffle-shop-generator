@@ -1,13 +1,16 @@
 # 🥪 Jaffle Shop Generator 🏭
 
+> ![NOTE]
+> This is not an official dbt Labs project. It is maintained on a volunteer basis by dbt Labs employeeswho are passionate about analytics engineering, the dbt Community, and jaffles, and feel that generating datasets for learning and practicing is important. Please understand it's a work in progress and not supported in the same way as dbt itself.
+
 The Jaffle Shop Generator or `jafgen` is a simple command line tool for generating synthetic datasets suitable for analytics engineering practice or demonstrations. The data is generated in CSV format and is designed to be used with a relational database. It follows a simple schema, with tables for:
 
-- Customers
-- Orders from those Customers
-- Products
-- Order Items of those Products
-- Supplies needed for those Products
-- Store Locations
+- Customers (who place Orders)
+- Orders (from those Customers)
+- Products (the food and beverages the Orders contain)
+- Order Items (of those Products)
+- Supplies (needed for making those Products)
+- Stores (where the Orders are placed and fulfilled)
 
 It uses some straightforward math to create seasonality and trends in the data, for instance weekends being less busy than weekdays, customers having certain preferences, and new store locations opening over time. We plan to add more data types and complexity as the codebase evolves.
 
@@ -49,7 +52,7 @@ To that end, this project generates relatively simple, clean (but importantly, n
 
 ## Approach
 
-The great @drewbanin watched the movie 'Synecdoche, New York', and was inspired by the idea of creating a complete simulation of a world. Rather than using discrete rules to generate synthetic data, instead setting up entities with behavior patterns and letting them loose to interact with each other. This was the birth of the Jaffle Shop Generator. There are customers, stores, products, and more, all with their own behaviors and interactions as time passes. These combine to create unique and realistic datasets on every run.
+The great [@drewbanin](https://github.com/drewbanin) watched the movie [Synecdoche, New York](https://en.wikipedia.org/wiki/Synecdoche,_New_York), and was inspired by the idea of creating a complete simulation of a world. Rather than using discrete rules to generate synthetic data, instead setting up entities with behavior patterns and letting them loose to interact with each other. This was the birth of the Jaffle Shop Generator. There are customers, stores, products, and more, all with their own behaviors and interactions as time passes. These combine to create unique and realistic datasets on every run.
 
 An important caveat is that `jafgen` is _not_ idempotent. By design, it generates new data every time you run it based on the simulation's interactions. This is intended behavior, as it allows for more realistic and interesting data generation. Certain aspects are hard coded, like stores opening at certain times, but the output data is always unique.
 
