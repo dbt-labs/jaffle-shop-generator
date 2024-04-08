@@ -55,14 +55,13 @@ We welcome contribution to the project! It's relatively simple to get started, j
 
 ```shell
 gh repo clone dbt-labs/jaffle-shop-generator
-# You ARE using `uv`, right? If not, check it out! https://astral.sh/uv
-uv venv
+python3 -m venv .venv
 # Install the package requirements
-uv pip install -r requirements.txt
+pip install -r requirements.txt
 # Install the dev tooling (ruff and pytest)
-uv pip install -r dev-requirements.txt
+pip install -r dev-requirements.txt
 # Install the package in editable mode
-uv pip install -e .
+pip install -e .
 ```
 
 Working out from the `jafgen` command, you can see the main entrypoint in `jaffle_shop_generator/cli.py`. This calls the simulation found in `jafgen/simulation.py`. The simulation is where most of the magic happens.
