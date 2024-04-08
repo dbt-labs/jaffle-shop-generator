@@ -49,7 +49,11 @@ To that end, this project generates relatively simple, clean (but importantly, n
 
 ## Approach
 
-Coming soon.
+The great @drewbanin watched the movie 'Synecdoche, New York', and was inspired by the idea of creating a complete simulation of a world. Rather than using discrete rules to generate synthetic data, instead setting up entities with behavior patterns and letting them loose to interact with each other. This was the birth of the Jaffle Shop Generator. There are customers, stores, products, and more, all with their own behaviors and interactions as time passes. These combine to create unique and realistic datasets on every run.
+
+An important caveat is that `jafgen` is _not_ idempotent. By design, it generates new data every time you run it based on the simulation's interactions. This is intended behavior, as it allows for more realistic and interesting data generation. Certain aspects are hard coded, like stores opening at certain times, but the output data is always unique.
+
+We hope over time to add more complex behaviors and trends to the simulation!
 
 ## Contribution
 
