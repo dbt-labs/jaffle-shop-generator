@@ -1,5 +1,10 @@
+from typing import Any
+
+
 class Store(object):
-    def __init__(self, store_id, name, base_popularity, hours_of_operation, opened_date, tax_rate):
+    def __init__(
+        self, store_id, name, base_popularity, hours_of_operation, opened_date, tax_rate
+    ):
         self.store_id = store_id
         self.name = name
         self.base_popularity = base_popularity
@@ -32,7 +37,7 @@ class Store(object):
     def closes_at(self, date):
         return self.hours_of_operation.closes_at(date)
 
-    def to_dict(self):
+    def to_dict(self) -> dict[str, Any]:
         return {
             "id": self.store_id,
             "name": self.name,

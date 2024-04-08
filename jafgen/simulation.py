@@ -5,6 +5,7 @@ import pandas as pd
 from rich.progress import track
 
 from jafgen.curves import Day
+from jafgen.stores.inventory import Inventory
 from jafgen.stores.market import Market
 from jafgen.stores.stock import Stock
 from jafgen.stores.store import Store
@@ -67,6 +68,7 @@ class Simulation(object):
             (str(uuid.uuid4()), "Chicago", 0.92, 605, 12 * self.scale, 0.0625),
             (str(uuid.uuid4()), "San Francisco", 0.87, 615, 11 * self.scale, 0.075),
             (str(uuid.uuid4()), "New Orleans", 0.92, 920, 8 * self.scale, 0.04),
+            (str(uuid.uuid4()), "Los Angeles", 0.87, 1107, 8 * self.scale, 0.08),
         ]
 
         self.markets = []
@@ -109,22 +111,24 @@ class Simulation(object):
                     if order.customer.customer_id not in self.customers:
                         self.customers[order.customer.customer_id] = order.customer
 
-    def save_results(self):
+    def save_results(self) -> None:
         stock: Stock = Stock()
+        inventory: Inventory = Inventory()
         entities: dict[str, pd.DataFrame] = {
-            "customers": pd.DataFrame.from_dict(
-                (customer.to_dict() for customer in self.customers.values())
+            "customers": pd.DataFrame.from_records(
+                [customer.to_dict() for customer in self.customers.values()]
             ),
-            "orders": pd.DataFrame.from_dict(
-                (order.to_dict() for order in self.orders)
+            "orders": pd.DataFrame.from_records(
+                [order.to_dict() for order in self.orders]
             ),
-            "items": pd.DataFrame.from_dict(
-                (item.to_dict() for order in self.orders for item in order.items)
+            "items": pd.DataFrame.from_records(
+                [item.to_dict() for order in self.orders for item in order.items]
             ),
-            "stores": pd.DataFrame.from_dict(
-                (market.store.to_dict() for market in self.markets)
+            "stores": pd.DataFrame.from_records(
+                [market.store.to_dict() for market in self.markets]
             ),
-            "supplies": pd.DataFrame.from_dict(stock.to_dict()),
+            "supplies": pd.DataFrame.from_records(stock.to_dict()),
+            "products": pd.DataFrame.from_records(inventory.to_dict()),
         }
         if not os.path.exists("./jaffle-data"):
             os.makedirs("./jaffle-data")

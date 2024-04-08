@@ -1,4 +1,5 @@
 import uuid
+from typing import Any
 
 from jafgen.customers.order_item import OrderItem
 
@@ -17,7 +18,7 @@ class Order(object):
     def __str__(self):
         return f"{self.customer.name} bought {str(self.items)} at {self.day}"
 
-    def to_dict(self):
+    def to_dict(self) -> dict[str, Any]:
         return {
             "id": self.order_id,
             "customer": self.customer.customer_id,
@@ -29,5 +30,5 @@ class Order(object):
             "order_total": int(self.order_total * 100),
         }
 
-    def items_to_dict(self):
-        return [i.to_dict(self.order_id) for i in self.items]
+    def items_to_dict(self) -> list[dict[str, Any]]:
+        return [item.to_dict() for item in self.items]

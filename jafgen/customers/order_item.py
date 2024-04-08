@@ -1,4 +1,5 @@
 import uuid
+from typing import Any
 
 
 class OrderItem(object):
@@ -7,7 +8,7 @@ class OrderItem(object):
         self.order_id = order_id
         self.item = item
 
-    def to_dict(self):
+    def to_dict(self) -> dict[str, Any]:
         return {
             "id": self.item_id,
             "order_id": self.order_id,

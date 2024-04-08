@@ -8,16 +8,18 @@ from jafgen.customers.customers import (
     Commuter,
     RemoteWorker,
     Student,
+    HealthNut,
 )
 
 
 class Market(object):
     PersonaMix = [
         (Commuter, 0.25),
-        (RemoteWorker, 0.2),
+        (RemoteWorker, 0.25),
         (BrunchCrowd, 0.1),
         (Student, 0.2),
-        (Casuals, 0.25),
+        (Casuals, 0.1),
+        (HealthNut, 0.1),
     ]
 
     def __init__(self, store, num_customers, days_to_penetration=365):
@@ -27,7 +29,7 @@ class Market(object):
 
         self.addressable_customers = []
 
-        for (Persona, weight) in self.PersonaMix:
+        for Persona, weight in self.PersonaMix:
             num_customers = int(weight * self.num_customers)
             for i in range(num_customers):
                 self.addressable_customers.append(Persona(store))

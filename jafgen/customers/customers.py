@@ -1,5 +1,7 @@
 import random
 import uuid
+from abc import ABC, abstractmethod
+from typing import Any
 
 import numpy as np
 from faker import Faker
@@ -11,7 +13,7 @@ fake = Faker()
 Faker.seed(123456789)
 
 
-class Customer(object):
+class Customer(ABC):
     def __init__(self, store):
         self.customer_id = str(uuid.uuid4())
         self.store = store
@@ -37,12 +39,15 @@ class Customer(object):
 
         return Order(self, items, self.store, order_time)
 
+    @abstractmethod
     def get_order_items(self, day):
         raise NotImplementedError()
 
-    def get_order_time(self, store, day):
+    @abstractmethod
+    def get_order_time(self, day):
         raise NotImplementedError()
 
+    @abstractmethod
     def p_buy_persona(self, day):
         raise NotImplementedError()
 
@@ -55,7 +60,7 @@ class Customer(object):
         else:
             return None
 
-    def to_dict(self):
+    def to_dict(self) -> dict[str, Any]:
         return {
             "id": self.customer_id,
             "name": self.name,
@@ -164,3 +169,22 @@ class Casuals(Customer):
         num_drinks = int(random.random() * 10 / 3)
         num_food = int(random.random() * 10 / 3)
         return Inventory.get_drink(num_drinks) + Inventory.get_food(num_food)
+
+
+class HealthNut(Customer):
+    "A light beverage in the sunshine as a treat"
+
+    def p_buy_persona(self, day):
+        if day.season == "summer":
+            buy_propensity = 0.1 + (self.favorite_number / 100) * 0.4
+            return buy_propensity
+        else:
+            return 0.2
+
+    def get_order_time(self, day):
+        avg_time = 5 * 60
+        order_time = np.random.normal(loc=avg_time, scale=120)
+        return max(0, int(order_time))
+
+    def get_order_items(self, day):
+        return Inventory.get_drink(1)
