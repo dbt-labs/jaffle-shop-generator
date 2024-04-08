@@ -5,6 +5,7 @@ import pandas as pd
 from rich.progress import track
 
 from jafgen.curves import Day
+from jafgen.stores.inventory import Inventory
 from jafgen.stores.market import Market
 from jafgen.stores.stock import Stock
 from jafgen.stores.store import Store
@@ -112,6 +113,7 @@ class Simulation(object):
 
     def save_results(self) -> None:
         stock: Stock = Stock()
+        inventory: Inventory = Inventory()
         entities: dict[str, pd.DataFrame] = {
             "customers": pd.DataFrame.from_records(
                 [customer.to_dict() for customer in self.customers.values()]
@@ -126,6 +128,7 @@ class Simulation(object):
                 [market.store.to_dict() for market in self.markets]
             ),
             "supplies": pd.DataFrame.from_records(stock.to_dict()),
+            "products": pd.DataFrame.from_records(inventory.to_dict()),
         }
         if not os.path.exists("./jaffle-data"):
             os.makedirs("./jaffle-data")
