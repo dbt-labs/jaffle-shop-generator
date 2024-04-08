@@ -23,11 +23,13 @@ class Order(object):
             "id": self.order_id,
             "customer": self.customer.customer_id,
             "ordered_at": self.day.date.isoformat(),
-            # "order_month": self.day.date.strftime("%Y-%m"),
             "store_id": self.store.store_id,
             "subtotal": int(self.subtotal * 100),
             "tax_paid": int(self.tax_paid * 100),
-            "order_total": int(self.order_total * 100),
+            # TODO: figure out why this is doesn't cause a test failure
+            # in tests/test_order_totals.py
+            # "order_total": int(self.order_total * 100),
+            "order_total": int(int(self.subtotal * 100) + int(self.tax_paid * 100)),
         }
 
     def items_to_dict(self) -> list[dict[str, Any]]:

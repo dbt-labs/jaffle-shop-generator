@@ -1,7 +1,7 @@
+import csv
 import os
 import uuid
 
-import pandas as pd
 from rich.progress import track
 
 from jafgen.curves import Day
@@ -114,30 +114,23 @@ class Simulation(object):
     def save_results(self) -> None:
         stock: Stock = Stock()
         inventory: Inventory = Inventory()
-        entities: dict[str, pd.DataFrame] = {
-            "customers": pd.DataFrame.from_records(
-                [customer.to_dict() for customer in self.customers.values()]
-            ),
-            "orders": pd.DataFrame.from_records(
-                [order.to_dict() for order in self.orders]
-            ),
-            "items": pd.DataFrame.from_records(
-                [item.to_dict() for order in self.orders for item in order.items]
-            ),
-            "stores": pd.DataFrame.from_records(
-                [market.store.to_dict() for market in self.markets]
-            ),
-            "supplies": pd.DataFrame.from_records(stock.to_dict()),
-            "products": pd.DataFrame.from_records(inventory.to_dict()),
+        entities: dict[str, list[dict]] = {
+            "customers": [customer.to_dict() for customer in self.customers.values()],
+            "orders": [order.to_dict() for order in self.orders],
+            "items": [item.to_dict() for order in self.orders for item in order.items],
+            "stores": [market.store.to_dict() for market in self.markets],
+            "supplies": stock.to_dict(),
+            "products": inventory.to_dict(),
         }
+
         if not os.path.exists("./jaffle-data"):
             os.makedirs("./jaffle-data")
-        # save output
-        for entity, df in track(
+        for entity, data in track(
             entities.items(), description="🚚 Delivering jaffles..."
         ):
-            df.to_csv(
-                f"./jaffle-data/{self.prefix}_{entity}.csv",
-                header=df.columns.to_list(),
-                index=False,
-            )
+            with open(
+                f"./jaffle-data/{self.prefix}_{entity}.csv", "w", newline=""
+            ) as file:
+                writer = csv.DictWriter(file, fieldnames=data[0].keys())
+                writer.writeheader()
+                writer.writerows(data)
