@@ -45,6 +45,8 @@ jafgen 3 --pre cool
 
 Finding a good data set to practice, learn, or teach analytics engineering with can be difficult. Most open datasets are great for machine learning -- they offer single wide tables that you can manipulate and analyze. Full, real relational databases on the other hand are generally protected by private companies. Not only that, but they're a bit _too_ real. To get to a state that a beginner or intermediate person can understand, there needs to be an advanced amount of analytics engineering transformation applied.
 
+To that end, this project generates relatively simple, clean (but importantly, not _perfect_) data for a variety of entities in discrete tables, which can be transformed and combined into analytical building blocks. There are even trends (like seasonality) and personas (like buying patterns) that can be sussed out through data modeling!
+
 ## Approach
 
 Coming soon.
