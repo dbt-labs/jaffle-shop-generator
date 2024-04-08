@@ -169,3 +169,22 @@ class Casuals(Customer):
         num_drinks = int(random.random() * 10 / 3)
         num_food = int(random.random() * 10 / 3)
         return Inventory.get_drink(num_drinks) + Inventory.get_food(num_food)
+
+
+class HealthNut(Customer):
+    "A light beverage in the sunshine as a treat"
+
+    def p_buy_persona(self, day):
+        if day.season == "summer":
+            buy_propensity = 0.1 + (self.favorite_number / 100) * 0.4
+            return buy_propensity
+        else:
+            return 0.2
+
+    def get_order_time(self, day):
+        avg_time = 5 * 60
+        order_time = np.random.normal(loc=avg_time, scale=120)
+        return max(0, int(order_time))
+
+    def get_order_items(self, day):
+        return Inventory.get_drink(1)

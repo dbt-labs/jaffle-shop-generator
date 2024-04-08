@@ -67,6 +67,7 @@ class Simulation(object):
             (str(uuid.uuid4()), "Chicago", 0.92, 605, 12 * self.scale, 0.0625),
             (str(uuid.uuid4()), "San Francisco", 0.87, 615, 11 * self.scale, 0.075),
             (str(uuid.uuid4()), "New Orleans", 0.92, 920, 8 * self.scale, 0.04),
+            (str(uuid.uuid4()), "Los Angeles", 0.87, 1107, 8 * self.scale, 0.08),
         ]
 
         self.markets = []
