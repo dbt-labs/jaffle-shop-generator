@@ -113,19 +113,19 @@ class Simulation(object):
     def save_results(self) -> None:
         stock: Stock = Stock()
         entities: dict[str, pd.DataFrame] = {
-            "customers": pd.DataFrame.from_dict(
-                (customer.to_dict() for customer in self.customers.values())
+            "customers": pd.DataFrame.from_records(
+                [customer.to_dict() for customer in self.customers.values()]
             ),
-            "orders": pd.DataFrame.from_dict(
-                (order.to_dict() for order in self.orders)
+            "orders": pd.DataFrame.from_records(
+                [order.to_dict() for order in self.orders]
             ),
-            "items": pd.DataFrame.from_dict(
-                (item.to_dict() for order in self.orders for item in order.items)
+            "items": pd.DataFrame.from_records(
+                [item.to_dict() for order in self.orders for item in order.items]
             ),
-            "stores": pd.DataFrame.from_dict(
-                (market.store.to_dict() for market in self.markets)
+            "stores": pd.DataFrame.from_records(
+                [market.store.to_dict() for market in self.markets]
             ),
-            "supplies": pd.DataFrame.from_dict(stock.to_dict()),
+            "supplies": pd.DataFrame.from_records(stock.to_dict()),
         }
         if not os.path.exists("./jaffle-data"):
             os.makedirs("./jaffle-data")

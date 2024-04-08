@@ -6,7 +6,8 @@ from jafgen.stores.inventory import Inventory
 
 
 def test_order_totals():
-    """Ensure order totals are calculated correctly"""
+    """Ensure order totals are equivalent to the sum of the item prices and tax paid"""
+
     store = Store(str(1), "Testylvania", 0.85, 0, 9 * 100, 0.0659123)
     inventory = Inventory()
     orders = []
