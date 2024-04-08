@@ -1,6 +1,6 @@
 # 🥪 Jaffle Shop Generator 🏭
 
-> ![NOTE]
+> [!NOTE]
 > This is not an official dbt Labs project. It is maintained on a volunteer basis by dbt Labs employeeswho are passionate about analytics engineering, the dbt Community, and jaffles, and feel that generating datasets for learning and practicing is important. Please understand it's a work in progress and not supported in the same way as dbt itself.
 
 The Jaffle Shop Generator or `jafgen` is a simple command line tool for generating synthetic datasets suitable for analytics engineering practice or demonstrations. The data is generated in CSV format and is designed to be used with a relational database. It follows a simple schema, with tables for:
