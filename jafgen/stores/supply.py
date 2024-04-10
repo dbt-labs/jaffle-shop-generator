@@ -17,9 +17,9 @@ class Supply(object):
 
     def to_dict(self, sku) -> dict[str, Any]:
         return {
-            "id": self.id,
-            "name": self.name,
+            "id": str(self.id),
+            "name": str(self.name),
             "cost": int(self.cost * 100),
-            "perishable": self.perishable,
-            "sku": sku,
+            "perishable": str(self.perishable),
+            "sku": str(sku),
         }

@@ -17,9 +17,9 @@ class Item(object):
 
     def to_dict(self) -> dict[str, Any]:
         return {
-            "sku": self.sku,
-            "name": self.name,
-            "type": self.type,
+            "sku": str(self.sku),
+            "name": str(self.name),
+            "type": str(self.type),
             "price": int(self.price * 100),
-            "description": self.description,
+            "description": str(self.description),
         }

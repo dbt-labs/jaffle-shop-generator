@@ -57,8 +57,7 @@ Inventory.update(
         Item(
             sku="JAF-004",
             name="flame impala",
-            description="pulled pork and pineapple al pastor marinated in ghost pepper sauce, \
-            kevin parker's favorite! ",
+            description="pulled pork and pineapple al pastor marinated in ghost pepper sauce, kevin parker's favorite! ",
             type="jaffle",
             price=14,
         ),

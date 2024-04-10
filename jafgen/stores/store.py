@@ -39,8 +39,8 @@ class Store(object):
 
     def to_dict(self) -> dict[str, Any]:
         return {
-            "id": self.store_id,
-            "name": self.name,
-            "opened_at": self.opened_date.date.isoformat(),
-            "tax_rate": self.tax_rate,
+            "id": str(self.store_id),
+            "name": str(self.name),
+            "opened_at": str(self.opened_date.date.isoformat()),
+            "tax_rate": str(self.tax_rate),
         }

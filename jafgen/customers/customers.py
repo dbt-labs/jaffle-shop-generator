@@ -62,8 +62,8 @@ class Customer(ABC):
 
     def to_dict(self) -> dict[str, Any]:
         return {
-            "id": self.customer_id,
-            "name": self.name,
+            "id": str(self.customer_id),
+            "name": str(self.name),
         }
 
 

@@ -20,10 +20,10 @@ class Order(object):
 
     def to_dict(self) -> dict[str, Any]:
         return {
-            "id": self.order_id,
-            "customer": self.customer.customer_id,
-            "ordered_at": self.day.date.isoformat(),
-            "store_id": self.store.store_id,
+            "id": str(self.order_id),
+            "customer": str(self.customer.customer_id),
+            "ordered_at": str(self.day.date.isoformat()),
+            "store_id": str(self.store.store_id),
             "subtotal": int(self.subtotal * 100),
             "tax_paid": int(self.tax_paid * 100),
             # TODO: figure out why this is doesn't cause a test failure

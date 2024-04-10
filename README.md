@@ -22,7 +22,7 @@ If you have [pipx](https://pypa.github.io/pipx/installation/) installed, `jafgen
 pipx run jafgen [options]
 ```
 
-You can also install jafgen into your project or workspace, ideally in a virtual environment.
+You can also install `jafgen` into your project or workspace, ideally in a virtual environment.
 
 ```shell
 pip install jafgen
