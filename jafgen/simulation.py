@@ -12,7 +12,7 @@ from jafgen.stores.store import Store
 
 T_7AM = 60 * 7
 T_8AM = 60 * 8
-T_2PM = 60 * 14
+T_3PM = 60 * 15
 T_8PM = 60 * 20
 
 
@@ -87,7 +87,7 @@ class Simulation(object):
                     base_popularity=popularity,
                     hours_of_operation=HoursOfOperation(
                         weekday_range=(T_7AM, T_8PM),
-                        weekend_range=(T_8AM, T_2PM),
+                        weekend_range=(T_8AM, T_3PM),
                     ),
                     opened_date=Day(opened_date),
                     tax_rate=tax,
