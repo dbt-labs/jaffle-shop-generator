@@ -8,6 +8,7 @@ from faker import Faker
 
 from jafgen.customers.order import Order
 from jafgen.stores.inventory import Inventory
+from jafgen.customers.tweet import Tweet
 
 fake = Faker()
 Faker.seed(123456789)
@@ -29,6 +30,9 @@ class Customer(ABC):
         p_buy_on_day = (p_buy_season * p_buy_persona) ** 0.5
         return p_buy_on_day
 
+    def p_tweet(self):
+        return 0.5
+
     def get_order(self, day):
         items = self.get_order_items(day)
         order_time_delta = self.get_order_time(day)
@@ -38,6 +42,11 @@ class Customer(ABC):
             return None
 
         return Order(self, items, self.store, order_time)
+
+    def get_tweet(self, day, items):
+        tweet_time_delta = self.get_order_time(day) + (np.random.rand() * 20)
+        tweet_time = day.at_minute(tweet_time_delta + self.store.opens_at(day))
+        return Tweet(self, tweet_time, items)
 
     @abstractmethod
     def get_order_items(self, day):
@@ -54,11 +63,19 @@ class Customer(ABC):
     def sim_day(self, day):
         p_buy = self.p_buy(day)
         p_buy_threshold = np.random.random()
-
-        if p_buy_threshold < p_buy:
-            return self.get_order(day)
+        p_tweet = self.p_tweet()
+        p_tweet_threshold = np.random.random()
+        if p_buy > p_buy_threshold:
+            if p_tweet > p_tweet_threshold:
+                order = self.get_order(day)
+                if order and len(order.items) > 0:
+                    return order, self.get_tweet(day, order)
+                else:
+                    return None, None
+            else:
+                return self.get_order(day), None
         else:
-            return None
+            return None, None
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -73,6 +90,11 @@ class RemoteWorker(Customer):
     def p_buy_persona(self, day):
         buy_propensity = (self.favorite_number / 100) * 0.4
         return 0.001 if day.is_weekend else buy_propensity
+
+    def p_tweet_persona(self, day):
+        tweet_propensity = (self.favorite_number / 100) * 0.4
+        weekend_tweet_propensity = (self.favorite_number / 100) * 0.6
+        return weekend_tweet_propensity if day.is_weekend else tweet_propensity
 
     def get_order_time(self, day):
         # most likely to order in the morning
@@ -101,6 +123,9 @@ class BrunchCrowd(Customer):
         buy_propensity = 0.2 + (self.favorite_number / 100) * 0.2
         return buy_propensity if day.is_weekend else 0
 
+    def p_tweet_person(self, day):
+        return self.p_buy_persona(day)
+
     def get_order_time(self, day):
         # most likely to order in the early afternoon
         avg_time = 300 + ((self.favorite_number - 50) / 50) * 120
@@ -118,6 +143,9 @@ class Commuter(Customer):
     def p_buy_persona(self, day):
         buy_propensity = 0.5 + (self.favorite_number / 100) * 0.3
         return 0.001 if day.is_weekend else buy_propensity
+
+    def p_tweet_persona(self, day):
+        return 0.01
 
     def get_order_time(self, day):
         # most likely to order in the morning
@@ -140,6 +168,13 @@ class Student(Customer):
             buy_propensity = 0.1 + (self.favorite_number / 100) * 0.4
             return buy_propensity
 
+    def p_tweet_persona(self, day):
+        if day.season == "summer":
+            return 0
+        else:
+            tweet_propensity = 0.3 + (self.favorite_number / 100) * 0.3
+            return tweet_propensity
+
     def get_order_time(self, day):
         # later is better
         avg_time = 9 * 60
@@ -159,6 +194,9 @@ class Casuals(Customer):
 
     def p_buy_persona(self, day):
         return 0.1
+
+    def p_tweet_persona(self, day):
+        return 0.3
 
     def get_order_time(self, day):
         avg_time = 5 * 60
@@ -180,6 +218,9 @@ class HealthNut(Customer):
             return buy_propensity
         else:
             return 0.2
+
+    def p_tweet_persona(self, day):
+        return self.p_buy_persona(day)
 
     def get_order_time(self, day):
         avg_time = 5 * 60

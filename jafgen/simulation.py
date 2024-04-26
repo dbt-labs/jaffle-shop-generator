@@ -98,6 +98,7 @@ class Simulation(object):
 
         self.customers = {}
         self.orders = []
+        self.tweets = []
         self.sim_days = 365 * self.years
 
     def run_simulation(self):
@@ -106,10 +107,13 @@ class Simulation(object):
         ):
             for market in self.markets:
                 day = Day(i)
-                for order in (o for o in market.sim_day(day) if o is not None):
-                    self.orders.append(order)
-                    if order.customer.customer_id not in self.customers:
-                        self.customers[order.customer.customer_id] = order.customer
+                for result in market.sim_day(day):
+                    if result is not None and all(val is not None for val in result):
+                        order, tweet = result
+                        self.orders.append(order)
+                        self.tweets.append(tweet)
+                        if order.customer.customer_id not in self.customers:
+                            self.customers[order.customer.customer_id] = order.customer
 
     def save_results(self) -> None:
         stock: Stock = Stock()
@@ -121,6 +125,7 @@ class Simulation(object):
             "stores": [market.store.to_dict() for market in self.markets],
             "supplies": stock.to_dict(),
             "products": inventory.to_dict(),
+            "tweets": [tweet.to_dict() for tweet in self.tweets],
         }
 
         if not os.path.exists("./jaffle-data"):

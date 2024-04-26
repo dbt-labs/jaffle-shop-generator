@@ -58,5 +58,5 @@ class Market(object):
             self.active_customers.append(customer)
 
         for customer in self.active_customers:
-            order = customer.sim_day(day)
-            yield order
+            order, tweet = customer.sim_day(day)
+            yield order, tweet
