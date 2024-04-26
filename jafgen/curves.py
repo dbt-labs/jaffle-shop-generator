@@ -67,7 +67,7 @@ class GrowthCurve(Curve):
 
 
 class Day(object):
-    EPOCH = datetime.datetime(year=2016, month=9, day=1)
+    EPOCH = datetime.datetime(year=2018, month=9, day=1)
     SEASONAL_MONTHLY_CURVE = AnnualCurve()
     WEEKEND_CURVE = WeekendCurve()
     GROWTH_CURVE = GrowthCurve()

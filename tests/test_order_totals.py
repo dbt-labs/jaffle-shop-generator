@@ -21,7 +21,7 @@ def test_order_totals():
                     inventory.get_food()[0],
                 ],
                 store=store,
-                day=Day(date_index=i),
+                order_time=Day(date_index=i),
             )
         )
         orders.append(
@@ -33,7 +33,7 @@ def test_order_totals():
                     inventory.get_food()[0],
                 ],
                 store=store,
-                day=Day(date_index=i),
+                order_time=Day(date_index=i),
             )
         )
         orders.append(
@@ -45,7 +45,7 @@ def test_order_totals():
                     inventory.get_food()[0],
                 ],
                 store=store,
-                day=Day(date_index=i),
+                order_time=Day(date_index=i),
             )
         )
     for order in orders:
