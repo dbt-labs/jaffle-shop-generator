@@ -11,6 +11,7 @@ The Jaffle Shop Generator or `jafgen` is a simple command line tool for generati
 - Order Items (of those Products)
 - Supplies (needed for making those Products)
 - Stores (where the Orders are placed and fulfilled)
+- Tweets (Customers sometimes issue Tweets after placing an Order)
 
 It uses some straightforward math to create seasonality and trends in the data, for instance weekends being less busy than weekdays, customers having certain preferences, and new store locations opening over time. We plan to add more data types and complexity as the codebase evolves.
 
