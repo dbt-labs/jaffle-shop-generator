@@ -16,6 +16,8 @@ It uses some straightforward math to create seasonality and trends in the data, 
 
 ## Installation
 
+_Requires Python 3.10 or higher_.
+
 If you have [pipx](https://pypa.github.io/pipx/installation/) installed, `jafgen` is an ideal tool to use via pipx. You can generate data without installing anything in the local workspace using the following:
 
 ```shell
