@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "jafgen"
-version = "0.4.13"
+version = "0.4.14"
 authors = [{ name = "gwenwindflower", email = "gwenwindflower@gmail.com" }]
 dependencies = ["numpy", "Faker", "typer"]
 description = "A synthetic data generator CLI for a fictional Jaffle Shop"

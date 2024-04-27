@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="jafgen",
-    version="0.4.13",
+    version="0.4.14",
     packages=find_packages(
         exclude=["*.tests", "*.tests.*", "tests.*", "tests"],
     ),
