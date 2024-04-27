@@ -1,4 +1,5 @@
 import random
+from typing import Iterator
 
 import numpy as np
 
@@ -6,10 +7,12 @@ from jafgen.customers.customers import (
     BrunchCrowd,
     Casuals,
     Commuter,
+    HealthNut,
     RemoteWorker,
     Student,
-    HealthNut,
 )
+from jafgen.customers.order import Order
+from jafgen.customers.tweet import Tweet
 
 
 class Market(object):
@@ -38,10 +41,10 @@ class Market(object):
 
         self.active_customers = []
 
-    def sim_day(self, day):
+    def sim_day(self, day) -> Iterator[tuple[Order | None, Tweet | None]]:
         days_since_open = self.store.days_since_open(day)
         if days_since_open < 0:
-            yield None
+            yield None, None
             return
         elif days_since_open < 7:
             pct_penetration = min(days_since_open / self.days_to_penetration, 1)
@@ -53,7 +56,7 @@ class Market(object):
         num_desired_customers = market_penetration * len(self.addressable_customers)
         customers_to_add = int(num_desired_customers - len(self.active_customers))
 
-        for i in range(customers_to_add):
+        for _ in range(customers_to_add):
             customer = self.addressable_customers.pop()
             self.active_customers.append(customer)
 

@@ -107,13 +107,13 @@ class Simulation(object):
         ):
             for market in self.markets:
                 day = Day(i)
-                for result in market.sim_day(day):
-                    if result is not None and all(val is not None for val in result):
-                        order, tweet = result
+                for order, tweet in market.sim_day(day):
+                    if order:
                         self.orders.append(order)
-                        self.tweets.append(tweet)
                         if order.customer.customer_id not in self.customers:
                             self.customers[order.customer.customer_id] = order.customer
+                    if tweet:
+                        self.tweets.append(tweet)
 
     def save_results(self) -> None:
         stock: Stock = Stock()
