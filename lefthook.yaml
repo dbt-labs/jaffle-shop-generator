@@ -2,8 +2,8 @@ pre-commit:
   commands:
     # ruff:
       # run: .venv/bin/ruff check --fix
-    # pyright:
-      # run: .venv/bin/pyright
+    pyright:
+      run: .venv/bin/pyright
 
 commit-msg:
   template-checker:

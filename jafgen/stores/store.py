@@ -1,46 +1,48 @@
-from typing import Any
+import daytime
+from dataclasses import dataclass
+from typing import NewType
 
+from jafgen.time import Day, WeekHoursOfOperation 
 
-class Store(object):
-    def __init__(
-        self, store_id, name, base_popularity, hours_of_operation, opened_date, tax_rate
-    ):
-        self.store_id = store_id
-        self.name = name
-        self.base_popularity = base_popularity
-        self.hours_of_operation = hours_of_operation
-        self.opened_date = opened_date
-        self.tax_rate = tax_rate
+StoreId = NewType("StoreId", str)
 
-    def p_buy(self, date):
-        date_effect = date.get_effect()
-        return self.base_popularity * date_effect
+@dataclass(frozen=True)
+class Store:
+    store_id: StoreId 
+    name: str 
+    base_popularity: float 
+    hours_of_operation: WeekHoursOfOperation 
+    opened_day: Day 
+    tax_rate: float
 
-    def minutes_open(self, date):
-        return self.hours_of_operation.minutes_open(date)
+    def p_buy(self, day: Day) -> float:
+        return self.base_popularity * day.get_effect() 
 
-    def iter_minutes_open(self, date):
-        yield from self.hours_of_operation.iter_minutes(date)
+    def minutes_open(self, day: Day) -> int:
+        return self.hours_of_operation.minutes_open(day)
 
-    def is_open(self, date):
-        return date.date >= self.opened_date.date
+    def iter_minutes_open(self, day: Day) -> Iterator[int]:
+        yield from self.hours_of_operation.iter_minutes(day)
 
-    def is_open_at(self, date):
-        return self.hours_of_operation.is_open(date)
+    def is_open(self, day: Day):
+        return day.date >= self.opened_date.date
 
-    def days_since_open(self, date):
-        return date.date_index - self.opened_date.date_index
+    def is_open_at(self, day: Day) -> bool:
+        return self.hours_of_operation.is_open(day)
 
-    def opens_at(self, date):
-        return self.hours_of_operation.opens_at(date)
+    def days_since_open(self, day: Day) -> int:
+        return day.date_index - self.opened_date.date_index
 
-    def closes_at(self, date):
-        return self.hours_of_operation.closes_at(date)
+    def opens_at(self, day: Day):
+        return self.hours_of_operation.opens_at(day)
 
-    def to_dict(self) -> dict[str, Any]:
+    def closes_at(self, day: Day):
+        return self.hours_of_operation.closes_at(day)
+
+    def to_dict(self) -> dict[str, str]:
         return {
             "id": str(self.store_id),
             "name": str(self.name),
-            "opened_at": str(self.opened_date.date.isoformat()),
+            "opened_at": str(self.opened_day.date.isoformat()),
             "tax_rate": str(self.tax_rate),
         }

@@ -4,7 +4,7 @@ import uuid
 
 from rich.progress import track
 
-from jafgen.curves import Day
+from jafgen.time import Day
 from jafgen.stores.inventory import Inventory
 from jafgen.stores.market import Market
 from jafgen.stores.stock import Stock
@@ -15,45 +15,6 @@ T_8AM = 60 * 8
 T_3PM = 60 * 15
 T_8PM = 60 * 20
 
-
-class HoursOfOperation(object):
-    def __init__(self, weekday_range, weekend_range):
-        self.weekday_range = weekday_range
-        self.weekend_range = weekend_range
-
-    def minutes_open(self, date):
-        if date.is_weekend:
-            return self.weekend_range[1] - self.weekend_range[0]
-        else:
-            return self.weekday_range[1] - self.weekday_range[0]
-
-    def opens_at(self, date):
-        if date.is_weekend:
-            return self.weekend_range[0]
-        else:
-            return self.weekday_range[0]
-
-    def closes_at(self, date):
-        if date.is_weekend:
-            return self.weekend_range[1]
-        else:
-            return self.weekday_range[1]
-
-    def is_open(self, date):
-        opens_at = self.opens_at(date)
-        closes_at = self.closes_at(date)
-
-        dt = date.date.hour * 60 + date.date.minute
-        return dt >= opens_at and dt < closes_at
-
-    def iter_minutes(self, date):
-        if date.is_weekend:
-            start, end = self.weekend_range
-        else:
-            start, end = self.weekday_range
-
-        for i in range(end - start):
-            yield start + i
 
 
 class Simulation(object):

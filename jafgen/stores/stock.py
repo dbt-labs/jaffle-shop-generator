@@ -1,13 +1,15 @@
+from dataclasses import dataclass
 from typing import Any
 
-from jafgen.stores.supply import Supply
+from jafgen.stores.supply import StorageKeepingUnit, Supply
 
 
-class Stock(object):
-    stock: dict[Any, Any] = {}
+@dataclass
+class Stock:
+    stock: dict[StorageKeepingUnit, list[Supply]] = {}
 
     @classmethod
-    def update(cls, stock_list):
+    def update(cls, stock_list: list[Supply]):
         for supply in stock_list:
             skus = supply.skus
             for sku in skus:
@@ -17,7 +19,7 @@ class Stock(object):
 
     @classmethod
     def to_dict(cls) -> list[dict[str, Any]]:
-        all_items = []
+        all_items: list[dict[str, Any]] = []
         for key in cls.stock:
             all_items += [item.to_dict(key) for item in cls.stock[key]]
         return all_items

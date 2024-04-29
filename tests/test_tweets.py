@@ -1,6 +1,8 @@
 import datetime
-from jafgen.stores.store import Store
+import uuid
+from jafgen.stores.store import StoreId, Store
 from jafgen.customers.customers import (
+    Customer,
     RemoteWorker,
     BrunchCrowd,
     HealthNut,
@@ -8,8 +10,7 @@ from jafgen.customers.customers import (
     Casuals,
     Student,
 )
-from jafgen.curves import Day
-from jafgen.simulation import HoursOfOperation
+from jafgen.time import Day, WeekHoursOfOperation, DayHoursOfOperation
 
 T_7AM = 60 * 7
 T_8AM = 60 * 8
@@ -21,17 +22,17 @@ def test_tweets():
     """Test that tweets only come after orders and in the range of 20 minutes after."""
 
     store = Store(
-        str(1),
-        "Testylvania",
-        0.85,
-        HoursOfOperation(
-            weekday_range=(T_7AM, T_8PM),
-            weekend_range=(T_8AM, T_3PM),
+        store_id=StoreId(uuid.uuid4()),
+        name="Testylvania",
+        base_popularity=0.85,
+        hours_of_operation=WeekHoursOfOperation(
+            week_days=DayHoursOfOperation(opens_at=T_7AM, closes_at=T_8PM),
+            weekends=DayHoursOfOperation(opens_at=T_8AM, closes_at=T_3PM),
         ),
-        0,
-        0.0659123,
+        opened_day=0,
+        tax_rate=0.0659123,
     )
-    customers = []
+    customers: list[Customer] = []
     personas = [RemoteWorker, BrunchCrowd, HealthNut, Commuter, Casuals, Student]
     for i in range(100):
         customers.append(personas[i % len(personas)](store))

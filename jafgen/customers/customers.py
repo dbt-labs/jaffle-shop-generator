@@ -10,13 +10,14 @@ from faker import Faker
 from jafgen.customers.order import Order
 from jafgen.customers.tweet import Tweet
 from jafgen.stores.inventory import Inventory
+from jafgen.stores.store import Store
 
 fake = Faker()
 Faker.seed(123456789)
 
 
 class Customer(ABC):
-    def __init__(self, store):
+    def __init__(self, store: Store):
         self.customer_id = str(uuid.uuid4())
         self.store = store
         self.name = fake.name()
@@ -45,7 +46,7 @@ class Customer(ABC):
 
         return Order(self, items, self.store, order_time)
 
-    def get_tweet(self, order):
+    def get_tweet(self, order: Order):
         tweet_time = order.order_time.date + datetime.timedelta(
             minutes=(np.random.rand() * 20)
         )
