@@ -77,3 +77,8 @@ pip install -e .
 ```
 
 Working out from the `jafgen` command, you can see the main entrypoint in `jaffle_shop_generator/cli.py`. This calls the simulation found in `jafgen/simulation.py`. The simulation is where most of the magic happens.
+
+We recommend installing our githook scripts locally. To do that, install [Lefthook](https://github.com/evilmartians/lefthook) and run
+```
+lefthook install
+```

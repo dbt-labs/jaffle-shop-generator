@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# This script takes in some text from STDIN (presumably a commit message)
+# and validates whether it adheres to our commit message format.
+#
+# We are using Conventional Commits as a commit message format.
+# See: https://www.conventionalcommits.org/en/v1.0.0/
+
+INPUT_FILE=$1
+
+PATTERN="^((chore|ci|docs|feat|fix|perf|refactor|revert|test)(\(\w+\))?(!)?(: (.*\s*)*))"
+grep -E "$PATTERN" $INPUT_FILE
+MATCH=$?
+
+if [ $MATCH -ne 0 ]; then
+  echo "Bad commit message. Must be in Conventional Commits style.\n\nSee: https://www.conventionalcommits.org/en/v1.0.0/"
+  exit 1
+fi
+
