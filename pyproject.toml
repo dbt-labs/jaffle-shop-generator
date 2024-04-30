@@ -28,12 +28,22 @@ select = [
   "T20", # Print statements
   "I",   # isort
 ]
+ignore = [
+  "D100", # Doc in public modules
+  "D104",
+  "D211", # This is incompatible with D203
+  "D213", # This is incompatible with D212
+]
 # Allow autofix for all enabled rules (when `--fix`) is provided.
 fixable = [
     "A", "B", "C", "D", "E", "F", "G", "I", "N", "Q", "S", "T", "W", "ANN", "ARG", "BLE", "COM", "DJ", "DTZ", "EM",
     "ERA", "EXE", "FBT", "ICN", "INP", "ISC", "NPY", "PD", "PGH", "PIE", "PL", "PT", "PTH", "PYI", "RET", "RSE", "RUF",
     "SIM", "SLF", "TCH", "TID", "TRY", "UP", "YTT"
 ]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["D"]
+"setup.py" = ["D"]
 
 [tool.pydocstyle]
 convention = "google"

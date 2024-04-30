@@ -13,6 +13,7 @@ T_8AM = time_from_total_minutes(60 * 8)
 T_3PM = time_from_total_minutes(60 * 15)
 T_8PM = time_from_total_minutes(60 * 20)
 
+
 @pytest.fixture
 def default_store() -> Store:
     """Return a pre-initialized store that can be used for tests."""

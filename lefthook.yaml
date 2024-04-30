@@ -1,7 +1,9 @@
 pre-commit:
   commands:
-    # ruff:
-      # run: .venv/bin/ruff check --fix
+    ruff-format:
+      run: .venv/bin/ruff format
+    ruff-lint:
+      run: .venv/bin/ruff check --fix
     pyright:
       run: .venv/bin/pyright
 

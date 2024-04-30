@@ -6,25 +6,32 @@ from jafgen.stores.supply import StorageKeepingUnit
 
 
 class ItemType(str, Enum):
+
+    """The type of an item (food or drink)."""
+
     JAFFLE = "JAFFLE"
     BEVERAGE = "BEVERAGE"
 
 
 @dataclass(frozen=True)
 class Item:
+
+    """Anything that can be sold on a Jaffle Shop store.
+
+    Can be coffee, smoothies, sandwiches etc.
+    """
+
     sku: StorageKeepingUnit
     name: str
     description: str
     type: ItemType
     price: float
 
-    def __str__(self):
-        return f"<{self.name} @ ${self.price}>"
-
-    def __repr__(self):
-        return self.__str__()
-
     def to_dict(self) -> dict[str, Any]:
+        """Serialize to dict.
+
+        TODO: replace this by serializer class.
+        """
         return {
             "sku": self.sku,
             "name": str(self.name),

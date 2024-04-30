@@ -5,6 +5,7 @@ from typing import Any, NewType
 
 import numpy as np
 from faker import Faker
+from typing_extensions import override
 
 from jafgen.customers.order import Order
 from jafgen.customers.tweet import Tweet
@@ -17,68 +18,71 @@ fake = Faker()
 
 CustomerId = NewType("CustomerId", uuid.UUID)
 
+
 @dataclass(frozen=True)
 class Customer(ABC):
+
+    """Abstract base class for customers.
+
+    A concrete implementation of `Customer` models the behavior of a customer. This
+    includes their probability to buy drinks/food, their probability to tweet about
+    their purchase etc.
+    """
+
     store: Store
     id: CustomerId = field(default_factory=lambda: CustomerId(fake.uuid4()))
     name: str = field(default_factory=fake.name)
     favorite_number: int = field(default_factory=lambda: fake.random.randint(1, 100))
     fan_level: int = field(default_factory=lambda: fake.random.randint(1, 5))
 
-    def p_buy_season(self, day: Day):
-        return self.store.p_buy(day)
-
     def p_buy(self, day: Day) -> float:
-        p_buy_season = self.p_buy_season(day)
+        """Get the probability of buying something on a given day."""
+        p_store_sell = self.store.p_sell(day)
         p_buy_persona = self.p_buy_persona(day)
-        p_buy_on_day = (p_buy_season * p_buy_persona) ** 0.5
+        p_buy_on_day = (p_store_sell * p_buy_persona) ** 0.5
         return p_buy_on_day
 
     @abstractmethod
     def p_buy_persona(self, day: Day) -> float:
+        """Get this customer's innate desire to buy something on a given day."""
         raise NotImplementedError()
 
     @abstractmethod
     def p_tweet_persona(self, day: Day) -> float:
+        """Get this customer's innate desire to tweet about an order on a given day."""
         raise NotImplementedError()
 
     def p_tweet(self, day: Day) -> float:
+        """Get the probability of tweeting about an order on a given day."""
         return self.p_tweet_persona(day)
 
-    def get_order(self, day: Day) -> Order | None:
+    def get_order(self, day: Day) -> Order:
+        """Get this customer's order on a given day."""
         items = self.get_order_items(day)
 
         order_minute = self.get_order_minute(day)
         order_day = day.at_minute(order_minute)
 
-        if not self.store.is_open_at(order_day):
-            return None
-
-        return Order(
-            customer=self,
-            items=items,
-            store=self.store,
-            day=order_day
-        )
+        return Order(customer=self, items=items, store=self.store, day=order_day)
 
     def get_tweet(self, order: Order) -> Tweet:
+        """Get this customer's tweet about an order."""
         minutes_delta = int(fake.random.random() * 20)
         tweet_day = order.day.at_minute(order.day.total_minutes + minutes_delta)
-        return Tweet(
-            customer=self,
-            order=order,
-            day=tweet_day
-        )
+        return Tweet(customer=self, order=order, day=tweet_day)
 
     @abstractmethod
     def get_order_items(self, day: Day) -> list[Item]:
+        """Get the list of ordered items on a given day."""
         raise NotImplementedError()
 
     @abstractmethod
     def get_order_minute(self, day: Day) -> int:
+        """Get the time the customer decided to order on a given day."""
         raise NotImplementedError()
 
-    def sim_day(self, day: Day):
+    def sim_day(self, day: Day) -> tuple[Order | None, Tweet | None]:
+        """Simulate a day in the life of this customer."""
         p_buy = self.p_buy(day)
         p_buy_threshold = np.random.random()
         p_tweet = self.p_tweet(day)
@@ -86,7 +90,7 @@ class Customer(ABC):
         if p_buy > p_buy_threshold:
             if p_tweet > p_tweet_threshold:
                 order = self.get_order(day)
-                if order and len(order.items) > 0:
+                if self.store.is_open(order.day) and len(order.items) > 0:
                     return order, self.get_tweet(order)
                 else:
                     return None, None
@@ -96,6 +100,10 @@ class Customer(ABC):
             return None, None
 
     def to_dict(self) -> dict[str, Any]:
+        """Serialize to dict.
+
+        TODO: replace this by serializer class.
+        """
         return {
             "id": str(self.id),
             "name": str(self.name),
@@ -103,15 +111,19 @@ class Customer(ABC):
 
 
 class RemoteWorker(Customer):
-    """This person works from a coffee shop"""
 
+    """Pretending to work while staring at their Macbook full of stickers."""
+
+    @override
     def p_buy_persona(self, day: Day):
         buy_propensity = (self.favorite_number / 100) * 0.4
         return 0.001 if day.is_weekend else buy_propensity
 
+    @override
     def p_tweet_persona(self, day: Day):
         return 0.01
 
+    @override
     def get_order_minute(self, day: Day) -> int:
         # most likely to order in the morning
         # exponentially less likely to order in the afternoon
@@ -119,6 +131,7 @@ class RemoteWorker(Customer):
         order_time = np.random.normal(loc=avg_time, scale=180)
         return max(0, int(order_time))
 
+    @override
     def get_order_items(self, day: Day):
         num_drinks = 1
         food = []
@@ -133,36 +146,47 @@ class RemoteWorker(Customer):
 
 
 class BrunchCrowd(Customer):
-    """Do you sell mimosas?"""
 
+    """Do you sell mimosas?."""
+
+    @override
     def p_buy_persona(self, day: Day):
         buy_propensity = 0.2 + (self.favorite_number / 100) * 0.2
         return buy_propensity if day.is_weekend else 0
 
+    @override
     def p_tweet_persona(self, day: Day):
         return 0.8
 
+    @override
     def get_order_minute(self, day: Day) -> int:
         # most likely to order in the early afternoon
         avg_time = 300 + ((self.favorite_number - 50) / 50) * 120
         order_time = np.random.normal(loc=avg_time, scale=120)
         return max(0, int(order_time))
 
+    @override
     def get_order_items(self, day: Day):
         num_customers = 1 + int(self.favorite_number / 20)
-        return Inventory.get_item_type(ItemType.JAFFLE, num_customers) + Inventory.get_item_type(ItemType.BEVERAGE, num_customers)
+        return Inventory.get_item_type(
+            ItemType.JAFFLE, num_customers
+        ) + Inventory.get_item_type(ItemType.BEVERAGE, num_customers)
 
 
 class Commuter(Customer):
-    """the regular, thanks"""
 
+    """The regular, thanks."""
+
+    @override
     def p_buy_persona(self, day: Day):
         buy_propensity = 0.5 + (self.favorite_number / 100) * 0.3
         return 0.001 if day.is_weekend else buy_propensity
 
+    @override
     def p_tweet_persona(self, day: Day):
         return 0.2
 
+    @override
     def get_order_minute(self, day: Day) -> int:
         # most likely to order in the morning
         # exponentially less likely to order in the afternoon
@@ -170,13 +194,16 @@ class Commuter(Customer):
         order_time = np.random.normal(loc=avg_time, scale=30)
         return max(0, int(order_time))
 
+    @override
     def get_order_items(self, day: Day):
         return Inventory.get_item_type(ItemType.BEVERAGE, 1)
 
 
 class Student(Customer):
-    """coffee might help"""
 
+    """Coffee might help."""
+
+    @override
     def p_buy_persona(self, day: Day):
         if day.season == Season.SUMMER:
             return 0
@@ -184,15 +211,18 @@ class Student(Customer):
         buy_propensity = 0.1 + (self.favorite_number / 100) * 0.4
         return buy_propensity
 
+    @override
     def p_tweet_persona(self, day: Day):
         return 0.8
 
+    @override
     def get_order_minute(self, day: Day) -> int:
         # later is better
         avg_time = 9 * 60
         order_time = np.random.normal(loc=avg_time, scale=120)
         return max(0, int(order_time))
 
+    @override
     def get_order_items(self, day: Day):
         food = []
         if fake.random.random() > 0.5:
@@ -202,41 +232,53 @@ class Student(Customer):
 
 
 class Casuals(Customer):
-    """just popping in"""
 
+    """Just popping in."""
+
+    @override
     def p_buy_persona(self, day: Day):
         return 0.1
 
+    @override
     def p_tweet_persona(self, day: Day):
         return 0.1
 
+    @override
     def get_order_minute(self, day: Day) -> int:
         avg_time = 5 * 60
         order_time = np.random.normal(loc=avg_time, scale=120)
         return max(0, int(order_time))
 
+    @override
     def get_order_items(self, day: Day):
         num_drinks = int(fake.random.random() * 10 / 3)
         num_food = int(fake.random.random() * 10 / 3)
-        return Inventory.get_item_type(ItemType.BEVERAGE, num_drinks) + Inventory.get_item_type(ItemType.JAFFLE, num_food)
+        return Inventory.get_item_type(
+            ItemType.BEVERAGE, num_drinks
+        ) + Inventory.get_item_type(ItemType.JAFFLE, num_food)
 
 
 class HealthNut(Customer):
-    """A light beverage in the sunshine as a treat"""
 
+    """A light beverage in the sunshine as a treat."""
+
+    @override
     def p_buy_persona(self, day: Day):
         if day.season == Season.SUMMER:
             buy_propensity = 0.1 + (self.favorite_number / 100) * 0.4
             return buy_propensity
         return 0.2
 
+    @override
     def p_tweet_persona(self, day: Day):
         return 0.6
 
+    @override
     def get_order_minute(self, day: Day) -> int:
         avg_time = 5 * 60
         order_time = np.random.normal(loc=avg_time, scale=120)
         return max(0, int(order_time))
 
+    @override
     def get_order_items(self, day: Day):
         return Inventory.get_item_type(ItemType.BEVERAGE, 1)
