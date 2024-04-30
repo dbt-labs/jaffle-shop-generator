@@ -6,6 +6,31 @@ from typing import Iterator
 
 from jafgen.curves import AnnualCurve, WeekendCurve, GrowthCurve
 
+
+def time_to_delta(t: dt.time) -> dt.timedelta:
+    """Reinterpret a time (fixed time at a day) as a timedelta (duration)."""
+    return dt.datetime.combine(dt.datetime.min, t) - dt.datetime.min
+
+
+def time_delta_add(t: dt.time, d: dt.timedelta) -> dt.time:
+    """Add time and a timedelta without worrying about date overflow."""
+    t_dt = dt.datetime.combine(dt.date.min, t)
+    return (t_dt + d).time()
+
+
+def time_delta_sub(t: dt.time, d: dt.timedelta) -> dt.time:
+    """Subctract time and timedelta without worrying about date underflow."""
+    return time_delta_add(t, -d)
+
+
+def total_minutes_elapsed(t: dt.time | dt.timedelta) -> int:
+    """Get the total minutes that passed since midnight for a time or timedelta."""
+    if isinstance(t, dt.time):
+        return t.second * 60 + t.minute
+
+    return int(t.total_seconds() // 60)
+
+
 class Season(Enum, str):
     WINTER = "WINTER"
     SPRING = "SPRING"
@@ -77,8 +102,8 @@ class DayHoursOfOperation:
 
     @property
     def total_minutes_open(self) -> int:
-        time_open = dt.datetime.combine(dt.date.min, self.closes_at) - dt.datetime.combine(dt.date.min, self.opens_at)
-        return int(time_open.total_seconds() // 60)
+        time_open = time_delta_sub(self.closes_at, time_to_delta(self.opens_at))
+        return total_minutes_elapsed(time_open)
 
     def is_open(self, time: dt.time) -> bool:
         return time >= self.opens_at and time < self.closes_at
@@ -94,6 +119,12 @@ class WeekHoursOfOperation:
 
     def _get_todays_schedule(self, day: Day) -> DayHoursOfOperation:
         return self.weekends if day.is_weekend else self.week_days
+
+    def opens_at(self, day: Day) -> dt.time:
+        return self._get_todays_schedule(day).opens_at
+
+    def closes_at(self, day: Day) -> dt.time:
+        return self._get_todays_schedule(day).closes_at
 
     def total_minutes_open(self, day: Day) -> int:
         return self._get_todays_schedule(day).total_minutes_open
