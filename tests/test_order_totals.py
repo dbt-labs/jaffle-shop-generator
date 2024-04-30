@@ -1,13 +1,12 @@
-from jafgen.customers.order import Order
 from jafgen.curves import Day
-from jafgen.stores.store import Store
-from jafgen.customers.customers import RemoteWorker, BrunchCrowd, Student
+from jafgen.customers.customers import BrunchCrowd, RemoteWorker, Student
+from jafgen.customers.order import Order
 from jafgen.stores.inventory import Inventory
+from jafgen.stores.store import Store
 
 
 def test_order_totals():
     """Ensure order totals are equivalent to the sum of the item prices and tax paid"""
-
     store = Store(str(1), "Testylvania", 0.85, 0, 9 * 100, 0.0659123)
     inventory = Inventory()
     orders = []

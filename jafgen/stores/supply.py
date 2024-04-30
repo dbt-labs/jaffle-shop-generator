@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import NewType
 
 SupplyId = NewType("SupplyId", str)
-StorageKeepingUnit = str
+StorageKeepingUnit = NewType("StorageKeepingUnit", str)
 
 @dataclass(frozen=True)
 class Supply:

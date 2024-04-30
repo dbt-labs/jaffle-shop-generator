@@ -1,21 +1,25 @@
-import random
 from typing import Iterator
 
 import numpy as np
+from faker import Faker
 
 from jafgen.customers.customers import (
     BrunchCrowd,
     Casuals,
     Commuter,
+    Customer,
     HealthNut,
     RemoteWorker,
     Student,
 )
 from jafgen.customers.order import Order
 from jafgen.customers.tweet import Tweet
+from jafgen.stores.store import Store
+from jafgen.time import Day
 
+fake = Faker()
 
-class Market(object):
+class Market:
     PersonaMix = [
         (Commuter, 0.25),
         (RemoteWorker, 0.25),
@@ -25,23 +29,22 @@ class Market(object):
         (HealthNut, 0.1),
     ]
 
-    def __init__(self, store, num_customers, days_to_penetration=365):
+    def __init__(self, store: Store, num_customers: int, days_to_penetration: int = 365):
         self.store = store
         self.num_customers = num_customers
         self.days_to_penetration = days_to_penetration
 
-        self.addressable_customers = []
+        self.addressable_customers: list[Customer] = []
+        self.active_customers: list[Customer] = []
 
         for Persona, weight in self.PersonaMix:
             num_customers = int(weight * self.num_customers)
-            for i in range(num_customers):
+            for _ in range(num_customers):
                 self.addressable_customers.append(Persona(store))
 
-        random.shuffle(self.addressable_customers)
+        fake.random.shuffle(self.addressable_customers)
 
-        self.active_customers = []
-
-    def sim_day(self, day) -> Iterator[tuple[Order | None, Tweet | None]]:
+    def sim_day(self, day: Day) -> Iterator[tuple[Order | None, Tweet | None]]:
         days_since_open = self.store.days_since_open(day)
         if days_since_open < 0:
             yield None, None

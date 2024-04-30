@@ -1,14 +1,21 @@
 from dataclasses import dataclass
+from enum import Enum
 from typing import Any
 
-from jafgen.stores.stock import StorageKeepingUnit
+from jafgen.stores.supply import StorageKeepingUnit
+
+
+class ItemType(Enum, str):
+    JAFFLE = "JAFFLE"
+    BEVERAGE = "BEVERAGE"
+
 
 @dataclass(frozen=True)
 class Item:
     sku: StorageKeepingUnit
     name: str
     description: str
-    type: str
+    type: ItemType
     price: float
 
     def __str__(self):

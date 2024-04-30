@@ -1,16 +1,16 @@
 import datetime
-import uuid
-from jafgen.stores.store import StoreId,Store
+
 from jafgen.customers.customers import (
-    Customer,
-    RemoteWorker,
     BrunchCrowd,
-    HealthNut,
-    Commuter,
     Casuals,
+    Commuter,
+    Customer,
+    HealthNut,
+    RemoteWorker,
     Student,
 )
-from jafgen.time import Day, WeekHoursOfOperation, DayHoursOfOperation
+from jafgen.stores.store import Store
+from jafgen.time import Day, DayHoursOfOperation, WeekHoursOfOperation
 
 T_7AM = datetime.time(minute=60 * 7)
 T_8AM = datetime.time(minute=60 * 8)
@@ -20,7 +20,6 @@ T_8PM = datetime.time(minute=60 * 20)
 
 def test_tweets():
     """Test that tweets only come after orders and in the range of 20 minutes after."""
-
     store = Store(
         name="Testylvania",
         base_popularity=0.85,

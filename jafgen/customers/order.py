@@ -1,13 +1,13 @@
 import uuid
 from dataclasses import dataclass, field
-from typing import NewType, Any
+from typing import Any, NewType
 
 from faker import Faker
 
-from jafgen.time import Day
-from jafgen.stores.item import Item 
 from jafgen.customers.customers import Customer
+from jafgen.stores.item import Item
 from jafgen.stores.store import Store
+from jafgen.time import Day
 
 fake = Faker()
 
@@ -36,9 +36,9 @@ class Order:
     def to_dict(self) -> dict[str, Any]:
         return {
             "id": str(self.id),
-            "customer": str(self.customer.customer_id),
+            "customer": str(self.customer.id),
             "ordered_at": str(self.day.date.isoformat()),
-            "store_id": str(self.store.store_id),
+            "store_id": str(self.store.id),
             "subtotal": int(self.subtotal * 100),
             "tax_paid": int(self.tax_paid * 100),
             # TODO: figure out why this is doesn't cause a test failure

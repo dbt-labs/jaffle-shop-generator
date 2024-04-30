@@ -1,4 +1,5 @@
 from typing import Annotated
+
 import typer
 
 from jafgen.simulation import Simulation

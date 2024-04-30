@@ -1,18 +1,17 @@
-import datetime as dt
-from dataclasses import field, dataclass
 import uuid
 from abc import ABC, abstractmethod
+from dataclasses import dataclass, field
 from typing import Any, NewType
 
 import numpy as np
 from faker import Faker
 
-from jafgen.time import Day, Season
 from jafgen.customers.order import Order
 from jafgen.customers.tweet import Tweet
 from jafgen.stores.inventory import Inventory
+from jafgen.stores.item import Item, ItemType
 from jafgen.stores.store import Store
-from jafgen.stores.item import Item
+from jafgen.time import Day, Season
 
 fake = Faker()
 
@@ -56,17 +55,20 @@ class Customer(ABC):
             return None
 
         return Order(
-            customer=self, 
-            items=items, 
-            store=self.store, 
+            customer=self,
+            items=items,
+            store=self.store,
             day=order_day
         )
 
     def get_tweet(self, order: Order) -> Tweet:
-        tweet_time = order.order_time.date + dt.timedelta(
-            minutes=(fake.random.random() * 20)
+        minutes_delta = int(fake.random.random() * 20)
+        tweet_day = order.day.at_minute(order.day.total_minutes + minutes_delta)
+        return Tweet(
+            customer=self,
+            order=order,
+            day=tweet_day
         )
-        return Tweet(self, tweet_time, order)
 
     @abstractmethod
     def get_order_items(self, day: Day) -> list[Item]:
@@ -95,13 +97,13 @@ class Customer(ABC):
 
     def to_dict(self) -> dict[str, Any]:
         return {
-            "id": str(self.customer_id),
+            "id": str(self.id),
             "name": str(self.name),
         }
 
 
 class RemoteWorker(Customer):
-    "This person works from a coffee shop"
+    """This person works from a coffee shop"""
 
     def p_buy_persona(self, day: Day):
         buy_propensity = (self.favorite_number / 100) * 0.4
@@ -110,7 +112,7 @@ class RemoteWorker(Customer):
     def p_tweet_persona(self, day: Day):
         return 0.01
 
-    def get_order_time(self, day: Day):
+    def get_order_minute(self, day: Day) -> int:
         # most likely to order in the morning
         # exponentially less likely to order in the afternoon
         avg_time = 60 * 7
@@ -125,13 +127,13 @@ class RemoteWorker(Customer):
             num_drinks = 2
 
         if fake.random.random() > 0.7:
-            food = Inventory.get_food(1)
+            food = Inventory.get_item_type(ItemType.JAFFLE, 1)
 
-        return Inventory.get_drink(num_drinks) + food
+        return Inventory.get_item_type(ItemType.BEVERAGE, num_drinks) + food
 
 
 class BrunchCrowd(Customer):
-    "Do you sell mimosas?"
+    """Do you sell mimosas?"""
 
     def p_buy_persona(self, day: Day):
         buy_propensity = 0.2 + (self.favorite_number / 100) * 0.2
@@ -140,7 +142,7 @@ class BrunchCrowd(Customer):
     def p_tweet_persona(self, day: Day):
         return 0.8
 
-    def get_order_time(self, day: Day):
+    def get_order_minute(self, day: Day) -> int:
         # most likely to order in the early afternoon
         avg_time = 300 + ((self.favorite_number - 50) / 50) * 120
         order_time = np.random.normal(loc=avg_time, scale=120)
@@ -148,11 +150,11 @@ class BrunchCrowd(Customer):
 
     def get_order_items(self, day: Day):
         num_customers = 1 + int(self.favorite_number / 20)
-        return Inventory.get_drink(num_customers) + Inventory.get_food(num_customers)
+        return Inventory.get_item_type(ItemType.JAFFLE, num_customers) + Inventory.get_item_type(ItemType.BEVERAGE, num_customers)
 
 
 class Commuter(Customer):
-    "the regular, thanks"
+    """the regular, thanks"""
 
     def p_buy_persona(self, day: Day):
         buy_propensity = 0.5 + (self.favorite_number / 100) * 0.3
@@ -161,7 +163,7 @@ class Commuter(Customer):
     def p_tweet_persona(self, day: Day):
         return 0.2
 
-    def get_order_time(self, day: Day):
+    def get_order_minute(self, day: Day) -> int:
         # most likely to order in the morning
         # exponentially less likely to order in the afternoon
         avg_time = 60
@@ -169,11 +171,11 @@ class Commuter(Customer):
         return max(0, int(order_time))
 
     def get_order_items(self, day: Day):
-        return Inventory.get_drink(1)
+        return Inventory.get_item_type(ItemType.BEVERAGE, 1)
 
 
 class Student(Customer):
-    "coffee might help"
+    """coffee might help"""
 
     def p_buy_persona(self, day: Day):
         if day.season == Season.SUMMER:
@@ -185,7 +187,7 @@ class Student(Customer):
     def p_tweet_persona(self, day: Day):
         return 0.8
 
-    def get_order_time(self, day: Day):
+    def get_order_minute(self, day: Day) -> int:
         # later is better
         avg_time = 9 * 60
         order_time = np.random.normal(loc=avg_time, scale=120)
@@ -194,13 +196,13 @@ class Student(Customer):
     def get_order_items(self, day: Day):
         food = []
         if fake.random.random() > 0.5:
-            food = Inventory.get_food(1)
+            food = Inventory.get_item_type(ItemType.JAFFLE, 1)
 
-        return Inventory.get_drink(1) + food
+        return Inventory.get_item_type(ItemType.BEVERAGE, 1) + food
 
 
 class Casuals(Customer):
-    "just popping in"
+    """just popping in"""
 
     def p_buy_persona(self, day: Day):
         return 0.1
@@ -208,7 +210,7 @@ class Casuals(Customer):
     def p_tweet_persona(self, day: Day):
         return 0.1
 
-    def get_order_time(self, day: Day):
+    def get_order_minute(self, day: Day) -> int:
         avg_time = 5 * 60
         order_time = np.random.normal(loc=avg_time, scale=120)
         return max(0, int(order_time))
@@ -216,11 +218,11 @@ class Casuals(Customer):
     def get_order_items(self, day: Day):
         num_drinks = int(fake.random.random() * 10 / 3)
         num_food = int(fake.random.random() * 10 / 3)
-        return Inventory.get_drink(num_drinks) + Inventory.get_food(num_food)
+        return Inventory.get_item_type(ItemType.BEVERAGE, num_drinks) + Inventory.get_item_type(ItemType.JAFFLE, num_food)
 
 
 class HealthNut(Customer):
-    "A light beverage in the sunshine as a treat"
+    """A light beverage in the sunshine as a treat"""
 
     def p_buy_persona(self, day: Day):
         if day.season == Season.SUMMER:
@@ -237,4 +239,4 @@ class HealthNut(Customer):
         return max(0, int(order_time))
 
     def get_order_items(self, day: Day):
-        return Inventory.get_drink(1)
+        return Inventory.get_item_type(ItemType.BEVERAGE, 1)

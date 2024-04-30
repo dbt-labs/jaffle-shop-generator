@@ -1,10 +1,9 @@
 import datetime as dt
-from enum import Enum
 from dataclasses import dataclass
-from typing import Iterator 
+from enum import Enum
+from typing import Iterator
 
-
-from jafgen.curves import AnnualCurve, WeekendCurve, GrowthCurve
+from jafgen.curves import AnnualCurve, GrowthCurve, WeekendCurve
 
 
 def time_to_delta(t: dt.time) -> dt.timedelta:
@@ -97,8 +96,8 @@ class Day:
 
 @dataclass(frozen=True)
 class DayHoursOfOperation:
-    opens_at: dt.time 
-    closes_at: dt.time 
+    opens_at: dt.time
+    closes_at: dt.time
 
     @property
     def total_minutes_open(self) -> int:

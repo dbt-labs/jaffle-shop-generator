@@ -1,12 +1,12 @@
+import uuid
 from dataclasses import dataclass, field
 from typing import NewType
-import uuid
 
 from faker import Faker
 
-from jafgen.time import Day
 from jafgen.customers.customers import Customer
 from jafgen.customers.order import Order
+from jafgen.time import Day
 
 fake = Faker()
 
@@ -15,7 +15,7 @@ TweetId = NewType("TweetId", uuid.UUID)
 
 @dataclass
 class Tweet:
-    tweeted_at: Day
+    day: Day
     customer: Customer
     order: Order
     id: TweetId = field(default_factory=lambda: TweetId(fake.uuid4()))
@@ -28,7 +28,7 @@ class Tweet:
         return {
             "id": str(self.id),
             "user_id": str(self.customer.id),
-            "tweeted_at": str(self.tweeted_at.date.isoformat()),
+            "tweeted_at": str(self.day.date.isoformat()),
             "content": self.content,
         }
 

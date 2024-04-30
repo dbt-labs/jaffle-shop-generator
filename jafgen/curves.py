@@ -1,8 +1,9 @@
 import datetime
 from abc import ABC, abstractmethod
-from typing_extensions import override
+
 import numpy as np
-import numpy.typing as npt 
+import numpy.typing as npt
+from typing_extensions import override
 
 NumberArr = npt.NDArray[np.float64] | npt.NDArray[np.int32]
 
