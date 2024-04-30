@@ -1,5 +1,5 @@
 import datetime as dt
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import Enum
 from typing import Iterator
 
@@ -36,6 +36,9 @@ def total_minutes_elapsed(t: dt.time | dt.timedelta) -> int:
 
 
 class Season(str, Enum):
+
+    """A season of the year."""
+
     WINTER = "WINTER"
     SPRING = "SPRING"
     SUMMER = "SUMMER"
@@ -43,6 +46,7 @@ class Season(str, Enum):
 
     @classmethod
     def from_date(cls, date: dt.date) -> "Season":
+        """Get the date's Season (in the northern hemisphere)."""
         month_no = date.month
         day_no = date.day
 
@@ -57,26 +61,41 @@ class Season(str, Enum):
 
         return cls.WINTER
 
-@dataclass(init=False)
+
+@dataclass(frozen=True)
 class Day:
+
+    """A wrapper around `datetime.date` with some convenience functions."""
+
     EPOCH = dt.datetime(year=2018, month=9, day=1)
     SEASONAL_MONTHLY_CURVE = AnnualCurve()
     WEEKEND_CURVE = WeekendCurve()
     GROWTH_CURVE = GrowthCurve()
 
-    def __init__(self, date_index: int, minutes: int = 0):
-        self.date_index = date_index
-        self.date = self.EPOCH + dt.timedelta(days=date_index, minutes=minutes)
-        self.effects = [
+    date_index: int
+    minutes: int = 0
+    date: dt.datetime = field(init=False)
+    effects: list[float] = field(init=False)
+
+    def __post_init__(self):
+        """Set `date` and `effects` based on `__init__` args."""
+        # Have to use object.__setattr__ since it's frozen dataclass
+        object.__setattr__(self, "date", self.EPOCH + dt.timedelta(
+            days=self.date_index,
+            minutes=self.minutes)
+        )
+        object.__setattr__(self, "effects", [
             self.SEASONAL_MONTHLY_CURVE.eval(self.date),
             self.WEEKEND_CURVE.eval(self.date),
             self.GROWTH_CURVE.eval(self.date),
-        ]
+        ])
 
     def at_minute(self, minutes: int) -> "Day":
+        """Get a new instance of `Day` in the same day but different minute."""
         return Day(self.date_index, minutes=minutes)
 
     def get_effect(self) -> float:
+        """Get a simulation effect multiplier based on all of this day's effects."""
         total = 1
         for effect in self.effects:
             total = total * effect
@@ -84,40 +103,58 @@ class Day:
 
     @property
     def day_of_week(self) -> int:
+        """Get the day of the week, where Monday=0 and Sunday=6."""
         return self.date.weekday()
 
     @property
     def is_weekend(self) -> bool:
-        # 5 + 6 are weekends
+        """Whether this day is in the weekend."""
         return self.date.weekday() >= 5
 
     @property
     def season(self) -> Season:
+        """Get the season of the year this day is in."""
         return Season.from_date(self.date)
 
     @property
     def total_minutes(self) -> int:
+        """Get the total elapsed minutes of this day."""
         return self.date.hour * 60 + self.date.minute
+
 
 @dataclass(frozen=True)
 class DayHoursOfOperation:
+
+    """A shop's hours of operations during a single day."""
+
     opens_at: dt.time
     closes_at: dt.time
 
     @property
     def total_minutes_open(self) -> int:
+        """The total minutes the shop will be open this day."""
         time_open = time_delta_sub(self.closes_at, time_to_delta(self.opens_at))
         return total_minutes_elapsed(time_open)
 
     def is_open(self, time: dt.time) -> bool:
+        """Whether the shop will be open during `time`."""
         return time >= self.opens_at and time < self.closes_at
 
     def iter_minutes(self) -> Iterator[int]:
+        """Iterate over all the minutes in this day of operation."""
         for minute in range(self.total_minutes_open):
             yield minute
 
+
 @dataclass(frozen=True)
 class WeekHoursOfOperation:
+
+    """A shop's hours of operations during a week.
+
+    Consists of two collections of `DayHoursOfOperation`: one for the week days
+    and another one for the weekends.
+    """
+
     week_days: DayHoursOfOperation
     weekends: DayHoursOfOperation
 
@@ -125,18 +162,22 @@ class WeekHoursOfOperation:
         return self.weekends if day.is_weekend else self.week_days
 
     def opens_at(self, day: Day) -> dt.time:
+        """Get the time the shop will open on `day`."""
         return self._get_todays_schedule(day).opens_at
 
     def closes_at(self, day: Day) -> dt.time:
+        """Get the time the shop will close on `day`."""
         return self._get_todays_schedule(day).closes_at
 
     def total_minutes_open(self, day: Day) -> int:
+        """Get the total minutes the shop will be open on `day`."""
         return self._get_todays_schedule(day).total_minutes_open
 
     def is_open(self, day: Day) -> bool:
+        """Whether the shop is open on `day`."""
         time = time_from_total_minutes(day.total_minutes)
         return self._get_todays_schedule(day).is_open(time)
 
     def iter_minutes(self, day: Day) -> Iterator[int]:
+        """Iterate over all the minutes in this day of operation."""
         yield from self._get_todays_schedule(day).iter_minutes()
-

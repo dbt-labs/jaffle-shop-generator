@@ -5,10 +5,14 @@ from jafgen.stores.supply import Supply, SupplyId
 
 
 class Stock:
+
+    """Holds supplies for Jaffle Shop stores."""
+
     stock: dict[SKU, list[Supply]] = {}
 
     @classmethod
     def update(cls, stock_list: list[Supply]):
+        """Update the items available in stock."""
         for supply in stock_list:
             skus = supply.skus
             for sku in skus:
@@ -18,10 +22,15 @@ class Stock:
 
     @classmethod
     def to_dict(cls) -> list[dict[str, Any]]:
+        """Serialize to dict.
+
+        TODO: replace this by serializer class.
+        """
         all_items: list[dict[str, Any]] = []
         for key in cls.stock:
             all_items += [item.to_dict(key) for item in cls.stock[key]]
         return all_items
+
 
 Stock.update(
     [
@@ -30,59 +39,111 @@ Stock.update(
             name="compostable cutlery - knife",
             cost=0.07,
             perishable=False,
-            skus=[SKU("JAF-001"), SKU("JAF-002"), SKU("JAF-003"), SKU("JAF-004"), SKU("JAF-005")],
+            skus=[
+                SKU("JAF-001"),
+                SKU("JAF-002"),
+                SKU("JAF-003"),
+                SKU("JAF-004"),
+                SKU("JAF-005"),
+            ],
         ),
         Supply(
             id=SupplyId("SUP-002"),
             name="cutlery - fork",
             cost=0.07,
             perishable=False,
-            skus=[SKU("JAF-001"), SKU("JAF-002"), SKU("JAF-003"), SKU("JAF-004"), SKU("JAF-005")],
+            skus=[
+                SKU("JAF-001"),
+                SKU("JAF-002"),
+                SKU("JAF-003"),
+                SKU("JAF-004"),
+                SKU("JAF-005"),
+            ],
         ),
         Supply(
             id=SupplyId("SUP-003"),
             name="serving boat",
             cost=0.11,
             perishable=False,
-            skus=[SKU("JAF-001"), SKU("JAF-002"), SKU("JAF-003"), SKU("JAF-004"), SKU("JAF-005")],
+            skus=[
+                SKU("JAF-001"),
+                SKU("JAF-002"),
+                SKU("JAF-003"),
+                SKU("JAF-004"),
+                SKU("JAF-005"),
+            ],
         ),
         Supply(
             id=SupplyId("SUP-004"),
             name="napkin",
             cost=0.04,
             perishable=False,
-            skus=[SKU("JAF-001"), SKU("JAF-002"), SKU("JAF-003"), SKU("JAF-004"), SKU("JAF-005")],
+            skus=[
+                SKU("JAF-001"),
+                SKU("JAF-002"),
+                SKU("JAF-003"),
+                SKU("JAF-004"),
+                SKU("JAF-005"),
+            ],
         ),
         Supply(
             id=SupplyId("SUP-005"),
             name="16oz compostable clear cup",
             cost=0.13,
             perishable=False,
-            skus=[SKU("BEV-001"), SKU("BEV-002"), SKU("BEV-003"), SKU("BEV-004"), SKU("BEV-005")],
+            skus=[
+                SKU("BEV-001"),
+                SKU("BEV-002"),
+                SKU("BEV-003"),
+                SKU("BEV-004"),
+                SKU("BEV-005"),
+            ],
         ),
         Supply(
             id=SupplyId("SUP-006"),
             name="16oz compostable clear lid",
             cost=0.04,
             perishable=False,
-            skus=[SKU("BEV-001"), SKU("BEV-002"), SKU("BEV-003"), SKU("BEV-004"), SKU("BEV-005")],
+            skus=[
+                SKU("BEV-001"),
+                SKU("BEV-002"),
+                SKU("BEV-003"),
+                SKU("BEV-004"),
+                SKU("BEV-005"),
+            ],
         ),
         Supply(
             id=SupplyId("SUP-007"),
             name="biodegradable straw",
             cost=0.13,
             perishable=False,
-            skus=[SKU("BEV-001"), SKU("BEV-002"), SKU("BEV-003"), SKU("BEV-004"), SKU("BEV-005")],
+            skus=[
+                SKU("BEV-001"),
+                SKU("BEV-002"),
+                SKU("BEV-003"),
+                SKU("BEV-004"),
+                SKU("BEV-005"),
+            ],
         ),
         Supply(
-            id=SupplyId("SUP-008"), name="chai mix", cost=0.98, perishable=True, skus=[SKU("BEV-002")]
+            id=SupplyId("SUP-008"),
+            name="chai mix",
+            cost=0.98,
+            perishable=True,
+            skus=[SKU("BEV-002")],
         ),
         Supply(
             id=SupplyId("SUP-009"),
             name="bread",
             cost=0.33,
             perishable=True,
-            skus=[SKU("JAF-001"), SKU("JAF-002"), SKU("JAF-003"), SKU("JAF-004"), SKU("JAF-005")],
+            skus=[
+                SKU("JAF-001"),
+                SKU("JAF-002"),
+                SKU("JAF-003"),
+                SKU("JAF-004"),
+                SKU("JAF-005"),
+            ],
         ),
         Supply(
             id=SupplyId("SUP-010"),
@@ -92,13 +153,25 @@ Stock.update(
             skus=[SKU("JAF-002"), SKU("JAF-003"), SKU("JAF-004"), SKU("JAF-005")],
         ),
         Supply(
-            id=SupplyId("SUP-011"), name="nutella", cost=0.46, perishable=True, skus=[SKU("JAF-001")]
+            id=SupplyId("SUP-011"),
+            name="nutella",
+            cost=0.46,
+            perishable=True,
+            skus=[SKU("JAF-001")],
         ),
         Supply(
-            id=SupplyId("SUP-012"), name="banana", cost=0.13, perishable=True, skus=[SKU("JAF-001")]
+            id=SupplyId("SUP-012"),
+            name="banana",
+            cost=0.13,
+            perishable=True,
+            skus=[SKU("JAF-001")],
         ),
         Supply(
-            id=SupplyId("SUP-013"), name="beef stew", cost=1.69, perishable=True, skus=[SKU("JAF-002")]
+            id=SupplyId("SUP-013"),
+            name="beef stew",
+            cost=1.69,
+            perishable=True,
+            skus=[SKU("JAF-002")],
         ),
         Supply(
             id=SupplyId("SUP-014"),
@@ -115,7 +188,11 @@ Stock.update(
             skus=[SKU("JAF-003")],
         ),
         Supply(
-            id=SupplyId("SUP-016"), name="mustard", cost=0.07, perishable=True, skus=[SKU("JAF-003")]
+            id=SupplyId("SUP-016"),
+            name="mustard",
+            cost=0.07,
+            perishable=True,
+            skus=[SKU("JAF-003")],
         ),
         Supply(
             id=SupplyId("SUP-017"),
@@ -125,10 +202,18 @@ Stock.update(
             skus=[SKU("JAF-004")],
         ),
         Supply(
-            id=SupplyId("SUP-018"), name="pineapple", cost=0.26, perishable=True, skus=[SKU("JAF-004")]
+            id=SupplyId("SUP-018"),
+            name="pineapple",
+            cost=0.26,
+            perishable=True,
+            skus=[SKU("JAF-004")],
         ),
         Supply(
-            id=SupplyId("SUP-019"), name="melon", cost=0.33, perishable=True, skus=[SKU("JAF-005")]
+            id=SupplyId("SUP-019"),
+            name="melon",
+            cost=0.33,
+            perishable=True,
+            skus=[SKU("JAF-005")],
         ),
         Supply(
             id=SupplyId("SUP-020"),
@@ -145,13 +230,25 @@ Stock.update(
             skus=[SKU("JAF-004")],
         ),
         Supply(
-            id=SupplyId("SUP-022"), name="mango", cost=0.32, perishable=True, skus=[SKU("BEV-001")]
+            id=SupplyId("SUP-022"),
+            name="mango",
+            cost=0.32,
+            perishable=True,
+            skus=[SKU("BEV-001")],
         ),
         Supply(
-            id=SupplyId("SUP-023"), name="tangerine", cost=0.2, perishable=True, skus=[SKU("BEV-001")]
+            id=SupplyId("SUP-023"),
+            name="tangerine",
+            cost=0.2,
+            perishable=True,
+            skus=[SKU("BEV-001")],
         ),
         Supply(
-            id=SupplyId("SUP-024"), name="oatmilk", cost=0.11, perishable=True, skus=[SKU("BEV-002")]
+            id=SupplyId("SUP-024"),
+            name="oatmilk",
+            cost=0.11,
+            perishable=True,
+            skus=[SKU("BEV-002")],
         ),
         Supply(
             id=SupplyId("SUP-025"),
@@ -174,7 +271,19 @@ Stock.update(
             perishable=True,
             skus=[SKU("BEV-003")],
         ),
-        Supply(id=SupplyId("SUP-028"), name="kiwi", cost=0.2, perishable=True, skus=[SKU("BEV-005")]),
-        Supply(id=SupplyId("SUP-029"), name="lime", cost=0.13, perishable=True, skus=[SKU("BEV-005")]),
+        Supply(
+            id=SupplyId("SUP-028"),
+            name="kiwi",
+            cost=0.2,
+            perishable=True,
+            skus=[SKU("BEV-005")],
+        ),
+        Supply(
+            id=SupplyId("SUP-029"),
+            name="lime",
+            cost=0.13,
+            perishable=True,
+            skus=[SKU("BEV-005")],
+        ),
     ]
 )

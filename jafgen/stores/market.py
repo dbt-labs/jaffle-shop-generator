@@ -19,7 +19,11 @@ from jafgen.time import Day
 
 fake = Faker()
 
+
 class Market:
+
+    """A bunch of people together buying from a store."""
+
     PersonaMix = [
         (Commuter, 0.25),
         (RemoteWorker, 0.25),
@@ -29,7 +33,19 @@ class Market:
         (HealthNut, 0.1),
     ]
 
-    def __init__(self, store: Store, num_customers: int, days_to_penetration: int = 365):
+    def __init__(
+        self, store: Store, num_customers: int, days_to_penetration: int = 365
+    ):
+        """Initialize the market.
+
+        Args:
+        ----
+            store: the store that fulfills this market's desires.
+            num_customers: number of customers in this market.
+            days_to_penetration: number of days until this store reaches full market
+                penetration.
+
+        """
         self.store = store
         self.num_customers = num_customers
         self.days_to_penetration = days_to_penetration
@@ -45,6 +61,7 @@ class Market:
         fake.random.shuffle(self.addressable_customers)
 
     def sim_day(self, day: Day) -> Iterator[tuple[Order | None, Tweet | None]]:
+        """Simulate a day in this market."""
         days_since_open = self.store.days_since_open(day)
         if days_since_open < 0:
             yield None, None

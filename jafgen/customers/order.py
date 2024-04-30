@@ -13,8 +13,12 @@ fake = Faker()
 
 OrderId = NewType("OrderId", uuid.UUID)
 
+
 @dataclass
 class Order:
+
+    """An order of a few items from a single customer at a store."""
+
     customer: "customer.Customer"
     day: Day
     store: Store
@@ -26,14 +30,20 @@ class Order:
     total: float = field(init=False)
 
     def __post_init__(self) -> None:
+        """Initialize subtotal, tax_paid and total based on the items."""
         self.subtotal = sum(i.price for i in self.items)
         self.tax_paid = self.store.tax_rate * self.subtotal
         self.total = self.subtotal + self.tax_paid
 
     def __str__(self):
+        """Get a human readable string that represents this order."""
         return f"{self.customer.name} bought {str(self.items)} at {self.day}"
 
     def to_dict(self) -> dict[str, Any]:
+        """Serialize to dict.
+
+        TODO: replace this by serializer class.
+        """
         return {
             "id": str(self.id),
             "customer": str(self.customer.id),
@@ -47,5 +57,3 @@ class Order:
             "order_total": int(int(self.subtotal * 100) + int(self.tax_paid * 100)),
         }
 
-    def items_to_dict(self) -> list[dict[str, Any]]:
-        return [item.to_dict() for item in self.items]

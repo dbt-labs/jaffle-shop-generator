@@ -23,8 +23,13 @@ T_8AM = time_from_total_minutes(60 * 8)
 T_3PM = time_from_total_minutes(60 * 15)
 T_8PM = time_from_total_minutes(60 * 20)
 
+
 class Simulation:
+
+    """Runs a simulation of multiple days of our customers' lives."""
+
     def __init__(self, years: int, prefix: str):
+        """Initialize the simulation."""
         self.years = years
         self.scale = 100
         self.prefix = prefix
@@ -61,6 +66,7 @@ class Simulation:
         self.sim_days = 365 * self.years
 
     def run_simulation(self):
+        """Run the simulation."""
         for i in track(
             range(self.sim_days), description="🥪 Pressing fresh jaffles..."
         ):
@@ -75,6 +81,7 @@ class Simulation:
                         self.tweets.append(tweet)
 
     def save_results(self) -> None:
+        """Save the simulated results to `./jaffle-data/[prefix]_[entity].csv`."""
         stock: Stock = Stock()
         inventory: Inventory = Inventory()
         entities: dict[str, list[dict[str, Any]]] = {
