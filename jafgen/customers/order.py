@@ -4,7 +4,7 @@ from typing import Any, NewType
 
 from faker import Faker
 
-from jafgen.customers.customers import Customer
+import jafgen.customers.customers as customer
 from jafgen.stores.item import Item
 from jafgen.stores.store import Store
 from jafgen.time import Day
@@ -15,7 +15,7 @@ OrderId = NewType("OrderId", uuid.UUID)
 
 @dataclass
 class Order:
-    customer: Customer
+    customer: "customer.Customer"
     day: Day
     store: Store
     items: list[Item]
@@ -28,7 +28,7 @@ class Order:
     def __post_init__(self) -> None:
         self.subtotal = sum(i.price for i in self.items)
         self.tax_paid = self.store.tax_rate * self.subtotal
-        self.order_total = self.subtotal + self.tax_paid
+        self.total = self.subtotal + self.tax_paid
 
     def __str__(self):
         return f"{self.customer.name} bought {str(self.items)} at {self.day}"

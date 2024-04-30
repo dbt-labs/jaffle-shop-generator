@@ -1,62 +1,39 @@
-from jafgen.curves import Day
-from jafgen.customers.customers import BrunchCrowd, RemoteWorker, Student
+from jafgen.time import Day
+from jafgen.customers.customers import Customer, BrunchCrowd, RemoteWorker, Student
 from jafgen.customers.order import Order
+from jafgen.stores.item import ItemType
 from jafgen.stores.inventory import Inventory
 from jafgen.stores.store import Store
 
 
-def test_order_totals():
-    """Ensure order totals are equivalent to the sum of the item prices and tax paid"""
-    store = Store(str(1), "Testylvania", 0.85, 0, 9 * 100, 0.0659123)
+def test_order_totals(default_store: Store):
+    """Ensure order totals are equivalent to the sum of the item prices and tax paid."""
     inventory = Inventory()
-    orders = []
+    orders: list[Order] = []
+    customer_types: list[type[Customer]] = [RemoteWorker, BrunchCrowd, Student]
     for i in range(1000):
-        orders.append(
-            Order(
-                customer=RemoteWorker(store=store),
-                items=[
-                    inventory.get_food()[0],
-                    inventory.get_drink()[0],
-                    inventory.get_food()[0],
-                ],
-                store=store,
-                order_time=Day(date_index=i),
+        for CustType in customer_types:
+            orders.append(
+                Order(
+                    customer=CustType(store=default_store),
+                    items=
+                        inventory.get_item_type(ItemType.JAFFLE, 2) +
+                        inventory.get_item_type(ItemType.BEVERAGE, 1),
+                    store=default_store,
+                    day=Day(date_index=i),
+                )
             )
-        )
-        orders.append(
-            Order(
-                customer=BrunchCrowd(store=store),
-                items=[
-                    inventory.get_food()[0],
-                    inventory.get_drink()[0],
-                    inventory.get_food()[0],
-                ],
-                store=store,
-                order_time=Day(date_index=i),
-            )
-        )
-        orders.append(
-            Order(
-                customer=Student(store=store),
-                items=[
-                    inventory.get_food()[0],
-                    inventory.get_drink()[0],
-                    inventory.get_food()[0],
-                ],
-                store=store,
-                order_time=Day(date_index=i),
-            )
-        )
+
     for order in orders:
         assert (
             order.subtotal
-            == order.items[0].item.price
-            + order.items[1].item.price
-            + order.items[2].item.price
+            == order.items[0].price
+            + order.items[1].price
+            + order.items[2].price
         )
         assert order.tax_paid == order.subtotal * order.store.tax_rate
-        assert order.order_total == order.subtotal + order.tax_paid
-        assert round(float(order.order_total), 2) == round(
+        assert order.total == order.subtotal + order.tax_paid
+        assert round(float(order.total), 2) == round(
             float(order.subtotal), 2
         ) + round(float(order.tax_paid), 2)
         order_dict = order.to_dict()

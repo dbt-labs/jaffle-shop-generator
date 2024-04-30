@@ -1,23 +1,27 @@
 import csv
 import os
 from typing import Any
-import datetime
 
 from rich.progress import track
 
+from jafgen.customers.customers import Customer, CustomerId
+from jafgen.customers.order import Order
+from jafgen.customers.tweet import Tweet
 from jafgen.stores.inventory import Inventory
 from jafgen.stores.market import Market
 from jafgen.stores.stock import Stock
 from jafgen.stores.store import Store
-from jafgen.customers.order import Order
-from jafgen.customers.customers import CustomerId, Customer
-from jafgen.customers.tweet import Tweet
-from jafgen.time import Day, WeekHoursOfOperation, DayHoursOfOperation
+from jafgen.time import (
+    Day,
+    DayHoursOfOperation,
+    WeekHoursOfOperation,
+    time_from_total_minutes,
+)
 
-T_7AM = datetime.time(minute=60 * 7)
-T_8AM = datetime.time(minute=60 * 8)
-T_3PM = datetime.time(minute=60 * 15)
-T_8PM = datetime.time(minute=60 * 20)
+T_7AM = time_from_total_minutes(60 * 7)
+T_8AM = time_from_total_minutes(60 * 8)
+T_3PM = time_from_total_minutes(60 * 15)
+T_8PM = time_from_total_minutes(60 * 20)
 
 class Simulation:
     def __init__(self, years: int, prefix: str):

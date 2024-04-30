@@ -5,7 +5,7 @@ from typing import Any
 from jafgen.stores.supply import StorageKeepingUnit
 
 
-class ItemType(Enum, str):
+class ItemType(str, Enum):
     JAFFLE = "JAFFLE"
     BEVERAGE = "BEVERAGE"
 

@@ -1,10 +1,9 @@
-from dataclasses import dataclass
 from typing import Any
 
-from jafgen.stores.supply import StorageKeepingUnit as SKU, Supply, SupplyId
+from jafgen.stores.supply import StorageKeepingUnit as SKU
+from jafgen.stores.supply import Supply, SupplyId
 
 
-@dataclass
 class Stock:
     stock: dict[SKU, list[Supply]] = {}
 

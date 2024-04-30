@@ -22,6 +22,11 @@ def time_delta_sub(t: dt.time, d: dt.timedelta) -> dt.time:
     return time_delta_add(t, -d)
 
 
+def time_from_total_minutes(mins: int) -> dt.time:
+    """Return a datetime.time from total minutes since midnight."""
+    return dt.time(hour=mins // 60, minute=mins % 60)
+
+
 def total_minutes_elapsed(t: dt.time | dt.timedelta) -> int:
     """Get the total minutes that passed since midnight for a time or timedelta."""
     if isinstance(t, dt.time):
@@ -30,7 +35,7 @@ def total_minutes_elapsed(t: dt.time | dt.timedelta) -> int:
     return int(t.total_seconds() // 60)
 
 
-class Season(Enum, str):
+class Season(str, Enum):
     WINTER = "WINTER"
     SPRING = "SPRING"
     SUMMER = "SUMMER"
@@ -129,7 +134,7 @@ class WeekHoursOfOperation:
         return self._get_todays_schedule(day).total_minutes_open
 
     def is_open(self, day: Day) -> bool:
-        time = dt.time(minute=day.total_minutes)
+        time = time_from_total_minutes(day.total_minutes)
         return self._get_todays_schedule(day).is_open(time)
 
     def iter_minutes(self, day: Day) -> Iterator[int]:

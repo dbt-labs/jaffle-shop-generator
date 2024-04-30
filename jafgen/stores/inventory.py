@@ -1,6 +1,8 @@
-from typing import Any 
+from typing import Any
+
 from faker import Faker
-from jafgen.stores.item import ItemType, Item
+
+from jafgen.stores.item import Item, ItemType
 from jafgen.stores.supply import StorageKeepingUnit as SKU
 
 fake = Faker()
