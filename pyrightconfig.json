@@ -1,3 +1,4 @@
 {
-  "typeCheckingMode": "basic"
+  "typeCheckingMode": "strict",
+  "venv": ".venv/"
 }

@@ -1,40 +1,22 @@
-import datetime
-from jafgen.stores.store import Store
+from jafgen.time import Day
 from jafgen.customers.customers import (
-    RemoteWorker,
     BrunchCrowd,
-    HealthNut,
-    Commuter,
     Casuals,
+    Commuter,
+    Customer,
+    HealthNut,
+    RemoteWorker,
     Student,
 )
-from jafgen.curves import Day
-from jafgen.simulation import HoursOfOperation
-
-T_7AM = 60 * 7
-T_8AM = 60 * 8
-T_3PM = 60 * 15
-T_8PM = 60 * 20
+from jafgen.stores.store import Store
 
 
-def test_tweets():
+def test_tweets(default_store: Store):
     """Test that tweets only come after orders and in the range of 20 minutes after."""
-
-    store = Store(
-        str(1),
-        "Testylvania",
-        0.85,
-        HoursOfOperation(
-            weekday_range=(T_7AM, T_8PM),
-            weekend_range=(T_8AM, T_3PM),
-        ),
-        0,
-        0.0659123,
-    )
-    customers = []
+    customers: list[Customer] = []
     personas = [RemoteWorker, BrunchCrowd, HealthNut, Commuter, Casuals, Student]
     for i in range(100):
-        customers.append(personas[i % len(personas)](store))
+        customers.append(personas[i % len(personas)](default_store))
 
     for i in range(100):
         day = Day(i)
@@ -44,8 +26,8 @@ def test_tweets():
                 assert tweet.customer == customer
                 assert tweet.order == order
                 assert (
-                    tweet.tweeted_at
-                    <= tweet.order.order_time.date + datetime.timedelta(minutes=20)
+                    tweet.day.date
+                    <= tweet.order.day.at_minute(tweet.order.day.total_minutes + 20).date
                 )
             if not order:
                 assert not tweet

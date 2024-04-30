@@ -1,4 +1,5 @@
 from typing import Annotated
+
 import typer
 
 from jafgen.simulation import Simulation
@@ -15,7 +16,7 @@ def run(
         str,
         typer.Option(help="Optional prefix for the output file names."),
     ] = "raw",
-):
+) -> None:
     sim = Simulation(years, pre)
     sim.run_simulation()
     sim.save_results()

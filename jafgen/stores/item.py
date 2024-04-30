@@ -1,13 +1,22 @@
+from dataclasses import dataclass
+from enum import Enum
 from typing import Any
 
+from jafgen.stores.supply import StorageKeepingUnit
 
-class Item(object):
-    def __init__(self, sku, name, description, type, price):
-        self.sku = sku
-        self.name = name
-        self.description = description
-        self.type = type
-        self.price = price
+
+class ItemType(str, Enum):
+    JAFFLE = "JAFFLE"
+    BEVERAGE = "BEVERAGE"
+
+
+@dataclass(frozen=True)
+class Item:
+    sku: StorageKeepingUnit
+    name: str
+    description: str
+    type: ItemType
+    price: float
 
     def __str__(self):
         return f"<{self.name} @ ${self.price}>"
@@ -17,7 +26,7 @@ class Item(object):
 
     def to_dict(self) -> dict[str, Any]:
         return {
-            "sku": str(self.sku),
+            "sku": self.sku,
             "name": str(self.name),
             "type": str(self.type),
             "price": int(self.price * 100),
