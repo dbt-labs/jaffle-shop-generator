@@ -59,7 +59,7 @@ Inventory.update(
             sku=SKU("JAF-003"),
             name="the krautback",
             description="lamb and pork bratwurst with house-pickled "
-                        "cabbage sauerkraut and mustard",
+            "cabbage sauerkraut and mustard",
             type=ItemType.JAFFLE,
             price=12,
         ),
@@ -67,7 +67,7 @@ Inventory.update(
             sku=SKU("JAF-004"),
             name="flame impala",
             description="pulled pork and pineapple al pastor marinated "
-                        "in ghost pepper sauce, kevin parker's favorite! ",
+            "in ghost pepper sauce, kevin parker's favorite! ",
             type=ItemType.JAFFLE,
             price=14,
         ),
@@ -103,7 +103,7 @@ Inventory.update(
             sku=SKU("BEV-004"),
             name="for richer or pourover ",
             description="daily selection of single estate beans "
-                        "for a delicious hot pourover",
+            "for a delicious hot pourover",
             type=ItemType.BEVERAGE,
             price=7,
         ),
@@ -111,7 +111,7 @@ Inventory.update(
             sku=SKU("BEV-005"),
             name="adele-ade",
             description="a kiwi and lime agua fresca, hello from the "
-                        "other side of thirst",
+            "other side of thirst",
             type=ItemType.BEVERAGE,
             price=4,
         ),

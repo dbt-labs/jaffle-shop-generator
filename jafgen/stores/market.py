@@ -2,6 +2,7 @@ from typing import Iterator
 
 import numpy as np
 from faker import Faker
+from mashumaro.mixins.json import DataClassJSONMixin
 
 from jafgen.customers.customers import (
     BrunchCrowd,
@@ -20,7 +21,7 @@ from jafgen.time import Day
 fake = Faker()
 
 
-class Market:
+class Market(DataClassJSONMixin):
 
     """A bunch of people together buying from a store."""
 

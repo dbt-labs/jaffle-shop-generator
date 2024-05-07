@@ -5,6 +5,7 @@ click==8.1.7
 faker==24.7.1
 markdown-it-py==3.0.0
     # via rich
+mashumaro==3.13
 mdurl==0.1.2
     # via markdown-it-py
 numpy==1.26.4
@@ -20,4 +21,6 @@ six==1.16.0
     # via python-dateutil
 typer==0.12.2
 typing-extensions==4.11.0
-    # via typer
+    # via
+    #   mashumaro
+    #   typer

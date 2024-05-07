@@ -59,8 +59,4 @@ class Order:
 
     def items_to_dict(self) -> list[dict[str, Any]]:
         """Serialize this order's items to a dict."""
-        return [{
-            "order_id": self.id,
-            "sku": item.sku
-        } for item in self.items]
-
+        return [{"order_id": self.id, "sku": item.sku} for item in self.items]

@@ -80,15 +80,20 @@ class Day:
     def __post_init__(self):
         """Set `date` and `effects` based on `__init__` args."""
         # Have to use object.__setattr__ since it's frozen dataclass
-        object.__setattr__(self, "date", self.EPOCH + dt.timedelta(
-            days=self.date_index,
-            minutes=self.minutes)
+        object.__setattr__(
+            self,
+            "date",
+            self.EPOCH + dt.timedelta(days=self.date_index, minutes=self.minutes),
         )
-        object.__setattr__(self, "effects", [
-            self.SEASONAL_MONTHLY_CURVE.eval(self.date),
-            self.WEEKEND_CURVE.eval(self.date),
-            self.GROWTH_CURVE.eval(self.date),
-        ])
+        object.__setattr__(
+            self,
+            "effects",
+            [
+                self.SEASONAL_MONTHLY_CURVE.eval(self.date),
+                self.WEEKEND_CURVE.eval(self.date),
+                self.GROWTH_CURVE.eval(self.date),
+            ],
+        )
 
     def at_minute(self, minutes: int) -> "Day":
         """Get a new instance of `Day` in the same day but different minute."""
