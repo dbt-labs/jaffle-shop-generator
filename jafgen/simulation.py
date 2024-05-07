@@ -1,6 +1,10 @@
 import csv
+import datetime as dt
+import itertools
 import os
+from dataclasses import dataclass, field
 from typing import Any
+import warnings
 
 from rich.progress import track
 
@@ -23,14 +27,25 @@ T_8AM = time_from_total_minutes(60 * 8)
 T_3PM = time_from_total_minutes(60 * 15)
 T_8PM = time_from_total_minutes(60 * 20)
 
+@dataclass(frozen=True)
+class SimulationDayData:
+
+    """Holds the new data created every day of a simulation."""
+
+    day: Day
+    new_customers: list[Customer] = field(default_factory=list)
+    new_orders: list[Order] = field(default_factory=list)
+    new_tweets: list[Tweet] = field(default_factory=list)
+
+
 
 class Simulation:
 
     """Runs a simulation of multiple days of our customers' lives."""
 
-    def __init__(self, years: int, prefix: str):
+    def __init__(self, days: int, prefix: str):
         """Initialize the simulation."""
-        self.years = years
+        self.sim_days = days
         self.scale = 100
         self.prefix = prefix
         self.stores = [
@@ -60,47 +75,86 @@ class Simulation:
             for store_name, popularity, opened_date, market_size, tax in self.stores
         ]
 
+        self.simulated_days: list[SimulationDayData] = []
         self.customers: dict[CustomerId, Customer] = {}
-        self.orders: list[Order] = []
-        self.tweets: list[Tweet] = []
-        self.sim_days = 365 * self.years
 
     def run_simulation(self):
         """Run the simulation."""
         for i in track(
             range(self.sim_days), description="🥪 Pressing fresh jaffles..."
         ):
+            day_data = SimulationDayData(day=Day(i))
+
             for market in self.markets:
-                day = Day(i)
-                for order, tweet in market.sim_day(day):
+                for order, tweet in market.sim_day(day_data.day):
                     if order:
-                        self.orders.append(order)
+                        day_data.new_orders.append(order)
                         if order.customer.id not in self.customers:
                             self.customers[order.customer.id] = order.customer
+                            day_data.new_customers.append(order.customer)
                     if tweet:
-                        self.tweets.append(tweet)
+                        day_data.new_tweets.append(tweet)
 
-    def save_results(self) -> None:
-        """Save the simulated results to `./jaffle-data/[prefix]_[entity].csv`."""
+            self.simulated_days.append(day_data)
+
+    def save_results(self, path: str, start_from: dt.datetime = Day.EPOCH) -> None:
+        """Save the simulated results to `path`."""
         stock: Stock = Stock()
         inventory: Inventory = Inventory()
+
+        if start_from < Day.EPOCH:
+            raise ValueError("Cannot start from day before the EPOCH.")
+
+        discard_days = (start_from - Day.EPOCH).days
+        if discard_days >= self.sim_days:
+            discard_days = self.sim_days
+            warnings.warn(
+                "start_from is after end of simulation. All data will be empty "
+                "except for slowly changing dimensions."
+            )
+
+        save_days = self.simulated_days[discard_days:]
+
         entities: dict[str, list[dict[str, Any]]] = {
-            "customers": [customer.to_dict() for customer in self.customers.values()],
-            "orders": [order.to_dict() for order in self.orders],
-            "items": [item.to_dict() for order in self.orders for item in order.items],
+            # new data every day, produce only requested
+            "customers": [
+                customer.to_dict()
+                for day in save_days
+                for customer in day.new_customers
+            ],
+            "orders": [
+                order.to_dict()
+                for day in save_days
+                for order in day.new_orders
+            ],
+            "items": list(itertools.chain.from_iterable([
+                order.items_to_dict()
+                for day in save_days
+                for order in day.new_orders
+            ])),
+            "tweets": [
+                tweet.to_dict()
+                for day in save_days
+                for tweet in day.new_tweets
+            ],
+
+            # slowly changing dimensions, produce the same everytime
             "stores": [market.store.to_dict() for market in self.markets],
             "supplies": stock.to_dict(),
             "products": inventory.to_dict(),
-            "tweets": [tweet.to_dict() for tweet in self.tweets],
         }
 
-        if not os.path.exists("./jaffle-data"):
-            os.makedirs("./jaffle-data")
+        if not os.path.exists(path):
+            os.makedirs(path)
         for entity, data in track(
             entities.items(), description="🚚 Delivering jaffles..."
         ):
+            if len(data) == 0:
+                continue
+
+            file_path = os.path.join(path, f"{self.prefix}_{entity}.csv")
             with open(
-                f"./jaffle-data/{self.prefix}_{entity}.csv", "w", newline=""
+                file_path, "w", newline=""
             ) as file:
                 writer = csv.DictWriter(file, fieldnames=data[0].keys())
                 writer.writeheader()

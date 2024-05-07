@@ -1,8 +1,10 @@
+import datetime as dt
 from typing import Annotated
 
 import typer
 
 from jafgen.simulation import Simulation
+from jafgen.time import Day
 
 app = typer.Typer()
 
@@ -16,8 +18,12 @@ def run(
         str,
         typer.Option(help="Optional prefix for the output file names."),
     ] = "raw",
+    export_from: Annotated[
+        dt.datetime,
+        typer.Option(help="Export data from this date onwards.")
+    ] = Day.EPOCH
 ) -> None:
     """Run jafgen in CLI mode."""
-    sim = Simulation(years, pre)
+    sim = Simulation(years * 365, pre)
     sim.run_simulation()
-    sim.save_results()
+    sim.save_results(path="./jaffle-data/", start_from=export_from)
