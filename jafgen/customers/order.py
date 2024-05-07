@@ -57,3 +57,10 @@ class Order:
             "order_total": int(int(self.subtotal * 100) + int(self.tax_paid * 100)),
         }
 
+    def items_to_dict(self) -> list[dict[str, Any]]:
+        """Serialize this order's items to a dict."""
+        return [{
+            "order_id": self.id,
+            "sku": item.sku
+        } for item in self.items]
+
