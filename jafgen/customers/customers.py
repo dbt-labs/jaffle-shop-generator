@@ -1,7 +1,7 @@
 import uuid
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
-from typing import Any, NewType
+from typing import Any, NewType, Union
 
 import numpy as np
 from faker import Faker
@@ -45,7 +45,7 @@ class Customer(ABC):
     def p_tweet(self, day: Day) -> float:
         return self.p_tweet_persona(day)
 
-    def get_order(self, day: Day) -> Order | None:
+    def get_order(self, day: Day) -> Union[Order, None]:
         items = self.get_order_items(day)
 
         order_minute = self.get_order_minute(day)

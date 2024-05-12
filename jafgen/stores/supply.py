@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import NewType
+from typing import NewType, Union
 
 SupplyId = NewType("SupplyId", str)
 StorageKeepingUnit = NewType("StorageKeepingUnit", str)
@@ -18,7 +18,7 @@ class Supply:
     def __repr__(self):
         return self.__str__()
 
-    def to_dict(self, sku: StorageKeepingUnit) -> dict[str, str | int]:
+    def to_dict(self, sku: StorageKeepingUnit) -> dict[str, Union[str, int]]:
         return {
             "id": str(self.id),
             "name": str(self.name),

@@ -1,7 +1,7 @@
 import datetime as dt
 from dataclasses import dataclass
 from enum import Enum
-from typing import Iterator
+from typing import Iterator, Union
 
 from jafgen.curves import AnnualCurve, GrowthCurve, WeekendCurve
 
@@ -27,7 +27,7 @@ def time_from_total_minutes(mins: int) -> dt.time:
     return dt.time(hour=mins // 60, minute=mins % 60)
 
 
-def total_minutes_elapsed(t: dt.time | dt.timedelta) -> int:
+def total_minutes_elapsed(t: Union[dt.time, dt.timedelta]) -> int:
     """Get the total minutes that passed since midnight for a time or timedelta."""
     if isinstance(t, dt.time):
         return t.second * 60 + t.minute
@@ -139,4 +139,3 @@ class WeekHoursOfOperation:
 
     def iter_minutes(self, day: Day) -> Iterator[int]:
         yield from self._get_todays_schedule(day).iter_minutes()
-

@@ -1,4 +1,4 @@
-from typing import Iterator
+from typing import Iterator, Union
 
 import numpy as np
 from faker import Faker
@@ -44,7 +44,7 @@ class Market:
 
         fake.random.shuffle(self.addressable_customers)
 
-    def sim_day(self, day: Day) -> Iterator[tuple[Order | None, Tweet | None]]:
+    def sim_day(self, day: Day) -> Iterator[tuple[Union[Order, None], Union[Tweet, None]]]:
         days_since_open = self.store.days_since_open(day)
         if days_since_open < 0:
             yield None, None

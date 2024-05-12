@@ -4,8 +4,9 @@ from abc import ABC, abstractmethod
 import numpy as np
 import numpy.typing as npt
 from typing_extensions import override
+from typing import Union
 
-NumberArr = npt.NDArray[np.float64] | npt.NDArray[np.int32]
+NumberArr = Union[npt.NDArray[np.float64], npt.NDArray[np.int32]]
 
 
 
@@ -73,4 +74,3 @@ class GrowthCurve(Curve):
     def Expr(self, x: float) -> float:
         # ~ aim for ~20% growth/year
         return 1 + (x / 12) * 0.2
-
