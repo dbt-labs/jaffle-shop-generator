@@ -80,7 +80,7 @@ class Simulation:
         entities: dict[str, list[dict[str, Any]]] = {
             "customers": [customer.to_dict() for customer in self.customers.values()],
             "orders": [order.to_dict() for order in self.orders],
-            "items": [item.to_dict() for order in self.orders for item in order.items],
+            "items": [item.to_dict(order.id) for order in self.orders for item in order.items],
             "stores": [market.store.to_dict() for market in self.markets],
             "supplies": stock.to_dict(),
             "products": inventory.to_dict(),
