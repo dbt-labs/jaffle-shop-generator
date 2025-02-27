@@ -59,7 +59,6 @@ class Simulation:
         self.customers: dict[CustomerId, Customer] = {}
         self.orders: list[Order] = []
         self.tweets: list[Tweet] = []
-
         self.sim_days = 365 * self.years + self.days
 
     def run_simulation(self):
