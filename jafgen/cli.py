@@ -12,10 +12,10 @@ def run(
     # We set default to 0 here to make sure users don't get confused if they only put in days.
     # If they don't set anything we have years default = 1 later to keep the same functionality. 
     years: Annotated[
-         int, typer.Argument(help="Number of years to simulate. Default is 1.")
+         int, typer.Argument(help="Number of years to simulate. If neither days nor years are provided, the default is 1 year.")
     ] = 0,
     days: Annotated[
-        int, typer.Option(help="Number of years to simulate. Default is 1.")
+        int, typer.Option(help="Number of days to simulate. Default is 0.")
     ] = 0,
     pre: Annotated[
         str,
