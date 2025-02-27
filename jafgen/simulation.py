@@ -24,8 +24,9 @@ T_3PM = time_from_total_minutes(60 * 15)
 T_8PM = time_from_total_minutes(60 * 20)
 
 class Simulation:
-    def __init__(self, years: int, prefix: str):
+    def __init__(self, years: int, days: int, prefix: str):
         self.years = years
+        self.days = days
         self.scale = 100
         self.prefix = prefix
         self.stores = [
@@ -58,11 +59,11 @@ class Simulation:
         self.customers: dict[CustomerId, Customer] = {}
         self.orders: list[Order] = []
         self.tweets: list[Tweet] = []
-        self.sim_days = 365 * self.years
+        self.sim_days = 365 * self.years + self.days
 
     def run_simulation(self):
         for i in track(
-            range(self.sim_days), description="🥪 Pressing fresh jaffles..."
+            range(self.sim_days), description=f"🥪 Pressing {self.sim_days} days of fresh jaffles..."
         ):
             for market in self.markets:
                 day = Day(i)

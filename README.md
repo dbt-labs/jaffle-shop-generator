@@ -39,6 +39,8 @@ pip install jafgen
 
 The following options are available:
 
+- `--days [int]` The number of days to generate data for. If both years and days are set, they will be added together.
+
 - `--pre` sets a prefix for the generated files in the format `[prefix]_[file_name].csv`. It defaults to `raw`.
 
 Generate a simulation spanning 3 years from 2016-2019 with a prefix of `cool`:
