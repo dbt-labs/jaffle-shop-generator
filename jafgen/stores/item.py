@@ -9,6 +9,9 @@ class ItemType(str, Enum):
     JAFFLE = "JAFFLE"
     BEVERAGE = "BEVERAGE"
 
+    def __str__(self):
+        return str(self.value).lower()
+
 
 @dataclass(frozen=True)
 class Item:
