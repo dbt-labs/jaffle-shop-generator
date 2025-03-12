@@ -93,9 +93,8 @@ class Simulation:
         for entity, data in track(
             entities.items(), description="🚚 Delivering jaffles..."
         ):
-            with open(
-                f"./jaffle-data/{self.prefix}_{entity}.csv", "w", newline=""
-            ) as file:
-                writer = csv.DictWriter(file, fieldnames=data[0].keys())
+            if data:
+                file = f"./jaffle-data/{self.prefix}_{entity}.csv"
+                writer = csv.DictWriter(open(file, "w", newline=""), fieldnames=data[0].keys())
                 writer.writeheader()
                 writer.writerows(data)
