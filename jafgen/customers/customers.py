@@ -7,6 +7,7 @@ import numpy as np
 from faker import Faker
 
 from jafgen.customers.order import Order
+from jafgen.customers.order_item import OrderItem
 from jafgen.customers.tweet import Tweet
 from jafgen.stores.inventory import Inventory
 from jafgen.stores.item import Item, ItemType
@@ -46,7 +47,7 @@ class Customer(ABC):
         return self.p_tweet_persona(day)
 
     def get_order(self, day: Day) -> Order | None:
-        items = self.get_order_items(day)
+        items = [OrderItem(item=item) for item in self.get_order_items(day)]
 
         order_minute = self.get_order_minute(day)
         order_day = day.at_minute(order_minute)
@@ -127,9 +128,9 @@ class RemoteWorker(Customer):
             num_drinks = 2
 
         if fake.random.random() > 0.7:
-            food = Inventory.get_item_type(ItemType.JAFFLE, 1)
+            food = Inventory.get_order_item_type(ItemType.JAFFLE, 1)
 
-        return Inventory.get_item_type(ItemType.BEVERAGE, num_drinks) + food
+        return Inventory.get_order_item_type(ItemType.BEVERAGE, num_drinks) + food
 
 
 class BrunchCrowd(Customer):
@@ -150,7 +151,7 @@ class BrunchCrowd(Customer):
 
     def get_order_items(self, day: Day):
         num_customers = 1 + int(self.favorite_number / 20)
-        return Inventory.get_item_type(ItemType.JAFFLE, num_customers) + Inventory.get_item_type(ItemType.BEVERAGE, num_customers)
+        return Inventory.get_order_item_type(ItemType.JAFFLE, num_customers) + Inventory.get_order_item_type(ItemType.BEVERAGE, num_customers)
 
 
 class Commuter(Customer):
@@ -171,7 +172,7 @@ class Commuter(Customer):
         return max(0, int(order_time))
 
     def get_order_items(self, day: Day):
-        return Inventory.get_item_type(ItemType.BEVERAGE, 1)
+        return Inventory.get_order_item_type(ItemType.BEVERAGE, 1)
 
 
 class Student(Customer):
@@ -196,9 +197,9 @@ class Student(Customer):
     def get_order_items(self, day: Day):
         food = []
         if fake.random.random() > 0.5:
-            food = Inventory.get_item_type(ItemType.JAFFLE, 1)
+            food = Inventory.get_order_item_type(ItemType.JAFFLE, 1)
 
-        return Inventory.get_item_type(ItemType.BEVERAGE, 1) + food
+        return Inventory.get_order_item_type(ItemType.BEVERAGE, 1) + food
 
 
 class Casuals(Customer):
@@ -218,7 +219,7 @@ class Casuals(Customer):
     def get_order_items(self, day: Day):
         num_drinks = int(fake.random.random() * 10 / 3)
         num_food = int(fake.random.random() * 10 / 3)
-        return Inventory.get_item_type(ItemType.BEVERAGE, num_drinks) + Inventory.get_item_type(ItemType.JAFFLE, num_food)
+        return Inventory.get_order_item_type(ItemType.BEVERAGE, num_drinks) + Inventory.get_order_item_type(ItemType.JAFFLE, num_food)
 
 
 class HealthNut(Customer):
@@ -239,4 +240,4 @@ class HealthNut(Customer):
         return max(0, int(order_time))
 
     def get_order_items(self, day: Day):
-        return Inventory.get_item_type(ItemType.BEVERAGE, 1)
+        return Inventory.get_order_item_type(ItemType.BEVERAGE, 1)
