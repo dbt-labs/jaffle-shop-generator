@@ -1,15 +1,16 @@
 import uuid
 from abc import ABC, abstractmethod
+from collections import Counter
 from dataclasses import dataclass, field
-from typing import Any, NewType
+from typing import Any, List, NewType
 
 import numpy as np
 from faker import Faker
 
-from jafgen.customers.order import Order
+from jafgen.customers.order import Order, OrderItem
 from jafgen.customers.tweet import Tweet
 from jafgen.stores.inventory import Inventory
-from jafgen.stores.item import Item, ItemType
+from jafgen.stores.product import ProductType
 from jafgen.stores.store import Store
 from jafgen.time import Day, Season
 
@@ -17,10 +18,11 @@ fake = Faker()
 
 CustomerId = NewType("CustomerId", uuid.UUID)
 
+
 @dataclass(frozen=True)
 class Customer(ABC):
     store: Store
-    id: CustomerId = field(default_factory=lambda: CustomerId(fake.uuid4()))
+    id: CustomerId = field(default_factory=lambda: CustomerId(uuid.UUID(fake.uuid4())))
     name: str = field(default_factory=fake.name)
     favorite_number: int = field(default_factory=lambda: fake.random.randint(1, 100))
     fan_level: int = field(default_factory=lambda: fake.random.randint(1, 5))
@@ -46,7 +48,7 @@ class Customer(ABC):
         return self.p_tweet_persona(day)
 
     def get_order(self, day: Day) -> Order | None:
-        items = self.get_order_items(day)
+        order_items = self.get_order_items(day)
 
         order_minute = self.get_order_minute(day)
         order_day = day.at_minute(order_minute)
@@ -55,23 +57,16 @@ class Customer(ABC):
             return None
 
         return Order(
-            customer=self,
-            items=items,
-            store=self.store,
-            day=order_day
+            customer=self, order_items=order_items, store=self.store, day=order_day
         )
 
     def get_tweet(self, order: Order) -> Tweet:
         minutes_delta = int(fake.random.random() * 20)
         tweet_day = order.day.at_minute(order.day.total_minutes + minutes_delta)
-        return Tweet(
-            customer=self,
-            order=order,
-            day=tweet_day
-        )
+        return Tweet(customer=self, order=order, day=tweet_day)
 
     @abstractmethod
-    def get_order_items(self, day: Day) -> list[Item]:
+    def get_order_items(self, day: Day) -> list[OrderItem]:
         raise NotImplementedError()
 
     @abstractmethod
@@ -86,7 +81,7 @@ class Customer(ABC):
         if p_buy > p_buy_threshold:
             if p_tweet > p_tweet_threshold:
                 order = self.get_order(day)
-                if order and len(order.items) > 0:
+                if order and len(order.order_items) > 0:
                     return order, self.get_tweet(order)
                 else:
                     return None, None
@@ -119,17 +114,26 @@ class RemoteWorker(Customer):
         order_time = np.random.normal(loc=avg_time, scale=180)
         return max(0, int(order_time))
 
-    def get_order_items(self, day: Day):
+    def get_order_items(self, day: Day) -> List[OrderItem]:
         num_drinks = 1
-        food = []
 
         if fake.random.random() > 0.7:
             num_drinks = 2
 
         if fake.random.random() > 0.7:
-            food = Inventory.get_item_type(ItemType.JAFFLE, 1)
+            food = Inventory.get_item_type(ProductType.JAFFLE, 1)
+        else:
+            food = []
 
-        return Inventory.get_item_type(ItemType.BEVERAGE, num_drinks) + food
+        beverages = Inventory.get_item_type(ProductType.BEVERAGE, num_drinks)
+        all_products = beverages + food
+
+        product_counts = Counter(all_products)
+
+        return [
+            OrderItem(product=product, quantity=qty)
+            for product, qty in product_counts.items()
+        ]
 
 
 class BrunchCrowd(Customer):
@@ -148,9 +152,19 @@ class BrunchCrowd(Customer):
         order_time = np.random.normal(loc=avg_time, scale=120)
         return max(0, int(order_time))
 
-    def get_order_items(self, day: Day):
+    def get_order_items(self, day: Day) -> List[OrderItem]:
         num_customers = 1 + int(self.favorite_number / 20)
-        return Inventory.get_item_type(ItemType.JAFFLE, num_customers) + Inventory.get_item_type(ItemType.BEVERAGE, num_customers)
+
+        jaffles = Inventory.get_item_type(ProductType.JAFFLE, num_customers)
+        beverages = Inventory.get_item_type(ProductType.BEVERAGE, num_customers)
+
+        all_products = jaffles + beverages
+        product_counts = Counter(all_products)
+
+        return [
+            OrderItem(product=product, quantity=count)
+            for product, count in product_counts.items()
+        ]
 
 
 class Commuter(Customer):
@@ -170,8 +184,9 @@ class Commuter(Customer):
         order_time = np.random.normal(loc=avg_time, scale=30)
         return max(0, int(order_time))
 
-    def get_order_items(self, day: Day):
-        return Inventory.get_item_type(ItemType.BEVERAGE, 1)
+    def get_order_items(self, day: Day) -> List[OrderItem]:
+        beverages = Inventory.get_item_type(ProductType.BEVERAGE, 1)
+        return [OrderItem(product=p, quantity=1) for p in beverages]
 
 
 class Student(Customer):
@@ -193,12 +208,15 @@ class Student(Customer):
         order_time = np.random.normal(loc=avg_time, scale=120)
         return max(0, int(order_time))
 
-    def get_order_items(self, day: Day):
+    def get_order_items(self, day: Day) -> List[OrderItem]:
         food = []
         if fake.random.random() > 0.5:
-            food = Inventory.get_item_type(ItemType.JAFFLE, 1)
+            food = Inventory.get_item_type(ProductType.JAFFLE, 1)
 
-        return Inventory.get_item_type(ItemType.BEVERAGE, 1) + food
+        beverages = Inventory.get_item_type(ProductType.BEVERAGE, 1)
+        all_products = beverages + food
+
+        return [OrderItem(product=product, quantity=1) for product in all_products]
 
 
 class Casuals(Customer):
@@ -215,10 +233,20 @@ class Casuals(Customer):
         order_time = np.random.normal(loc=avg_time, scale=120)
         return max(0, int(order_time))
 
-    def get_order_items(self, day: Day):
+    def get_order_items(self, day: Day) -> List[OrderItem]:
         num_drinks = int(fake.random.random() * 10 / 3)
         num_food = int(fake.random.random() * 10 / 3)
-        return Inventory.get_item_type(ItemType.BEVERAGE, num_drinks) + Inventory.get_item_type(ItemType.JAFFLE, num_food)
+
+        beverages = Inventory.get_item_type(ProductType.BEVERAGE, num_drinks)
+        jaffles = Inventory.get_item_type(ProductType.JAFFLE, num_food)
+
+        all_products = beverages + jaffles
+        product_counts = Counter(all_products)
+
+        return [
+            OrderItem(product=product, quantity=count)
+            for product, count in product_counts.items()
+        ]
 
 
 class HealthNut(Customer):
@@ -238,5 +266,6 @@ class HealthNut(Customer):
         order_time = np.random.normal(loc=avg_time, scale=120)
         return max(0, int(order_time))
 
-    def get_order_items(self, day: Day):
-        return Inventory.get_item_type(ItemType.BEVERAGE, 1)
+    def get_order_items(self, day: Day) -> List[OrderItem]:
+        beverages = Inventory.get_item_type(ProductType.BEVERAGE, 1)
+        return [OrderItem(product=p, quantity=1) for p in beverages]

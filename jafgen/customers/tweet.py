@@ -4,7 +4,7 @@ from typing import NewType
 
 from faker import Faker
 
-import jafgen.customers.customers as customer
+import jafgen.customers.customer as customer
 from jafgen.customers.order import Order
 from jafgen.time import Day
 
@@ -18,7 +18,7 @@ class Tweet:
     day: Day
     customer: "customer.Customer"
     order: Order
-    id: TweetId = field(default_factory=lambda: TweetId(fake.uuid4()))
+    id: TweetId = field(default_factory=lambda: TweetId(uuid.UUID(fake.uuid4())))
     content: str = field(init=False)
 
     def __post_init__(self) -> None:
@@ -33,12 +33,12 @@ class Tweet:
         }
 
     def _construct_tweet(self) -> str:
-        if len(self.order.items) == 1:
-            items_sentence = f"Ordered a {self.order.items[0].name}"
-        elif len(self.order.items) == 2:
-            items_sentence = f"Ordered a {self.order.items[0].name} and a {self.order.items[1].name}"
+        if len(self.order.order_items) == 1:
+            items_sentence = f"Ordered a {self.order.order_items[0].product.name}"
+        elif len(self.order.order_items) == 2:
+            items_sentence = f"Ordered a {self.order.order_items[0].product.name} and a {self.order.order_items[1].product.name}"
         else:
-            items_sentence = f"Ordered a {', a '.join(item.name for item in self.order.items[:-1])}, and a {self.order.items[-1].name}"
+            items_sentence = f"Ordered a {', a '.join(item.product.name for item in self.order.order_items[:-1])}, and a {self.order.order_items[-1].product.name}"
         if self.customer.fan_level > 3:
             adjective = fake.random.choice(
                 [
