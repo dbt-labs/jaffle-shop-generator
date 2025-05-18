@@ -3,7 +3,7 @@ from typing import Iterator
 import numpy as np
 from faker import Faker
 
-from jafgen.customers.customers import (
+from jafgen.customers.customer import (
     BrunchCrowd,
     Casuals,
     Commuter,
@@ -19,6 +19,7 @@ from jafgen.time import Day
 
 fake = Faker()
 
+
 class Market:
     PersonaMix = [
         (Commuter, 0.25),
@@ -29,7 +30,9 @@ class Market:
         (HealthNut, 0.1),
     ]
 
-    def __init__(self, store: Store, num_customers: int, days_to_penetration: int = 365):
+    def __init__(
+        self, store: Store, num_customers: int, days_to_penetration: int = 365
+    ):
         self.store = store
         self.num_customers = num_customers
         self.days_to_penetration = days_to_penetration
