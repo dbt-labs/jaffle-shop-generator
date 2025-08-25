@@ -59,7 +59,7 @@ class Season(str, Enum):
 
 @dataclass(init=False)
 class Day:
-    EPOCH = dt.datetime(year=2018, month=9, day=1)
+    EPOCH = dt.datetime(year=2023, month=9, day=1)
     SEASONAL_MONTHLY_CURVE = AnnualCurve()
     WEEKEND_CURVE = WeekendCurve()
     GROWTH_CURVE = GrowthCurve()
