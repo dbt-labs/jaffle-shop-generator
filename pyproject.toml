@@ -6,7 +6,15 @@ build-backend = "setuptools.build_meta"
 name = "jafgen"
 version = "0.4.14"
 authors = [{ name = "gwenwindflower", email = "gwenwindflower@gmail.com" }]
-dependencies = ["numpy", "Faker", "typer"]
+dependencies = [
+    "numpy", 
+    "Faker", 
+    "typer",
+    "mimesis>=11.0.0",
+    "PyYAML>=6.0",
+    "pyarrow>=14.0.0",
+    "duckdb>=0.9.0"
+]
 description = "A synthetic data generator CLI for a fictional Jaffle Shop"
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -17,7 +25,14 @@ exclude = ["*.tests", "*.tests.*", "tests.*", "tests"]
 jafgen = "jafgen.cli:app"
 
 [project.optional-dependencies]
-dev = ["ruff", "pytest"]
+dev = [
+    "ruff", 
+    "pytest",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "mypy>=1.5.0",
+    "pytest-cov>=4.1.0"
+]
 
 [tool.ruff.lint]
 select = [

@@ -1,0 +1,1 @@
+"""Data generation components for jafgen."""
