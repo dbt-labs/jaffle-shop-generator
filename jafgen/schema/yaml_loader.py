@@ -257,8 +257,11 @@ class YAMLSchemaLoader(SchemaLoader):
                 target_key = f"{schema.name}.{entity_name}.{attr_name}"
                 available_targets[target_key] = (entity_name, attr_name)
         
-        # Check all link_to references
+        # Check all link_to references and build dependency graph
+        dependency_graph = {}
         for entity_name, entity_config in schema.entities.items():
+            dependency_graph[entity_name] = set()
+            
             for attr_name, attr_config in entity_config.attributes.items():
                 if attr_config.link_to:
                     if attr_config.link_to not in available_targets:
@@ -277,3 +280,90 @@ class YAMLSchemaLoader(SchemaLoader):
                                 location=f"entities.{entity_name}.attributes.{attr_name}.link_to",
                                 suggestion=f"Available targets: {', '.join(sorted(available_targets.keys()))}"
                             ))
+                    else:
+                        # Add dependency for internal links
+                        target_entity, _ = available_targets[attr_config.link_to]
+                        if target_entity != entity_name:  # Don't add self-dependencies
+                            dependency_graph[entity_name].add(target_entity)
+        
+        # Check for circular dependencies
+        self._detect_circular_dependencies(dependency_graph, errors)
+    
+    def _detect_circular_dependencies(self, dependency_graph: Dict[str, set], 
+                                    errors: List[ValidationError]) -> None:
+        """Detect circular dependencies in the entity dependency graph."""
+        # Use DFS to detect cycles
+        WHITE, GRAY, BLACK = 0, 1, 2
+        colors = {entity: WHITE for entity in dependency_graph}
+        
+        def dfs(entity: str, path: List[str]) -> bool:
+            """DFS helper to detect cycles."""
+            if colors[entity] == GRAY:
+                # Found a cycle
+                cycle_start = path.index(entity)
+                cycle = path[cycle_start:] + [entity]
+                errors.append(ValidationError(
+                    type="circular_dependency",
+                    message=f"Circular dependency detected: {' -> '.join(cycle)}",
+                    location="entities",
+                    suggestion="Remove or restructure dependencies to break the cycle"
+                ))
+                return True
+            
+            if colors[entity] == BLACK:
+                return False
+            
+            colors[entity] = GRAY
+            path.append(entity)
+            
+            for dependent in dependency_graph[entity]:
+                if dfs(dependent, path):
+                    return True
+            
+            path.pop()
+            colors[entity] = BLACK
+            return False
+        
+        for entity in dependency_graph:
+            if colors[entity] == WHITE:
+                dfs(entity, [])
+    
+    def validate_multiple_schemas(self, schemas: List[SystemSchema]) -> ValidationResult:
+        """Validate multiple schemas together, checking cross-schema links."""
+        all_errors = []
+        all_warnings = []
+        
+        # First validate each schema individually
+        for schema in schemas:
+            result = self.validate_schema(schema)
+            all_errors.extend(result.errors)
+            all_warnings.extend(result.warnings)
+        
+        # Build global entity map for cross-schema validation
+        global_entities = {}
+        for schema in schemas:
+            for entity_name, entity_config in schema.entities.items():
+                for attr_name in entity_config.attributes.keys():
+                    target_key = f"{schema.name}.{entity_name}.{attr_name}"
+                    global_entities[target_key] = (schema.name, entity_name, attr_name)
+        
+        # Validate cross-schema links
+        for schema in schemas:
+            for entity_name, entity_config in schema.entities.items():
+                for attr_name, attr_config in entity_config.attributes.items():
+                    if attr_config.link_to and attr_config.link_to not in global_entities:
+                        # This is a broken external link
+                        parts = attr_config.link_to.split('.')
+                        if len(parts) == 3:
+                            all_errors.append(ValidationError(
+                                type="broken_external_link",
+                                message=f"External link target '{attr_config.link_to}' not found in any loaded schema",
+                                location=f"{schema.name}.entities.{entity_name}.attributes.{attr_name}.link_to",
+                                suggestion="Ensure the target schema is loaded or fix the link reference"
+                            ))
+        
+        return ValidationResult(
+            is_valid=len(all_errors) == 0,
+            errors=all_errors,
+            warnings=all_warnings
+        )

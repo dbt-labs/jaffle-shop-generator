@@ -6,6 +6,7 @@ from .models import (
 )
 from .interfaces import SchemaLoader
 from .yaml_loader import YAMLSchemaLoader
+from .discovery import SchemaDiscoveryEngine
 from .exceptions import (
     SchemaError, SchemaValidationError, SchemaLoadError, CircularDependencyError
 )
@@ -13,6 +14,6 @@ from .exceptions import (
 __all__ = [
     'SystemSchema', 'EntityConfig', 'AttributeConfig', 'OutputConfig',
     'ValidationResult', 'ValidationError', 'ValidationWarning',
-    'SchemaLoader', 'YAMLSchemaLoader',
+    'SchemaLoader', 'YAMLSchemaLoader', 'SchemaDiscoveryEngine',
     'SchemaError', 'SchemaValidationError', 'SchemaLoadError', 'CircularDependencyError'
 ]
