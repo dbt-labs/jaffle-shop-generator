@@ -31,7 +31,7 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 3.1, 3.2, 3.3, 1.3, 1.4_
 
-  - [ ] 3.2 Build DataGenerator for entity creation
+  - [x] 3.2 Build DataGenerator for entity creation
     - Implement entity data generation using MimesisEngine
     - Create batch generation logic for specified entity counts
     - Add validation that required attributes are never null/empty
