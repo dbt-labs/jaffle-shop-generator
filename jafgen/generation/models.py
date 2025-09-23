@@ -47,14 +47,17 @@ class DependencyGraph:
     def get_generation_order(self) -> List[str]:
         """Get the order in which entities should be generated (topological sort)."""
         # Simple topological sort implementation
+        # In our edges dict: key depends on values in the list
+        # So if edges["B"] = ["A"], it means B depends on A, so A should come first
+        
         in_degree = {node: 0 for node in self.nodes}
         
-        # Calculate in-degrees
-        for node in self.edges:
-            for dependency in self.edges[node]:
-                in_degree[dependency] += 1
+        # Calculate in-degrees: count how many nodes depend on each node
+        for dependent in self.edges:
+            for dependency in self.edges[dependent]:
+                in_degree[dependent] += 1
         
-        # Find nodes with no incoming edges
+        # Find nodes with no incoming dependencies (no one depends on them)
         queue = [node for node in self.nodes if in_degree[node] == 0]
         result = []
         
@@ -62,12 +65,12 @@ class DependencyGraph:
             node = queue.pop(0)
             result.append(node)
             
-            # Remove this node and update in-degrees
-            if node in self.edges:
-                for dependency in self.edges[node]:
-                    in_degree[dependency] -= 1
-                    if in_degree[dependency] == 0:
-                        queue.append(dependency)
+            # Remove this node and update in-degrees of nodes that depend on it
+            for dependent in self.edges:
+                if node in self.edges[dependent]:
+                    in_degree[dependent] -= 1
+                    if in_degree[dependent] == 0:
+                        queue.append(dependent)
         
         if len(result) != len(self.nodes):
             raise ValueError("Circular dependency detected in entity relationships")

@@ -22,7 +22,7 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 1.1, 6.2, 9.2_
 
-- [-] 3. Create Mimesis-based data generation core
+- [x] 3. Create Mimesis-based data generation core
   - [x] 3.1 Implement MimesisEngine with deterministic seeding
     - Integrate Mimesis library with configurable seeding for reproducibility
     - Create attribute value generation based on Mimesis provider types
@@ -39,8 +39,8 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 1.3, 1.4, 1.5_
 
-- [ ] 4. Implement link resolution system
-  - [ ] 4.1 Create LinkResolver and dependency management
+- [-] 4. Implement link resolution system
+  - [-] 4.1 Create LinkResolver and dependency management
     - Build dependency graph construction from schema definitions
     - Implement topological sorting for correct entity generation order
     - Create link_to attribute resolution across schemas and entities
