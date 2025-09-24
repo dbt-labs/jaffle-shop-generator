@@ -39,7 +39,7 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 1.3, 1.4, 1.5_
 
-- [-] 4. Implement link resolution system
+- [x] 4. Implement link resolution system
   - [x] 4.1 Create LinkResolver and dependency management
     - Build dependency graph construction from schema definitions
     - Implement topological sorting for correct entity generation order
@@ -48,7 +48,7 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 2.1, 2.2, 2.3, 2.4_
 
-  - [-] 4.2 Integrate link resolution with data generation
+  - [x] 4.2 Integrate link resolution with data generation
     - Modify DataGenerator to use LinkResolver for foreign key population
     - Ensure linked entities are generated before dependent entities
     - Add validation that all link_to references can be resolved
@@ -56,8 +56,8 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 2.1, 2.2, 2.3_
 
-- [ ] 5. Create output writer system
-  - [ ] 5.1 Implement base OutputWriter interface and CSV writer
+- [x] 5. Create output writer system
+  - [x] 5.1 Implement base OutputWriter interface and CSV writer
     - Create abstract OutputWriter base class with write method signature
     - Implement CSVWriter with proper CSV formatting and encoding
     - Add file path handling and directory creation logic
@@ -65,7 +65,7 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 4.1, 4.6_
 
-  - [ ] 5.2 Add JSON, Parquet, and DuckDB output writers
+  - [x] 5.2 Add JSON, Parquet, and DuckDB output writers
     - Implement JSONWriter with proper JSON serialization
     - Create ParquetWriter using pyarrow library for efficient columnar storage
     - Build DuckDBWriter for direct database file creation
@@ -73,8 +73,8 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 4.2, 4.3, 4.4_
 
-- [ ] 6. Build CLI interface with Typer
-  - [ ] 6.1 Implement generate command
+- [-] 6. Build CLI interface with Typer
+  - [x] 6.1 Implement generate command
     - Create generate command with schema directory and output directory parameters
     - Add seed parameter override capability
     - Implement progress reporting during data generation
@@ -83,7 +83,7 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 6.1, 6.4_
 
-  - [ ] 6.2 Add validate-schema and list-schemas commands
+  - [-] 6.2 Add validate-schema and list-schemas commands
     - Implement validate-schema command to check all schemas for errors
     - Create list-schemas command showing discovered schemas with basic info
     - Add help text and version information for all commands
