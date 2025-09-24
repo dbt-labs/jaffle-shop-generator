@@ -56,3 +56,11 @@ class DataGenerator(ABC):
     def generate_entity(self, entity_config: EntityConfig) -> List[Dict[str, Any]]:
         """Generate data for a single entity."""
         pass
+    
+    def generate_multiple_systems(self, schemas: List[SystemSchema]) -> List["GeneratedSystem"]:
+        """Generate data for multiple system schemas with cross-schema dependencies.
+        
+        Default implementation generates each schema independently.
+        Override for cross-schema dependency support.
+        """
+        return [self.generate_system(schema) for schema in schemas]

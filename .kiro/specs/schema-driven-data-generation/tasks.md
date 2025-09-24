@@ -40,7 +40,7 @@
     - _Requirements: 1.3, 1.4, 1.5_
 
 - [-] 4. Implement link resolution system
-  - [-] 4.1 Create LinkResolver and dependency management
+  - [x] 4.1 Create LinkResolver and dependency management
     - Build dependency graph construction from schema definitions
     - Implement topological sorting for correct entity generation order
     - Create link_to attribute resolution across schemas and entities
@@ -48,7 +48,7 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 2.1, 2.2, 2.3, 2.4_
 
-  - [ ] 4.2 Integrate link resolution with data generation
+  - [-] 4.2 Integrate link resolution with data generation
     - Modify DataGenerator to use LinkResolver for foreign key population
     - Ensure linked entities are generated before dependent entities
     - Add validation that all link_to references can be resolved
