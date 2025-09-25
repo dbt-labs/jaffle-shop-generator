@@ -47,6 +47,7 @@ class JSONWriter(OutputWriter):
                 self._make_serializable(record) for record in records
             ]
             
+            # Always overwrite existing files for idempotency
             with open(json_file_path, 'w', encoding='utf-8') as jsonfile:
                 json.dump(
                     serializable_records,

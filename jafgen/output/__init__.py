@@ -5,5 +5,6 @@ from .csv_writer import CSVWriter
 from .json_writer import JSONWriter
 from .parquet_writer import ParquetWriter
 from .duckdb_writer import DuckDBWriter
+from .output_manager import OutputManager
 
-__all__ = ["OutputWriter", "CSVWriter", "JSONWriter", "ParquetWriter", "DuckDBWriter"]
+__all__ = ["OutputWriter", "CSVWriter", "JSONWriter", "ParquetWriter", "DuckDBWriter", "OutputManager"]

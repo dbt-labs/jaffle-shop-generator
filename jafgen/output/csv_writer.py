@@ -41,6 +41,7 @@ class CSVWriter(OutputWriter):
             # Get fieldnames from first record
             fieldnames = list(records[0].keys())
             
+            # Always overwrite existing files for idempotency
             with open(csv_file_path, 'w', newline='', encoding=self.encoding) as csvfile:
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
                 writer.writeheader()

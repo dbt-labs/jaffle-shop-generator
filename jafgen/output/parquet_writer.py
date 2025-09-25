@@ -46,7 +46,7 @@ class ParquetWriter(OutputWriter):
                 # Convert list of dicts to PyArrow table
                 table = pa.Table.from_pylist(records)
                 
-                # Write to Parquet file
+                # Write to Parquet file (overwrites existing file for idempotency)
                 pq.write_table(
                     table,
                     parquet_file_path,

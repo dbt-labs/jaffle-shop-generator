@@ -15,6 +15,7 @@ from jafgen.output.csv_writer import CSVWriter
 from jafgen.output.json_writer import JSONWriter
 from jafgen.output.parquet_writer import ParquetWriter
 from jafgen.output.duckdb_writer import DuckDBWriter
+from jafgen.output.output_manager import OutputManager
 
 def version_callback(value: bool):
     """Show version information."""
@@ -154,13 +155,14 @@ def generate(
         link_resolver = LinkResolver()
         data_generator = DataGenerator(mimesis_engine, link_resolver)
         
-        # Initialize output writers
+        # Initialize output writers and manager
         output_writers = {
             'csv': CSVWriter(),
             'json': JSONWriter(),
             'parquet': ParquetWriter(),
             'duckdb': DuckDBWriter()
         }
+        output_manager = OutputManager(output_writers)
         
         # Generate data for all schemas
         with Progress(
@@ -187,24 +189,20 @@ def generate(
                     if seed is not None:
                         schema.seed = seed
                     
-                    # Determine output formats and path
-                    output_formats = schema.output.format if isinstance(schema.output.format, list) else [schema.output.format]
-                    schema_output_dir = output_dir / schema.output.path if schema.output.path != "." else output_dir
-                    schema_output_dir.mkdir(parents=True, exist_ok=True)
-                    
-                    # Write data in each requested format
-                    for output_format in output_formats:
-                        if output_format in output_writers:
-                            try:
-                                output_writers[output_format].write(
-                                    generated_system.entities, 
-                                    schema_output_dir
-                                )
-                                console.print(f"  [green]✓[/green] Generated {output_format.upper()} files for '{schema.name}'")
-                            except Exception as e:
-                                console.print(f"  [red]✗[/red] Failed to write {output_format.upper()} for '{schema.name}': {e}")
-                        else:
-                            console.print(f"  [yellow]![/yellow] Unsupported output format '{output_format}' for '{schema.name}'")
+                    # Use output manager for idempotent file generation
+                    try:
+                        metadata = output_manager.write_system_data(
+                            generated_system, 
+                            output_dir, 
+                            overwrite=True
+                        )
+                        
+                        # Show success message with formats
+                        formats_str = ", ".join(metadata.output_formats)
+                        console.print(f"  [green]✓[/green] Generated {formats_str.upper()} files for '{schema.name}'")
+                        
+                    except Exception as e:
+                        console.print(f"  [red]✗[/red] Failed to write data for '{schema.name}': {e}")
                 
                 progress.update(generation_task, description="Data generation complete")
                 

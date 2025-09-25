@@ -36,7 +36,11 @@ class DuckDBWriter(OutputWriter):
         
         db_file_path = output_path / self.database_name
         
-        # Connect to DuckDB database (creates file if it doesn't exist)
+        # Remove existing database file for idempotency
+        if db_file_path.exists():
+            db_file_path.unlink()
+        
+        # Connect to DuckDB database (creates new file)
         conn = duckdb.connect(str(db_file_path))
         
         try:

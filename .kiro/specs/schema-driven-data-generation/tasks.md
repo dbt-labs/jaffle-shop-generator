@@ -73,7 +73,7 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 4.2, 4.3, 4.4_
 
-- [-] 6. Build CLI interface with Typer
+- [x] 6. Build CLI interface with Typer
   - [x] 6.1 Implement generate command
     - Create generate command with schema directory and output directory parameters
     - Add seed parameter override capability
@@ -83,7 +83,7 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 6.1, 6.4_
 
-  - [-] 6.2 Add validate-schema and list-schemas commands
+  - [x] 6.2 Add validate-schema and list-schemas commands
     - Implement validate-schema command to check all schemas for errors
     - Create list-schemas command showing discovered schemas with basic info
     - Add help text and version information for all commands
@@ -91,8 +91,8 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 6.2, 6.3, 6.5_
 
-- [ ] 7. Implement idempotency and output management
-  - [ ] 7.1 Add idempotent file generation
+- [-] 7. Implement idempotency and output management
+  - [-] 7.1 Add idempotent file generation
     - Implement file overwriting logic instead of appending
     - Create output directory management with proper permissions
     - Add generation metadata tracking for reproducibility verification
