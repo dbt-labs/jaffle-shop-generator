@@ -92,7 +92,7 @@
     - _Requirements: 6.2, 6.3, 6.5_
 
 - [-] 7. Implement idempotency and output management
-  - [-] 7.1 Add idempotent file generation
+  - [x] 7.1 Add idempotent file generation
     - Implement file overwriting logic instead of appending
     - Create output directory management with proper permissions
     - Add generation metadata tracking for reproducibility verification
@@ -100,7 +100,7 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 5.1, 5.2, 5.3_
 
-  - [ ] 7.2 Integrate output format selection from schemas
+  - [x] 7.2 Integrate output format selection from schemas
     - Modify output writers to respect format specifications in YAML schemas
     - Add support for multiple output formats per schema
     - Implement output path customization from schema configuration

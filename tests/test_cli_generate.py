@@ -352,4 +352,4 @@ class TestGenerateCommandErrorHandling:
             
             # Should not exit with error, but should show write failure
             assert result.exit_code == 0
-            assert "Failed to write CSV" in result.stdout
+            assert "Failed to write csv format" in result.stdout

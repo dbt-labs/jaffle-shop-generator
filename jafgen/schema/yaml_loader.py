@@ -6,7 +6,7 @@ from typing import Any, Dict, List, Optional
 
 from .interfaces import SchemaLoader
 from .models import (
-    SystemSchema, EntityConfig, AttributeConfig, OutputConfig,
+    SystemSchema, EntityConfig, AttributeConfig, OutputConfig, FormatConfig, EntityOutputConfig,
     ValidationResult, ValidationError, ValidationWarning
 )
 from .exceptions import SchemaLoadError, SchemaValidationError
@@ -104,10 +104,7 @@ class YAMLSchemaLoader(SchemaLoader):
             if not isinstance(output_data, dict):
                 raise SchemaLoadError("'output' section must be an object")
             
-            output_config = OutputConfig(
-                format=output_data.get('format', ['csv']),
-                path=output_data.get('path', './output')
-            )
+            output_config = self._parse_output_config(output_data)
             
             # Parse entities
             entities_data = data.get('entities', {})
@@ -186,6 +183,87 @@ class YAMLSchemaLoader(SchemaLoader):
             required=required,
             link_to=link_to,
             constraints=constraints
+        )
+    
+    def _parse_output_config(self, output_data: Dict[str, Any]) -> OutputConfig:
+        """Parse output configuration from YAML data."""
+        # Basic format and path (backward compatibility)
+        format_list = output_data.get('format', ['csv'])
+        if isinstance(format_list, str):
+            format_list = [format_list]
+        
+        path = output_data.get('path', './output')
+        
+        # Advanced format configurations
+        formats = {}
+        formats_data = output_data.get('formats', {})
+        if isinstance(formats_data, dict):
+            for format_name, format_config in formats_data.items():
+                formats[format_name] = self._parse_format_config(format_name, format_config)
+        
+        # Per-entity output configurations
+        per_entity = {}
+        per_entity_data = output_data.get('per_entity', {})
+        if isinstance(per_entity_data, dict):
+            for entity_name, entity_output_data in per_entity_data.items():
+                per_entity[entity_name] = self._parse_entity_output_config(entity_name, entity_output_data)
+        
+        return OutputConfig(
+            format=format_list,
+            path=path,
+            formats=formats,
+            per_entity=per_entity
+        )
+    
+    def _parse_format_config(self, format_name: str, format_data: Dict[str, Any]) -> FormatConfig:
+        """Parse format-specific configuration from YAML data."""
+        if not isinstance(format_data, dict):
+            raise SchemaLoadError(f"Format configuration for '{format_name}' must be an object")
+        
+        options = format_data.get('options', {})
+        filename_pattern = format_data.get('filename_pattern')
+        
+        if not isinstance(options, dict):
+            raise SchemaLoadError(f"Format options for '{format_name}' must be an object")
+        
+        if filename_pattern is not None and not isinstance(filename_pattern, str):
+            raise SchemaLoadError(f"Filename pattern for '{format_name}' must be a string")
+        
+        return FormatConfig(
+            type=format_name,
+            options=options,
+            filename_pattern=filename_pattern
+        )
+    
+    def _parse_entity_output_config(self, entity_name: str, entity_output_data: Dict[str, Any]) -> EntityOutputConfig:
+        """Parse entity-specific output configuration from YAML data."""
+        if not isinstance(entity_output_data, dict):
+            raise SchemaLoadError(f"Entity output configuration for '{entity_name}' must be an object")
+        
+        # Entity-specific format override
+        format_list = entity_output_data.get('format')
+        if format_list is not None:
+            if isinstance(format_list, str):
+                format_list = [format_list]
+            elif not isinstance(format_list, list):
+                raise SchemaLoadError(f"Entity '{entity_name}' format must be a string or list")
+        
+        # Entity-specific path override
+        path = entity_output_data.get('path')
+        if path is not None and not isinstance(path, str):
+            raise SchemaLoadError(f"Entity '{entity_name}' path must be a string")
+        
+        # Entity-specific format configurations
+        formats = {}
+        formats_data = entity_output_data.get('formats', {})
+        if isinstance(formats_data, dict):
+            for format_name, format_config in formats_data.items():
+                formats[format_name] = self._parse_format_config(format_name, format_config)
+        
+        return EntityOutputConfig(
+            format=format_list,
+            path=path,
+            formats=formats
         )
     
     def _validate_entity(self, entity_name: str, entity_config: EntityConfig, 

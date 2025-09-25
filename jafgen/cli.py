@@ -150,6 +150,11 @@ def generate(
         
         console.print(f"[green]Successfully loaded {len(schemas)} schema(s)[/green]")
         
+        # Override seed in schemas if provided via CLI
+        if seed is not None:
+            for schema in schemas:
+                schema.seed = seed
+        
         # Initialize generation components
         mimesis_engine = MimesisEngine(seed=seed)
         link_resolver = LinkResolver()
@@ -184,10 +189,6 @@ def generate(
                         advance=1,
                         description=f"Generating data for '{schema.name}'..."
                     )
-                    
-                    # Override seed if provided via CLI
-                    if seed is not None:
-                        schema.seed = seed
                     
                     # Use output manager for idempotent file generation
                     try:

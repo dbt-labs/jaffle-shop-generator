@@ -9,7 +9,7 @@ from typing import Any, Dict, List, Optional
 from .exceptions import OutputError
 from .interfaces import OutputWriter
 from ..generation.models import GenerationMetadata, calculate_schema_hash
-from ..schema.models import SystemSchema
+from ..schema.models import SystemSchema, FormatConfig
 
 
 class OutputManager:
@@ -70,7 +70,7 @@ class OutputManager:
         """
         schema = generated_system.schema
         
-        # Determine output formats and path
+        # Determine output formats and path from schema configuration
         output_formats = schema.output.format if isinstance(schema.output.format, list) else [schema.output.format]
         schema_output_dir = base_output_path / schema.output.path if schema.output.path != "." else base_output_path
         
@@ -95,26 +95,44 @@ class OutputManager:
         existing_metadata = GenerationMetadata.load_from_file(schema_output_dir)
         if existing_metadata and existing_metadata.is_identical_generation(metadata):
             # Skip generation if identical run already exists and files are present
-            if self._verify_output_files_exist(generated_system.entities, schema_output_dir, output_formats):
+            if self._verify_output_files_exist(generated_system.entities, schema_output_dir, output_formats, schema):
                 return existing_metadata
         
-        # Write data in each requested format
+        # Write data using schema-driven configuration
         written_formats = []
-        for output_format in output_formats:
-            if output_format not in self.output_writers:
-                raise OutputError(f"Unsupported output format: {output_format}")
+        for entity_name, entity_data in generated_system.entities.items():
+            entity_formats, entity_output_dir = self._get_entity_output_config(
+                entity_name, schema, schema_output_dir
+            )
             
-            try:
-                # Remove existing files for this format if overwrite is True
-                if overwrite:
-                    self._remove_existing_files(generated_system.entities, schema_output_dir, output_format)
+            # Prepare entity-specific output directory
+            self.prepare_output_directory(entity_output_dir, force_recreate=False)
+            
+            for output_format in entity_formats:
+                if output_format not in self.output_writers:
+                    raise OutputError(f"Unsupported output format: {output_format}")
                 
-                # Write the data
-                self.output_writers[output_format].write(generated_system.entities, schema_output_dir)
-                written_formats.append(output_format)
-                
-            except Exception as e:
-                raise OutputError(f"Failed to write {output_format} format for schema '{schema.name}': {e}") from e
+                try:
+                    # Remove existing files for this format if overwrite is True
+                    if overwrite:
+                        self._remove_existing_files({entity_name: entity_data}, entity_output_dir, output_format)
+                    
+                    # Get format-specific configuration
+                    format_config = self._get_format_config(output_format, entity_name, schema)
+                    
+                    # Write the data with format-specific options
+                    self._write_with_format_config(
+                        {entity_name: entity_data}, 
+                        entity_output_dir, 
+                        output_format, 
+                        format_config
+                    )
+                    
+                    if output_format not in written_formats:
+                        written_formats.append(output_format)
+                        
+                except Exception as e:
+                    raise OutputError(f"Failed to write {output_format} format for entity '{entity_name}': {e}") from e
         
         # Update metadata with actually written formats
         metadata.output_formats = written_formats
@@ -124,11 +142,178 @@ class OutputManager:
         
         return metadata
     
+    def _get_entity_output_config(
+        self, 
+        entity_name: str, 
+        schema: 'SystemSchema', 
+        default_output_dir: Path
+    ) -> tuple[List[str], Path]:
+        """Get output configuration for a specific entity.
+        
+        Args:
+            entity_name: Name of the entity
+            schema: System schema containing output configuration
+            default_output_dir: Default output directory
+            
+        Returns:
+            Tuple of (formats, output_directory)
+        """
+        # Check for entity-specific configuration
+        if entity_name in schema.output.per_entity:
+            entity_config = schema.output.per_entity[entity_name]
+            
+            # Use entity-specific formats if defined, otherwise use schema defaults
+            formats = entity_config.format if entity_config.format is not None else schema.output.format
+            
+            # Use entity-specific path if defined, otherwise use schema default
+            if entity_config.path is not None:
+                output_dir = default_output_dir / entity_config.path
+            else:
+                output_dir = default_output_dir
+        else:
+            # Use schema defaults
+            formats = schema.output.format
+            output_dir = default_output_dir
+        
+        # Ensure formats is a list
+        if isinstance(formats, str):
+            formats = [formats]
+        
+        return formats, output_dir
+    
+    def _get_format_config(
+        self, 
+        format_name: str, 
+        entity_name: str, 
+        schema: 'SystemSchema'
+    ) -> Optional['FormatConfig']:
+        """Get format-specific configuration for an entity.
+        
+        Args:
+            format_name: Name of the output format
+            entity_name: Name of the entity
+            schema: System schema containing format configuration
+            
+        Returns:
+            FormatConfig if found, None otherwise
+        """
+        # Check entity-specific format config first
+        if entity_name in schema.output.per_entity:
+            entity_config = schema.output.per_entity[entity_name]
+            if format_name in entity_config.formats:
+                return entity_config.formats[format_name]
+        
+        # Check schema-level format config
+        if format_name in schema.output.formats:
+            return schema.output.formats[format_name]
+        
+        return None
+    
+    def _write_with_format_config(
+        self, 
+        data: Dict[str, List[Dict[str, Any]]], 
+        output_path: Path, 
+        format_name: str, 
+        format_config: Optional['FormatConfig']
+    ) -> None:
+        """Write data using format-specific configuration.
+        
+        Args:
+            data: Entity data to write
+            output_path: Output directory path
+            format_name: Output format name
+            format_config: Format-specific configuration
+        """
+        writer = self.output_writers[format_name]
+        
+        if format_config and format_config.options:
+            # Apply format-specific options to the writer
+            self._apply_format_options(writer, format_config.options)
+        
+        if format_config and format_config.filename_pattern:
+            # Use custom filename pattern
+            self._write_with_custom_filenames(data, output_path, writer, format_config.filename_pattern, format_name)
+        else:
+            # Use default writer behavior
+            writer.write(data, output_path)
+    
+    def _apply_format_options(self, writer: OutputWriter, options: Dict[str, Any]) -> None:
+        """Apply format-specific options to a writer.
+        
+        Args:
+            writer: Output writer instance
+            options: Format-specific options to apply
+        """
+        # Apply options based on writer type
+        for option_name, option_value in options.items():
+            if hasattr(writer, option_name):
+                setattr(writer, option_name, option_value)
+    
+    def _write_with_custom_filenames(
+        self, 
+        data: Dict[str, List[Dict[str, Any]]], 
+        output_path: Path, 
+        writer: OutputWriter, 
+        filename_pattern: str, 
+        format_name: str
+    ) -> None:
+        """Write data using custom filename patterns.
+        
+        Args:
+            data: Entity data to write
+            output_path: Output directory path
+            writer: Output writer instance
+            filename_pattern: Custom filename pattern
+            format_name: Output format name for extension
+        """
+        # Get file extension for format
+        extensions = {
+            'csv': 'csv',
+            'json': 'json',
+            'parquet': 'parquet',
+            'duckdb': 'duckdb'
+        }
+        ext = extensions.get(format_name, format_name)
+        
+        # Write each entity with custom filename
+        for entity_name, records in data.items():
+            if not records:
+                continue
+            
+            # Format the filename pattern
+            custom_filename = filename_pattern.format(
+                entity_name=entity_name,
+                ext=ext,
+                format=format_name
+            )
+            
+            # Create a temporary single-entity data dict for the writer
+            single_entity_data = {entity_name: records}
+            
+            # For writers that support custom filenames, we need to handle this differently
+            # For now, we'll use a workaround by temporarily changing the output path
+            custom_file_path = output_path / custom_filename
+            custom_dir = custom_file_path.parent
+            custom_dir.mkdir(parents=True, exist_ok=True)
+            
+            # Write to a temporary directory and then move the file
+            import tempfile
+            with tempfile.TemporaryDirectory() as temp_dir:
+                temp_path = Path(temp_dir)
+                writer.write(single_entity_data, temp_path)
+                
+                # Find the generated file and move it to the custom location
+                generated_file = temp_path / f"{entity_name}.{ext}"
+                if generated_file.exists():
+                    import shutil
+                    shutil.move(str(generated_file), str(custom_file_path))
+    
     def _verify_output_files_exist(
         self, 
         entities: Dict[str, List[Dict[str, Any]]], 
         output_path: Path, 
-        formats: List[str]
+        formats: List[str],
+        schema: Optional['SystemSchema'] = None
     ) -> bool:
         """Verify that all expected output files exist.
         
@@ -136,15 +321,32 @@ class OutputManager:
             entities: Dictionary of entity data
             output_path: Output directory path
             formats: List of output formats to check
+            schema: Optional schema for custom filename patterns
             
         Returns:
             True if all expected files exist, False otherwise
         """
-        for entity_name in entities.keys():
-            for format_name in formats:
-                expected_file = self._get_expected_filename(entity_name, format_name, output_path)
-                if not expected_file.exists():
-                    return False
+        if schema:
+            # Check files using schema-driven configuration
+            for entity_name in entities.keys():
+                entity_formats, entity_output_dir = self._get_entity_output_config(
+                    entity_name, schema, output_path
+                )
+                
+                for format_name in entity_formats:
+                    format_config = self._get_format_config(format_name, entity_name, schema)
+                    expected_file = self._get_expected_filename_with_config(
+                        entity_name, format_name, entity_output_dir, format_config
+                    )
+                    if not expected_file.exists():
+                        return False
+        else:
+            # Fallback to simple verification
+            for entity_name in entities.keys():
+                for format_name in formats:
+                    expected_file = self._get_expected_filename(entity_name, format_name, output_path)
+                    if not expected_file.exists():
+                        return False
         return True
     
     def _remove_existing_files(
@@ -189,6 +391,44 @@ class OutputManager:
         
         extension = extensions.get(format_name, f'.{format_name}')
         return output_path / f"{entity_name}{extension}"
+    
+    def _get_expected_filename_with_config(
+        self, 
+        entity_name: str, 
+        format_name: str, 
+        output_path: Path, 
+        format_config: Optional['FormatConfig']
+    ) -> Path:
+        """Get the expected filename for an entity with format configuration.
+        
+        Args:
+            entity_name: Name of the entity
+            format_name: Output format name
+            output_path: Output directory path
+            format_config: Format-specific configuration
+            
+        Returns:
+            Path to the expected file
+        """
+        if format_config and format_config.filename_pattern:
+            # Use custom filename pattern
+            extensions = {
+                'csv': 'csv',
+                'json': 'json',
+                'parquet': 'parquet',
+                'duckdb': 'duckdb'
+            }
+            ext = extensions.get(format_name, format_name)
+            
+            custom_filename = format_config.filename_pattern.format(
+                entity_name=entity_name,
+                ext=ext,
+                format=format_name
+            )
+            return output_path / custom_filename
+        else:
+            # Use default filename
+            return self._get_expected_filename(entity_name, format_name, output_path)
     
     def verify_reproducibility(
         self, 

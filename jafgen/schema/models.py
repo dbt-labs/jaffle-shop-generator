@@ -25,11 +25,31 @@ class EntityConfig:
 
 
 @dataclass
+class FormatConfig:
+    """Configuration for a specific output format."""
+    
+    type: str  # Format type (csv, json, parquet, duckdb)
+    options: Dict[str, Any] = field(default_factory=dict)  # Format-specific options
+    filename_pattern: Optional[str] = None  # Custom filename pattern (e.g., "{entity_name}_data.{ext}")
+
+
+@dataclass
 class OutputConfig:
     """Configuration for output settings."""
     
     format: List[str] = field(default_factory=lambda: ["csv"])
     path: str = "./output"
+    formats: Dict[str, FormatConfig] = field(default_factory=dict)  # Advanced format configurations
+    per_entity: Dict[str, 'EntityOutputConfig'] = field(default_factory=dict)  # Per-entity output overrides
+
+
+@dataclass
+class EntityOutputConfig:
+    """Output configuration specific to an entity."""
+    
+    format: Optional[List[str]] = None  # Override formats for this entity
+    path: Optional[str] = None  # Override path for this entity
+    formats: Dict[str, FormatConfig] = field(default_factory=dict)  # Entity-specific format configs
 
 
 @dataclass
