@@ -288,10 +288,11 @@ class TestDataGenerator:
         
         link_resolver = Mock()
         link_resolver.resolve_link.return_value = "user-123"
+        link_resolver.validate_all_links.return_value = []  # No validation errors
         
         # Mock dependency graph
         dependency_graph = Mock()
-        dependency_graph.get_generation_order.return_value = ["users", "orders"]
+        dependency_graph.get_generation_order.return_value = ["test_system.users", "test_system.orders"]
         link_resolver.build_dependency_graph.return_value = dependency_graph
         
         generator = DataGenerator(mimesis_engine, link_resolver)

@@ -1,0 +1,28 @@
+system:
+  name: "simple-users"
+  version: "1.0.0"
+  seed: 42
+  output:
+    format: ["csv"]
+    path: "./output"
+
+entities:
+  users:
+    count: 10
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      name:
+        type: "person.full_name"
+        required: true
+      email:
+        type: "person.email"
+        unique: true
+        required: true
+      age:
+        type: "int"
+        constraints:
+          min_value: 18
+          max_value: 80

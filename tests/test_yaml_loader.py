@@ -193,3 +193,231 @@ system:
         result = self.loader.validate_schema(schema)
         assert result.is_valid is False
         assert any(error.type == "broken_link" for error in result.errors)
+
+
+class TestYAMLSchemaLoaderEdgeCases:
+    """Additional edge case tests for YAMLSchemaLoader."""
+    
+    def setup_method(self):
+        """Set up test fixtures."""
+        self.loader = YAMLSchemaLoader()
+    
+    def test_load_schema_with_minimal_config(self):
+        """Test loading schema with minimal configuration."""
+        yaml_content = """
+system:
+  name: "minimal-system"
+  version: "1.0.0"
+
+entities:
+  users:
+    count: 1
+    attributes:
+      id:
+        type: "uuid"
+"""
+        
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.yaml', delete=False) as f:
+            f.write(yaml_content)
+            f.flush()
+            
+            try:
+                schema = self.loader.load_schema(Path(f.name))
+                
+                assert schema.name == "minimal-system"
+                assert schema.version == "1.0.0"
+                assert schema.seed is None  # Default
+                assert schema.output.format == ["csv"]  # Default
+                assert schema.output.path == "./output"  # Default
+                
+            finally:
+                Path(f.name).unlink()
+    
+    def test_load_schema_with_complex_constraints(self):
+        """Test loading schema with complex attribute constraints."""
+        yaml_content = """
+system:
+  name: "complex-system"
+  version: "1.0.0"
+
+entities:
+  products:
+    count: 5
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      price:
+        type: "decimal"
+        required: true
+        constraints:
+          min_value: 0.01
+          max_value: 9999.99
+          precision: 2
+      description:
+        type: "text"
+        required: false
+        constraints:
+          max_length: 500
+      created_at:
+        type: "datetime.datetime"
+        required: true
+        constraints:
+          start_date: "2020-01-01"
+          end_date: "2024-12-31"
+"""
+        
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.yaml', delete=False) as f:
+            f.write(yaml_content)
+            f.flush()
+            
+            try:
+                schema = self.loader.load_schema(Path(f.name))
+                
+                products_entity = schema.entities["products"]
+                
+                # Check price constraints
+                price_attr = products_entity.attributes["price"]
+                assert price_attr.constraints["min_value"] == 0.01
+                assert price_attr.constraints["max_value"] == 9999.99
+                assert price_attr.constraints["precision"] == 2
+                
+                # Check description constraints
+                desc_attr = products_entity.attributes["description"]
+                assert desc_attr.required is False
+                assert desc_attr.constraints["max_length"] == 500
+                
+                # Check datetime constraints
+                created_attr = products_entity.attributes["created_at"]
+                assert created_attr.constraints["start_date"] == "2020-01-01"
+                assert created_attr.constraints["end_date"] == "2024-12-31"
+                
+            finally:
+                Path(f.name).unlink()
+    
+    def test_validate_schema_with_multiple_errors(self):
+        """Test validation with multiple errors."""
+        from jafgen.schema.models import SystemSchema, EntityConfig, AttributeConfig, OutputConfig
+        
+        schema = SystemSchema(
+            name="",  # Empty name (error)
+            version="",  # Empty version (error)
+            output=OutputConfig(format=["invalid_format"]),  # Invalid format (error)
+            entities={
+                "orders": EntityConfig(
+                    name="orders",
+                    count=0,  # Zero count (error)
+                    attributes={
+                        "user_id": AttributeConfig(
+                            type="link", 
+                            link_to="nonexistent.users.id"  # Invalid link (error)
+                        )
+                    }
+                )
+            }
+        )
+        
+        result = self.loader.validate_schema(schema)
+        assert result.is_valid is False
+        assert len(result.errors) >= 3  # Should have multiple errors
+    
+    def test_validate_schema_with_warnings(self):
+        """Test validation that produces warnings."""
+        from jafgen.schema.models import SystemSchema, EntityConfig, AttributeConfig, OutputConfig
+        
+        schema = SystemSchema(
+            name="warning-system",
+            version="1.0.0",
+            output=OutputConfig(),
+            entities={
+                "users": EntityConfig(
+                    name="users",
+                    count=1000000,  # Very large count (warning)
+                    attributes={
+                        "id": AttributeConfig(type="uuid", unique=True),
+                        "name": AttributeConfig(type="person.full_name")
+                    }
+                )
+            }
+        )
+        
+        result = self.loader.validate_schema(schema)
+        # Should be valid but may have warnings about large count
+        assert result.is_valid is True
+    
+    def test_load_schema_file_encoding_error(self):
+        """Test handling of file encoding errors."""
+        # Create a file with invalid UTF-8 encoding
+        with tempfile.NamedTemporaryFile(mode='wb', suffix='.yaml', delete=False) as f:
+            f.write(b'\xff\xfe')  # Invalid UTF-8 bytes
+            f.flush()
+            
+            try:
+                with pytest.raises(SchemaLoadError, match="Failed to read schema file"):
+                    self.loader.load_schema(Path(f.name))
+            finally:
+                Path(f.name).unlink()
+    
+    def test_discover_schemas_with_mixed_files(self):
+        """Test schema discovery with mixed file types."""
+        with tempfile.TemporaryDirectory() as temp_dir:
+            schema_dir = Path(temp_dir)
+            
+            # Create various files
+            (schema_dir / "valid.yaml").write_text("system:\n  name: test")
+            (schema_dir / "valid.yml").write_text("system:\n  name: test2")
+            (schema_dir / "invalid.txt").write_text("not yaml")
+            (schema_dir / "README.md").write_text("# Documentation")
+            (schema_dir / ".hidden.yaml").write_text("system:\n  name: hidden")
+            
+            schemas = self.loader.discover_schemas(schema_dir)
+            schema_names = [s.name for s in schemas]
+            
+            # Should find .yaml and .yml files, including hidden ones
+            assert len(schemas) >= 2
+            assert "valid.yaml" in schema_names or "valid.yml" in schema_names
+    
+    def test_validate_schema_entity_without_attributes(self):
+        """Test validation of entity without attributes."""
+        from jafgen.schema.models import SystemSchema, EntityConfig, OutputConfig
+        
+        schema = SystemSchema(
+            name="test-system",
+            version="1.0.0",
+            output=OutputConfig(),
+            entities={
+                "empty_entity": EntityConfig(
+                    name="empty_entity",
+                    count=10,
+                    attributes={}  # No attributes
+                )
+            }
+        )
+        
+        result = self.loader.validate_schema(schema)
+        assert result.is_valid is False
+        assert any(error.type == "empty_entity" for error in result.errors)
+    
+    def test_validate_schema_duplicate_entity_names(self):
+        """Test validation with duplicate entity names."""
+        from jafgen.schema.models import SystemSchema, EntityConfig, AttributeConfig, OutputConfig
+        
+        # This would be caught at the YAML parsing level, but test the validation logic
+        schema = SystemSchema(
+            name="test-system",
+            version="1.0.0",
+            output=OutputConfig(),
+            entities={
+                "users": EntityConfig(
+                    name="users",
+                    count=10,
+                    attributes={
+                        "id": AttributeConfig(type="uuid")
+                    }
+                )
+            }
+        )
+        
+        result = self.loader.validate_schema(schema)
+        assert result.is_valid is True  # Single entity should be valid

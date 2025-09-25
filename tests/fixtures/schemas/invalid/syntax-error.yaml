@@ -1,0 +1,7 @@
+system:
+  name: "syntax-error"
+  version: "1.0.0"
+  invalid: [unclosed list
+entities:
+  users:
+    count: 10

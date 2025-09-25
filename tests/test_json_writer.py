@@ -257,3 +257,150 @@ class TestJSONWriter:
         assert len(loaded_data) == 2
         assert loaded_data[0]["middle_name"] is None
         assert loaded_data[1]["email"] is None
+
+
+class TestJSONWriterEdgeCases:
+    """Additional edge case tests for JSONWriter."""
+    
+    def test_write_with_decimal_objects(self, tmp_path: Path):
+        """Test writing data with Decimal objects."""
+        from decimal import Decimal
+        
+        writer = JSONWriter()
+        
+        data = {
+            "products": [
+                {
+                    "id": 1,
+                    "price": Decimal("19.99"),
+                    "tax": Decimal("1.60")
+                }
+            ]
+        }
+        
+        writer.write(data, tmp_path)
+        
+        json_file = tmp_path / "products.json"
+        with open(json_file, 'r', encoding='utf-8') as f:
+            loaded_data = json.load(f)
+        
+        assert len(loaded_data) == 1
+        product = loaded_data[0]
+        assert product["id"] == 1
+        assert float(product["price"]) == 19.99
+        assert float(product["tax"]) == 1.60
+    
+    def test_write_with_custom_encoder_failure(self, tmp_path: Path):
+        """Test handling of custom encoder failures."""
+        writer = JSONWriter()
+        
+        # Create an object that can't be JSON serialized
+        class UnserializableObject:
+            pass
+        
+        data = {
+            "test": [
+                {
+                    "id": 1,
+                    "unserializable": UnserializableObject()
+                }
+            ]
+        }
+        
+        # Should handle the error gracefully
+        with pytest.raises(Exception):  # JSON serialization will fail
+            writer.write(data, tmp_path)
+    
+    def test_write_with_large_numbers(self, tmp_path: Path):
+        """Test writing data with very large numbers."""
+        writer = JSONWriter()
+        
+        data = {
+            "numbers": [
+                {
+                    "id": 1,
+                    "large_int": 9223372036854775807,  # Max int64
+                    "large_float": 1.7976931348623157e+308  # Near max float
+                }
+            ]
+        }
+        
+        writer.write(data, tmp_path)
+        
+        json_file = tmp_path / "numbers.json"
+        with open(json_file, 'r', encoding='utf-8') as f:
+            loaded_data = json.load(f)
+        
+        assert len(loaded_data) == 1
+        number_record = loaded_data[0]
+        assert number_record["large_int"] == 9223372036854775807
+        assert isinstance(number_record["large_float"], float)
+    
+    def test_write_with_special_characters(self, tmp_path: Path):
+        """Test writing data with special characters."""
+        writer = JSONWriter()
+        
+        data = {
+            "users": [
+                {
+                    "id": 1,
+                    "name": "José María",
+                    "bio": "Line 1\nLine 2\tTabbed",
+                    "emoji": "🚀💻"
+                }
+            ]
+        }
+        
+        writer.write(data, tmp_path)
+        
+        json_file = tmp_path / "users.json"
+        with open(json_file, 'r', encoding='utf-8') as f:
+            loaded_data = json.load(f)
+        
+        assert len(loaded_data) == 1
+        user = loaded_data[0]
+        assert user["name"] == "José María"
+        assert "\n" in user["bio"]
+        assert "\t" in user["bio"]
+        assert user["emoji"] == "🚀💻"
+    
+    def test_write_with_file_permission_error(self, tmp_path: Path):
+        """Test handling of file permission errors."""
+        writer = JSONWriter()
+        
+        data = {
+            "test": [{"id": 1}]
+        }
+        
+        # Mock open to raise PermissionError
+        with patch("builtins.open", side_effect=PermissionError("Permission denied")):
+            with pytest.raises(PermissionError):
+                writer.write(data, tmp_path)
+    
+    def test_custom_json_options(self, tmp_path: Path):
+        """Test JSONWriter with various custom options."""
+        writer = JSONWriter(indent=None, ensure_ascii=False, sort_keys=True)
+        
+        data = {
+            "users": [
+                {
+                    "name": "José",
+                    "age": 30,
+                    "city": "São Paulo"
+                }
+            ]
+        }
+        
+        writer.write(data, tmp_path)
+        
+        json_file = tmp_path / "users.json"
+        
+        # Read raw content to check formatting
+        with open(json_file, 'r', encoding='utf-8') as f:
+            content = f.read()
+        
+        # Should not have indentation (compact format)
+        assert "\n" not in content or content.count("\n") <= 1
+        # Should preserve non-ASCII characters
+        assert "José" in content
+        assert "São Paulo" in content

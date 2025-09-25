@@ -1,0 +1,11 @@
+system:
+  # Missing name and version
+  output:
+    format: ["csv"]
+
+entities:
+  users:
+    count: 10
+    attributes:
+      id:
+        type: "uuid"

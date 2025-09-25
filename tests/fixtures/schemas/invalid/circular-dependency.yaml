@@ -1,0 +1,29 @@
+system:
+  name: "circular-dependency"
+  version: "1.0.0"
+  seed: 42
+
+entities:
+  entity_a:
+    count: 5
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      b_ref:
+        type: "link"
+        link_to: "circular-dependency.entity_b.id"
+        required: true
+  
+  entity_b:
+    count: 5
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      a_ref:
+        type: "link"
+        link_to: "circular-dependency.entity_a.id"
+        required: true

@@ -1,0 +1,44 @@
+system:
+  name: "linked-entities"
+  version: "1.0.0"
+  seed: 123
+  output:
+    format: ["csv", "json"]
+    path: "./output"
+
+entities:
+  customers:
+    count: 5
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      name:
+        type: "person.full_name"
+        required: true
+      email:
+        type: "person.email"
+        unique: true
+        required: true
+  
+  orders:
+    count: 15
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      customer_id:
+        type: "link"
+        link_to: "linked-entities.customers.id"
+        required: true
+      total:
+        type: "decimal"
+        required: true
+        constraints:
+          min_value: 5.0
+          max_value: 500.0
+      order_date:
+        type: "datetime.date"
+        required: true
