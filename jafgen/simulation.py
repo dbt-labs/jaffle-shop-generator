@@ -7,6 +7,9 @@ from rich.progress import track
 from jafgen.customers.customers import Customer, CustomerId
 from jafgen.customers.order import Order
 from jafgen.customers.tweet import Tweet
+from jafgen.flowers.generator import FlowerOrderGenerator
+from jafgen.flowers.inventory import FlowerInventory
+from jafgen.flowers.models import FlowerOrder, DeliveryInfo
 from jafgen.stores.inventory import Inventory
 from jafgen.stores.market import Market
 from jafgen.stores.stock import Stock
@@ -59,14 +62,22 @@ class Simulation:
         self.customers: dict[CustomerId, Customer] = {}
         self.orders: list[Order] = []
         self.tweets: list[Tweet] = []
+
+        # Flower shop data
+        self.flower_generator = FlowerOrderGenerator(self.scale)
+        self.flower_orders: list[FlowerOrder] = []
+        self.delivery_info: list[DeliveryInfo] = []
+
         self.sim_days = 365 * self.years + self.days
 
     def run_simulation(self):
         for i in track(
-            range(self.sim_days), description=f"🥪 Pressing {self.sim_days} days of fresh jaffles..."
+            range(self.sim_days), description=f"🥪 Pressing {self.sim_days} days of fresh jaffles and arranging flowers..."
         ):
+            day = Day(i)
+
+            # Generate jaffle shop data
             for market in self.markets:
-                day = Day(i)
                 for order, tweet in market.sim_day(day):
                     if order:
                         self.orders.append(order)
@@ -75,23 +86,33 @@ class Simulation:
                     if tweet:
                         self.tweets.append(tweet)
 
+            # Generate flower shop data
+            daily_flower_orders, daily_deliveries = self.flower_generator.generate_orders_for_day(day)
+            self.flower_orders.extend(daily_flower_orders)
+            self.delivery_info.extend(daily_deliveries)
+
     def save_results(self) -> None:
         stock: Stock = Stock()
         inventory: Inventory = Inventory()
         entities: dict[str, list[dict[str, Any]]] = {
             "customers": [customer.to_dict() for customer in self.customers.values()],
             "orders": [order.to_dict() for order in self.orders],
-            "items": [item.to_dict() for order in self.orders for item in order.items],
+            "items": [item.to_dict(order_id=str(order.id)) for order in self.orders for item in order.items],
             "stores": [market.store.to_dict() for market in self.markets],
             "supplies": stock.to_dict(),
             "products": inventory.to_dict(),
             "tweets": [tweet.to_dict() for tweet in self.tweets],
+            # Flower shop data
+            "flowers": FlowerInventory.flowers_to_dict(),
+            "flower_arrangements": FlowerInventory.arrangements_to_dict(),
+            "delivery_info": [delivery.to_dict() for delivery in self.delivery_info],
+            "flower_orders": [order.to_dict() for order in self.flower_orders],
         }
 
         if not os.path.exists("./jaffle-data"):
             os.makedirs("./jaffle-data")
         for entity, data in track(
-            entities.items(), description="🚚 Delivering jaffles..."
+            entities.items(), description="🚚 Delivering jaffles and flowers..."
         ):
             if data:
                 file = f"./jaffle-data/{self.prefix}_{entity}.csv"

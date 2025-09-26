@@ -24,11 +24,14 @@ class Item:
     def __repr__(self):
         return self.__str__()
 
-    def to_dict(self) -> dict[str, Any]:
-        return {
+    def to_dict(self, order_id: str = None) -> dict[str, Any]:
+        result = {
             "sku": self.sku,
             "name": str(self.name),
             "type": str(self.type),
             "price": int(self.price * 100),
             "description": str(self.description),
         }
+        if order_id is not None:
+            result["order_id"] = order_id
+        return result
