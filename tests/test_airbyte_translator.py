@@ -31,8 +31,8 @@ class TestAirbyteTranslator:
         assert translator._map_json_schema_type("string", "uuid", {}) == "cryptographic.uuid"
         
         # Test numeric types
-        assert translator._map_json_schema_type("integer", None, {}) == "numeric.integer"
-        assert translator._map_json_schema_type("number", None, {}) == "numeric.decimal"
+        assert translator._map_json_schema_type("integer", None, {}) == "integer"
+        assert translator._map_json_schema_type("number", None, {}) == "decimal"
         
         # Test boolean type
         assert translator._map_json_schema_type("boolean", None, {}) == "development.boolean"

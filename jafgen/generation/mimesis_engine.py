@@ -105,6 +105,9 @@ class MimesisEngine(MimesisEngineInterface):
             return self.generic.text.word()[:length]
         elif provider_name == "bool" or provider_name == "boolean":
             return self.generic.development.boolean()
+        elif provider_name == "choice":
+            choices = constraints.get("choices", ["option1", "option2", "option3"])
+            return self.generic.choice(choices)
         
         # Handle provider.method format
         if method_name:

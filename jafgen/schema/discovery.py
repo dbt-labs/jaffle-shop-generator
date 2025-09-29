@@ -81,6 +81,22 @@ class SchemaDiscoveryEngine:
             warnings=all_warnings
         )
     
+    def validate_schemas(self, schemas: List[SystemSchema]) -> ValidationResult:
+        """Validate a list of schemas without loading from files."""
+        if hasattr(self.loader, 'validate_multiple_schemas'):
+            validation_result = self.loader.validate_multiple_schemas(schemas)
+        else:
+            # Fallback to individual validation
+            validation_result = self._validate_schemas_individually(schemas)
+        
+        # Add cross-schema compatibility validation
+        compatibility_result = self.validate_schema_compatibility(schemas)
+        validation_result.errors.extend(compatibility_result.errors)
+        validation_result.warnings.extend(compatibility_result.warnings)
+        validation_result.is_valid = validation_result.is_valid and compatibility_result.is_valid
+        
+        return validation_result
+    
     def get_schema_summary(self, schemas: List[SystemSchema]) -> Dict[str, Dict[str, any]]:
         """Get a summary of discovered schemas."""
         summary = {}

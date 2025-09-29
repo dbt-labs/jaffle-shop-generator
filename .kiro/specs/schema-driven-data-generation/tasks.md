@@ -125,7 +125,7 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 9.4, 9.5_
 
-- [-] 9. Implement Airbyte manifest integration
+- [x] 9. Implement Airbyte manifest integration
   - [x] 9.1 Create AirbyteTranslator for manifest conversion
     - Build parser for Airbyte source manifest.yaml files
     - Implement JSON schema to jafgen attribute type mapping
@@ -134,7 +134,7 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 7.1, 7.2, 7.3_
 
-  - [ ] 9.2 Add manifest import CLI command and validation
+  - [x] 9.2 Add manifest import CLI command and validation
     - Create import-airbyte command for manifest file processing
     - Add validation for translated schemas before saving
     - Implement warning system for unsupported Airbyte features

@@ -16,6 +16,7 @@ from jafgen.output.json_writer import JSONWriter
 from jafgen.output.parquet_writer import ParquetWriter
 from jafgen.output.duckdb_writer import DuckDBWriter
 from jafgen.output.output_manager import OutputManager
+from jafgen.airbyte.translator import AirbyteTranslator
 
 def version_callback(value: bool):
     """Show version information."""
@@ -472,4 +473,196 @@ def list_schemas(
         raise
     except Exception as e:
         console.print(f"[red]Unexpected error:[/red] {e}")
+        raise typer.Exit(1)
+
+
+@app.command()
+def import_airbyte(
+    manifest_file: Annotated[
+        Path,
+        typer.Option(
+            "--manifest-file", "-m",
+            help="Path to Airbyte source manifest.yaml file"
+        )
+    ],
+    output_dir: Annotated[
+        Path,
+        typer.Option(
+            "--output-dir", "-o",
+            help="Directory to save translated schema files"
+        )
+    ] = Path("./schemas"),
+    detect_relationships: Annotated[
+        bool,
+        typer.Option(
+            "--detect-relationships/--no-detect-relationships", "-r",
+            help="Automatically detect and create relationships between entities"
+        )
+    ] = True,
+    validate: Annotated[
+        bool,
+        typer.Option(
+            "--validate/--no-validate",
+            help="Validate translated schemas before saving"
+        )
+    ] = True,
+) -> None:
+    """Import Airbyte source manifest.yaml file and convert to jafgen schemas."""
+    
+    try:
+        # Validate input file
+        if not manifest_file.exists():
+            console.print(f"[red]Error:[/red] Manifest file does not exist: {manifest_file}")
+            raise typer.Exit(1)
+        
+        if not manifest_file.is_file():
+            console.print(f"[red]Error:[/red] Manifest path is not a file: {manifest_file}")
+            raise typer.Exit(1)
+        
+        # Create output directory if it doesn't exist
+        output_dir.mkdir(parents=True, exist_ok=True)
+        
+        console.print(f"[blue]Importing Airbyte manifest:[/blue] {manifest_file}")
+        
+        # Initialize translator
+        translator = AirbyteTranslator()
+        
+        with Progress(
+            SpinnerColumn(),
+            TextColumn("[progress.description]{task.description}"),
+            console=console,
+        ) as progress:
+            
+            # Translate manifest
+            task = progress.add_task("Translating manifest...", total=None)
+            
+            try:
+                schemas = translator.translate_manifest(manifest_file)
+                
+                if not schemas:
+                    console.print("[yellow]No schemas were generated from the manifest.[/yellow]")
+                    return
+                
+                progress.update(task, description=f"Translated {len(schemas)} schema(s)")
+                
+                # Apply relationship detection if requested
+                if detect_relationships:
+                    progress.update(task, description="Detecting relationships...")
+                    schemas = translator.detect_relationships(schemas)
+                
+                # Get translation validation results
+                translation_result = translator.get_validation_result()
+                
+                # Show translation warnings
+                if translation_result.warnings:
+                    console.print(f"\n[yellow]Translation Warnings ({len(translation_result.warnings)}):[/yellow]")
+                    for i, warning in enumerate(translation_result.warnings, 1):
+                        console.print(f"  [yellow]{i}.[/yellow] {warning.message}")
+                        if warning.location:
+                            console.print(f"     [dim]Location:[/dim] {warning.location}")
+                
+                # Check for translation errors
+                if translation_result.errors:
+                    console.print(f"\n[red]Translation Errors ({len(translation_result.errors)}):[/red]")
+                    for i, error in enumerate(translation_result.errors, 1):
+                        console.print(f"  [red]{i}.[/red] {error.message}")
+                        if error.location:
+                            console.print(f"     [dim]Location:[/dim] {error.location}")
+                    
+                    console.print("[red]Translation failed due to errors.[/red]")
+                    raise typer.Exit(1)
+                
+                # Validate translated schemas if requested
+                if validate:
+                    progress.update(task, description="Validating translated schemas...")
+                    
+                    discovery_engine = SchemaDiscoveryEngine()
+                    validation_result = discovery_engine.validate_schemas(schemas)
+                    
+                    if not validation_result.is_valid:
+                        console.print(f"\n[red]Schema Validation Errors ({len(validation_result.errors)}):[/red]")
+                        for i, error in enumerate(validation_result.errors, 1):
+                            console.print(f"  [red]{i}.[/red] {error.message}")
+                            if error.location:
+                                console.print(f"     [dim]Location:[/dim] {error.location}")
+                            if error.suggestion:
+                                console.print(f"     [dim]Suggestion:[/dim] {error.suggestion}")
+                        
+                        console.print("[red]Validation failed. Schemas not saved.[/red]")
+                        raise typer.Exit(1)
+                    
+                    # Show validation warnings
+                    if validation_result.warnings:
+                        console.print(f"\n[yellow]Schema Validation Warnings ({len(validation_result.warnings)}):[/yellow]")
+                        for i, warning in enumerate(validation_result.warnings, 1):
+                            console.print(f"  [yellow]{i}.[/yellow] {warning.message}")
+                            if warning.location:
+                                console.print(f"     [dim]Location:[/dim] {warning.location}")
+                
+                # Save schemas
+                progress.update(task, description="Saving schema files...")
+                
+                saved_files = []
+                for schema in schemas:
+                    schema_filename = f"{schema.name}.yaml"
+                    schema_path = output_dir / schema_filename
+                    
+                    translator.save_schema(schema, schema_path)
+                    saved_files.append(schema_path)
+                
+                progress.update(task, description="Import complete")
+                
+            except Exception as e:
+                console.print(f"[red]Import failed:[/red] {e}")
+                raise typer.Exit(1)
+        
+        # Display success summary
+        console.print(f"\n[green]Successfully imported Airbyte manifest![/green]")
+        console.print(f"[green]Created {len(saved_files)} schema file(s):[/green]")
+        
+        for schema_path in saved_files:
+            console.print(f"  [green]✓[/green] {schema_path}")
+        
+        # Display schema summary
+        console.print(f"\n[blue]Schema Summary:[/blue]")
+        
+        summary_table = Table(show_header=True, header_style="bold blue")
+        summary_table.add_column("Schema")
+        summary_table.add_column("Entities")
+        summary_table.add_column("Total Records")
+        summary_table.add_column("Links")
+        summary_table.add_column("Output Formats")
+        
+        for schema in schemas:
+            entity_count = len(schema.entities)
+            total_records = sum(entity.count for entity in schema.entities.values())
+            link_count = sum(
+                sum(1 for attr in entity.attributes.values() if attr.link_to)
+                for entity in schema.entities.values()
+            )
+            output_formats = ", ".join(schema.output.format if isinstance(schema.output.format, list) else [schema.output.format])
+            
+            summary_table.add_row(
+                schema.name,
+                str(entity_count),
+                str(total_records),
+                str(link_count),
+                output_formats
+            )
+        
+        console.print(summary_table)
+        
+        # Show next steps
+        console.print(f"\n[blue]Next Steps:[/blue]")
+        console.print(f"  1. Review the generated schema files in: {output_dir}")
+        console.print(f"  2. Adjust entity counts and constraints as needed")
+        console.print(f"  3. Generate data with: [bold]jafgen generate --schema-dir {output_dir}[/bold]")
+        
+        if translation_result.warnings:
+            console.print(f"\n[yellow]Note:[/yellow] Review the translation warnings above and adjust schemas if needed.")
+        
+    except typer.Exit:
+        raise
+    except Exception as e:
+        console.print(f"[red]Unexpected error during import:[/red] {e}")
         raise typer.Exit(1)

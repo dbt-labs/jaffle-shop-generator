@@ -33,9 +33,9 @@ class AirbyteTranslator:
         ("string", "ipv4"): "internet.ip_v4",
         ("string", "ipv6"): "internet.ip_v6",
         
-        # Numeric types
-        ("integer", None): "numeric.integer",
-        ("number", None): "numeric.decimal",
+        # Numeric types - use simple types that MimesisEngine handles specially
+        ("integer", None): "integer",
+        ("number", None): "decimal",
         
         # Boolean type
         ("boolean", None): "development.boolean",
