@@ -6,9 +6,10 @@ from pathlib import Path
 from unittest.mock import Mock, patch
 
 import pytest
+import yaml
 
-# These tests are designed to work with the future Airbyte integration
-# They will be skipped until the AirbyteTranslator is implemented
+from jafgen.airbyte.translator import AirbyteTranslator
+from jafgen.schema.models import ValidationError, ValidationWarning
 
 
 class TestAirbyteIntegration:
@@ -105,93 +106,77 @@ class TestAirbyteIntegration:
             ]
         }
     
-    @pytest.mark.skip(reason="Airbyte integration not yet implemented")
     def test_airbyte_manifest_parsing(self, tmp_path: Path, sample_airbyte_manifest):
         """Test parsing of Airbyte manifest files."""
-        # This test will be enabled when AirbyteTranslator is implemented
         manifest_file = tmp_path / "manifest.yaml"
         
         # Write manifest as YAML
-        import yaml
         with open(manifest_file, 'w') as f:
             yaml.dump(sample_airbyte_manifest, f)
         
-        # Future implementation would look like:
-        # from jafgen.airbyte.translator import AirbyteTranslator
-        # translator = AirbyteTranslator()
-        # schemas = translator.translate_manifest(manifest_file)
+        translator = AirbyteTranslator()
+        schemas = translator.translate_manifest(manifest_file)
         
         # Expected assertions:
-        # assert len(schemas) == 1  # One system schema
-        # assert len(schemas[0].entities) == 2  # users and orders entities
+        assert len(schemas) == 1  # One system schema
+        assert len(schemas[0].entities) == 2  # users and orders entities
         
         # Verify entity configurations
-        # users_entity = schemas[0].entities["users"]
-        # assert users_entity.count > 0
-        # assert "id" in users_entity.attributes
-        # assert users_entity.attributes["id"].unique is True
-        # assert users_entity.attributes["email"].type == "person.email"
-        
-        pass  # Placeholder until implementation
+        users_entity = schemas[0].entities["users"]
+        assert users_entity.count > 0
+        assert "id" in users_entity.attributes
+        assert users_entity.attributes["id"].unique is True
+        assert users_entity.attributes["email"].type == "person.email"
     
-    @pytest.mark.skip(reason="Airbyte integration not yet implemented")
     def test_json_schema_type_mapping(self, sample_airbyte_manifest):
         """Test mapping of JSON Schema types to Mimesis types."""
-        # Future implementation would test:
-        # from jafgen.airbyte.translator import AirbyteTranslator
-        # translator = AirbyteTranslator()
+        translator = AirbyteTranslator()
         
         # Test type mappings
-        # assert translator.map_json_type("string", {"format": "email"}) == "person.email"
-        # assert translator.map_json_type("string", {"format": "date-time"}) == "datetime.datetime"
-        # assert translator.map_json_type("integer", {"minimum": 0, "maximum": 120}) == "numeric.integer"
-        # assert translator.map_json_type("number", {}) == "numeric.decimal"
-        
-        pass  # Placeholder until implementation
+        assert translator._map_json_schema_type("string", "email", {}) == "person.email"
+        assert translator._map_json_schema_type("string", "date-time", {}) == "datetime.datetime"
+        assert translator._map_json_schema_type("integer", None, {"minimum": 0, "maximum": 120}) == "numeric.integer"
+        assert translator._map_json_schema_type("number", None, {}) == "numeric.decimal"
     
-    @pytest.mark.skip(reason="Airbyte integration not yet implemented")
-    def test_relationship_detection(self, sample_airbyte_manifest):
+    def test_relationship_detection(self, tmp_path: Path, sample_airbyte_manifest):
         """Test detection and creation of relationships between entities."""
-        # Future test for detecting foreign key relationships
+        manifest_file = tmp_path / "manifest.yaml"
+        
+        with open(manifest_file, 'w') as f:
+            yaml.dump(sample_airbyte_manifest, f)
+        
+        translator = AirbyteTranslator()
+        schemas = translator.translate_manifest(manifest_file)
+        
+        # Apply relationship detection
+        schemas_with_relationships = translator.detect_relationships(schemas)
+        
         # The orders.user_id should be detected as a link to users.id
-        
-        # from jafgen.airbyte.translator import AirbyteTranslator
-        # translator = AirbyteTranslator()
-        # schemas = translator.translate_manifest_with_relationships(manifest_data)
-        
-        # orders_entity = schemas[0].entities["orders"]
-        # user_id_attr = orders_entity.attributes["user_id"]
-        # assert user_id_attr.link_to == "system.users.id"
-        
-        pass  # Placeholder until implementation
+        orders_entity = schemas_with_relationships[0].entities["orders"]
+        user_id_attr = orders_entity.attributes["user_id"]
+        assert user_id_attr.link_to == f"{schemas[0].name}.users.id"
     
-    @pytest.mark.skip(reason="Airbyte integration not yet implemented")
     def test_complex_nested_schema_handling(self, tmp_path: Path, complex_airbyte_manifest):
         """Test handling of complex nested schemas."""
-        # Future test for flattening nested objects or handling them appropriately
-        
         manifest_file = tmp_path / "complex_manifest.yaml"
-        import yaml
+        
         with open(manifest_file, 'w') as f:
             yaml.dump(complex_airbyte_manifest, f)
         
-        # from jafgen.airbyte.translator import AirbyteTranslator
-        # translator = AirbyteTranslator()
-        # schemas = translator.translate_manifest(manifest_file)
+        translator = AirbyteTranslator()
+        schemas = translator.translate_manifest(manifest_file)
         
-        # customers_entity = schemas[0].entities["customers"]
+        customers_entity = schemas[0].entities["customers"]
         
-        # Test flattened attributes
-        # assert "profile_first_name" in customers_entity.attributes
-        # assert "profile_last_name" in customers_entity.attributes
-        # assert "profile_address_street" in customers_entity.attributes
+        # Test that nested objects are handled (converted to text.word with warnings)
+        assert "profile" in customers_entity.attributes
+        assert customers_entity.attributes["profile"].type == "text.word"
         
-        # Or test nested object handling
-        # assert customers_entity.attributes["profile"].type == "object"
-        
-        pass  # Placeholder until implementation
+        # Verify warnings were generated for unsupported nested objects
+        validation_result = translator.get_validation_result()
+        assert len(validation_result.warnings) > 0
+        assert any("Object types not supported" in w.message for w in validation_result.warnings)
     
-    @pytest.mark.skip(reason="Airbyte integration not yet implemented")
     def test_unsupported_features_warning(self, tmp_path: Path):
         """Test warning system for unsupported Airbyte features."""
         # Test manifest with unsupported features
@@ -222,20 +207,19 @@ class TestAirbyteIntegration:
         }
         
         manifest_file = tmp_path / "unsupported_manifest.yaml"
-        import yaml
         with open(manifest_file, 'w') as f:
             yaml.dump(unsupported_manifest, f)
         
-        # from jafgen.airbyte.translator import AirbyteTranslator
-        # translator = AirbyteTranslator()
-        # 
-        # with pytest.warns(UserWarning, match="oneOf not supported"):
-        #     schemas = translator.translate_manifest(manifest_file)
-        # 
-        # with pytest.warns(UserWarning, match="conditional schemas not supported"):
-        #     schemas = translator.translate_manifest(manifest_file)
+        translator = AirbyteTranslator()
+        schemas = translator.translate_manifest(manifest_file)
         
-        pass  # Placeholder until implementation
+        # Check that warnings were generated for unsupported features
+        validation_result = translator.get_validation_result()
+        assert len(validation_result.warnings) > 0
+        
+        # Check for specific warning about oneOf
+        oneOf_warnings = [w for w in validation_result.warnings if "oneOf" in w.message or "Complex schema features" in w.message]
+        assert len(oneOf_warnings) > 0
     
     @pytest.mark.skip(reason="Airbyte integration not yet implemented")
     def test_end_to_end_airbyte_workflow(self, tmp_path: Path, sample_airbyte_manifest):

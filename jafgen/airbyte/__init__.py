@@ -1,0 +1,1 @@
+"""Airbyte integration module for manifest translation."""

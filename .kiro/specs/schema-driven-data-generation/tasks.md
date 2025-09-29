@@ -108,7 +108,7 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 4.5, 4.6_
 
-- [ ] 8. Create comprehensive test suite
+- [x] 8. Create comprehensive test suite
   - [x] 8.1 Build unit test coverage for core components
     - Write unit tests for SchemaLoader, MimesisEngine, and LinkResolver
     - Create tests for all output writers with edge cases
@@ -117,7 +117,7 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 9.1, 9.2, 9.3_
 
-  - [-] 8.2 Add integration and performance tests
+  - [x] 8.2 Add integration and performance tests
     - Create end-to-end integration tests for complete workflows
     - Build tests for large dataset generation and memory usage
     - Add performance benchmarks for generation speed
@@ -125,8 +125,8 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 9.4, 9.5_
 
-- [ ] 9. Implement Airbyte manifest integration
-  - [ ] 9.1 Create AirbyteTranslator for manifest conversion
+- [-] 9. Implement Airbyte manifest integration
+  - [x] 9.1 Create AirbyteTranslator for manifest conversion
     - Build parser for Airbyte source manifest.yaml files
     - Implement JSON schema to jafgen attribute type mapping
     - Create stream definition to entity configuration conversion
