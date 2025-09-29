@@ -27,6 +27,10 @@ class MimesisEngine(MimesisEngineInterface):
         # Maximum retries for unique value generation
         self._max_retries = 1000
     
+    def reset_unique_values(self):
+        """Reset the unique values tracking for fresh generation."""
+        self._unique_values.clear()
+    
     def generate_value(self, attribute_config: AttributeConfig) -> Any:
         """Generate a single value based on attribute configuration."""
         try:

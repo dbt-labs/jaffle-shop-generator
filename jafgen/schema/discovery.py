@@ -155,9 +155,8 @@ class SchemaDiscoveryEngine:
             if path in output_paths:
                 warnings.append(ValidationWarning(
                     type="conflicting_output_path",
-                    message=f"Multiple schemas writing to same output path: {path}",
-                    location="output.path",
-                    suggestion="Consider using different output paths for each schema"
+                    message=f"Multiple schemas writing to same output path: {path}. Consider using different output paths for each schema",
+                    location="output.path"
                 ))
             else:
                 output_paths[path] = schema.name

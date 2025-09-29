@@ -91,7 +91,7 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 6.2, 6.3, 6.5_
 
-- [-] 7. Implement idempotency and output management
+- [x] 7. Implement idempotency and output management
   - [x] 7.1 Add idempotent file generation
     - Implement file overwriting logic instead of appending
     - Create output directory management with proper permissions
@@ -109,7 +109,7 @@
     - _Requirements: 4.5, 4.6_
 
 - [ ] 8. Create comprehensive test suite
-  - [ ] 8.1 Build unit test coverage for core components
+  - [x] 8.1 Build unit test coverage for core components
     - Write unit tests for SchemaLoader, MimesisEngine, and LinkResolver
     - Create tests for all output writers with edge cases
     - Add tests for CLI commands with various argument combinations
@@ -117,7 +117,7 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 9.1, 9.2, 9.3_
 
-  - [ ] 8.2 Add integration and performance tests
+  - [-] 8.2 Add integration and performance tests
     - Create end-to-end integration tests for complete workflows
     - Build tests for large dataset generation and memory usage
     - Add performance benchmarks for generation speed
