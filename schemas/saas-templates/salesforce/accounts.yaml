@@ -1,0 +1,172 @@
+# Salesforce Accounts Schema
+# Generates realistic account data matching Salesforce CRM structure
+
+system:
+  name: "salesforce-accounts"
+  version: "1.0.0"
+  seed: 42
+  output:
+    format: ["csv", "json"]
+    path: "./output/salesforce"
+
+entities:
+  accounts:
+    count: 300
+    attributes:
+      # Core identification
+      Id:
+        type: "uuid"
+        unique: true
+        required: true
+      
+      # Account information
+      Name:
+        type: "text.word"
+        unique: true
+        required: true
+      
+      # Account classification
+      Type:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["Prospect", "Customer - Direct", "Customer - Channel", "Channel Partner / Reseller", "Installation Partner", "Technology Partner", "Other"]
+      
+      Industry:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["Agriculture", "Apparel", "Banking", "Biotechnology", "Chemicals", "Communications", "Construction", "Consulting", "Education", "Electronics", "Energy", "Engineering", "Entertainment", "Environmental", "Finance", "Food & Beverage", "Government", "Healthcare", "Hospitality", "Insurance", "Machinery", "Manufacturing", "Media", "Not For Profit", "Recreation", "Retail", "Shipping", "Technology", "Telecommunications", "Transportation", "Utilities", "Other"]
+      
+      # Business details
+      NumberOfEmployees:
+        type: "integer"
+        required: false
+        constraints:
+          min_value: 1
+          max_value: 100000
+      
+      AnnualRevenue:
+        type: "decimal"
+        required: false
+        constraints:
+          min_value: 50000
+          max_value: 5000000000
+      
+      # Contact information
+      Phone:
+        type: "person.phone_number"
+        required: false
+      
+      Fax:
+        type: "person.phone_number"
+        required: false
+      
+      Website:
+        type: "internet.url"
+        required: false
+      
+      # Billing address
+      BillingStreet:
+        type: "address.address"
+        required: false
+      
+      BillingCity:
+        type: "address.city"
+        required: false
+      
+      BillingState:
+        type: "address.state"
+        required: false
+      
+      BillingPostalCode:
+        type: "address.postal_code"
+        required: false
+      
+      BillingCountry:
+        type: "address.country"
+        required: false
+      
+      # Shipping address
+      ShippingStreet:
+        type: "address.address"
+        required: false
+      
+      ShippingCity:
+        type: "address.city"
+        required: false
+      
+      ShippingState:
+        type: "address.state"
+        required: false
+      
+      ShippingPostalCode:
+        type: "address.postal_code"
+        required: false
+      
+      ShippingCountry:
+        type: "address.country"
+        required: false
+      
+      # Ownership and assignment
+      OwnerId:
+        type: "uuid"
+        required: true
+      
+      # Account status and rating
+      Rating:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["Hot", "Warm", "Cold"]
+      
+      AccountSource:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["Web", "Phone Inquiry", "Partner Referral", "Purchased List", "Other"]
+      
+      # SLA and support
+      SLAExpirationDate__c:
+        type: "datetime.date"
+        required: false
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2026-12-31"
+      
+      SLASerialNumber__c:
+        type: "text.word"
+        required: false
+      
+      SLA__c:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["Gold", "Silver", "Bronze"]
+      
+      # Timestamps
+      CreatedDate:
+        type: "datetime.datetime"
+        required: true
+        constraints:
+          start_date: "2020-01-01"
+          end_date: "2024-12-31"
+      
+      LastModifiedDate:
+        type: "datetime.datetime"
+        required: true
+        constraints:
+          start_date: "2020-01-01"
+          end_date: "2024-12-31"
+      
+      # Description
+      Description:
+        type: "text.sentence"
+        required: false
+        constraints:
+          nb_sentences: 3
+      
+      # Parent account relationship
+      ParentId:
+        type: "uuid"
+        required: false

@@ -1,0 +1,138 @@
+# HubSpot Deals Schema
+# Generates realistic deal data matching HubSpot CRM structure with relationships
+
+system:
+  name: "hubspot-deals"
+  version: "1.0.0"
+  seed: 42
+  output:
+    format: ["csv", "json"]
+    path: "./output/hubspot"
+
+entities:
+  deals:
+    count: 500
+    attributes:
+      # Core identification
+      id:
+        type: "integer"
+        unique: true
+        required: true
+        constraints:
+          min_value: 1
+          max_value: 999999
+      
+      # Deal information
+      dealname:
+        type: "text.title"
+        required: true
+      
+      # Relationships - these would link to contacts and companies in a full system
+      # For now, we'll generate IDs that could reference the other entities
+      hubspot_owner_id:
+        type: "integer"
+        required: true
+        constraints:
+          min_value: 1
+          max_value: 100
+      
+      # Associated company (would link to companies.yaml in full implementation)
+      associatedcompanyid:
+        type: "integer"
+        required: false
+        constraints:
+          min_value: 1
+          max_value: 200  # Matches company count
+      
+      # Associated contact (would link to contacts.yaml in full implementation)  
+      associatedcontactid:
+        type: "integer"
+        required: false
+        constraints:
+          min_value: 1
+          max_value: 1000  # Matches contact count
+      
+      # Deal value and stage
+      amount:
+        type: "decimal"
+        required: true
+        constraints:
+          min_value: 500
+          max_value: 500000
+      
+      dealstage:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["appointmentscheduled", "qualifiedtobuy", "presentationscheduled", "decisionmakerboughtin", "contractsent", "closedwon", "closedlost"]
+      
+      pipeline:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["default", "sales", "marketing"]
+      
+      # Probability and forecasting
+      hs_deal_stage_probability:
+        type: "decimal"
+        required: false
+        constraints:
+          min_value: 0.0
+          max_value: 1.0
+      
+      # Dates
+      createdate:
+        type: "datetime.datetime"
+        required: true
+        constraints:
+          start_date: "2020-01-01"
+          end_date: "2024-12-31"
+      
+      closedate:
+        type: "datetime.date"
+        required: false
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2025-12-31"
+      
+      hs_lastmodifieddate:
+        type: "datetime.datetime"
+        required: true
+        constraints:
+          start_date: "2020-01-01"
+          end_date: "2024-12-31"
+      
+      # Deal source
+      dealtype:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["newbusiness", "existingbusiness", "renewal"]
+      
+      hs_deal_source_id:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["ORGANIC_SEARCH", "PAID_SEARCH", "EMAIL_MARKETING", "SOCIAL_MEDIA", "REFERRALS", "OTHER_CAMPAIGNS", "DIRECT_TRAFFIC", "OFFLINE_SOURCES"]
+      
+      # Additional fields
+      description:
+        type: "text.sentence"
+        required: false
+        constraints:
+          nb_sentences: 2
+      
+      # Deal priority
+      hs_priority:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["HIGH", "MEDIUM", "LOW"]
+      
+      # Number of contacts associated
+      num_associated_contacts:
+        type: "integer"
+        required: false
+        constraints:
+          min_value: 1
+          max_value: 10

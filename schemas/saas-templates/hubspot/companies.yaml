@@ -1,0 +1,143 @@
+# HubSpot Companies Schema
+# Generates realistic company data matching HubSpot CRM structure
+
+system:
+  name: "hubspot-companies"
+  version: "1.0.0"
+  seed: 42
+  output:
+    format: ["csv", "json"]
+    path: "./output/hubspot"
+
+entities:
+  companies:
+    count: 200
+    attributes:
+      # Core identification
+      id:
+        type: "integer"
+        unique: true
+        required: true
+        constraints:
+          min_value: 1
+          max_value: 999999
+      
+      # Company information
+      name:
+        type: "text.word"
+        unique: true
+        required: true
+      
+      domain:
+        type: "text.word"
+        unique: true
+        required: false
+      
+      website:
+        type: "internet.url"
+        required: false
+      
+      # Business details
+      industry:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["TECHNOLOGY", "FINANCIAL_SERVICES", "HEALTHCARE", "MANUFACTURING", "RETAIL", "EDUCATION", "CONSULTING", "REAL_ESTATE", "MEDIA", "NON_PROFIT", "OTHER"]
+      
+      type:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["PROSPECT", "PARTNER", "RESELLER", "VENDOR", "OTHER"]
+      
+      # Size and revenue
+      numberofemployees:
+        type: "integer"
+        required: false
+        constraints:
+          min_value: 1
+          max_value: 50000
+      
+      annualrevenue:
+        type: "decimal"
+        required: false
+        constraints:
+          min_value: 10000
+          max_value: 1000000000
+      
+      # Contact information
+      phone:
+        type: "person.phone_number"
+        required: false
+      
+      # Address information
+      address:
+        type: "address.address"
+        required: false
+      
+      city:
+        type: "address.city"
+        required: false
+      
+      state:
+        type: "address.state"
+        required: false
+      
+      zip:
+        type: "address.postal_code"
+        required: false
+      
+      country:
+        type: "address.country"
+        required: false
+      
+      # HubSpot specific fields
+      hubspot_owner_id:
+        type: "integer"
+        required: false
+        constraints:
+          min_value: 1
+          max_value: 100
+      
+      lifecyclestage:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["subscriber", "lead", "marketingqualifiedlead", "salesqualifiedlead", "opportunity", "customer", "evangelist", "other"]
+      
+      # Timestamps
+      createdate:
+        type: "datetime.datetime"
+        required: true
+        constraints:
+          start_date: "2020-01-01"
+          end_date: "2024-12-31"
+      
+      hs_lastmodifieddate:
+        type: "datetime.datetime"
+        required: true
+        constraints:
+          start_date: "2020-01-01"
+          end_date: "2024-12-31"
+      
+      # Lead source
+      hs_lead_source:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["ORGANIC_SEARCH", "PAID_SEARCH", "EMAIL_MARKETING", "SOCIAL_MEDIA", "REFERRALS", "OTHER_CAMPAIGNS", "DIRECT_TRAFFIC", "OFFLINE_SOURCES"]
+      
+      # Company score
+      hubspotscore:
+        type: "integer"
+        required: false
+        constraints:
+          min_value: 0
+          max_value: 100
+      
+      # Description
+      description:
+        type: "text.sentence"
+        required: false
+        constraints:
+          nb_sentences: 3

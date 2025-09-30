@@ -1,0 +1,192 @@
+# Salesforce Contacts Schema
+# Generates realistic contact data matching Salesforce CRM structure
+
+system:
+  name: "salesforce-contacts"
+  version: "1.0.0"
+  seed: 42
+  output:
+    format: ["csv", "json"]
+    path: "./output/salesforce"
+
+entities:
+  contacts:
+    count: 1200
+    attributes:
+      # Core identification
+      Id:
+        type: "uuid"
+        unique: true
+        required: true
+      
+      # Personal information
+      FirstName:
+        type: "person.first_name"
+        required: true
+      
+      LastName:
+        type: "person.last_name"
+        required: true
+      
+      Salutation:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["Mr.", "Ms.", "Mrs.", "Dr.", "Prof."]
+      
+      # Contact information
+      Email:
+        type: "person.email"
+        unique: true
+        required: false
+      
+      Phone:
+        type: "person.phone_number"
+        required: false
+      
+      MobilePhone:
+        type: "person.phone_number"
+        required: false
+      
+      HomePhone:
+        type: "person.phone_number"
+        required: false
+      
+      Fax:
+        type: "person.phone_number"
+        required: false
+      
+      # Professional information
+      Title:
+        type: "person.occupation"
+        required: false
+      
+      Department:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["Sales", "Marketing", "Engineering", "Support", "Finance", "HR", "Operations", "Executive", "IT", "Legal"]
+      
+      # Account relationship - would link to accounts.yaml in full implementation
+      AccountId:
+        type: "uuid"
+        required: false
+      
+      # Address information
+      MailingStreet:
+        type: "address.address"
+        required: false
+      
+      MailingCity:
+        type: "address.city"
+        required: false
+      
+      MailingState:
+        type: "address.state"
+        required: false
+      
+      MailingPostalCode:
+        type: "address.postal_code"
+        required: false
+      
+      MailingCountry:
+        type: "address.country"
+        required: false
+      
+      # Other address
+      OtherStreet:
+        type: "address.address"
+        required: false
+      
+      OtherCity:
+        type: "address.city"
+        required: false
+      
+      OtherState:
+        type: "address.state"
+        required: false
+      
+      OtherPostalCode:
+        type: "address.postal_code"
+        required: false
+      
+      OtherCountry:
+        type: "address.country"
+        required: false
+      
+      # Ownership and assignment
+      OwnerId:
+        type: "uuid"
+        required: true
+      
+      # Lead source and status
+      LeadSource:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["Web", "Phone Inquiry", "Partner Referral", "Purchased List", "Other"]
+      
+      # Birthdate
+      Birthdate:
+        type: "datetime.date"
+        required: false
+        constraints:
+          start_date: "1950-01-01"
+          end_date: "2000-12-31"
+      
+      # Reports to relationship
+      ReportsToId:
+        type: "uuid"
+        required: false
+      
+      # Assistant information
+      AssistantName:
+        type: "person.full_name"
+        required: false
+      
+      AssistantPhone:
+        type: "person.phone_number"
+        required: false
+      
+      # Timestamps
+      CreatedDate:
+        type: "datetime.datetime"
+        required: true
+        constraints:
+          start_date: "2020-01-01"
+          end_date: "2024-12-31"
+      
+      LastModifiedDate:
+        type: "datetime.datetime"
+        required: true
+        constraints:
+          start_date: "2020-01-01"
+          end_date: "2024-12-31"
+      
+      LastActivityDate:
+        type: "datetime.date"
+        required: false
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2024-12-31"
+      
+      # Description
+      Description:
+        type: "text.sentence"
+        required: false
+        constraints:
+          nb_sentences: 2
+      
+      # Email opt out
+      HasOptedOutOfEmail:
+        type: "choice"
+        required: false
+        constraints:
+          choices: [true, false]
+      
+      # Do not call
+      DoNotCall:
+        type: "choice"
+        required: false
+        constraints:
+          choices: [true, false]

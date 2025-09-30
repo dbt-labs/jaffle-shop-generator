@@ -1,0 +1,170 @@
+# Salesforce Opportunities Schema
+# Generates realistic opportunity data matching Salesforce CRM structure
+
+system:
+  name: "salesforce-opportunities"
+  version: "1.0.0"
+  seed: 42
+  output:
+    format: ["csv", "json"]
+    path: "./output/salesforce"
+
+entities:
+  opportunities:
+    count: 800
+    attributes:
+      # Core identification
+      Id:
+        type: "uuid"
+        unique: true
+        required: true
+      
+      # Opportunity information
+      Name:
+        type: "text.title"
+        required: true
+      
+      # Account relationship - would link to accounts.yaml in full implementation
+      AccountId:
+        type: "uuid"
+        required: true
+      
+      # Ownership
+      OwnerId:
+        type: "uuid"
+        required: true
+      
+      # Opportunity details
+      Amount:
+        type: "decimal"
+        required: false
+        constraints:
+          min_value: 1000
+          max_value: 1000000
+      
+      CloseDate:
+        type: "datetime.date"
+        required: true
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2025-12-31"
+      
+      StageName:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["Prospecting", "Qualification", "Needs Analysis", "Value Proposition", "Id. Decision Makers", "Perception Analysis", "Proposal/Price Quote", "Negotiation/Review", "Closed Won", "Closed Lost"]
+      
+      Probability:
+        type: "decimal"
+        required: false
+        constraints:
+          min_value: 0
+          max_value: 100
+      
+      # Opportunity type and source
+      Type:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["Existing Customer - Upgrade", "Existing Customer - Replacement", "Existing Customer - Downgrade", "New Customer"]
+      
+      LeadSource:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["Web", "Phone Inquiry", "Partner Referral", "Purchased List", "Other"]
+      
+      # Campaign
+      CampaignId:
+        type: "uuid"
+        required: false
+      
+      # Forecast and territory
+      ForecastCategoryName:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["Pipeline", "Best Case", "Commit", "Omitted", "Closed"]
+      
+      # Competitive information
+      HasCompetitors__c:
+        type: "choice"
+        required: false
+        constraints:
+          choices: [true, false]
+      
+      CompetitorNames__c:
+        type: "text.word"
+        required: false
+      
+      # Delivery and installation
+      DeliveryInstallationStatus__c:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["In progress", "Yet to begin", "Completed"]
+      
+      # Tracking fields
+      TrackingNumber__c:
+        type: "text.word"
+        required: false
+      
+      OrderNumber__c:
+        type: "text.word"
+        required: false
+      
+      # Primary contact - would link to contacts.yaml in full implementation
+      Primary_Contact__c:
+        type: "uuid"
+        required: false
+      
+      # Timestamps
+      CreatedDate:
+        type: "datetime.datetime"
+        required: true
+        constraints:
+          start_date: "2020-01-01"
+          end_date: "2024-12-31"
+      
+      LastModifiedDate:
+        type: "datetime.datetime"
+        required: true
+        constraints:
+          start_date: "2020-01-01"
+          end_date: "2024-12-31"
+      
+      LastActivityDate:
+        type: "datetime.date"
+        required: false
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2024-12-31"
+      
+      # Description and next steps
+      Description:
+        type: "text.sentence"
+        required: false
+        constraints:
+          nb_sentences: 3
+      
+      NextStep:
+        type: "text.sentence"
+        required: false
+        constraints:
+          nb_sentences: 1
+      
+      # Loss reason (for closed lost opportunities)
+      Loss_Reason__c:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["Price", "Competitor", "No Budget", "No Decision", "Other"]
+      
+      # Expected revenue
+      ExpectedRevenue:
+        type: "decimal"
+        required: false
+        constraints:
+          min_value: 500
+          max_value: 500000
