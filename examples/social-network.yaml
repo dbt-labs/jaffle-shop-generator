@@ -1,0 +1,191 @@
+# Social Network Example
+# Demonstrates complex relationships including self-referencing entities
+
+system:
+  name: "social-network"
+  version: "1.0.0"
+  seed: 789
+  output:
+    format: ["csv", "parquet"]
+    path: "./output"
+
+entities:
+  users:
+    count: 1000
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      username:
+        type: "person.username"
+        unique: true
+        required: true
+      email:
+        type: "person.email"
+        unique: true
+        required: true
+      display_name:
+        type: "person.full_name"
+        required: true
+      bio:
+        type: "text.sentence"
+        required: false
+        constraints:
+          nb_words: 15
+      profile_picture_url:
+        type: "internet.url"
+        required: false
+      location:
+        type: "address.city"
+        required: false
+      birth_date:
+        type: "datetime.date"
+        constraints:
+          start_date: "1980-01-01"
+          end_date: "2005-12-31"
+      joined_at:
+        type: "datetime.datetime"
+        constraints:
+          start_date: "2018-01-01T00:00:00"
+          end_date: "2024-12-31T23:59:59"
+      is_verified:
+        type: "development.boolean"
+        required: true
+      follower_count:
+        type: "numeric.integer"
+        constraints:
+          min_value: 0
+          max_value: 10000
+      following_count:
+        type: "numeric.integer"
+        constraints:
+          min_value: 0
+          max_value: 1000
+
+  posts:
+    count: 5000
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      user_id:
+        type: "link"
+        link_to: "social-network.users.id"
+        required: true
+      content:
+        type: "text.sentence"
+        constraints:
+          nb_words: 25
+      image_url:
+        type: "internet.url"
+        required: false
+      created_at:
+        type: "datetime.datetime"
+        constraints:
+          start_date: "2020-01-01T00:00:00"
+          end_date: "2024-12-31T23:59:59"
+      like_count:
+        type: "numeric.integer"
+        constraints:
+          min_value: 0
+          max_value: 1000
+      comment_count:
+        type: "numeric.integer"
+        constraints:
+          min_value: 0
+          max_value: 100
+      share_count:
+        type: "numeric.integer"
+        constraints:
+          min_value: 0
+          max_value: 50
+      is_public:
+        type: "development.boolean"
+        required: true
+      hashtags:
+        type: "text.word"
+        required: false
+
+  comments:
+    count: 10000
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      post_id:
+        type: "link"
+        link_to: "social-network.posts.id"
+        required: true
+      user_id:
+        type: "link"
+        link_to: "social-network.users.id"
+        required: true
+      parent_comment_id:
+        type: "link"
+        link_to: "social-network.comments.id"
+        required: false
+      content:
+        type: "text.sentence"
+        constraints:
+          nb_words: 12
+      created_at:
+        type: "datetime.datetime"
+        constraints:
+          start_date: "2020-01-01T00:00:00"
+          end_date: "2024-12-31T23:59:59"
+      like_count:
+        type: "numeric.integer"
+        constraints:
+          min_value: 0
+          max_value: 100
+      is_edited:
+        type: "development.boolean"
+        required: true
+
+  follows:
+    count: 3000
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      follower_id:
+        type: "link"
+        link_to: "social-network.users.id"
+        required: true
+      following_id:
+        type: "link"
+        link_to: "social-network.users.id"
+        required: true
+      created_at:
+        type: "datetime.datetime"
+        constraints:
+          start_date: "2018-01-01T00:00:00"
+          end_date: "2024-12-31T23:59:59"
+      is_mutual:
+        type: "development.boolean"
+        required: true
+
+  likes:
+    count: 15000
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      user_id:
+        type: "link"
+        link_to: "social-network.users.id"
+        required: true
+      post_id:
+        type: "link"
+        link_to: "social-network.posts.id"
+        required: true
+      created_at:
+        type: "datetime.datetime"
+        constraints:
+          start_date: "2020-01-01T00:00:00"
+          end_date: "2024-12-31T23:59:59"

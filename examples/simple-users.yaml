@@ -1,0 +1,50 @@
+# Simple Users Example
+# Demonstrates basic entity definition with common attribute types
+
+system:
+  name: "simple-users"
+  version: "1.0.0"
+  seed: 42
+  output:
+    format: ["csv"]
+    path: "./output"
+
+entities:
+  users:
+    count: 100
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      first_name:
+        type: "person.first_name"
+        required: true
+      last_name:
+        type: "person.last_name"
+        required: true
+      email:
+        type: "person.email"
+        unique: true
+        required: true
+      phone:
+        type: "person.phone_number"
+        required: false
+      birth_date:
+        type: "datetime.date"
+        constraints:
+          start_date: "1970-01-01"
+          end_date: "2005-12-31"
+      created_at:
+        type: "datetime.datetime"
+        constraints:
+          start_date: "2020-01-01T00:00:00"
+          end_date: "2024-12-31T23:59:59"
+      is_active:
+        type: "development.boolean"
+        required: true
+      bio:
+        type: "text.sentence"
+        required: false
+        constraints:
+          nb_words: 10

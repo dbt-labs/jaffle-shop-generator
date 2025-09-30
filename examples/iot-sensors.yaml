@@ -1,0 +1,208 @@
+# IoT Sensors Example
+# Demonstrates time series data with constraints and patterns
+
+system:
+  name: "iot-sensors"
+  version: "1.0.0"
+  seed: 101
+  output:
+    format: ["csv", "parquet", "duckdb"]
+    path: "./output"
+
+entities:
+  devices:
+    count: 50
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      device_id:
+        type: "code.ean8"
+        unique: true
+        required: true
+      name:
+        type: "text.word"
+        required: true
+      device_type:
+        type: "choice"
+        constraints:
+          choices: ["temperature", "humidity", "pressure", "motion", "light", "air_quality"]
+      location:
+        type: "address.address"
+        required: true
+      building:
+        type: "text.word"
+        required: true
+      floor:
+        type: "numeric.integer"
+        constraints:
+          min_value: 1
+          max_value: 20
+      room:
+        type: "text.word"
+        required: true
+      manufacturer:
+        type: "choice"
+        constraints:
+          choices: ["SensorTech", "IoTCorp", "SmartDevices", "TechSolutions", "DataSense"]
+      model:
+        type: "text.word"
+        required: true
+      firmware_version:
+        type: "development.version"
+        required: true
+      installed_at:
+        type: "datetime.datetime"
+        constraints:
+          start_date: "2020-01-01T00:00:00"
+          end_date: "2024-12-31T23:59:59"
+      is_active:
+        type: "development.boolean"
+        required: true
+      battery_level:
+        type: "numeric.integer"
+        constraints:
+          min_value: 0
+          max_value: 100
+
+  sensor_readings:
+    count: 50000
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      device_id:
+        type: "link"
+        link_to: "iot-sensors.devices.id"
+        required: true
+      timestamp:
+        type: "datetime.datetime"
+        constraints:
+          start_date: "2024-01-01T00:00:00"
+          end_date: "2024-12-31T23:59:59"
+      value:
+        type: "numeric.decimal"
+        constraints:
+          min_value: -50.0
+          max_value: 150.0
+          precision: 2
+      unit:
+        type: "choice"
+        constraints:
+          choices: ["celsius", "fahrenheit", "percent", "pascal", "lux", "ppm", "boolean"]
+      quality_score:
+        type: "numeric.decimal"
+        constraints:
+          min_value: 0.0
+          max_value: 1.0
+          precision: 3
+      is_anomaly:
+        type: "development.boolean"
+        required: true
+      raw_value:
+        type: "numeric.decimal"
+        constraints:
+          min_value: -100.0
+          max_value: 200.0
+          precision: 4
+
+  alerts:
+    count: 500
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      device_id:
+        type: "link"
+        link_to: "iot-sensors.devices.id"
+        required: true
+      alert_type:
+        type: "choice"
+        constraints:
+          choices: ["threshold_exceeded", "device_offline", "battery_low", "sensor_malfunction", "data_anomaly"]
+      severity:
+        type: "choice"
+        constraints:
+          choices: ["low", "medium", "high", "critical"]
+      message:
+        type: "text.sentence"
+        constraints:
+          nb_words: 10
+      triggered_at:
+        type: "datetime.datetime"
+        constraints:
+          start_date: "2024-01-01T00:00:00"
+          end_date: "2024-12-31T23:59:59"
+      resolved_at:
+        type: "datetime.datetime"
+        required: false
+        constraints:
+          start_date: "2024-01-01T00:00:00"
+          end_date: "2024-12-31T23:59:59"
+      is_resolved:
+        type: "development.boolean"
+        required: true
+      threshold_value:
+        type: "numeric.decimal"
+        required: false
+        constraints:
+          min_value: -50.0
+          max_value: 150.0
+          precision: 2
+      actual_value:
+        type: "numeric.decimal"
+        required: false
+        constraints:
+          min_value: -100.0
+          max_value: 200.0
+          precision: 2
+
+  maintenance_logs:
+    count: 200
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      device_id:
+        type: "link"
+        link_to: "iot-sensors.devices.id"
+        required: true
+      maintenance_type:
+        type: "choice"
+        constraints:
+          choices: ["calibration", "battery_replacement", "firmware_update", "cleaning", "repair", "inspection"]
+      performed_by:
+        type: "person.full_name"
+        required: true
+      performed_at:
+        type: "datetime.datetime"
+        constraints:
+          start_date: "2020-01-01T00:00:00"
+          end_date: "2024-12-31T23:59:59"
+      duration_minutes:
+        type: "numeric.integer"
+        constraints:
+          min_value: 5
+          max_value: 240
+      notes:
+        type: "text.sentence"
+        required: false
+        constraints:
+          nb_words: 20
+      cost:
+        type: "numeric.decimal"
+        required: false
+        constraints:
+          min_value: 0.00
+          max_value: 500.00
+          precision: 2
+      next_maintenance_due:
+        type: "datetime.date"
+        required: false
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2025-12-31"

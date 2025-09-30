@@ -1,0 +1,133 @@
+# Multi-Format Output Example
+# Demonstrates generating data in multiple output formats simultaneously
+
+system:
+  name: "multi-format"
+  version: "1.0.0"
+  seed: 456
+  output:
+    format: ["csv", "json", "parquet", "duckdb"]
+    path: "./output"
+
+entities:
+  employees:
+    count: 200
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      employee_number:
+        type: "numeric.integer"
+        unique: true
+        constraints:
+          min_value: 1000
+          max_value: 9999
+      first_name:
+        type: "person.first_name"
+        required: true
+      last_name:
+        type: "person.last_name"
+        required: true
+      email:
+        type: "person.email"
+        unique: true
+        required: true
+      department:
+        type: "choice"
+        constraints:
+          choices: ["Engineering", "Sales", "Marketing", "HR", "Finance", "Operations"]
+      position:
+        type: "person.occupation"
+        required: true
+      salary:
+        type: "numeric.decimal"
+        constraints:
+          min_value: 40000.00
+          max_value: 200000.00
+          precision: 2
+      hire_date:
+        type: "datetime.date"
+        constraints:
+          start_date: "2015-01-01"
+          end_date: "2024-12-31"
+      is_manager:
+        type: "development.boolean"
+        required: true
+      office_location:
+        type: "address.city"
+        required: true
+
+  projects:
+    count: 50
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      name:
+        type: "text.word"
+        required: true
+      description:
+        type: "text.sentence"
+        constraints:
+          nb_words: 20
+      start_date:
+        type: "datetime.date"
+        constraints:
+          start_date: "2020-01-01"
+          end_date: "2024-12-31"
+      end_date:
+        type: "datetime.date"
+        constraints:
+          start_date: "2020-06-01"
+          end_date: "2025-12-31"
+      budget:
+        type: "numeric.decimal"
+        constraints:
+          min_value: 10000.00
+          max_value: 500000.00
+          precision: 2
+      status:
+        type: "choice"
+        constraints:
+          choices: ["planning", "active", "on-hold", "completed", "cancelled"]
+      priority:
+        type: "choice"
+        constraints:
+          choices: ["low", "medium", "high", "critical"]
+
+  project_assignments:
+    count: 400
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      employee_id:
+        type: "link"
+        link_to: "multi-format.employees.id"
+        required: true
+      project_id:
+        type: "link"
+        link_to: "multi-format.projects.id"
+        required: true
+      role:
+        type: "choice"
+        constraints:
+          choices: ["lead", "developer", "analyst", "tester", "designer"]
+      allocation_percentage:
+        type: "numeric.integer"
+        constraints:
+          min_value: 10
+          max_value: 100
+      start_date:
+        type: "datetime.date"
+        constraints:
+          start_date: "2020-01-01"
+          end_date: "2024-12-31"
+      end_date:
+        type: "datetime.date"
+        constraints:
+          start_date: "2020-03-01"
+          end_date: "2025-12-31"

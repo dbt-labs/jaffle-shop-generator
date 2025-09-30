@@ -144,9 +144,19 @@ jafgen run 3 --pre cool --days 30
 - `--days [int]` Additional days to generate
 - `--pre [string]` Prefix for output files (default: "raw")
 
-## Migration Guide
+## Documentation
 
-Migrating from legacy to schema-driven generation? See our [Migration Guide](MIGRATION_GUIDE.md) for step-by-step instructions.
+### Getting Started
+- **[Tutorial](TUTORIAL.md)** - Step-by-step guide with common use cases
+- **[Examples](examples/)** - Ready-to-use schema examples
+- **[Migration Guide](MIGRATION_GUIDE.md)** - Migrate from legacy to schema-driven generation
+
+### Reference
+- **[API Documentation](API_DOCUMENTATION.md)** - Programmatic usage and API reference
+- **[Command Reference](#command-reference)** - Complete CLI command documentation
+
+### Templates
+- **[SaaS Templates](schemas/saas-templates/)** - Pre-built schemas for popular systems
 
 ## Advanced Features
 

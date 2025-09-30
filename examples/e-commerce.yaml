@@ -1,0 +1,146 @@
+# E-commerce Example
+# Demonstrates linked entities with foreign key relationships
+
+system:
+  name: "e-commerce"
+  version: "1.0.0"
+  seed: 123
+  output:
+    format: ["csv", "json"]
+    path: "./output"
+
+entities:
+  customers:
+    count: 500
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      email:
+        type: "person.email"
+        unique: true
+        required: true
+      first_name:
+        type: "person.first_name"
+        required: true
+      last_name:
+        type: "person.last_name"
+        required: true
+      phone:
+        type: "person.phone_number"
+        required: false
+      address:
+        type: "address.address"
+        required: false
+      city:
+        type: "address.city"
+        required: false
+      country:
+        type: "address.country"
+        required: false
+      created_at:
+        type: "datetime.datetime"
+        constraints:
+          start_date: "2020-01-01T00:00:00"
+          end_date: "2024-12-31T23:59:59"
+
+  products:
+    count: 100
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      name:
+        type: "text.word"
+        required: true
+      description:
+        type: "text.sentence"
+        constraints:
+          nb_words: 15
+      price:
+        type: "numeric.decimal"
+        constraints:
+          min_value: 5.00
+          max_value: 500.00
+          precision: 2
+      category:
+        type: "choice"
+        constraints:
+          choices: ["Electronics", "Clothing", "Books", "Home", "Sports"]
+      sku:
+        type: "code.ean13"
+        unique: true
+        required: true
+      in_stock:
+        type: "development.boolean"
+        required: true
+
+  orders:
+    count: 2000
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      customer_id:
+        type: "link"
+        link_to: "e-commerce.customers.id"
+        required: true
+      order_date:
+        type: "datetime.datetime"
+        constraints:
+          start_date: "2020-01-01T00:00:00"
+          end_date: "2024-12-31T23:59:59"
+      status:
+        type: "choice"
+        constraints:
+          choices: ["pending", "processing", "shipped", "delivered", "cancelled"]
+      total_amount:
+        type: "numeric.decimal"
+        constraints:
+          min_value: 10.00
+          max_value: 1000.00
+          precision: 2
+      shipping_address:
+        type: "address.address"
+        required: true
+      notes:
+        type: "text.sentence"
+        required: false
+        constraints:
+          nb_words: 8
+
+  order_items:
+    count: 5000
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      order_id:
+        type: "link"
+        link_to: "e-commerce.orders.id"
+        required: true
+      product_id:
+        type: "link"
+        link_to: "e-commerce.products.id"
+        required: true
+      quantity:
+        type: "numeric.integer"
+        constraints:
+          min_value: 1
+          max_value: 10
+      unit_price:
+        type: "numeric.decimal"
+        constraints:
+          min_value: 5.00
+          max_value: 500.00
+          precision: 2
+      line_total:
+        type: "numeric.decimal"
+        constraints:
+          min_value: 5.00
+          max_value: 5000.00
+          precision: 2

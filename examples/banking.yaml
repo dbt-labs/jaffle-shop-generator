@@ -1,0 +1,365 @@
+# Banking Example
+# Demonstrates financial data with decimal precision, date ranges, and business rules
+
+system:
+  name: "banking"
+  version: "1.0.0"
+  seed: 202
+  output:
+    format: ["csv", "json", "duckdb"]
+    path: "./output"
+
+entities:
+  customers:
+    count: 1000
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      customer_number:
+        type: "numeric.integer"
+        unique: true
+        constraints:
+          min_value: 100000
+          max_value: 999999
+      first_name:
+        type: "person.first_name"
+        required: true
+      last_name:
+        type: "person.last_name"
+        required: true
+      email:
+        type: "person.email"
+        unique: true
+        required: true
+      phone:
+        type: "person.phone_number"
+        required: true
+      date_of_birth:
+        type: "datetime.date"
+        constraints:
+          start_date: "1940-01-01"
+          end_date: "2005-12-31"
+      ssn:
+        type: "person.identifier"
+        unique: true
+        required: true
+      address:
+        type: "address.address"
+        required: true
+      city:
+        type: "address.city"
+        required: true
+      state:
+        type: "address.state"
+        required: true
+      zip_code:
+        type: "address.zip_code"
+        required: true
+      country:
+        type: "address.country"
+        required: true
+      customer_since:
+        type: "datetime.date"
+        constraints:
+          start_date: "2000-01-01"
+          end_date: "2024-12-31"
+      credit_score:
+        type: "numeric.integer"
+        constraints:
+          min_value: 300
+          max_value: 850
+      annual_income:
+        type: "numeric.decimal"
+        constraints:
+          min_value: 20000.00
+          max_value: 500000.00
+          precision: 2
+      employment_status:
+        type: "choice"
+        constraints:
+          choices: ["employed", "self_employed", "unemployed", "retired", "student"]
+      is_vip:
+        type: "development.boolean"
+        required: true
+
+  accounts:
+    count: 2500
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      account_number:
+        type: "numeric.integer"
+        unique: true
+        constraints:
+          min_value: 1000000000
+          max_value: 9999999999
+      customer_id:
+        type: "link"
+        link_to: "banking.customers.id"
+        required: true
+      account_type:
+        type: "choice"
+        constraints:
+          choices: ["checking", "savings", "money_market", "cd", "credit_card", "loan"]
+      account_name:
+        type: "text.word"
+        required: true
+      balance:
+        type: "numeric.decimal"
+        constraints:
+          min_value: -10000.00
+          max_value: 1000000.00
+          precision: 2
+      available_balance:
+        type: "numeric.decimal"
+        constraints:
+          min_value: -10000.00
+          max_value: 1000000.00
+          precision: 2
+      interest_rate:
+        type: "numeric.decimal"
+        constraints:
+          min_value: 0.00
+          max_value: 25.00
+          precision: 4
+      opened_date:
+        type: "datetime.date"
+        constraints:
+          start_date: "2000-01-01"
+          end_date: "2024-12-31"
+      status:
+        type: "choice"
+        constraints:
+          choices: ["active", "inactive", "closed", "frozen", "pending"]
+      minimum_balance:
+        type: "numeric.decimal"
+        constraints:
+          min_value: 0.00
+          max_value: 10000.00
+          precision: 2
+      overdraft_limit:
+        type: "numeric.decimal"
+        constraints:
+          min_value: 0.00
+          max_value: 5000.00
+          precision: 2
+
+  transactions:
+    count: 50000
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      transaction_id:
+        type: "code.ean13"
+        unique: true
+        required: true
+      account_id:
+        type: "link"
+        link_to: "banking.accounts.id"
+        required: true
+      transaction_date:
+        type: "datetime.datetime"
+        constraints:
+          start_date: "2020-01-01T00:00:00"
+          end_date: "2024-12-31T23:59:59"
+      transaction_type:
+        type: "choice"
+        constraints:
+          choices: ["deposit", "withdrawal", "transfer", "payment", "fee", "interest", "refund"]
+      amount:
+        type: "numeric.decimal"
+        constraints:
+          min_value: -10000.00
+          max_value: 50000.00
+          precision: 2
+      balance_after:
+        type: "numeric.decimal"
+        constraints:
+          min_value: -10000.00
+          max_value: 1000000.00
+          precision: 2
+      description:
+        type: "text.sentence"
+        constraints:
+          nb_words: 8
+      merchant_name:
+        type: "company.company"
+        required: false
+      merchant_category:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["grocery", "gas", "restaurant", "retail", "healthcare", "entertainment", "travel", "utilities"]
+      reference_number:
+        type: "code.ean8"
+        required: false
+      is_pending:
+        type: "development.boolean"
+        required: true
+      channel:
+        type: "choice"
+        constraints:
+          choices: ["atm", "online", "mobile", "branch", "phone", "auto_pay"]
+
+  loans:
+    count: 800
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      loan_number:
+        type: "numeric.integer"
+        unique: true
+        constraints:
+          min_value: 10000000
+          max_value: 99999999
+      customer_id:
+        type: "link"
+        link_to: "banking.customers.id"
+        required: true
+      loan_type:
+        type: "choice"
+        constraints:
+          choices: ["mortgage", "auto", "personal", "student", "business", "home_equity"]
+      principal_amount:
+        type: "numeric.decimal"
+        constraints:
+          min_value: 1000.00
+          max_value: 1000000.00
+          precision: 2
+      current_balance:
+        type: "numeric.decimal"
+        constraints:
+          min_value: 0.00
+          max_value: 1000000.00
+          precision: 2
+      interest_rate:
+        type: "numeric.decimal"
+        constraints:
+          min_value: 2.00
+          max_value: 30.00
+          precision: 4
+      term_months:
+        type: "numeric.integer"
+        constraints:
+          min_value: 6
+          max_value: 360
+      monthly_payment:
+        type: "numeric.decimal"
+        constraints:
+          min_value: 50.00
+          max_value: 10000.00
+          precision: 2
+      origination_date:
+        type: "datetime.date"
+        constraints:
+          start_date: "2015-01-01"
+          end_date: "2024-12-31"
+      maturity_date:
+        type: "datetime.date"
+        constraints:
+          start_date: "2016-01-01"
+          end_date: "2054-12-31"
+      status:
+        type: "choice"
+        constraints:
+          choices: ["current", "past_due", "default", "paid_off", "charged_off"]
+      next_payment_date:
+        type: "datetime.date"
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2025-12-31"
+      collateral_value:
+        type: "numeric.decimal"
+        required: false
+        constraints:
+          min_value: 1000.00
+          max_value: 2000000.00
+          precision: 2
+
+  credit_cards:
+    count: 1500
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      card_number:
+        type: "payment.credit_card_number"
+        unique: true
+        required: true
+      customer_id:
+        type: "link"
+        link_to: "banking.customers.id"
+        required: true
+      card_type:
+        type: "choice"
+        constraints:
+          choices: ["visa", "mastercard", "amex", "discover"]
+      card_name:
+        type: "text.word"
+        required: true
+      credit_limit:
+        type: "numeric.decimal"
+        constraints:
+          min_value: 500.00
+          max_value: 50000.00
+          precision: 2
+      current_balance:
+        type: "numeric.decimal"
+        constraints:
+          min_value: 0.00
+          max_value: 50000.00
+          precision: 2
+      available_credit:
+        type: "numeric.decimal"
+        constraints:
+          min_value: 0.00
+          max_value: 50000.00
+          precision: 2
+      apr:
+        type: "numeric.decimal"
+        constraints:
+          min_value: 8.99
+          max_value: 29.99
+          precision: 2
+      minimum_payment:
+        type: "numeric.decimal"
+        constraints:
+          min_value: 0.00
+          max_value: 1000.00
+          precision: 2
+      issue_date:
+        type: "datetime.date"
+        constraints:
+          start_date: "2015-01-01"
+          end_date: "2024-12-31"
+      expiration_date:
+        type: "datetime.date"
+        constraints:
+          start_date: "2025-01-01"
+          end_date: "2030-12-31"
+      status:
+        type: "choice"
+        constraints:
+          choices: ["active", "inactive", "closed", "frozen", "suspended"]
+      last_payment_date:
+        type: "datetime.date"
+        required: false
+        constraints:
+          start_date: "2020-01-01"
+          end_date: "2024-12-31"
+      last_payment_amount:
+        type: "numeric.decimal"
+        required: false
+        constraints:
+          min_value: 0.00
+          max_value: 10000.00
+          precision: 2
