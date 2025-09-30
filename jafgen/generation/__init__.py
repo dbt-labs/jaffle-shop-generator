@@ -7,7 +7,7 @@ from .models import DependencyGraph, GeneratedSystem, GenerationMetadata
 
 __all__ = [
     "DataGenerator",
-    "LinkResolver", 
+    "LinkResolver",
     "MimesisEngine",
     "DependencyGraph",
     "GeneratedSystem",

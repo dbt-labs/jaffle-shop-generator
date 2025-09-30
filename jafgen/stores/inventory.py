@@ -13,14 +13,14 @@ class Inventory:
 
     @classmethod
     def update(cls, inventory_list: list[Item]):
-        cls.inventory[ItemType.JAFFLE]= []
+        cls.inventory[ItemType.JAFFLE] = []
         cls.inventory[ItemType.BEVERAGE] = []
         for item in inventory_list:
             cls.inventory[item.type].append(item)
 
     @classmethod
     def get_item_type(cls, type: ItemType, count: int = 1):
-        return [fake.random.choice(cls.inventory[type])for _ in range(count)]
+        return [fake.random.choice(cls.inventory[type]) for _ in range(count)]
 
     @classmethod
     def to_dict(cls) -> list[dict[str, Any]]:
@@ -61,7 +61,9 @@ Inventory.update(
             price=14,
         ),
         Item(
-            sku=SKU("JAF-005"), name="mel-bun", description="melon and minced beef bao, in a jaffle, savory and sweet",
+            sku=SKU("JAF-005"),
+            name="mel-bun",
+            description="melon and minced beef bao, in a jaffle, savory and sweet",
             type=ItemType.JAFFLE,
             price=12,
         ),

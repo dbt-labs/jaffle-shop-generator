@@ -1,9 +1,17 @@
 pre-commit:
   commands:
-    # ruff:
-      # run: .venv/bin/ruff check --fix
-    pyright:
-      run: .venv/bin/pyright
+    black:
+      run: black --check --diff {staged_files}
+      glob: "*.py"
+    isort:
+      run: isort --check-only --diff {staged_files}
+      glob: "*.py"
+    mypy:
+      run: mypy {staged_files}
+      glob: "*.py"
+    ruff:
+      run: ruff check {staged_files}
+      glob: "*.py"
 
 commit-msg:
   template-checker:

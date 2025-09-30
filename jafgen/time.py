@@ -57,6 +57,7 @@ class Season(str, Enum):
 
         return cls.WINTER
 
+
 @dataclass(init=False)
 class Day:
     EPOCH = dt.datetime(year=2023, month=9, day=1)
@@ -99,6 +100,7 @@ class Day:
     def total_minutes(self) -> int:
         return self.date.hour * 60 + self.date.minute
 
+
 @dataclass(frozen=True)
 class DayHoursOfOperation:
     opens_at: dt.time
@@ -115,6 +117,7 @@ class DayHoursOfOperation:
     def iter_minutes(self) -> Iterator[int]:
         for minute in range(self.total_minutes_open):
             yield minute
+
 
 @dataclass(frozen=True)
 class WeekHoursOfOperation:
@@ -139,4 +142,3 @@ class WeekHoursOfOperation:
 
     def iter_minutes(self, day: Day) -> Iterator[int]:
         yield from self._get_todays_schedule(day).iter_minutes()
-

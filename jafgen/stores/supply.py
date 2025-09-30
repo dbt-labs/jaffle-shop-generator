@@ -4,6 +4,7 @@ from typing import NewType
 SupplyId = NewType("SupplyId", str)
 StorageKeepingUnit = NewType("StorageKeepingUnit", str)
 
+
 @dataclass(frozen=True)
 class Supply:
     id: SupplyId

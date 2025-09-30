@@ -11,6 +11,7 @@ fake = Faker()
 
 StoreId = NewType("StoreId", uuid.UUID)
 
+
 @dataclass(frozen=True)
 class Store:
     name: str

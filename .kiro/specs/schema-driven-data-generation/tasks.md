@@ -142,8 +142,8 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 7.4, 7.5_
 
-- [ ] 10. Create SaaS system schema templates
-  - [ ] 10.1 Build HubSpot and Salesforce schema templates
+- [x] 10. Create SaaS system schema templates
+  - [x] 10.1 Build HubSpot and Salesforce schema templates
     - Create YAML schema definitions for HubSpot entities (contacts, companies, deals)
     - Build Salesforce schema templates (accounts, contacts, opportunities)
     - Implement proper relationship modeling between entities
@@ -151,7 +151,7 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 8.1, 8.3, 8.5_
 
-  - [ ] 10.2 Add Xero and Huntr schema templates
+  - [x] 10.2 Add Xero and Huntr schema templates
     - Create Xero financial system schemas (customers, invoices, payments)
     - Build Huntr job tracking schemas with appropriate relationships
     - Add documentation and examples for using SaaS templates
@@ -159,8 +159,8 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 8.2, 8.4, 8.5_
 
-- [ ] 11. Add code quality and CI integration
-  - [ ] 11.1 Configure code formatting and type checking
+- [-] 11. Add code quality and CI integration
+  - [-] 11.1 Configure code formatting and type checking
     - Set up black code formatting with pre-commit hooks
     - Configure isort for import sorting
     - Add mypy type checking configuration and fix type annotations

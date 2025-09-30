@@ -17,6 +17,7 @@ fake = Faker()
 
 CustomerId = NewType("CustomerId", uuid.UUID)
 
+
 @dataclass(frozen=True)
 class Customer(ABC):
     store: Store
@@ -54,21 +55,12 @@ class Customer(ABC):
         if not self.store.is_open_at(order_day):
             return None
 
-        return Order(
-            customer=self,
-            items=items,
-            store=self.store,
-            day=order_day
-        )
+        return Order(customer=self, items=items, store=self.store, day=order_day)
 
     def get_tweet(self, order: Order) -> Tweet:
         minutes_delta = int(fake.random.random() * 20)
         tweet_day = order.day.at_minute(order.day.total_minutes + minutes_delta)
-        return Tweet(
-            customer=self,
-            order=order,
-            day=tweet_day
-        )
+        return Tweet(customer=self, order=order, day=tweet_day)
 
     @abstractmethod
     def get_order_items(self, day: Day) -> list[Item]:
@@ -150,7 +142,9 @@ class BrunchCrowd(Customer):
 
     def get_order_items(self, day: Day):
         num_customers = 1 + int(self.favorite_number / 20)
-        return Inventory.get_item_type(ItemType.JAFFLE, num_customers) + Inventory.get_item_type(ItemType.BEVERAGE, num_customers)
+        return Inventory.get_item_type(
+            ItemType.JAFFLE, num_customers
+        ) + Inventory.get_item_type(ItemType.BEVERAGE, num_customers)
 
 
 class Commuter(Customer):
@@ -218,7 +212,9 @@ class Casuals(Customer):
     def get_order_items(self, day: Day):
         num_drinks = int(fake.random.random() * 10 / 3)
         num_food = int(fake.random.random() * 10 / 3)
-        return Inventory.get_item_type(ItemType.BEVERAGE, num_drinks) + Inventory.get_item_type(ItemType.JAFFLE, num_food)
+        return Inventory.get_item_type(
+            ItemType.BEVERAGE, num_drinks
+        ) + Inventory.get_item_type(ItemType.JAFFLE, num_food)
 
 
 class HealthNut(Customer):

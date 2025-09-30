@@ -13,6 +13,7 @@ fake = Faker()
 
 OrderId = NewType("OrderId", uuid.UUID)
 
+
 @dataclass
 class Order:
     customer: "customer.Customer"

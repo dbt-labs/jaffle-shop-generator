@@ -8,7 +8,6 @@ from typing_extensions import override
 NumberArr = npt.NDArray[np.float64] | npt.NDArray[np.int32]
 
 
-
 class Curve(ABC):
     @property
     @abstractmethod
@@ -73,4 +72,3 @@ class GrowthCurve(Curve):
     def Expr(self, x: float) -> float:
         # ~ aim for ~20% growth/year
         return 1 + (x / 12) * 0.2
-

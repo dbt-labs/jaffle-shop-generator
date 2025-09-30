@@ -4,47 +4,40 @@
 SUPPORTED_ATTRIBUTE_TYPES = {
     # Person providers
     "person.full_name",
-    "person.first_name", 
+    "person.first_name",
     "person.last_name",
     "person.email",
     "person.phone_number",
     "person.age",
-    
     # Address providers
     "address.address",
     "address.city",
     "address.state",
     "address.country",
     "address.postal_code",
-    
     # Datetime providers
     "datetime.datetime",
     "datetime.date",
     "datetime.time",
-    
     # Numeric providers
     "numeric.integer",
     "numeric.float",
     "numeric.decimal",
-    
     # Text providers
     "text.word",
     "text.sentence",
     "text.paragraph",
-    
     # Internet providers
     "internet.url",
     "internet.domain_name",
     "internet.ip_v4",
-    
     # Finance providers
     "finance.currency_code",
     "finance.price",
-    
     # Generic providers
     "uuid",
     "boolean",
-    "link"  # Special type for entity links
+    "link",  # Special type for entity links
 }
 
 # Required schema fields

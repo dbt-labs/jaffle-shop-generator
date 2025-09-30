@@ -36,7 +36,9 @@ class Tweet:
         if len(self.order.items) == 1:
             items_sentence = f"Ordered a {self.order.items[0].name}"
         elif len(self.order.items) == 2:
-            items_sentence = f"Ordered a {self.order.items[0].name} and a {self.order.items[1].name}"
+            items_sentence = (
+                f"Ordered a {self.order.items[0].name} and a {self.order.items[1].name}"
+            )
         else:
             items_sentence = f"Ordered a {', a '.join(item.name for item in self.order.items[:-1])}, and a {self.order.items[-1].name}"
         if self.customer.fan_level > 3:

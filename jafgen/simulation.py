@@ -23,6 +23,7 @@ T_8AM = time_from_total_minutes(60 * 8)
 T_3PM = time_from_total_minutes(60 * 15)
 T_8PM = time_from_total_minutes(60 * 20)
 
+
 class Simulation:
     def __init__(self, years: int, days: int, prefix: str):
         self.years = years
@@ -63,7 +64,8 @@ class Simulation:
 
     def run_simulation(self):
         for i in track(
-            range(self.sim_days), description=f"🥪 Pressing {self.sim_days} days of fresh jaffles..."
+            range(self.sim_days),
+            description=f"🥪 Pressing {self.sim_days} days of fresh jaffles...",
         ):
             for market in self.markets:
                 day = Day(i)
@@ -95,6 +97,8 @@ class Simulation:
         ):
             if data:
                 file = f"./jaffle-data/{self.prefix}_{entity}.csv"
-                writer = csv.DictWriter(open(file, "w", newline=""), fieldnames=data[0].keys())
+                writer = csv.DictWriter(
+                    open(file, "w", newline=""), fieldnames=data[0].keys()
+                )
                 writer.writeheader()
                 writer.writerows(data)
