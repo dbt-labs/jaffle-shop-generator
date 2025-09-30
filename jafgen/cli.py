@@ -27,7 +27,27 @@ def version_callback(value: bool):
 
 
 app = typer.Typer(
-    help="Jafgen - A synthetic data generator for the Jaffle Shop and schema-driven data generation"
+    help="""Jafgen - A flexible synthetic data generator
+
+🥪 Two ways to generate data:
+
+1. [bold]Schema-driven generation[/bold] (recommended):
+   • Define entities in YAML files
+   • Support multiple output formats (CSV, JSON, Parquet, DuckDB)
+   • Deterministic with seeding
+   • Link entities with foreign keys
+   
+   Commands: generate, validate-schema, list-schemas, import-airbyte
+
+2. [bold]Legacy Jaffle Shop simulation[/bold]:
+   • Hardcoded entities (customers, orders, products, etc.)
+   • CSV output only
+   • Time-based simulation
+   
+   Command: run (deprecated)
+
+For new projects, use schema-driven generation with 'jafgen generate'.
+"""
 )
 console = Console()
 
@@ -46,7 +66,17 @@ def main(
         ),
     ] = None,
 ):
-    """Jafgen - A synthetic data generator for the Jaffle Shop and schema-driven data generation."""
+    """Jafgen - A flexible synthetic data generator
+    
+    🚀 Quick start with schema-driven generation:
+    
+    1. List available schemas: [bold]jafgen list-schemas[/bold]
+    2. Generate data: [bold]jafgen generate[/bold]
+    3. Validate schemas: [bold]jafgen validate-schema[/bold]
+    
+    📚 For detailed documentation and examples, visit:
+    https://github.com/dbt-labs/jaffle-shop-generator
+    """
     pass
 
 
@@ -68,6 +98,22 @@ def run(
         typer.Option(help="Optional prefix for the output file names."),
     ] = "raw",
 ) -> None:
+    """Generate synthetic data using the legacy Jaffle Shop simulation.
+    
+    [yellow]⚠️  DEPRECATION WARNING:[/yellow] The 'run' command uses the legacy hardcoded simulation.
+    For more flexible data generation, consider using the new schema-driven approach:
+    
+    • [bold]jafgen generate[/bold] - Generate data from YAML schemas
+    • [bold]jafgen list-schemas[/bold] - View available schemas  
+    • [bold]jafgen validate-schema[/bold] - Validate schema files
+    
+    See the migration guide: https://github.com/dbt-labs/jaffle-shop-generator#migration-guide
+    """
+    
+    # Show deprecation warning
+    console.print("[yellow]⚠️  Using legacy simulation mode.[/yellow]")
+    console.print("[dim]Consider migrating to schema-driven generation with 'jafgen generate'[/dim]")
+    console.print("[dim]For help migrating, see: https://github.com/dbt-labs/jaffle-shop-generator#migration-guide[/dim]\n")
 
     # To keep the default value for backwards compatibility.
     if years == 0 and days == 0:

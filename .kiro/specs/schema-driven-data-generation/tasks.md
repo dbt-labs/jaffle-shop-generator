@@ -159,7 +159,7 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 8.2, 8.4, 8.5_
 
-- [-] 11. Add code quality and CI integration
+- [x] 11. Add code quality and CI integration
   - [x] 11.1 Configure code formatting and type checking
     - Set up black code formatting with pre-commit hooks
     - Configure isort for import sorting
@@ -168,7 +168,7 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 10.1, 10.2, 10.3_
 
-  - [-] 11.2 Set up test coverage and CI pipeline
+  - [x] 11.2 Set up test coverage and CI pipeline
     - Configure pytest with coverage reporting
     - Add GitHub Actions workflow for automated testing
     - Set up coverage reporting with minimum threshold enforcement
@@ -176,8 +176,8 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 10.4, 9.1_
 
-- [ ] 12. Update CLI entry point and maintain backward compatibility
-  - [ ] 12.1 Integrate new commands with existing CLI
+- [-] 12. Update CLI entry point and maintain backward compatibility
+  - [-] 12.1 Integrate new commands with existing CLI
     - Update CLI app to include new schema-driven commands alongside existing run command
     - Ensure existing jafgen run functionality remains unchanged
     - Add deprecation warnings for old functionality where appropriate

@@ -3,7 +3,26 @@
 > [!NOTE]
 > This is not an official dbt Labs project. It is maintained on a volunteer basis by dbt Labs employees who are passionate about analytics engineering, the dbt Community, and jaffles, and feel that generating datasets for learning and practicing is important. Please understand it's a work in progress and not supported in the same way as dbt itself.
 
-The Jaffle Shop Generator or `jafgen` is a simple command line tool for generating synthetic datasets suitable for analytics engineering practice or demonstrations. The data is generated in CSV format and is designed to be used with a relational database. It follows a simple schema, with tables for:
+The Jaffle Shop Generator or `jafgen` is a flexible command line tool for generating synthetic datasets suitable for analytics engineering practice or demonstrations. 
+
+## 🚀 Two Approaches to Data Generation
+
+### Schema-Driven Generation (Recommended)
+
+Define your data structure using YAML configuration files and generate realistic synthetic data with full control over entities, attributes, relationships, and output formats.
+
+**Features:**
+- 📝 **YAML Configuration**: Define entities and attributes declaratively
+- 🔗 **Entity Relationships**: Link entities with foreign keys
+- 📊 **Multiple Formats**: Output to CSV, JSON, Parquet, or DuckDB
+- 🎯 **Deterministic**: Reproducible data with seeding
+- ✅ **Validation**: Built-in schema validation
+- 🔌 **Integrations**: Import from Airbyte manifests
+- 📚 **Templates**: Pre-built schemas for popular SaaS systems
+
+### Legacy Jaffle Shop Simulation
+
+The original hardcoded simulation that generates data for a fictional coffee shop with predefined entities:
 
 - Customers (who place Orders)
 - Orders (from those Customers)
@@ -13,7 +32,7 @@ The Jaffle Shop Generator or `jafgen` is a simple command line tool for generati
 - Stores (where the Orders are placed and fulfilled)
 - Tweets (Customers sometimes issue Tweets after placing an Order)
 
-It uses some straightforward math to create seasonality and trends in the data, for instance weekends being less busy than weekdays, customers having certain preferences, and new store locations opening over time. We plan to add more data types and complexity as the codebase evolves.
+It uses some straightforward math to create seasonality and trends in the data, for instance weekends being less busy than weekdays, customers having certain preferences, and new store locations opening over time.
 
 ## Installation
 
@@ -31,22 +50,157 @@ You can also install `jafgen` into your project or workspace, ideally in a virtu
 pip install jafgen
 ```
 
-## Use
+## Quick Start
 
-`jafgen` takes one argument:
+### Schema-Driven Generation (Recommended)
 
-- `[int]` Years to generate data for. The default is 1 year.
+1. **List available schemas:**
+   ```shell
+   jafgen list-schemas
+   ```
 
-The following options are available:
+2. **Generate data from schemas:**
+   ```shell
+   jafgen generate --schema-dir ./schemas --output-dir ./output
+   ```
 
-- `--days [int]` The number of days to generate data for. If both years and days are set, they will be added together.
+3. **Validate your schemas:**
+   ```shell
+   jafgen validate-schema --schema-dir ./schemas
+   ```
 
-- `--pre` sets a prefix for the generated files in the format `[prefix]_[file_name].csv`. It defaults to `raw`.
+### Create Your Own Schema
 
-Generate a simulation spanning 3 years from 2016-2019 with a prefix of `cool`:
+Create a YAML file in the `./schemas` directory:
+
+```yaml
+# schemas/my-system.yaml
+system:
+  name: "my-system"
+  version: "1.0.0"
+  seed: 42
+  output:
+    format: ["csv", "parquet"]
+    path: "./output"
+
+entities:
+  users:
+    count: 1000
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      name:
+        type: "person.full_name"
+        required: true
+      email:
+        type: "person.email"
+        unique: true
+        required: true
+      created_at:
+        type: "datetime.datetime"
+        constraints:
+          start_date: "2020-01-01"
+          end_date: "2024-12-31"
+  
+  orders:
+    count: 5000
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      user_id:
+        type: "link"
+        link_to: "my-system.users.id"
+        required: true
+      order_date:
+        type: "datetime.date"
+        required: true
+      total_amount:
+        type: "numeric.decimal"
+        constraints:
+          min_value: 5.00
+          max_value: 150.00
+```
+
+### Legacy Jaffle Shop Simulation
+
+> ⚠️ **Deprecated**: The `run` command is deprecated. Consider migrating to schema-driven generation.
+
+Generate legacy Jaffle Shop data:
 
 ```shell
-jafgen 3 --pre cool
+# Generate 1 year of data (default)
+jafgen run
+
+# Generate 3 years of data with custom prefix
+jafgen run 3 --pre cool --days 30
+```
+
+**Options:**
+- `[int]` Years to generate data for (default: 1)
+- `--days [int]` Additional days to generate
+- `--pre [string]` Prefix for output files (default: "raw")
+
+## Migration Guide
+
+Migrating from legacy to schema-driven generation? See our [Migration Guide](MIGRATION_GUIDE.md) for step-by-step instructions.
+
+## Advanced Features
+
+### Import from Airbyte
+
+Convert Airbyte source manifests to jafgen schemas:
+
+```shell
+jafgen import-airbyte --manifest-file source_manifest.yaml --output-dir ./schemas
+```
+
+### SaaS System Templates
+
+Use pre-built schemas for popular systems:
+
+```shell
+# List available templates
+ls schemas/saas-templates/
+
+# Generate HubSpot-like data
+jafgen generate --schema-dir ./schemas/saas-templates/hubspot
+
+# Generate Salesforce-like data  
+jafgen generate --schema-dir ./schemas/saas-templates/salesforce
+```
+
+Available templates:
+- **HubSpot**: Contacts, Companies, Deals
+- **Salesforce**: Accounts, Contacts, Opportunities  
+- **Xero**: Customers, Invoices, Payments
+- **Huntr**: Jobs, Contacts, Activities
+
+### Multiple Output Formats
+
+Generate data in multiple formats simultaneously:
+
+```yaml
+system:
+  output:
+    format: ["csv", "json", "parquet", "duckdb"]
+    path: "./output"
+```
+
+### Deterministic Generation
+
+Use seeds for reproducible data:
+
+```shell
+# Same seed = same data
+jafgen generate --seed 42
+jafgen generate --seed 42  # Identical output
+
+# Different seed = different data
+jafgen generate --seed 123  # Different output
 ```
 
 ## Purpose
@@ -63,6 +217,66 @@ An important caveat is that `jafgen` is _not_ idempotent. By design, it generate
 
 We hope over time to add more complex behaviors and trends to the simulation!
 
+## Command Reference
+
+### Schema-Driven Commands
+
+| Command | Description | Example |
+|---------|-------------|---------|
+| `generate` | Generate data from YAML schemas | `jafgen generate --schema-dir ./schemas` |
+| `list-schemas` | List discovered schemas | `jafgen list-schemas --detailed` |
+| `validate-schema` | Validate schema files | `jafgen validate-schema --schema-dir ./schemas` |
+| `import-airbyte` | Import Airbyte manifests | `jafgen import-airbyte --manifest-file manifest.yaml` |
+
+### Legacy Commands
+
+| Command | Description | Example |
+|---------|-------------|---------|
+| `run` | Legacy Jaffle Shop simulation (deprecated) | `jafgen run 2 --pre my_data` |
+
+### Global Options
+
+| Option | Description |
+|--------|-------------|
+| `--version, -v` | Show version information |
+| `--help` | Show help message |
+
+## Examples
+
+### Basic Schema-Driven Generation
+
+```shell
+# Generate data from all schemas in ./schemas directory
+jafgen generate
+
+# Generate with custom directories and seed
+jafgen generate --schema-dir ./my-schemas --output-dir ./data --seed 42
+
+# Validate schemas before generation
+jafgen validate-schema && jafgen generate
+```
+
+### Working with Templates
+
+```shell
+# Copy a template to your schemas directory
+cp -r schemas/saas-templates/hubspot ./my-schemas/
+
+# Customize the schema files as needed
+# Then generate data
+jafgen generate --schema-dir ./my-schemas
+```
+
+### Airbyte Integration
+
+```shell
+# Import an Airbyte manifest
+jafgen import-airbyte --manifest-file airbyte_source/manifest.yaml --output-dir ./schemas
+
+# Generate data from imported schemas
+jafgen generate --schema-dir ./schemas
+```
+
 ## Contribution
 
 We welcome contribution to the project! It's relatively simple to get started, just clone the repo, spin up a virtual environment, and install the dependencies:
@@ -78,7 +292,7 @@ pip install -r dev-requirements.txt
 pip install -e .
 ```
 
-Working out from the `jafgen` command, you can see the main entrypoint in `jaffle_shop_generator/cli.py`. This calls the simulation found in `jafgen/simulation.py`. The simulation is where most of the magic happens.
+Working out from the `jafgen` command, you can see the main entrypoint in `jafgen/cli.py`. For schema-driven generation, the core logic is in the `jafgen/schema/`, `jafgen/generation/`, and `jafgen/output/` modules. The legacy simulation is found in `jafgen/simulation.py`.
 
 We recommend installing our githook scripts locally. To do that, install [Lefthook](https://github.com/evilmartians/lefthook) and run
 ```
