@@ -160,7 +160,7 @@
     - _Requirements: 8.2, 8.4, 8.5_
 
 - [-] 11. Add code quality and CI integration
-  - [-] 11.1 Configure code formatting and type checking
+  - [x] 11.1 Configure code formatting and type checking
     - Set up black code formatting with pre-commit hooks
     - Configure isort for import sorting
     - Add mypy type checking configuration and fix type annotations
@@ -168,7 +168,7 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 10.1, 10.2, 10.3_
 
-  - [ ] 11.2 Set up test coverage and CI pipeline
+  - [-] 11.2 Set up test coverage and CI pipeline
     - Configure pytest with coverage reporting
     - Add GitHub Actions workflow for automated testing
     - Set up coverage reporting with minimum threshold enforcement

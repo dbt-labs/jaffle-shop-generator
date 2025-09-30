@@ -46,5 +46,13 @@ jobs:
           python3 -m pip install uv
           uv pip install -r requirements.txt --system
           uv pip install -r dev-requirements.txt --system
-      - name: Test with pytest
-        run: pytest
+      - name: Test with pytest (fast tests only)
+        run: pytest -m "not slow"
+      - name: Upload coverage reports to Codecov (Python 3.10 only)
+        if: matrix.python-version == '3.10'
+        uses: codecov/codecov-action@v4
+        with:
+          file: ./coverage.xml
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: false
