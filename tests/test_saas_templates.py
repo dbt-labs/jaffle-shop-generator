@@ -300,3 +300,244 @@ class TestSaaSTemplateDataGeneration:
             assert data1[i]["firstname"] == data2[i]["firstname"]
             assert data1[i]["lastname"] == data2[i]["lastname"]
             assert data1[i]["email"] == data2[i]["email"]
+
+
+class TestXeroTemplateSchemas:
+    """Test Xero template schema validity and structure."""
+    
+    @pytest.fixture
+    def saas_templates_dir(self):
+        """Path to SaaS templates directory."""
+        return Path("schemas/saas-templates")
+    
+    @pytest.fixture
+    def schema_loader(self):
+        """Schema loader instance."""
+        return YAMLSchemaLoader()
+    
+    def test_xero_schemas_exist(self, saas_templates_dir):
+        """Test that all Xero schema files exist."""
+        xero_dir = saas_templates_dir / "xero"
+        
+        expected_files = ["customers.yaml", "invoices.yaml", "payments.yaml"]
+        for file_name in expected_files:
+            schema_file = xero_dir / file_name
+            assert schema_file.exists(), f"Xero schema file {file_name} should exist"
+    
+    def test_xero_customers_schema_valid(self, saas_templates_dir, schema_loader):
+        """Test Xero customers schema is valid."""
+        schema_path = saas_templates_dir / "xero" / "customers.yaml"
+        schema = schema_loader.load_schema(schema_path)
+        
+        # Verify system configuration
+        assert schema.name == "xero-customers"
+        assert schema.version == "1.0.0"
+        
+        # Verify entities
+        assert "customers" in schema.entities
+        customers_entity = schema.entities["customers"]
+        assert customers_entity.count == 500
+        
+        # Verify key attributes
+        required_attrs = ["ContactID", "Name", "ContactStatus", "IsCustomer", "UpdatedDateUTC"]
+        for attr in required_attrs:
+            assert attr in customers_entity.attributes, f"Required attribute {attr} missing"
+    
+    def test_xero_invoices_schema_valid(self, saas_templates_dir, schema_loader):
+        """Test Xero invoices schema is valid."""
+        schema_path = saas_templates_dir / "xero" / "invoices.yaml"
+        schema = schema_loader.load_schema(schema_path)
+        
+        # Verify system configuration
+        assert schema.name == "xero-invoices"
+        
+        # Verify entities
+        assert "invoices" in schema.entities
+        invoices_entity = schema.entities["invoices"]
+        assert invoices_entity.count == 1200
+        
+        # Verify key attributes
+        required_attrs = ["InvoiceID", "InvoiceNumber", "Type", "ContactID", "Date", "SubTotal", "Total", "Status"]
+        for attr in required_attrs:
+            assert attr in invoices_entity.attributes, f"Required attribute {attr} missing"
+    
+    def test_xero_payments_schema_valid(self, saas_templates_dir, schema_loader):
+        """Test Xero payments schema is valid."""
+        schema_path = saas_templates_dir / "xero" / "payments.yaml"
+        schema = schema_loader.load_schema(schema_path)
+        
+        # Verify system configuration
+        assert schema.name == "xero-payments"
+        
+        # Verify entities
+        assert "payments" in schema.entities
+        payments_entity = schema.entities["payments"]
+        assert payments_entity.count == 800
+        
+        # Verify key attributes
+        required_attrs = ["PaymentID", "InvoiceID", "AccountID", "Date", "Amount", "Status"]
+        for attr in required_attrs:
+            assert attr in payments_entity.attributes, f"Required attribute {attr} missing"
+
+
+class TestHuntrTemplateSchemas:
+    """Test Huntr template schema validity and structure."""
+    
+    @pytest.fixture
+    def saas_templates_dir(self):
+        """Path to SaaS templates directory."""
+        return Path("schemas/saas-templates")
+    
+    @pytest.fixture
+    def schema_loader(self):
+        """Schema loader instance."""
+        return YAMLSchemaLoader()
+    
+    def test_huntr_schemas_exist(self, saas_templates_dir):
+        """Test that all Huntr schema files exist."""
+        huntr_dir = saas_templates_dir / "huntr"
+        
+        expected_files = ["jobs.yaml", "activities.yaml", "contacts.yaml"]
+        for file_name in expected_files:
+            schema_file = huntr_dir / file_name
+            assert schema_file.exists(), f"Huntr schema file {file_name} should exist"
+    
+    def test_huntr_jobs_schema_valid(self, saas_templates_dir, schema_loader):
+        """Test Huntr jobs schema is valid."""
+        schema_path = saas_templates_dir / "huntr" / "jobs.yaml"
+        schema = schema_loader.load_schema(schema_path)
+        
+        # Verify system configuration
+        assert schema.name == "huntr-jobs"
+        
+        # Verify entities
+        assert "jobs" in schema.entities
+        jobs_entity = schema.entities["jobs"]
+        assert jobs_entity.count == 300
+        
+        # Verify key attributes
+        required_attrs = ["id", "title", "company", "employment_type", "status", "date_added"]
+        for attr in required_attrs:
+            assert attr in jobs_entity.attributes, f"Required attribute {attr} missing"
+    
+    def test_huntr_activities_schema_valid(self, saas_templates_dir, schema_loader):
+        """Test Huntr activities schema is valid."""
+        schema_path = saas_templates_dir / "huntr" / "activities.yaml"
+        schema = schema_loader.load_schema(schema_path)
+        
+        # Verify system configuration
+        assert schema.name == "huntr-activities"
+        
+        # Verify entities
+        assert "activities" in schema.entities
+        activities_entity = schema.entities["activities"]
+        assert activities_entity.count == 800
+        
+        # Verify key attributes
+        required_attrs = ["id", "job_id", "type", "status", "date", "created_at"]
+        for attr in required_attrs:
+            assert attr in activities_entity.attributes, f"Required attribute {attr} missing"
+    
+    def test_huntr_contacts_schema_valid(self, saas_templates_dir, schema_loader):
+        """Test Huntr contacts schema is valid."""
+        schema_path = saas_templates_dir / "huntr" / "contacts.yaml"
+        schema = schema_loader.load_schema(schema_path)
+        
+        # Verify system configuration
+        assert schema.name == "huntr-contacts"
+        
+        # Verify entities
+        assert "contacts" in schema.entities
+        contacts_entity = schema.entities["contacts"]
+        assert contacts_entity.count == 400
+        
+        # Verify key attributes
+        required_attrs = ["id", "first_name", "last_name", "full_name", "created_at"]
+        for attr in required_attrs:
+            assert attr in contacts_entity.attributes, f"Required attribute {attr} missing"
+
+
+class TestSaaSTemplateIntegration:
+    """Integration tests for SaaS template data generation."""
+    
+    @pytest.fixture
+    def mimesis_engine(self):
+        """Mimesis engine with fixed seed."""
+        return MimesisEngine(seed=42)
+    
+    @pytest.fixture
+    def link_resolver(self):
+        """Link resolver instance."""
+        return LinkResolver()
+    
+    @pytest.fixture
+    def data_generator(self, mimesis_engine, link_resolver):
+        """Data generator instance."""
+        return DataGenerator(mimesis_engine, link_resolver)
+    
+    @pytest.fixture
+    def schema_loader(self):
+        """Schema loader instance."""
+        return YAMLSchemaLoader()
+    
+    def test_xero_customers_data_generation(self, data_generator, schema_loader):
+        """Test data generation for Xero customers."""
+        schema_path = Path("schemas/saas-templates/xero/customers.yaml")
+        schema = schema_loader.load_schema(schema_path)
+        
+        # Generate small sample for testing
+        customers_config = schema.entities["customers"]
+        customers_config.count = 10  # Reduce for testing
+        
+        generated_data = data_generator.generate_entity(customers_config)
+        
+        assert len(generated_data) == 10
+        
+        # Verify required fields are present and not null
+        for customer in generated_data:
+            assert customer["ContactID"] is not None
+            assert customer["Name"] is not None
+            assert customer["ContactStatus"] in ["ACTIVE", "ARCHIVED", "GDPRREQUEST"]
+            assert customer["IsCustomer"] in [True, False]
+            assert customer["UpdatedDateUTC"] is not None
+        
+        # Verify unique constraints
+        contact_ids = [customer["ContactID"] for customer in generated_data]
+        assert len(set(contact_ids)) == len(contact_ids), "ContactIDs should be unique"
+    
+    def test_huntr_jobs_realistic_salaries(self, data_generator, schema_loader):
+        """Test that Huntr jobs generate realistic salary ranges."""
+        schema_path = Path("schemas/saas-templates/huntr/jobs.yaml")
+        schema = schema_loader.load_schema(schema_path)
+        
+        jobs_config = schema.entities["jobs"]
+        jobs_config.count = 20  # Reduce for testing
+        
+        generated_data = data_generator.generate_entity(jobs_config)
+        
+        # Verify salary ranges are realistic
+        for job in generated_data:
+            if job.get("salary_min") is not None:
+                assert 30000 <= job["salary_min"] <= 200000
+            if job.get("salary_max") is not None:
+                assert 40000 <= job["salary_max"] <= 300000
+            assert job["status"] in ["WISHLIST", "APPLIED", "PHONE_SCREEN", "ON_SITE", "OFFER", "REJECTED", "ARCHIVED"]
+    
+    def test_xero_invoices_financial_consistency(self, data_generator, schema_loader):
+        """Test that Xero invoices have consistent financial amounts."""
+        schema_path = Path("schemas/saas-templates/xero/invoices.yaml")
+        schema = schema_loader.load_schema(schema_path)
+        
+        invoices_config = schema.entities["invoices"]
+        invoices_config.count = 15  # Reduce for testing
+        
+        generated_data = data_generator.generate_entity(invoices_config)
+        
+        # Verify financial consistency
+        for invoice in generated_data:
+            assert invoice["SubTotal"] >= 10.00
+            assert invoice["Total"] >= 10.00
+            assert invoice["AmountDue"] >= 0.00
+            assert invoice["AmountPaid"] >= 0.00
+            assert invoice["Status"] in ["DRAFT", "SUBMITTED", "AUTHORISED", "PAID", "VOIDED", "DELETED"]
+            assert invoice["Type"] in ["ACCPAY", "ACCPAYCREDIT", "ACCREC", "ACCRECCREDIT"]

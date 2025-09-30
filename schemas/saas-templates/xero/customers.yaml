@@ -1,0 +1,154 @@
+# Xero Customers Schema
+# Generates realistic customer data matching Xero accounting system structure
+
+system:
+  name: "xero-customers"
+  version: "1.0.0"
+  seed: 42
+  output:
+    format: ["csv", "json"]
+    path: "./output/xero"
+
+entities:
+  customers:
+    count: 500
+    attributes:
+      # Core identification
+      ContactID:
+        type: "uuid"
+        unique: true
+        required: true
+      
+      # Contact information
+      Name:
+        type: "person.full_name"
+        required: true
+      
+      ContactNumber:
+        type: "text.word"
+        unique: true
+        required: false
+      
+      # Contact type
+      ContactStatus:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["ACTIVE", "ARCHIVED", "GDPRREQUEST"]
+      
+      # Personal/Company details
+      FirstName:
+        type: "person.first_name"
+        required: false
+      
+      LastName:
+        type: "person.last_name"
+        required: false
+      
+      EmailAddress:
+        type: "person.email"
+        unique: true
+        required: false
+      
+      # Contact classification
+      IsSupplier:
+        type: "choice"
+        required: false
+        constraints:
+          choices: [true, false]
+      
+      IsCustomer:
+        type: "choice"
+        required: true
+        constraints:
+          choices: [true, false]
+      
+      # Address information
+      AddressLine1:
+        type: "address.address"
+        required: false
+      
+      City:
+        type: "address.city"
+        required: false
+      
+      Region:
+        type: "address.state"
+        required: false
+      
+      PostalCode:
+        type: "address.postal_code"
+        required: false
+      
+      Country:
+        type: "address.country"
+        required: false
+      
+      # Phone numbers
+      PhoneNumber:
+        type: "person.phone_number"
+        required: false
+      
+      MobileNumber:
+        type: "person.phone_number"
+        required: false
+      
+      FaxNumber:
+        type: "person.phone_number"
+        required: false
+      
+      # Financial details
+      AccountNumber:
+        type: "text.word"
+        required: false
+      
+      TaxNumber:
+        type: "text.word"
+        required: false
+      
+      # Bank details
+      BankAccountDetails:
+        type: "text.word"
+        required: false
+      
+      # Timestamps
+      UpdatedDateUTC:
+        type: "datetime.datetime"
+        required: true
+        constraints:
+          start_date: "2020-01-01"
+          end_date: "2024-12-31"
+      
+      # Website
+      Website:
+        type: "internet.url"
+        required: false
+      
+      # Purchase and sales details
+      DefaultCurrency:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["USD", "EUR", "GBP", "AUD", "CAD", "NZD", "JPY"]
+      
+      # Xero specific
+      HasAttachments:
+        type: "choice"
+        required: false
+        constraints:
+          choices: [true, false]
+      
+      # Tracking categories
+      PurchasesDefaultAccountCode:
+        type: "integer"
+        required: false
+        constraints:
+          min_value: 200
+          max_value: 999
+      
+      SalesDefaultAccountCode:
+        type: "integer"
+        required: false
+        constraints:
+          min_value: 200
+          max_value: 999

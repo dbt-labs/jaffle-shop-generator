@@ -1,0 +1,188 @@
+# Xero Invoices Schema
+# Generates realistic invoice data matching Xero accounting system structure
+
+system:
+  name: "xero-invoices"
+  version: "1.0.0"
+  seed: 42
+  output:
+    format: ["csv", "json"]
+    path: "./output/xero"
+
+entities:
+  invoices:
+    count: 1200
+    attributes:
+      # Core identification
+      InvoiceID:
+        type: "uuid"
+        unique: true
+        required: true
+      
+      # Invoice details
+      InvoiceNumber:
+        type: "text.word"
+        unique: true
+        required: true
+      
+      Type:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["ACCPAY", "ACCPAYCREDIT", "ACCREC", "ACCRECCREDIT"]
+      
+      # Contact relationship - would link to customers.yaml in full implementation
+      ContactID:
+        type: "uuid"
+        required: true
+      
+      # Dates
+      Date:
+        type: "datetime.date"
+        required: true
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2024-12-31"
+      
+      DueDate:
+        type: "datetime.date"
+        required: false
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2025-03-31"
+      
+      # Financial amounts
+      SubTotal:
+        type: "decimal"
+        required: true
+        constraints:
+          min_value: 10.00
+          max_value: 50000.00
+      
+      TotalTax:
+        type: "decimal"
+        required: true
+        constraints:
+          min_value: 0.00
+          max_value: 5000.00
+      
+      Total:
+        type: "decimal"
+        required: true
+        constraints:
+          min_value: 10.00
+          max_value: 55000.00
+      
+      AmountDue:
+        type: "decimal"
+        required: true
+        constraints:
+          min_value: 0.00
+          max_value: 55000.00
+      
+      AmountPaid:
+        type: "decimal"
+        required: true
+        constraints:
+          min_value: 0.00
+          max_value: 55000.00
+      
+      AmountCredited:
+        type: "decimal"
+        required: false
+        constraints:
+          min_value: 0.00
+          max_value: 5000.00
+      
+      # Status and processing
+      Status:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["DRAFT", "SUBMITTED", "AUTHORISED", "PAID", "VOIDED", "DELETED"]
+      
+      # Currency
+      CurrencyCode:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["USD", "EUR", "GBP", "AUD", "CAD", "NZD", "JPY"]
+      
+      CurrencyRate:
+        type: "decimal"
+        required: false
+        constraints:
+          min_value: 0.1
+          max_value: 10.0
+      
+      # Reference and description
+      Reference:
+        type: "text.word"
+        required: false
+      
+      BrandingThemeID:
+        type: "uuid"
+        required: false
+      
+      # Timestamps
+      UpdatedDateUTC:
+        type: "datetime.datetime"
+        required: true
+        constraints:
+          start_date: "2020-01-01"
+          end_date: "2024-12-31"
+      
+      # Line items summary
+      LineAmountTypes:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["Exclusive", "Inclusive", "NoTax"]
+      
+      # Xero specific fields
+      HasAttachments:
+        type: "choice"
+        required: false
+        constraints:
+          choices: [true, false]
+      
+      IsDiscounted:
+        type: "choice"
+        required: false
+        constraints:
+          choices: [true, false]
+      
+      # Repeating invoice
+      RepeatingInvoiceID:
+        type: "uuid"
+        required: false
+      
+      # Expected payment date
+      ExpectedPaymentDate:
+        type: "datetime.date"
+        required: false
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2025-06-30"
+      
+      # Planned payment date
+      PlannedPaymentDate:
+        type: "datetime.date"
+        required: false
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2025-06-30"
+      
+      # Warnings and validation
+      HasErrors:
+        type: "choice"
+        required: false
+        constraints:
+          choices: [true, false]
+      
+      # Sent status
+      SentToContact:
+        type: "choice"
+        required: false
+        constraints:
+          choices: [true, false]

@@ -1,0 +1,144 @@
+# Xero Payments Schema
+# Generates realistic payment data matching Xero accounting system structure
+
+system:
+  name: "xero-payments"
+  version: "1.0.0"
+  seed: 42
+  output:
+    format: ["csv", "json"]
+    path: "./output/xero"
+
+entities:
+  payments:
+    count: 800
+    attributes:
+      # Core identification
+      PaymentID:
+        type: "uuid"
+        unique: true
+        required: true
+      
+      # Invoice relationship - would link to invoices.yaml in full implementation
+      InvoiceID:
+        type: "uuid"
+        required: true
+      
+      # Account relationship
+      AccountID:
+        type: "uuid"
+        required: true
+      
+      # Payment details
+      Date:
+        type: "datetime.date"
+        required: true
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2024-12-31"
+      
+      Amount:
+        type: "decimal"
+        required: true
+        constraints:
+          min_value: 1.00
+          max_value: 55000.00
+      
+      # Currency
+      CurrencyRate:
+        type: "decimal"
+        required: false
+        constraints:
+          min_value: 0.1
+          max_value: 10.0
+      
+      # Payment method and reference
+      Reference:
+        type: "text.word"
+        required: false
+      
+      # Payment status
+      IsReconciled:
+        type: "choice"
+        required: true
+        constraints:
+          choices: [true, false]
+      
+      Status:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["AUTHORISED", "DELETED"]
+      
+      # Payment type
+      PaymentType:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["ACCRECPAYMENT", "ACCPAYPAYMENT", "ARCREDITPAYMENT", "APCREDITPAYMENT", "AROVERPAYMENTPAYMENT", "ARPREPAYMENTPAYMENT", "APPREPAYMENTPAYMENT", "AROVERPAYMENTPAYMENT"]
+      
+      # Timestamps
+      UpdatedDateUTC:
+        type: "datetime.datetime"
+        required: true
+        constraints:
+          start_date: "2020-01-01"
+          end_date: "2024-12-31"
+      
+      # Bank transaction details
+      BankTransactionID:
+        type: "uuid"
+        required: false
+      
+      # Batch payment
+      BatchPaymentID:
+        type: "uuid"
+        required: false
+      
+      # Details and particulars
+      Details:
+        type: "text.sentence"
+        required: false
+        constraints:
+          nb_sentences: 1
+      
+      Code:
+        type: "text.word"
+        required: false
+      
+      Particulars:
+        type: "text.word"
+        required: false
+      
+      # Xero specific fields
+      HasAccount:
+        type: "choice"
+        required: false
+        constraints:
+          choices: [true, false]
+      
+      HasValidationErrors:
+        type: "choice"
+        required: false
+        constraints:
+          choices: [true, false]
+      
+      # Bank account details for the payment
+      BankAccountNumber:
+        type: "text.word"
+        required: false
+      
+      # Credit note allocation
+      CreditNoteID:
+        type: "uuid"
+        required: false
+      
+      # Prepayment allocation
+      PrepaymentID:
+        type: "uuid"
+        required: false
+      
+      # Overpayment allocation
+      OverpaymentID:
+        type: "uuid"
+        required: false

@@ -1,0 +1,201 @@
+# Huntr Jobs Schema
+# Generates realistic job tracking data matching Huntr job search platform structure
+
+system:
+  name: "huntr-jobs"
+  version: "1.0.0"
+  seed: 42
+  output:
+    format: ["csv", "json"]
+    path: "./output/huntr"
+
+entities:
+  jobs:
+    count: 300
+    attributes:
+      # Core identification
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      
+      # Job details
+      title:
+        type: "person.occupation"
+        required: true
+      
+      company:
+        type: "text.word"
+        required: true
+      
+      # Job description and requirements
+      description:
+        type: "text.sentence"
+        required: false
+        constraints:
+          nb_sentences: 5
+      
+      # Location information
+      location:
+        type: "address.city"
+        required: false
+      
+      remote:
+        type: "choice"
+        required: true
+        constraints:
+          choices: [true, false]
+      
+      # Employment details
+      employment_type:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["FULL_TIME", "PART_TIME", "CONTRACT", "TEMPORARY", "INTERNSHIP", "VOLUNTEER"]
+      
+      # Salary information
+      salary_min:
+        type: "integer"
+        required: false
+        constraints:
+          min_value: 30000
+          max_value: 200000
+      
+      salary_max:
+        type: "integer"
+        required: false
+        constraints:
+          min_value: 40000
+          max_value: 300000
+      
+      salary_currency:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["USD", "EUR", "GBP", "CAD", "AUD"]
+      
+      # Application tracking
+      status:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["WISHLIST", "APPLIED", "PHONE_SCREEN", "ON_SITE", "OFFER", "REJECTED", "ARCHIVED"]
+      
+      # Important dates
+      date_added:
+        type: "datetime.date"
+        required: true
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2024-12-31"
+      
+      date_applied:
+        type: "datetime.date"
+        required: false
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2024-12-31"
+      
+      deadline:
+        type: "datetime.date"
+        required: false
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2025-06-30"
+      
+      # Job posting details
+      job_url:
+        type: "internet.url"
+        required: false
+      
+      company_url:
+        type: "internet.url"
+        required: false
+      
+      # Contact information
+      recruiter_name:
+        type: "person.full_name"
+        required: false
+      
+      recruiter_email:
+        type: "person.email"
+        required: false
+      
+      hiring_manager:
+        type: "person.full_name"
+        required: false
+      
+      # Application materials
+      cover_letter_required:
+        type: "choice"
+        required: false
+        constraints:
+          choices: [true, false]
+      
+      portfolio_required:
+        type: "choice"
+        required: false
+        constraints:
+          choices: [true, false]
+      
+      # Job source
+      source:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["LINKEDIN", "INDEED", "GLASSDOOR", "COMPANY_WEBSITE", "REFERRAL", "RECRUITER", "JOB_FAIR", "OTHER"]
+      
+      # Priority and interest level
+      priority:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["LOW", "MEDIUM", "HIGH"]
+      
+      interest_level:
+        type: "integer"
+        required: false
+        constraints:
+          min_value: 1
+          max_value: 10
+      
+      # Notes and tracking
+      notes:
+        type: "text.sentence"
+        required: false
+        constraints:
+          nb_sentences: 3
+      
+      # Timestamps
+      created_at:
+        type: "datetime.datetime"
+        required: true
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2024-12-31"
+      
+      updated_at:
+        type: "datetime.datetime"
+        required: true
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2024-12-31"
+      
+      # Job board specific ID
+      external_id:
+        type: "text.word"
+        required: false
+      
+      # Skills and requirements
+      required_skills:
+        type: "text.sentence"
+        required: false
+        constraints:
+          nb_sentences: 1
+      
+      # Experience level
+      experience_level:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["ENTRY_LEVEL", "MID_LEVEL", "SENIOR_LEVEL", "EXECUTIVE", "INTERNSHIP"]

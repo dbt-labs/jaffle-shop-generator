@@ -1,0 +1,191 @@
+# Huntr Activities Schema
+# Generates realistic activity tracking data for job applications in Huntr
+
+system:
+  name: "huntr-activities"
+  version: "1.0.0"
+  seed: 42
+  output:
+    format: ["csv", "json"]
+    path: "./output/huntr"
+
+entities:
+  activities:
+    count: 800
+    attributes:
+      # Core identification
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      
+      # Job relationship - would link to jobs.yaml in full implementation
+      job_id:
+        type: "uuid"
+        required: true
+      
+      # Activity details
+      type:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["APPLICATION_SUBMITTED", "PHONE_SCREEN", "VIDEO_INTERVIEW", "ON_SITE_INTERVIEW", "TECHNICAL_INTERVIEW", "HR_INTERVIEW", "FOLLOW_UP_EMAIL", "THANK_YOU_NOTE", "OFFER_RECEIVED", "OFFER_ACCEPTED", "OFFER_DECLINED", "REJECTION_RECEIVED", "NETWORKING_EVENT", "REFERRAL_REQUEST", "PORTFOLIO_SUBMISSION", "ASSESSMENT_COMPLETED"]
+      
+      # Activity status
+      status:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["SCHEDULED", "COMPLETED", "CANCELLED", "NO_SHOW", "RESCHEDULED"]
+      
+      # Timing
+      date:
+        type: "datetime.date"
+        required: true
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2024-12-31"
+      
+      time:
+        type: "datetime.datetime"
+        required: false
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2024-12-31"
+      
+      duration_minutes:
+        type: "integer"
+        required: false
+        constraints:
+          min_value: 15
+          max_value: 480
+      
+      # Contact information
+      contact_name:
+        type: "person.full_name"
+        required: false
+      
+      contact_email:
+        type: "person.email"
+        required: false
+      
+      contact_phone:
+        type: "person.phone_number"
+        required: false
+      
+      contact_title:
+        type: "person.occupation"
+        required: false
+      
+      # Location and format
+      location:
+        type: "address.city"
+        required: false
+      
+      is_remote:
+        type: "choice"
+        required: false
+        constraints:
+          choices: [true, false]
+      
+      meeting_link:
+        type: "internet.url"
+        required: false
+      
+      # Activity outcome
+      outcome:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["POSITIVE", "NEUTRAL", "NEGATIVE", "PENDING"]
+      
+      # Notes and feedback
+      notes:
+        type: "text.sentence"
+        required: false
+        constraints:
+          nb_sentences: 4
+      
+      feedback_received:
+        type: "text.sentence"
+        required: false
+        constraints:
+          nb_sentences: 2
+      
+      # Follow-up information
+      follow_up_required:
+        type: "choice"
+        required: false
+        constraints:
+          choices: [true, false]
+      
+      follow_up_date:
+        type: "datetime.date"
+        required: false
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2025-03-31"
+      
+      # Interview specifics
+      interview_round:
+        type: "integer"
+        required: false
+        constraints:
+          min_value: 1
+          max_value: 10
+      
+      interview_type:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["PHONE", "VIDEO", "IN_PERSON", "PANEL", "TECHNICAL", "BEHAVIORAL", "CASE_STUDY", "PRESENTATION"]
+      
+      # Preparation and materials
+      preparation_time_hours:
+        type: "decimal"
+        required: false
+        constraints:
+          min_value: 0.5
+          max_value: 20.0
+      
+      materials_sent:
+        type: "choice"
+        required: false
+        constraints:
+          choices: [true, false]
+      
+      # Timestamps
+      created_at:
+        type: "datetime.datetime"
+        required: true
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2024-12-31"
+      
+      updated_at:
+        type: "datetime.datetime"
+        required: true
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2024-12-31"
+      
+      # Rating and assessment
+      self_rating:
+        type: "integer"
+        required: false
+        constraints:
+          min_value: 1
+          max_value: 10
+      
+      difficulty_level:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["EASY", "MEDIUM", "HARD", "VERY_HARD"]
+      
+      # Next steps
+      next_steps:
+        type: "text.sentence"
+        required: false
+        constraints:
+          nb_sentences: 1

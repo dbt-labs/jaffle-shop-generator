@@ -1,0 +1,185 @@
+# Huntr Contacts Schema
+# Generates realistic contact data for networking and job search in Huntr
+
+system:
+  name: "huntr-contacts"
+  version: "1.0.0"
+  seed: 42
+  output:
+    format: ["csv", "json"]
+    path: "./output/huntr"
+
+entities:
+  contacts:
+    count: 400
+    attributes:
+      # Core identification
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      
+      # Personal information
+      first_name:
+        type: "person.first_name"
+        required: true
+      
+      last_name:
+        type: "person.last_name"
+        required: true
+      
+      full_name:
+        type: "person.full_name"
+        required: true
+      
+      # Contact information
+      email:
+        type: "person.email"
+        unique: true
+        required: false
+      
+      phone:
+        type: "person.phone_number"
+        required: false
+      
+      # Professional information
+      title:
+        type: "person.occupation"
+        required: false
+      
+      company:
+        type: "text.word"
+        required: false
+      
+      department:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["Engineering", "Product", "Marketing", "Sales", "HR", "Finance", "Operations", "Design", "Data", "Executive"]
+      
+      # Location
+      location:
+        type: "address.city"
+        required: false
+      
+      # Social and professional profiles
+      linkedin_url:
+        type: "internet.url"
+        required: false
+      
+      twitter_handle:
+        type: "text.word"
+        required: false
+      
+      github_username:
+        type: "text.word"
+        required: false
+      
+      # Relationship and networking
+      relationship_type:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["COLLEAGUE", "FORMER_COLLEAGUE", "RECRUITER", "HIRING_MANAGER", "REFERRAL", "MENTOR", "PEER", "INDUSTRY_CONTACT", "ALUMNI", "FRIEND"]
+      
+      connection_strength:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["STRONG", "MEDIUM", "WEAK", "NEW"]
+      
+      # How we met
+      source:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["LINKEDIN", "NETWORKING_EVENT", "CONFERENCE", "REFERRAL", "COLD_OUTREACH", "UNIVERSITY", "PREVIOUS_JOB", "ONLINE_COMMUNITY", "MEETUP", "OTHER"]
+      
+      # Communication tracking
+      last_contact_date:
+        type: "datetime.date"
+        required: false
+        constraints:
+          start_date: "2023-01-01"
+          end_date: "2024-12-31"
+      
+      contact_frequency:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["WEEKLY", "MONTHLY", "QUARTERLY", "YEARLY", "AS_NEEDED", "NEVER"]
+      
+      # Notes and context
+      notes:
+        type: "text.sentence"
+        required: false
+        constraints:
+          nb_sentences: 3
+      
+      # Tags and categorization
+      tags:
+        type: "text.word"
+        required: false
+      
+      # Referral potential
+      can_provide_referrals:
+        type: "choice"
+        required: false
+        constraints:
+          choices: [true, false]
+      
+      willing_to_help:
+        type: "choice"
+        required: false
+        constraints:
+          choices: [true, false]
+      
+      # Industry and expertise
+      industry:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["TECHNOLOGY", "FINANCE", "HEALTHCARE", "EDUCATION", "RETAIL", "MANUFACTURING", "CONSULTING", "MEDIA", "NON_PROFIT", "GOVERNMENT", "STARTUP", "OTHER"]
+      
+      expertise_areas:
+        type: "text.sentence"
+        required: false
+        constraints:
+          nb_sentences: 1
+      
+      # Timestamps
+      created_at:
+        type: "datetime.datetime"
+        required: true
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2024-12-31"
+      
+      updated_at:
+        type: "datetime.datetime"
+        required: true
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2024-12-31"
+      
+      # Follow-up and reminders
+      next_follow_up:
+        type: "datetime.date"
+        required: false
+        constraints:
+          start_date: "2024-01-01"
+          end_date: "2025-06-30"
+      
+      # Priority and importance
+      priority:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["HIGH", "MEDIUM", "LOW"]
+      
+      # Communication preferences
+      preferred_contact_method:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["EMAIL", "PHONE", "LINKEDIN", "TEXT", "IN_PERSON"]
