@@ -1,0 +1,255 @@
+{
+  "documentationUrl": "https://docs.airbyte.com/integrations/sources/github",
+  "connectionSpecification": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "GitHub Source Spec",
+    "type": "object",
+    "required": ["repository"],
+    "properties": {
+      "repository": {
+        "type": "string",
+        "title": "Repository",
+        "description": "GitHub repository name in the format owner/repo"
+      },
+      "access_token": {
+        "type": "string",
+        "title": "Access Token",
+        "description": "GitHub personal access token"
+      }
+    }
+  },
+  "streams": [
+    {
+      "name": "repositories",
+      "json_schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Repository ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Repository name"
+          },
+          "full_name": {
+            "type": "string",
+            "description": "Full repository name"
+          },
+          "owner": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "login": {
+                "type": "string"
+              },
+              "avatar_url": {
+                "type": "string"
+              }
+            }
+          },
+          "private": {
+            "type": "boolean",
+            "description": "Whether the repository is private"
+          },
+          "html_url": {
+            "type": "string",
+            "description": "Repository URL"
+          },
+          "description": {
+            "type": "string",
+            "description": "Repository description"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp"
+          },
+          "stargazers_count": {
+            "type": "integer",
+            "description": "Number of stars"
+          },
+          "watchers_count": {
+            "type": "integer",
+            "description": "Number of watchers"
+          },
+          "forks_count": {
+            "type": "integer",
+            "description": "Number of forks"
+          },
+          "language": {
+            "type": "string",
+            "description": "Primary programming language"
+          }
+        }
+      }
+    },
+    {
+      "name": "issues",
+      "json_schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Issue ID"
+          },
+          "number": {
+            "type": "integer",
+            "description": "Issue number"
+          },
+          "title": {
+            "type": "string",
+            "description": "Issue title"
+          },
+          "body": {
+            "type": "string",
+            "description": "Issue body"
+          },
+          "state": {
+            "type": "string",
+            "enum": ["open", "closed"],
+            "description": "Issue state"
+          },
+          "user": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "login": {
+                "type": "string"
+              }
+            }
+          },
+          "assignee": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "login": {
+                "type": "string"
+              }
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp"
+          },
+          "closed_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Close timestamp"
+          },
+          "labels": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "color": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "pull_requests",
+      "json_schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Pull request ID"
+          },
+          "number": {
+            "type": "integer",
+            "description": "Pull request number"
+          },
+          "title": {
+            "type": "string",
+            "description": "Pull request title"
+          },
+          "body": {
+            "type": "string",
+            "description": "Pull request body"
+          },
+          "state": {
+            "type": "string",
+            "enum": ["open", "closed", "merged"],
+            "description": "Pull request state"
+          },
+          "user": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "login": {
+                "type": "string"
+              }
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp"
+          },
+          "merged_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Merge timestamp"
+          },
+          "head": {
+            "type": "object",
+            "properties": {
+              "ref": {
+                "type": "string"
+              },
+              "sha": {
+                "type": "string"
+              }
+            }
+          },
+          "base": {
+            "type": "object",
+            "properties": {
+              "ref": {
+                "type": "string"
+              },
+              "sha": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

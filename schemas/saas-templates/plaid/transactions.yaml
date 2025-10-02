@@ -1,0 +1,102 @@
+system:
+  name: "plaid-transactions"
+  version: "1.0.0"
+  seed: 42
+  output:
+    format: ["csv", "json"]
+    path: "plaid"
+
+entities:
+  transactions:
+    count: 10000
+    attributes:
+      transaction_id:
+        type: "uuid"
+        unique: true
+        required: true
+      account_id:
+        type: "link"
+        link_to: "plaid-accounts.accounts.account_id"
+        required: true
+      amount:
+        type: "decimal"
+        required: true
+        constraints:
+          min_value: -5000.0
+          max_value: 5000.0
+          precision: 2
+      iso_currency_code:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["USD", "EUR", "GBP", "CAD", "AUD"]
+      category_primary:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["Food and Drink", "Shops", "Recreation", "Transportation", "Healthcare", "Payment", "Bank Fees", "Entertainment", "Gas Stations", "Groceries", "Restaurants", "Travel", "Transfer", "Deposit"]
+      category_detailed:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["Fast Food", "Coffee Shop", "Groceries", "Gas", "ATM", "Online Transfer", "Payroll", "Rent", "Utilities", "Shopping", "Entertainment", "Healthcare", "Insurance"]
+      date:
+        type: "datetime.date"
+        required: true
+      datetime:
+        type: "datetime.datetime"
+        required: false
+      authorized_date:
+        type: "datetime.date"
+        required: false
+      name:
+        type: "text.sentence"
+        required: true
+      merchant_name:
+        type: "text.word"
+        required: false
+      address:
+        type: "address.street_name"
+        required: false
+      city:
+        type: "address.city"
+        required: false
+      region:
+        type: "address.state"
+        required: false
+      postal_code:
+        type: "address.postal_code"
+        required: false
+      country:
+        type: "address.country_code"
+        required: false
+      latitude:
+        type: "decimal"
+        required: false
+        constraints:
+          min_value: -90.0
+          max_value: 90.0
+          precision: 6
+      longitude:
+        type: "decimal"
+        required: false
+        constraints:
+          min_value: -180.0
+          max_value: 180.0
+          precision: 6
+      pending:
+        type: "boolean"
+        required: true
+      account_owner:
+        type: "text.word"
+        required: false
+      transaction_type:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["digital", "place", "special", "unresolved"]
+      transaction_code:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["adjustment", "atm", "bank charge", "bill payment", "cash", "cashback", "cheque", "direct debit", "interest", "purchase", "standing order", "transfer"]

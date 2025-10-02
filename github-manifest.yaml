@@ -1,0 +1,207 @@
+version: "0.29.0"
+
+definitions:
+  selector:
+    extractor:
+      field_path: []
+
+  requester:
+    url_base: "https://api.github.com"
+    http_method: "GET"
+    authenticator:
+      type: BearerAuthenticator
+      api_token: "{{ config['access_token'] }}"
+
+  retriever:
+    record_selector:
+      $ref: "#/definitions/selector"
+    paginator:
+      type: DefaultPaginator
+      pagination_strategy:
+        type: "PageIncrement"
+        page_size: 100
+      page_token_option:
+        type: RequestOption
+        inject_into: request_parameter
+        field_name: "page"
+      page_size_option:
+        inject_into: request_parameter
+        field_name: "per_page"
+    requester:
+      $ref: "#/definitions/requester"
+
+  base_stream:
+    retriever:
+      $ref: "#/definitions/retriever"
+
+  repositories_stream:
+    $ref: "#/definitions/base_stream"
+    $parameters:
+      name: "repositories"
+      primary_key: "id"
+      path: "/repos/{{ config['repository'] }}"
+
+    schema_loader:
+      type: InlineSchemaLoader
+      schema:
+        $schema: http://json-schema.org/draft-07/schema#
+        type: object
+        properties:
+          id:
+            type: integer
+            description: Repository ID
+          name:
+            type: string
+            description: Repository name
+          full_name:
+            type: string
+            description: Full repository name
+          owner:
+            type: object
+            properties:
+              id:
+                type: integer
+              login:
+                type: string
+              avatar_url:
+                type: string
+                format: uri
+          private:
+            type: boolean
+            description: Whether the repository is private
+          html_url:
+            type: string
+            format: uri
+            description: Repository URL
+          description:
+            type: string
+            description: Repository description
+          created_at:
+            type: string
+            format: date-time
+            description: Creation timestamp
+          updated_at:
+            type: string
+            format: date-time
+            description: Last update timestamp
+          stargazers_count:
+            type: integer
+            description: Number of stars
+          watchers_count:
+            type: integer
+            description: Number of watchers
+          forks_count:
+            type: integer
+            description: Number of forks
+          language:
+            type: string
+            description: Primary programming language
+
+  issues_stream:
+    $ref: "#/definitions/base_stream"
+    $parameters:
+      name: "issues"
+      primary_key: "id"
+      path: "/repos/{{ config['repository'] }}/issues"
+
+    schema_loader:
+      type: InlineSchemaLoader
+      schema:
+        $schema: http://json-schema.org/draft-07/schema#
+        type: object
+        properties:
+          id:
+            type: integer
+            description: Issue ID
+          number:
+            type: integer
+            description: Issue number
+          title:
+            type: string
+            description: Issue title
+          body:
+            type: string
+            description: Issue body
+          state:
+            type: string
+            enum: ["open", "closed"]
+            description: Issue state
+          user:
+            type: object
+            properties:
+              id:
+                type: integer
+              login:
+                type: string
+          created_at:
+            type: string
+            format: date-time
+            description: Creation timestamp
+          updated_at:
+            type: string
+            format: date-time
+            description: Last update timestamp
+          closed_at:
+            type: string
+            format: date-time
+            description: Close timestamp
+
+  pull_requests_stream:
+    $ref: "#/definitions/base_stream"
+    $parameters:
+      name: "pull_requests"
+      primary_key: "id"
+      path: "/repos/{{ config['repository'] }}/pulls"
+
+    schema_loader:
+      type: InlineSchemaLoader
+      schema:
+        $schema: http://json-schema.org/draft-07/schema#
+        type: object
+        properties:
+          id:
+            type: integer
+            description: Pull request ID
+          number:
+            type: integer
+            description: Pull request number
+          title:
+            type: string
+            description: Pull request title
+          body:
+            type: string
+            description: Pull request body
+          state:
+            type: string
+            enum: ["open", "closed", "merged"]
+            description: Pull request state
+          user:
+            type: object
+            properties:
+              id:
+                type: integer
+              login:
+                type: string
+          created_at:
+            type: string
+            format: date-time
+            description: Creation timestamp
+          updated_at:
+            type: string
+            format: date-time
+            description: Last update timestamp
+          merged_at:
+            type: string
+            format: date-time
+            description: Merge timestamp
+
+streams:
+  - "#/definitions/repositories_stream"
+  - "#/definitions/issues_stream"
+  - "#/definitions/pull_requests_stream"
+
+check:
+  stream_names:
+    - "repositories"
+    - "issues"
+    - "pull_requests"

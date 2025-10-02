@@ -1,0 +1,174 @@
+system:
+  name: "plaid-investments"
+  version: "1.0.0"
+  seed: 42
+  output:
+    format: ["csv", "json"]
+    path: "plaid"
+
+entities:
+  securities:
+    count: 1000
+    attributes:
+      security_id:
+        type: "uuid"
+        unique: true
+        required: true
+      isin:
+        type: "text.word"
+        required: false
+        constraints:
+          length: 12
+      cusip:
+        type: "text.word"
+        required: false
+        constraints:
+          length: 9
+      ticker_symbol:
+        type: "text.word"
+        required: true
+        constraints:
+          length: 5
+      name:
+        type: "text.sentence"
+        required: true
+      type:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["cash", "cryptocurrency", "derivative", "equity", "etf", "fixed income", "loan", "mutual fund", "other"]
+      close_price:
+        type: "decimal"
+        required: true
+        constraints:
+          min_value: 0.01
+          max_value: 5000.0
+          precision: 2
+      close_price_date:
+        type: "datetime.date"
+        required: true
+      is_cash_equivalent:
+        type: "boolean"
+        required: true
+      iso_currency_code:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["USD", "EUR", "GBP", "CAD", "AUD"]
+
+  holdings:
+    count: 2000
+    attributes:
+      holding_id:
+        type: "uuid"
+        unique: true
+        required: true
+      account_id:
+        type: "link"
+        link_to: "plaid-accounts.accounts.account_id"
+        required: true
+      security_id:
+        type: "link"
+        link_to: "plaid-investments.securities.security_id"
+        required: true
+      institution_price:
+        type: "decimal"
+        required: true
+        constraints:
+          min_value: 0.01
+          max_value: 5000.0
+          precision: 2
+      institution_price_date:
+        type: "datetime.date"
+        required: true
+      institution_value:
+        type: "decimal"
+        required: true
+        constraints:
+          min_value: 0.01
+          max_value: 1000000.0
+          precision: 2
+      cost_basis:
+        type: "decimal"
+        required: false
+        constraints:
+          min_value: 0.01
+          max_value: 1000000.0
+          precision: 2
+      quantity:
+        type: "decimal"
+        required: true
+        constraints:
+          min_value: 0.001
+          max_value: 10000.0
+          precision: 3
+      iso_currency_code:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["USD", "EUR", "GBP", "CAD", "AUD"]
+
+  investment_transactions:
+    count: 5000
+    attributes:
+      investment_transaction_id:
+        type: "uuid"
+        unique: true
+        required: true
+      account_id:
+        type: "link"
+        link_to: "plaid-accounts.accounts.account_id"
+        required: true
+      security_id:
+        type: "link"
+        link_to: "plaid-investments.securities.security_id"
+        required: false
+      date:
+        type: "datetime.date"
+        required: true
+      name:
+        type: "text.sentence"
+        required: true
+      quantity:
+        type: "decimal"
+        required: false
+        constraints:
+          min_value: 0.001
+          max_value: 10000.0
+          precision: 3
+      amount:
+        type: "decimal"
+        required: true
+        constraints:
+          min_value: -100000.0
+          max_value: 100000.0
+          precision: 2
+      price:
+        type: "decimal"
+        required: false
+        constraints:
+          min_value: 0.01
+          max_value: 5000.0
+          precision: 2
+      fees:
+        type: "decimal"
+        required: false
+        constraints:
+          min_value: 0.0
+          max_value: 100.0
+          precision: 2
+      type:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["buy", "sell", "cancel", "cash", "fee", "transfer"]
+      subtype:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["buy", "sell", "dividend", "interest", "fee", "deposit", "withdrawal", "transfer", "contribution", "distribution"]
+      iso_currency_code:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["USD", "EUR", "GBP", "CAD", "AUD"]

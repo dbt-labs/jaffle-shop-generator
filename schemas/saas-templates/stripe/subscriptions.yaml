@@ -1,0 +1,68 @@
+system:
+  name: "stripe-subscriptions"
+  version: "1.0.0"
+  seed: 42
+  output:
+    format: ["csv", "json"]
+    path: "stripe"
+
+entities:
+  subscriptions:
+    count: 800
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      customer_id:
+        type: "link"
+        link_to: "stripe-customers.customers.id"
+        required: true
+      status:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["active", "past_due", "canceled", "unpaid", "trialing"]
+      current_period_start:
+        type: "datetime.datetime"
+        required: true
+      current_period_end:
+        type: "datetime.datetime"
+        required: true
+      created:
+        type: "datetime.datetime"
+        required: true
+      canceled_at:
+        type: "datetime.datetime"
+        required: false
+      trial_start:
+        type: "datetime.datetime"
+        required: false
+      trial_end:
+        type: "datetime.datetime"
+        required: false
+      plan_id:
+        type: "text.word"
+        required: true
+      plan_amount:
+        type: "integer"
+        required: true
+        constraints:
+          min_value: 500
+          max_value: 50000  # Monthly amount in cents
+      plan_currency:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["usd", "eur", "gbp", "cad", "aud"]
+      plan_interval:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["month", "year", "week", "day"]
+      quantity:
+        type: "integer"
+        required: true
+        constraints:
+          min_value: 1
+          max_value: 100

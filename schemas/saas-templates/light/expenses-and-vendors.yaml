@@ -1,0 +1,215 @@
+system:
+  name: "light-expenses-vendors"
+  version: "1.0.0"
+  seed: 42
+  output:
+    format: ["csv", "json"]
+    path: "light"
+
+entities:
+  vendors:
+    count: 300
+    attributes:
+      vendor_id:
+        type: "uuid"
+        unique: true
+        required: true
+      name:
+        type: "text.sentence"
+        required: true
+      email:
+        type: "person.email"
+        required: true
+      phone:
+        type: "person.phone"
+        required: false
+      street_address:
+        type: "address.street_name"
+        required: false
+      city:
+        type: "address.city"
+        required: false
+      state:
+        type: "address.state"
+        required: false
+      postal_code:
+        type: "address.postal_code"
+        required: false
+      country:
+        type: "address.country_code"
+        required: false
+      tax_id:
+        type: "text.word"
+        required: false
+        constraints:
+          length: 9
+      payment_terms:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["net_15", "net_30", "net_45", "net_60", "due_on_receipt"]
+      status:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["active", "inactive", "pending_approval"]
+      category:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["software", "office_supplies", "travel", "marketing", "consulting", "other"]
+      created_at:
+        type: "datetime.datetime"
+        required: true
+
+  expenses:
+    count: 3000
+    attributes:
+      expense_id:
+        type: "uuid"
+        unique: true
+        required: true
+      transaction_id:
+        type: "uuid"
+        required: false
+      user_id:
+        type: "uuid"
+        required: true
+      vendor_id:
+        type: "link"
+        link_to: "light-expenses-vendors.vendors.vendor_id"
+        required: false
+      amount:
+        type: "decimal"
+        required: true
+        constraints:
+          min_value: 1.0
+          max_value: 10000.0
+          precision: 2
+      currency:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["USD", "EUR", "GBP", "CAD"]
+      category:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["travel", "meals", "office_supplies", "software", "marketing", "training", "consulting", "other"]
+      subcategory:
+        type: "text.word"
+        required: false
+      description:
+        type: "text.sentence"
+        required: true
+      business_purpose:
+        type: "text.sentence"
+        required: true
+      expense_date:
+        type: "datetime.date"
+        required: true
+      status:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["draft", "submitted", "approved", "rejected", "reimbursed"]
+      billable:
+        type: "boolean"
+        required: true
+      project_id:
+        type: "uuid"
+        required: false
+      tax_amount:
+        type: "decimal"
+        required: false
+        constraints:
+          min_value: 0.0
+          max_value: 1000.0
+          precision: 2
+      tax_rate:
+        type: "decimal"
+        required: false
+        constraints:
+          min_value: 0.0
+          max_value: 0.25
+          precision: 4
+      created_at:
+        type: "datetime.datetime"
+        required: true
+      submitted_at:
+        type: "datetime.datetime"
+        required: false
+      approved_at:
+        type: "datetime.datetime"
+        required: false
+
+  invoices:
+    count: 1000
+    attributes:
+      invoice_id:
+        type: "uuid"
+        unique: true
+        required: true
+      vendor_id:
+        type: "link"
+        link_to: "light-expenses-vendors.vendors.vendor_id"
+        required: true
+      invoice_number:
+        type: "text.word"
+        required: true
+        constraints:
+          length: 10
+      amount:
+        type: "decimal"
+        required: true
+        constraints:
+          min_value: 100.0
+          max_value: 50000.0
+          precision: 2
+      currency:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["USD", "EUR", "GBP", "CAD"]
+      tax_amount:
+        type: "decimal"
+        required: false
+        constraints:
+          min_value: 0.0
+          max_value: 5000.0
+          precision: 2
+      total_amount:
+        type: "decimal"
+        required: true
+        constraints:
+          min_value: 100.0
+          max_value: 55000.0
+          precision: 2
+      invoice_date:
+        type: "datetime.date"
+        required: true
+      due_date:
+        type: "datetime.date"
+        required: true
+      status:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["draft", "pending_approval", "approved", "paid", "overdue", "cancelled"]
+      description:
+        type: "text.sentence"
+        required: true
+      payment_method:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["ach", "wire", "check", "card"]
+      paid_date:
+        type: "datetime.date"
+        required: false
+      created_at:
+        type: "datetime.datetime"
+        required: true
+      approved_at:
+        type: "datetime.datetime"
+        required: false

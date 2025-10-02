@@ -1,0 +1,244 @@
+version: "0.29.0"
+
+streams:
+  - name: "users"
+    primary_key: "id"
+    json_schema:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: User ID
+        username:
+          type: string
+          description: Username
+        name:
+          type: string
+          description: Display name
+        email:
+          type: string
+          format: email
+          description: User email
+        url:
+          type: string
+          format: uri
+          description: User website URL
+        description:
+          type: string
+          description: User bio/description
+        registered_date:
+          type: string
+          format: date-time
+          description: Registration date
+        roles:
+          type: array
+          items:
+            type: string
+          description: User roles
+        capabilities:
+          type: object
+          description: User capabilities
+
+  - name: "posts"
+    primary_key: "id"
+    json_schema:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Post ID
+        date:
+          type: string
+          format: date-time
+          description: Publication date
+        date_gmt:
+          type: string
+          format: date-time
+          description: Publication date in GMT
+        modified:
+          type: string
+          format: date-time
+          description: Last modified date
+        slug:
+          type: string
+          description: Post slug
+        status:
+          type: string
+          enum: ["publish", "draft", "private", "pending"]
+          description: Post status
+        type:
+          type: string
+          description: Post type
+        title:
+          type: object
+          properties:
+            rendered:
+              type: string
+        content:
+          type: object
+          properties:
+            rendered:
+              type: string
+        excerpt:
+          type: object
+          properties:
+            rendered:
+              type: string
+        author:
+          type: integer
+          description: Author user ID
+        featured_media:
+          type: integer
+          description: Featured media ID
+        comment_status:
+          type: string
+          enum: ["open", "closed"]
+          description: Comment status
+        ping_status:
+          type: string
+          enum: ["open", "closed"]
+          description: Ping status
+        sticky:
+          type: boolean
+          description: Whether post is sticky
+        categories:
+          type: array
+          items:
+            type: integer
+          description: Category IDs
+        tags:
+          type: array
+          items:
+            type: integer
+          description: Tag IDs
+
+  - name: "categories"
+    primary_key: "id"
+    json_schema:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Category ID
+        count:
+          type: integer
+          description: Number of posts in category
+        description:
+          type: string
+          description: Category description
+        name:
+          type: string
+          description: Category name
+        slug:
+          type: string
+          description: Category slug
+        taxonomy:
+          type: string
+          description: Taxonomy name
+        parent:
+          type: integer
+          description: Parent category ID
+
+  - name: "comments"
+    primary_key: "id"
+    json_schema:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Comment ID
+        post:
+          type: integer
+          description: Post ID this comment belongs to
+        parent:
+          type: integer
+          description: Parent comment ID
+        author:
+          type: integer
+          description: Comment author user ID
+        author_name:
+          type: string
+          description: Comment author name
+        author_email:
+          type: string
+          format: email
+          description: Comment author email
+        author_url:
+          type: string
+          format: uri
+          description: Comment author URL
+        date:
+          type: string
+          format: date-time
+          description: Comment date
+        content:
+          type: object
+          properties:
+            rendered:
+              type: string
+        status:
+          type: string
+          enum: ["approved", "hold", "spam", "trash"]
+          description: Comment status
+        type:
+          type: string
+          description: Comment type
+
+  - name: "media"
+    primary_key: "id"
+    json_schema:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Media ID
+        date:
+          type: string
+          format: date-time
+          description: Upload date
+        slug:
+          type: string
+          description: Media slug
+        type:
+          type: string
+          description: Media type
+        title:
+          type: object
+          properties:
+            rendered:
+              type: string
+        author:
+          type: integer
+          description: Author user ID
+        comment_status:
+          type: string
+          enum: ["open", "closed"]
+          description: Comment status
+        ping_status:
+          type: string
+          enum: ["open", "closed"]
+          description: Ping status
+        alt_text:
+          type: string
+          description: Alternative text
+        caption:
+          type: object
+          properties:
+            rendered:
+              type: string
+        description:
+          type: object
+          properties:
+            rendered:
+              type: string
+        media_type:
+          type: string
+          enum: ["image", "video", "audio", "file"]
+          description: Media type
+        mime_type:
+          type: string
+          description: MIME type
+        source_url:
+          type: string
+          format: uri
+          description: Media source URL

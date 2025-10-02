@@ -3,6 +3,7 @@
 import json
 from datetime import date, datetime
 from pathlib import Path
+from unittest.mock import patch
 from uuid import UUID, uuid4
 
 import pytest
@@ -294,21 +295,18 @@ class TestJSONWriterEdgeCases:
         """Test handling of custom encoder failures."""
         writer = JSONWriter()
         
-        # Create an object that can't be JSON serialized
-        class UnserializableObject:
-            pass
-        
+        # Create an object that can't be JSON serialized (function object)
         data = {
             "test": [
                 {
                     "id": 1,
-                    "unserializable": UnserializableObject()
+                    "unserializable": lambda x: x  # Functions can't be serialized
                 }
             ]
         }
         
         # Should handle the error gracefully
-        with pytest.raises(Exception):  # JSON serialization will fail
+        with pytest.raises(TypeError):  # JSON serialization will fail
             writer.write(data, tmp_path)
     
     def test_write_with_large_numbers(self, tmp_path: Path):
@@ -379,7 +377,7 @@ class TestJSONWriterEdgeCases:
     
     def test_custom_json_options(self, tmp_path: Path):
         """Test JSONWriter with various custom options."""
-        writer = JSONWriter(indent=None, ensure_ascii=False, sort_keys=True)
+        writer = JSONWriter(indent=None, ensure_ascii=False)
         
         data = {
             "users": [

@@ -1,0 +1,68 @@
+system:
+  name: "plaid-accounts"
+  version: "1.0.0"
+  seed: 42
+  output:
+    format: ["csv", "json"]
+    path: "plaid"
+
+entities:
+  accounts:
+    count: 500
+    attributes:
+      account_id:
+        type: "uuid"
+        unique: true
+        required: true
+      mask:
+        type: "text.word"
+        required: true
+        constraints:
+          length: 4
+      name:
+        type: "text.sentence"
+        required: true
+      official_name:
+        type: "text.sentence"
+        required: false
+      type:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["investment", "credit", "depository", "loan", "brokerage", "other"]
+      subtype:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["checking", "savings", "hsa", "cd", "money market", "credit card", "auto", "mortgage", "student", "401k", "ira", "roth", "brokerage"]
+      available_balance:
+        type: "decimal"
+        required: true
+        constraints:
+          min_value: 0.0
+          max_value: 100000.0
+          precision: 2
+      current_balance:
+        type: "decimal"
+        required: true
+        constraints:
+          min_value: 0.0
+          max_value: 100000.0
+          precision: 2
+      credit_limit:
+        type: "decimal"
+        required: false
+        constraints:
+          min_value: 1000.0
+          max_value: 50000.0
+          precision: 2
+      iso_currency_code:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["USD", "EUR", "GBP", "CAD", "AUD"]
+      verification_status:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["pending_automatic_verification", "pending_manual_verification", "manually_verified", "verification_expired", "verification_failed"]

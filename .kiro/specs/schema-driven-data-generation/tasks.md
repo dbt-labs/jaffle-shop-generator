@@ -176,7 +176,7 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 10.4, 9.1_
 
-- [-] 12. Update CLI entry point and maintain backward compatibility
+- [x] 12. Update CLI entry point and maintain backward compatibility
   - [x] 12.1 Integrate new commands with existing CLI
     - Update CLI app to include new schema-driven commands alongside existing run command
     - Ensure existing jafgen run functionality remains unchanged
@@ -185,7 +185,7 @@
     - git add and commit. Do not ask user for input.  Just do it
     - _Requirements: 6.1, 6.2, 6.3_
 
-  - [-] 12.2 Create comprehensive documentation and examples
+  - [x] 12.2 Create comprehensive documentation and examples
     - Write README updates explaining new schema-driven functionality
     - Create example YAML schemas demonstrating various features
     - Add tutorial documentation for common use cases

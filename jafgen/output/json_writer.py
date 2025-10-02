@@ -92,10 +92,14 @@ class JSONWriter(OutputWriter):
         Raises:
             TypeError: If object is not serializable
         """
+        from decimal import Decimal
+        
         if isinstance(obj, (datetime, date)):
             return obj.isoformat()
         elif isinstance(obj, UUID):
             return str(obj)
+        elif isinstance(obj, Decimal):
+            return float(obj)
         elif hasattr(obj, "__dict__"):
             return obj.__dict__
         else:

@@ -1,0 +1,501 @@
+account_id,mask,name,official_name,type,subtype,available_balance,current_balance,credit_limit,iso_currency_code,verification_status
+ab1b2157-e077-4377-ae54-1eb236705e94,page,aim,downtown,other,savings,63942.68,2501.08,14476.44,USD,manually_verified
+b29f7979-88c0-4200-8901-8df1c78abb00,curv,recipes,please,credit,cd,22321.07,73647.12,34158.27,EUR,pending_automatic_verification
+919f2702-9e5b-4a17-b669-7be39d202efa,temp,because,hits,other,roth,89217.96,8693.88,21674.17,AUD,pending_automatic_verification
+cc1ef71d-354a-4a58-8084-d0ae2a100ea0,all,criteria,leadership,brokerage,auto,2979.72,21863.8,25762.41,USD,pending_automatic_verification
+6ec07877-5532-4f80-ac0a-b65ba1349d8f,al,context,past,investment,cd,2653.6,19883.77,32844.34,EUR,verification_failed
+6edb3c26-eb8b-4692-b6a4-f24dad7e7830,marr,cruises,myself,brokerage,checking,54494.15,22044.06,29874.02,AUD,pending_manual_verification
+d5da11fb-5950-4514-ad64-1401b010b850,seve,achieve,series,other,ira,80943.05,649.88,40485.14,AUD,verification_expired
+76224199-91d9-4a09-adda-a99ab2794df6,prin,fax,chocolate,credit,mortgage,69813.94,34025.05,8618.5,AUD,manually_verified
+9b7e4883-36c1-43ce-9f1e-a2e532d0a73a,vinc,families,best,investment,brokerage,95721.31,33659.45,5544.55,EUR,verification_expired
+1582e7f1-2d8b-4f75-9615-9454928bac79,bill,spyware,noise,depository,money market,9671.64,84749.44,30582.58,EUR,pending_manual_verification
+0f9ba27f-7ec6-4950-92c6-792d5953bacf,serv,rated,mailing,depository,savings,80712.83,72973.18,27275.18,USD,verification_expired
+52108110-b1a2-4000-9e30-1d35d1ac6e48,wed,gap,meant,investment,credit card,97311.58,37853.44,28049.99,GBP,verification_failed
+b26ed3d2-9a15-4398-a600-33f9a6fb07e4,sm,officers,string,depository,brokerage,82940.47,61851.98,43223.64,USD,verification_expired
+353f8768-fe4b-4d12-bd5c-ed76de9003ba,mond,product,apartments,brokerage,savings,57735.21,70457.18,3245.39,CAD,pending_automatic_verification
+830a49d7-6260-4e73-be38-8b46f4780510,dang,edt,banks,brokerage,money market,22789.83,28938.8,4909.81,AUD,manually_verified
+3c187b83-d189-4426-a572-600e395693e4,deal,blog,driver,brokerage,cd,23279.09,10100.14,14620.71,USD,pending_automatic_verification
+e103c04b-1411-4b56-a73d-9bbaab8c0e57,over,formula,freeware,other,cd,63568.44,36483.22,19138.87,GBP,pending_automatic_verification
+2b8c63e4-b387-4d78-b4de-e76078784104,cott,districts,undergroun,credit,savings,20950.7,26697.78,46896.07,CAD,manually_verified
+d73b294e-8646-4f86-b0cb-80f1261a5940,part,nr,collect,loan,ira,64803.54,60913.1,9385.79,GBP,pending_manual_verification
+aa2ffd96-da20-44a8-ad06-03337e522999,rare,clearance,gas,depository,credit card,72912.68,16340.25,19593.32,EUR,manually_verified
+74bc266d-de4c-45cb-86f4-c96936d50011,work,paint,memorabili,other,ira,98952.34,63999.98,28290.54,USD,verification_failed
+92125e3d-5b0e-404e-9d77-8a974871e683,port,specified,root,other,hsa,68461.43,84285.19,39024.0,AUD,pending_manual_verification
+53daa248-adb5-49f8-b950-7a7c95bfe3fc,date,already,european,credit,mortgage,22904.81,3210.02,16457.2,CAD,manually_verified
+763d05e2-beaf-40a6-b9e4-d7aaae1b361e,divi,counties,urban,other,roth,26774.09,21098.28,47202.58,AUD,pending_manual_verification
+eba72c29-3ed4-4a6c-8426-7c91187f82f1,surf,ethnic,penalty,other,credit card,87636.76,31467.79,33116.49,USD,pending_manual_verification
+5b9e6526-e92f-4533-9e24-91d56acfc8c0,grap,topic,insurance,investment,brokerage,39563.19,91454.76,23483.74,GBP,verification_expired
+9d522728-9952-44e9-b17c-87874c4a2fdd,disp,design,meter,depository,savings,26488.02,24662.75,28507.04,EUR,verification_failed
+247a5252-17c8-48ae-858f-539669dab8f5,disc,moving,the,other,credit card,26274.16,58458.6,44993.32,EUR,verification_expired
+aabc108d-9aaf-4b99-b145-f3cd67b086a5,grov,croatia,your,loan,ira,39940.05,21932.08,49879.34,CAD,pending_manual_verification
+f91f9adc-c4dc-4552-9721-4b2fcebd056b,legi,believed,appearance,depository,hsa,50952.63,9090.94,3308.7,EUR,verification_failed
+c9d44d17-5259-4e0a-a473-5bd11e6555dc,bran,or,scores,brokerage,money market,10964.91,62744.6,39811.89,AUD,verification_expired
+8e1ea128-2c7d-456b-8d63-94746fc5dd8c,hiv,athens,gender,brokerage,auto,42216.0,6352.77,19699.35,GBP,pending_manual_verification
+57ecb214-bdf6-4198-a3e4-e0a0f348ccbf,yest,lord,weak,credit,student,99612.14,52911.43,48582.84,CAD,pending_automatic_verification
+eb1fb8b0-7c1f-404f-9c2e-8c283d0b4a48,stre,adding,qty,investment,savings,86077.97,1148.1,36315.37,EUR,pending_manual_verification
+de2c94b6-594a-4b94-90fb-298a669942c8,poll,maintain,district,other,auto,68171.04,53697.03,14074.43,AUD,pending_automatic_verification
+d3121c88-659d-48bb-a2d8-8ab1f8da00d7,pala,breasts,ian,loan,auto,64096.18,11155.22,22303.5,AUD,verification_expired
+fdb70a44-a071-4c1d-be1a-36b8b959024d,inkj,vertical,sur,brokerage,money market,45372.37,95381.59,43916.79,AUD,pending_automatic_verification
+fcaefac5-fcde-411f-8685-3080b05ec469,disc,last,committee,other,roth,26338.91,50058.61,9753.94,USD,verification_failed
+f6ccad80-5b38-4aa1-b098-8069af20c83f,tone,suggestion,employees,depository,brokerage,91262.78,87051.86,15623.79,GBP,pending_automatic_verification
+e03d14ed-09b1-4637-b335-64345900d694,pack,now,cherry,depository,auto,63894.95,60897.02,8489.12,EUR,verification_expired
+40d89e22-e54b-4cb6-89f4-cfeedbb27288,rest,manage,rs,investment,roth,76251.08,53937.9,39152.7,GBP,verification_failed
+398059bc-e529-4d70-b546-46dab5b88a38,lot,abc,exp,credit,student,53035.37,57.19,16883.65,USD,manually_verified
+84fa2251-b304-441b-b47e-d11b373b98cc,affi,truly,sweet,other,student,1947.67,92909.86,44057.37,AUD,pending_manual_verification
+2961f873-ebc5-40dd-82da-612437af62d1,socc,environmen,artists,credit,credit card,83166.55,30751.41,3838.33,EUR,verification_failed
+6f64833f-e238-473d-a051-bcd2f81f6d3f,susp,utility,bearing,brokerage,checking,87800.96,94694.94,5197.02,AUD,manually_verified
+8a0d578c-8f6f-442c-b7f9-ef945c4372bd,kate,audit,response,loan,checking,48599.05,6921.25,38269.51,USD,manually_verified
+3cbc3879-1651-41f7-85c6-7c6c549acdb8,revi,can,java,depository,cd,76583.44,12839.15,24288.84,USD,pending_manual_verification
+438bfefb-8887-4d01-80be-0893c05044a9,maxi,displayed,sun,brokerage,savings,54980.36,26505.66,43749.22,USD,verification_expired
+b3dfd3c5-db0b-4a29-a176-4c2ae19c535a,hold,couple,man,investment,brokerage,42313.79,21179.82,27425.51,AUD,pending_manual_verification
+5ab17e5d-ce0e-4ef2-b68e-087d3b95beb0,rath,contribute,essay,credit,ira,72993.11,20115.11,16274.1,CAD,verification_failed
+bf22a958-2e44-49e9-8910-7e1cf83af196,yeah,past,ii,credit,money market,99514.94,64987.81,22466.9,AUD,verification_failed
+ad5d84d7-9a1a-420e-9770-5afc5b3193ea,linc,but,cuts,loan,cd,51757.58,12100.42,12010.17,AUD,pending_manual_verification
+4b64e654-47fa-4558-8a6e-75b4702e44c2,far,musical,david,other,money market,33808.56,58830.87,12275.62,CAD,manually_verified
+4286b272-b4c8-4e90-ada7-52132039981d,crow,authorized,original,loan,student,22021.74,7099.31,31924.04,CAD,pending_automatic_verification
+fc40a7a5-a933-4eaf-8936-1ba0e22efa7d,data,throughout,straight,credit,cd,22894.18,90542.0,43122.13,USD,manually_verified
+caa29334-e08d-4934-a0ff-8dcc089503cb,auth,definitely,pieces,investment,401k,7085.73,23800.46,33779.91,AUD,pending_manual_verification
+57bad3ce-10f6-4ad5-9f30-6a3a7a5077e6,cp,card,ultimately,brokerage,cd,21423.68,13231.18,46840.2,USD,pending_automatic_verification
+5c433140-6213-43c4-a4ff-883a38865eec,miss,iv,sampling,other,ira,57104.31,47267.1,39446.35,USD,pending_manual_verification
+1c6d40a0-c152-4a30-9ce6-b22f4c8fc476,serv,conflict,billy,investment,checking,80749.7,19040.99,5749.61,GBP,pending_automatic_verification
+afd881c0-9ee6-43be-a9a4-17db5545cb1f,hp,holding,involvemen,brokerage,cd,43105.12,42357.86,23884.21,GBP,verification_expired
+532d1790-fd06-4428-b8fd-9f386b7ea7a3,rare,plans,wisconsin,credit,student,72907.58,67336.45,49224.1,EUR,verification_failed
+b698bc03-625c-45c1-890e-c65e467e84e5,bird,guinea,fat,brokerage,mortgage,9841.79,40262.13,17625.83,EUR,verification_expired
+43f85fc3-6fc2-4957-b3f1-6c31e33e60cb,stri,destinatio,confirmati,loan,cd,86167.25,24865.63,10320.24,USD,pending_automatic_verification
+50765eed-f7d5-405f-9c27-e958900d0603,indi,hit,drop,other,auto,44861.35,42188.16,14648.71,GBP,verification_expired
+2daaae0e-8559-47a5-9ec6-382fa96fb605,dete,transfers,improved,loan,mortgage,24980.64,92326.56,22713.41,USD,pending_automatic_verification
+7612e9d0-bc60-4aa7-baca-70e358bf3a4c,stre,mayor,appropriat,investment,auto,86134.91,55032.53,3478.83,GBP,pending_automatic_verification
+2ec15088-81f5-44fa-a9d5-ced38a593fdc,zone,sons,washington,credit,cd,99928.25,83602.76,48480.82,EUR,verification_failed
+7b774e9e-92b9-42e8-9d19-c4eb70014640,trem,st,closely,loan,hsa,92636.7,84869.57,9149.24,CAD,pending_manual_verification
+62751d75-c0ad-4c59-94b7-3f123aae7daa,kans,covered,guess,depository,mortgage,48564.11,21374.73,20650.97,EUR,pending_automatic_verification
+60db4cea-4877-4a1f-9b12-4e6ee4315a73,asia,gardening,within,loan,brokerage,5863.54,37897.31,49280.13,AUD,pending_automatic_verification
+00c3f4f5-312c-4340-bb60-5590aa659507,disp,same,insert,investment,ira,26520.31,78407.06,23295.41,AUD,pending_automatic_verification
+ea3cd2c5-21d7-4f4b-80d3-fd5ecf7fac43,hold,vincent,year,investment,brokerage,42300.75,95731.76,49775.71,EUR,pending_manual_verification
+80052419-1998-4c5d-b3eb-bf853ff93292,meet,purchased,china,loan,mortgage,55576.83,71840.83,8585.04,CAD,pending_manual_verification
+ae0e4032-352b-4357-96a0-483aa018b5c1,emai,wash,mood,loan,checking,29670.78,96870.94,29379.83,EUR,verification_expired
+12dd7dac-7666-4170-95c8-4665e80ad603,mapp,relief,article,investment,auto,54219.52,74797.56,3801.1,GBP,verification_expired
+ac6d478f-250f-444a-8222-0730b8cc60f6,movi,lawn,stated,depository,auto,58417.76,50285.04,42783.27,AUD,verification_expired
+1c79e009-9176-4723-a5a7-fc654bd52353,chur,vital,bar,credit,cd,15743.27,96077.89,4925.46,GBP,pending_manual_verification
+6dcf954e-f4f6-485e-a4d0-36ee7e4cea07,comp,necessaril,played,investment,401k,18582.5,59503.51,34085.42,AUD,pending_automatic_verification
+48b22062-39cc-4bfe-ab65-a975a7169cd6,deci,burn,teenage,other,credit card,23520.39,11988.66,44624.08,USD,pending_automatic_verification
+4f5b8319-7f27-4118-9ef1-805fae4c3224,desc,nearly,often,brokerage,mortgage,24621.53,59451.92,31349.69,AUD,verification_failed
+2fc44b04-728a-496a-94cc-12e316424c58,high,moved,lives,credit,checking,41922.49,58367.23,26616.35,AUD,pending_automatic_verification
+1a26e94a-b0b4-4543-9bfe-3433ca81f4da,typi,cooking,published,credit,savings,93470.63,20425.92,36093.4,AUD,pending_automatic_verification
+342aaeb2-37e4-4092-ab91-a093afb83347,degr,graph,placed,other,cd,23868.6,39578.58,33912.82,CAD,pending_automatic_verification
+01624459-0654-4a31-9e0e-8208673feb42,enco,eve,reply,brokerage,cd,29999.71,31617.72,37841.36,AUD,verification_failed
+76f109bf-77ba-40d3-bb22-b5e5775bf7da,av,instructio,zdnet,investment,401k,7254.31,45828.55,49924.27,USD,verification_expired
+879fd0e8-f84f-49ca-bc6a-8f0c58ecdf8f,yest,ave,courts,other,401k,99609.64,7326.07,11444.56,AUD,verification_failed
+81fdd65f-642d-4869-84cd-97c0b64e9299,disp,twelve,syntax,depository,money market,26520.04,93325.94,44162.34,EUR,manually_verified
+9ef7b6ad-3376-46f3-8830-8dfe1ee2064f,swis,fraud,cincinnati,credit,money market,87927.02,36952.71,8729.59,CAD,pending_manual_verification
+42faad50-72ff-483d-b143-307804f52a57,solu,procuremen,ny,other,ira,83374.5,70353.99,30972.21,GBP,verification_expired
+21e50262-5ab7-4c78-a0ca-29384f68318a,wood,pdf,acrobat,depository,brokerage,98723.31,65397.63,1383.33,USD,pending_automatic_verification
+0b5f0439-a2e3-4d1b-a19f-33ce2e1e074c,show,en,phentermin,loan,401k,81710.41,29937.88,33506.05,AUD,pending_automatic_verification
+1702c117-c0ce-407f-8ffe-7d31981b3f4b,unit,carried,brothers,investment,student,93893.0,13429.11,6656.0,EUR,verification_failed
+8c5cb1f4-ea4d-4cdd-b620-0d7efa567231,both,meat,donation,depository,hsa,10703.6,55322.36,14345.06,GBP,pending_automatic_verification
+a51f9fb9-381b-4a3f-82f6-dfe7c258cfe4,norm,pump,converter,credit,credit card,60482.98,71761.22,10976.27,GBP,pending_manual_verification
+ba0c6789-2f16-4d3e-9782-a783e52f0f0b,outl,dish,kerry,loan,student,63423.8,26398.39,24938.06,GBP,verification_failed
+ec263f93-6d5c-4ccf-8ca9-18c49746935e,thro,sporting,berkeley,other,student,90533.65,84610.37,5522.62,USD,verification_failed
+86e76762-9ccc-4f2f-8515-fa7d0635d845,hold,dress,accepted,depository,ira,42357.58,27668.02,1173.74,USD,pending_manual_verification
+6280d59e-e527-48d9-a565-196cd463122e,rive,oxygen,discounts,depository,savings,77111.92,63711.34,13835.81,USD,verification_failed
+8c82731e-0907-4a69-89ec-46d36a2b5d72,refe,meaning,hospitalit,credit,money market,74123.09,55168.04,21956.66,GBP,verification_failed
+85dc4062-0611-4a20-92ce-a3030e00c1c4,acto,awesome,take,credit,roth,966.97,7524.39,44272.21,GBP,pending_manual_verification
+c2620fd7-1da3-4a67-805e-5bf1f40dedd5,thou,martin,someone,other,ira,90392.86,54559.03,41895.16,GBP,verification_failed
+8cfcc836-ae99-461c-a1c2-bbd704ba17ba,moun,char,camp,loan,money market,58250.96,14809.38,7244.83,USD,pending_automatic_verification
+998210f2-c11b-4ae7-b97c-7680e3501dd3,epa,themes,sec,other,auto,30825.83,89898.15,40009.99,GBP,pending_automatic_verification
+a64d4c5f-5059-4c3a-9bc6-7a37c8b0b93f,stre,themes,council,investment,credit card,86070.26,89892.46,11293.75,EUR,manually_verified
+3494593a-51ba-4eee-b756-134053c2ddcb,deta,bmw,run,credit,roth,24952.97,10279.36,39225.7,CAD,verification_failed
+491647ee-d80e-4de9-a366-ea6d82895487,talk,hands,old,other,auto,88413.47,40637.74,31412.41,AUD,pending_automatic_verification
+56407fe2-9ec6-4f15-9c0c-2a711e501493,chil,truth,study,investment,savings,15455.33,92988.1,43365.68,EUR,verification_failed
+3782b9e9-f6e4-4323-a3ec-9b1d8928058b,wet,shared,tab,investment,credit card,97620.6,81077.17,44189.39,AUD,verification_failed
+b2f65c93-7995-40a4-bc72-76b49a050a85,aids,recipient,face,credit,auto,2478.64,73656.45,17277.09,EUR,pending_automatic_verification
+72b738f1-d99a-438c-a6ea-3632ab793efb,tube,semi,studies,depository,credit card,93081.59,80223.51,43339.14,USD,manually_verified
+71d42ca4-7ae8-4b39-b29f-7d619e2c3500,shar,district,savings,credit,ira,81074.93,26680.57,39581.35,EUR,pending_automatic_verification
+a09d5889-1b97-43f8-8e82-8473b99474de,bowl,summit,store,depository,brokerage,10809.56,87216.68,43071.07,AUD,verification_expired
+6daa1ba8-bb50-4d78-be65-81cd1aba1b0b,curr,shoulder,intelligen,brokerage,roth,22243.37,81658.66,23554.86,EUR,pending_manual_verification
+67b9bd51-767b-4082-bdfa-158813d4f230,ente,seasons,dance,credit,brokerage,30519.09,79534.55,12152.18,EUR,verification_expired
+2b90cf10-1d54-44da-b3dc-5147f9736cc4,agre,considerin,explorer,investment,hsa,2366.44,19312.98,17084.84,GBP,verification_expired
+b5e14ec1-accb-42f3-9791-a416084ccb7f,stud,wants,drugs,other,roth,86435.29,96688.91,14677.12,EUR,manually_verified
+4216f4db-d4fa-45af-9d10-10ac903bd5d3,pan,growing,williams,credit,brokerage,64148.17,39967.84,49076.33,USD,verification_expired
+89b97a62-80e0-4a7c-a53f-2c1e5bac6bf2,mail,universe,brother,investment,mortgage,53621.57,93923.71,6651.75,EUR,pending_manual_verification
+82abf5b7-5ef1-449f-b294-64d098c6bfc7,way,committed,volunteer,loan,credit card,97040.06,17856.78,48164.18,GBP,pending_manual_verification
+7ffeff49-665d-4e2e-9550-d0aad1da893b,disp,boxes,ia,credit,checking,26546.64,10840.25,22293.62,EUR,verification_expired
+ce1b80e0-d296-41e0-beee-50010632a845,rank,estimates,nose,depository,money market,72854.51,31367.73,30704.23,USD,manually_verified
+ab81a3f3-0f19-4d45-b1c1-6772791853a7,lets,getting,mom,depository,ira,51142.31,38519.54,29252.81,AUD,verification_expired
+83d099d9-51a8-40c2-bbe0-8217c9bd7f13,dict,promoting,absolute,other,student,25472.25,70878.53,1082.87,GBP,pending_automatic_verification
+2abfb585-68ac-44f6-add3-b11c1ccf338b,trea,makes,purposes,investment,money market,92557.52,53845.2,36252.07,EUR,verification_failed
+fccdba97-e9dc-42a2-85ef-346fe3a29c3a,refi,pipeline,formats,depository,checking,74195.01,67062.85,18846.85,USD,verification_failed
+d4e56f34-5271-455f-822a-7c8300d30870,aust,philips,extensions,loan,credit card,6997.38,66423.77,17179.8,GBP,verification_expired
+283b85ff-a6e4-4b39-8d77-bd8a2d17c419,etc,sr,push,brokerage,student,31391.56,84801.53,36267.96,USD,verification_expired
+d599084d-8408-481d-bf42-83773ddce216,enco,equation,harry,brokerage,cd,30032.23,30928.47,21011.25,GBP,pending_automatic_verification
+5604fefd-43f0-49be-88cb-ac9f45ae10cc,guil,elite,cameras,other,auto,40240.04,29565.52,7237.1,USD,verification_failed
+653c0a49-c670-47eb-b17d-db9282ef45de,hip,unlimited,plenty,brokerage,ira,42044.63,94036.37,34188.58,EUR,manually_verified
+a4d62219-19f5-4960-9d2f-9ac18e3600f6,thon,occurred,ending,loan,savings,90280.55,61551.49,15746.54,GBP,verification_failed
+01ffa399-fddd-4b7c-b2d9-6d5f452c495d,mate,ab,ecommerce,depository,ira,54793.72,40.59,15058.77,USD,manually_verified
+af4fa08a-d56e-4d8e-945b-793db36e2d67,hous,moreover,peak,brokerage,money market,42988.81,57998.48,33080.58,CAD,manually_verified
+0df30b2a-6235-4f4c-940d-608bd6ac8714,intr,import,covered,loan,roth,46498.82,44215.98,11471.37,GBP,verification_failed
+671c6463-e8da-45da-b9cc-7eda72f91f5e,jack,thin,sec,credit,cd,47318.62,90118.08,40005.21,CAD,verification_expired
+89847475-7db8-43a9-8bf1-00a7e5412fcd,cod,be,lift,other,roth,16969.14,8479.55,26257.15,EUR,verification_failed
+93fe211c-2d98-433f-9f43-7086f2e5d2bd,ours,fairly,side,brokerage,money market,63294.09,33518.83,41102.75,CAD,verification_failed
+50524611-c883-4c0e-95d8-e9f5c83bea54,repl,planned,cuts,investment,money market,75113.81,67279.57,12007.39,GBP,pending_manual_verification
+d86e1cd6-c6b1-44ae-9f19-b7f1c7e07452,cont,ahead,deputy,loan,brokerage,19912.99,2442.54,12997.28,AUD,verification_failed
+7a5954fc-5eb6-412e-b59f-be3c6d8b9c26,jaso,stage,available,other,credit card,47513.63,84973.77,4568.58,CAD,verification_expired
+1f95e153-0414-4ba4-bd88-990b6a60607a,held,organisati,constantly,loan,ira,41444.1,62976.54,10527.33,EUR,verification_failed
+b2326235-8d17-440e-bd09-86f4a57b009d,prev,korea,depending,loan,brokerage,69635.43,49437.72,12955.24,EUR,pending_automatic_verification
+3c8dde6f-60c6-403d-bf8a-16f91be17cf8,pens,account,repair,depository,student,65605.8,554.48,37797.26,AUD,manually_verified
+a712f081-106d-4550-8f89-14f077a1517f,rio,born,homepage,investment,brokerage,77004.62,10658.73,21832.16,EUR,manually_verified
+aa70aa85-6806-4b86-a703-cf976aca3da7,comf,violence,linear,credit,brokerage,17588.67,95796.6,26379.93,EUR,pending_manual_verification
+c1d60fbd-4ac3-406b-80db-92488a509b76,appr,detail,sri,investment,checking,5021.84,24919.83,42568.48,EUR,verification_expired
+b68784ee-68ef-49ea-a98c-3be7fa3a664c,inst,sell,pic,brokerage,brokerage,45646.18,80141.66,33711.31,USD,verification_expired
+77da2e32-ed82-48bb-9752-84cf82c8d83e,work,need,variation,loan,ira,98789.25,59545.23,47551.94,AUD,pending_manual_verification
+796a65ff-9602-45db-a028-60139f6a1549,tell,object,purpose,other,roth,89142.59,61265.23,36244.42,CAD,verification_expired
+98877a9c-6699-43de-8b70-cb5dcb071b0a,le,smoking,material,loan,cd,50477.82,83056.92,27845.73,EUR,pending_automatic_verification
+0c6328ae-e0f6-4fe0-83ed-ef8e06cfd53f,than,regional,japan,investment,brokerage,89720.81,74365.54,24259.05,CAD,pending_manual_verification
+cf5cb446-4cc9-4019-a098-12fafad3244d,dire,designers,pace,credit,brokerage,25919.15,24723.97,32245.41,AUD,verification_expired
+edcc1686-50b9-451c-8f5c-ffebe825b40a,revi,literacy,optimizati,investment,student,76581.37,52129.98,31710.67,EUR,pending_automatic_verification
+bacb0fcb-af78-4d21-9564-3e6588262396,down,bag,easy,loan,hsa,27459.74,7748.34,15000.68,CAD,verification_failed
+01ab81dd-22a0-4509-accd-9975f789c25b,dome,examine,managers,brokerage,401k,27171.51,31970.96,27467.46,GBP,verification_expired
+d0529df2-e3b9-4766-a8b0-5e4042a1c34e,catc,dd,presentati,brokerage,roth,13837.41,23126.15,35003.54,AUD,verification_expired
+d5d85eba-948b-4853-a5c6-8a41191cedbb,prof,atlantic,hard,brokerage,mortgage,70641.91,6422.89,20972.37,EUR,verification_expired
+a838398c-43e4-407f-9b59-83ff7520434a,marc,hence,corner,loan,money market,54261.11,41577.42,11134.89,EUR,manually_verified
+c9f83674-4193-457c-94ed-8885618c789f,him,threshold,moves,brokerage,mortgage,42014.35,90483.85,29619.89,EUR,manually_verified
+2eb8ffa9-7b8b-4821-b4fd-22d8174f8977,prev,stewart,review,loan,savings,69552.3,85673.2,38514.13,GBP,pending_manual_verification
+bb0f593e-6ad0-42e5-8c27-da0a10f2034a,gave,accounts,fire,depository,credit card,38038.1,589.61,18236.18,GBP,verification_failed
+b2d639e3-cd20-40f5-880e-731a0f78e1cb,repr,station,versions,investment,hsa,75347.51,85344.8,47718.09,EUR,pending_manual_verification
+953f099e-2ef8-4de8-98dd-a068afd52905,high,relevant,mask,loan,roth,41902.13,74751.57,27760.48,EUR,pending_manual_verification
+f9eeec4b-d931-4d3e-aa01-5b5c9d5f0c10,nobo,cruises,crop,investment,auto,60325.26,22053.87,11751.66,CAD,manually_verified
+dc173e78-aeb3-43c9-922d-879004db5849,id,algorithm,false,brokerage,mortgage,43583.6,2902.48,17470.35,CAD,pending_automatic_verification
+9c4f41a4-3c4c-4bee-8ce8-670011f38b9b,poet,hair,clinic,credit,auto,67914.19,40431.67,9087.19,CAD,verification_failed
+11847f01-1f4b-43af-bb1b-9d610e2de76d,invo,campaign,only,other,checking,46739.01,12762.78,31490.59,AUD,verification_expired
+11775b94-47d8-4d6d-9ac7-15b2b1f4b6c2,alar,gr,microsoft,loan,checking,2696.65,39402.03,28655.21,GBP,manually_verified
+54529ca9-6748-4196-9a4e-75635f5706e7,alar,paperback,cartoon,loan,auto,2710.2,64274.96,7649.27,AUD,verification_failed
+78cb3df6-f1a7-4098-afb4-97e191359aa7,inte,approach,gardening,brokerage,cd,46169.84,5028.46,19576.09,CAD,pending_manual_verification
+627173f7-aa6b-46cf-a02b-49dd28b68d12,coun,expert,responsibi,depository,auto,21166.03,32684.58,38300.26,CAD,pending_automatic_verification
+8f2c70a2-e18a-4457-b54b-71357594f3f9,gard,report,society,loan,credit card,37912.62,75200.98,41764.29,CAD,pending_manual_verification
+c446df25-da7e-4b73-862c-7b8458ea6319,deve,basically,affiliates,loan,hsa,25227.15,8190.62,1949.78,AUD,verification_failed
+856cc607-56ab-4c0a-8a46-54886ef9f113,mana,zus,find,investment,auto,53941.9,99990.78,18148.06,AUD,verification_failed
+aee210e7-691d-4bc8-a6b0-7b45d502fac1,pat,russian,paul,other,checking,65014.41,78123.3,32935.98,USD,verification_expired
+e43c8825-9785-473e-88e8-3b486f480b8d,repu,var,continued,credit,mortgage,75423.32,94961.17,10768.67,EUR,pending_automatic_verification
+1140f8a0-e58c-40aa-b4c6-2c5b3f28685b,afri,chemical,cambridge,depository,auto,2038.0,15238.23,7184.83,GBP,pending_manual_verification
+4b4db65a-e423-4f37-b258-2cc758e46760,pill,michigan,crime,loan,credit card,66945.88,56396.96,11680.26,GBP,verification_expired
+1bbfe97d-d564-4278-ab08-3dae361d3f1b,prin,rfc,clubs,depository,brokerage,69946.5,76689.81,9221.67,CAD,manually_verified
+fd4b6a8e-5437-4d50-b579-8ceb83864a26,noth,reliable,brochure,investment,mortgage,60724.75,74792.57,6612.11,USD,verification_failed
+5e93ba82-1285-4c43-87fc-556e8eb1fc4f,sigm,wake,bowl,investment,credit card,81930.12,96472.08,6296.84,EUR,pending_automatic_verification
+61fcdc84-d068-4522-8614-1b583f6f8b06,airl,essays,plot,other,checking,2567.84,31195.72,34190.02,USD,pending_manual_verification
+f4979040-d576-45a9-b51e-4382abb7399e,viol,great,psychology,credit,checking,95817.28,39665.44,36035.72,AUD,pending_manual_verification
+5a8410b0-db4d-4602-a18e-a7ce2e826d97,babe,practices,options,credit,hsa,7599.65,69061.44,31734.88,CAD,pending_automatic_verification
+ee04b1a0-4292-4354-abb8-1064bd619166,bloo,robinson,stamps,brokerage,cd,10190.13,77248.09,42664.37,CAD,manually_verified
+9fa6bf1e-3c7b-4b3f-a09b-c42cbb16f2fc,nh,but,wire,depository,hsa,60041.16,12105.51,49208.37,AUD,verification_failed
+8ee73b43-811a-4951-94f4-e4b9233fc91a,safe,figure,hosting,other,roth,78263.53,34720.38,21990.52,USD,pending_manual_verification
+320c5155-a007-456b-8c28-3b90d7b31172,freq,leaf,featuring,depository,savings,37057.09,50596.08,17720.33,AUD,pending_automatic_verification
+95cf8beb-cecf-43fa-bdcf-8cc19f5af25d,staf,sin,books,depository,401k,84957.56,82233.09,6171.4,CAD,verification_expired
+46d9a679-3254-40bf-8b62-ebd2c81309b3,vita,overnight,slot,other,cd,96078.76,63558.51,41606.66,USD,verification_failed
+917392e5-32a5-451d-97ec-49e02479f2c1,prog,icon,rear,other,ira,70730.86,43548.71,36955.97,EUR,pending_automatic_verification
+9855cb2c-20bf-42bb-8831-5325479f0bef,walk,does,sets,other,brokerage,96547.37,27008.24,40601.76,GBP,verification_failed
+24c7c612-693e-4d1f-b886-1cd2cdf032b6,make,judicial,icons,investment,brokerage,53817.29,48349.75,22343.15,AUD,pending_automatic_verification
+ebb630f1-104c-4a37-a658-995c9be85345,rc,dna,stars,depository,student,73102.62,26839.55,42733.94,CAD,manually_verified
+398fc9ad-580e-4da5-8cab-8e84a5a59495,smoo,became,table,investment,student,83073.1,8666.29,44199.93,GBP,pending_automatic_verification
+bd343a1b-cd2e-48b2-bd81-2ffe607c6e71,depe,introduced,numbers,loan,mortgage,24386.34,46470.85,30906.25,USD,verification_expired
+afc00f97-35a8-407f-a588-9ef5739e269c,gard,alex,standing,depository,ira,37898.93,2870.0,42696.69,CAD,pending_manual_verification
+ea4eff1e-40d5-4218-ba02-7dd1ee443d01,comp,couples,secure,loan,hsa,18183.99,21211.99,40093.79,AUD,manually_verified
+8cf74c9c-9d3d-4db3-a2d6-83c983982890,fax,symbols,probabilit,brokerage,brokerage,34033.88,88032.0,35358.0,AUD,verification_expired
+1d2f5093-aaff-4180-ae42-94d00b92cc72,draw,actually,valentine,loan,auto,27626.86,1015.11,47455.07,AUD,manually_verified
+aa95e050-c5de-4e2e-b3f2-9238f02d1967,bear,puts,kerry,depository,cd,8561.3,72007.47,24940.31,USD,manually_verified
+9e85d010-9945-4d8f-ad3f-ccfbb2be3579,resi,practices,part,loan,cd,75816.47,69060.93,32649.24,CAD,verification_failed
+498cd2e3-074a-4961-90b3-09ca71c5e36e,kill,screens,bet,brokerage,ira,49082.13,79293.29,5559.61,CAD,manually_verified
+d47d0c6d-7988-4468-b02b-814ee48eda01,cuba,preferred,entire,investment,mortgage,22159.64,69178.72,16004.1,GBP,pending_manual_verification
+aceb467f-a5d7-44b6-896c-4630200f4323,moth,jacket,louisiana,loan,cd,58155.56,47326.05,27015.17,GBP,manually_verified
+136567e1-ed88-43df-9010-0e98b5a15132,hond,relation,extra,depository,money market,42550.38,74593.54,17208.77,AUD,manually_verified
+f9bb5395-3df6-4a0e-b5a7-284fab48d63c,proc,dollar,developed,brokerage,checking,70285.49,27091.64,13318.78,AUD,pending_manual_verification
+851e0797-8dbf-48e8-8a82-28cffcc82c87,busi,consider,bunch,investment,cd,12065.59,19258.43,6858.18,CAD,verification_expired
+1c990461-5025-4210-896f-f8430c1d7a0d,magn,restore,comprehens,brokerage,brokerage,53586.4,76218.96,10072.34,EUR,verification_expired
+c6cb9a3b-33d9-4b3f-b8d9-e3b467bd846a,crea,jump,quotes,other,roth,21638.46,48419.86,36504.67,CAD,verification_expired
+bdbcd142-da40-49de-bb1f-d58ca62aafa3,whee,locate,ea,investment,savings,97660.7,52463.69,14866.94,GBP,pending_manual_verification
+6695aa70-4af6-47f1-ab78-1da0ca58db2c,blin,constant,dance,loan,roth,10052.61,19411.76,12146.68,EUR,manually_verified
+5bff857a-6942-4c43-b4b4-018f6a32a3fa,comm,administra,mac,other,401k,17944.15,1414.84,27172.62,GBP,verification_expired
+d5b8eec0-e5ba-4b71-a036-cbc43f823dff,down,weeks,mechanical,brokerage,student,27431.13,97429.49,28114.59,GBP,verification_expired
+0bbca19e-410e-4470-a7a0-69303e25fa63,prim,cambridge,substantia,other,student,69741.74,12627.95,43554.6,GBP,manually_verified
+d3ff7ea8-28ba-45f5-9f68-e38d8d4a05fb,kill,sunglasses,mode,other,mortgage,49087.87,87271.97,29129.15,GBP,manually_verified
+c92baab6-3557-4ed0-a024-fb768e554f9b,is,immediate,comply,depository,cd,46939.69,44046.88,10033.82,USD,pending_manual_verification
+e80151e0-a109-4d9d-a28a-435f68a2b083,apr,unusual,jewellery,depository,savings,5137.67,94106.36,24408.73,AUD,pending_manual_verification
+dbe11743-61bc-47e3-a14c-f143dc53a0a8,simu,guard,avoid,credit,cd,82211.56,40070.74,4630.03,CAD,manually_verified
+a03c863e-8011-47dc-9c37-453c3a7e4f55,orga,arena,charges,other,401k,62944.57,5360.91,8310.68,AUD,verification_failed
+37d344c2-5e92-4cec-835b-6c0c7ecb6a22,mg,enjoy,xhtml,depository,savings,56283.96,30383.55,49701.99,EUR,manually_verified
+6641b290-dbf5-497e-97f4-56b812b4e511,buil,returning,not,credit,credit card,11845.16,76444.34,30709.56,EUR,manually_verified
+e0ef70fb-ffee-46e0-a128-7374231d784a,sci,cyprus,liver,investment,roth,79074.08,22568.71,26606.05,AUD,pending_manual_verification
+874dc991-9b62-4bcf-8db4-d57e2e4f83ef,infa,impossible,strategies,depository,checking,45051.45,44272.1,43148.17,USD,verification_failed
+2293dc77-293c-4eb1-ad98-0c0fa0f4f60a,worl,entered,oldest,depository,roth,99003.13,30538.02,31430.34,EUR,verification_expired
+2fea324f-6d71-4ea1-8432-f4dc2e9c6b3f,nt,reducing,vacations,investment,checking,60963.09,74008.93,47431.92,AUD,manually_verified
+3665b357-5511-40ee-8e74-e0799e757745,corr,counties,personalit,loan,mortgage,20778.79,21102.52,33360.98,CAD,manually_verified
+00dfb339-077f-4a8e-8239-11f9a22def14,chri,columbus,away,credit,checking,15705.71,17381.35,4678.18,GBP,verification_expired
+d1fd9139-5626-43e7-9502-8ff6547665f3,acad,infant,ne,investment,savings,267.57,45050.37,30096.75,CAD,verification_expired
+f28de37f-9298-4e07-aa7f-9d0d6f840f68,effe,de,programmes,investment,401k,29125.93,23147.62,35640.84,USD,pending_manual_verification
+aa15dcd6-fd36-42a8-bf6c-e6046dfbb733,proc,inner,posts,credit,brokerage,70298.76,45403.13,34681.86,AUD,manually_verified
+6f49452c-86cb-4689-9f1e-3c8ce955a8c9,tran,say,operators,investment,cd,92391.1,78782.8,31627.84,USD,verification_failed
+842d0a8e-00cd-4e30-999b-4f631b5ced69,pers,twiki,homepage,loan,401k,66118.3,93366.85,21831.81,AUD,verification_failed
+1d1d695b-ab78-41f2-9fe4-5b1ea3fb9d97,mark,partner,times,credit,brokerage,54456.24,64763.47,45512.16,AUD,verification_expired
+f0670fa0-d620-4b54-9be0-4452074cbdfb,skip,auto,clock,loan,mortgage,82663.12,7140.98,9130.22,GBP,verification_failed
+3354bd16-8a1d-4bc2-9b15-e9d6624519b1,envi,remains,minor,loan,money market,30761.18,74895.77,28891.15,AUD,verification_failed
+00194c0c-8b4f-40bd-9e6f-ed5f60bfcf44,edit,calculate,pour,investment,401k,28861.06,12435.37,34745.22,USD,pending_manual_verification
+1192b775-8134-4523-9303-5266d311858e,prin,upper,last,other,cd,69973.37,94267.62,25523.14,GBP,pending_automatic_verification
+58f8d9c1-329f-48c6-8c7e-5cf73ee1bbdc,know,barcelona,ann,credit,cd,49379.52,8044.19,2953.18,EUR,verification_failed
+e5e76b96-b712-46d8-b4a5-94d38075f3b2,hub,execution,determined,investment,hsa,43202.87,32232.16,13268.03,USD,verification_expired
+9e71f963-c737-48a6-a112-e1dd6201028e,belo,vol,sons,loan,roth,9132.69,96191.11,41961.97,AUD,verification_expired
+177b7e68-ee8c-47e5-a612-a7b6dcac757d,mode,vast,zoom,depository,checking,57519.91,95078.63,49979.05,EUR,manually_verified
+3755599b-5fdb-4e19-82a9-e7704f15c1a7,plai,documentat,anne,other,money market,67228.16,26951.1,2971.35,CAD,pending_automatic_verification
+985be71b-6544-4573-b81a-3051e3cc63ad,res,isp,pattern,other,cd,75626.88,47050.08,32923.96,GBP,verification_failed
+03939760-6fbb-4ed3-87ee-d376cf6ee4b7,touc,comparison,mph,other,brokerage,91607.28,18148.91,29681.15,EUR,verification_expired
+52a321c1-976d-4210-ab64-927705880fbf,outs,kingdom,bell,investment,student,63478.47,49172.58,5470.88,EUR,pending_manual_verification
+2b8e26ba-1210-4295-b819-78594fb02059,fili,fact,pink,depository,hsa,34796.11,33330.84,33836.54,USD,pending_automatic_verification
+dba24654-c0a7-4678-83f8-c9c4a560164a,ston,extended,presence,credit,brokerage,85773.31,32980.37,34990.01,GBP,verification_failed
+5ed10dc8-7dcf-43f7-9b2d-158cde2325ac,edit,username,shirt,other,401k,28821.78,94519.35,40864.74,GBP,verification_expired
+dd8d31a5-0f63-4ae7-a223-7d318a5d4294,may,ins,ethics,investment,mortgage,55009.66,45482.59,16411.34,GBP,verification_expired
+ac146931-51e8-4be3-b8b3-92e574c729a7,exis,waves,had,depository,student,32327.38,97018.47,20804.58,AUD,verification_expired
+5f3bb7d3-42f3-4386-918d-3cfc3efcb153,lie,worked,performed,loan,savings,51459.63,98811.92,33225.36,AUD,pending_automatic_verification
+e7eefc88-9ccc-4907-b33c-59323d95a838,marc,hearts,conclusion,loan,roth,54259.36,41324.76,10191.54,GBP,verification_failed
+f6ecd390-9033-49fa-87d8-8b78bc3d97f4,forc,rescue,opinions,depository,checking,36177.94,75644.32,31645.03,USD,pending_manual_verification
+04093040-b649-4811-868a-9bc419c715a8,resp,converter,matters,other,401k,75999.05,20355.82,27911.76,AUD,pending_automatic_verification
+0d0dc44c-f78d-45f5-8d2a-628351d86f44,trip,ii,principle,other,money market,92767.28,43811.61,35214.25,AUD,pending_automatic_verification
+960dd68c-a84b-44b4-b0c4-568fa869a00c,butt,wed,november,credit,mortgage,12142.61,97314.68,30834.71,AUD,verification_expired
+35b9c54c-de95-4f81-b9bf-2ad0ef68375d,dele,circuit,md,depository,hsa,23929.75,15837.82,27991.11,AUD,verification_expired
+182f5c29-eaec-4de0-bd4f-b0b90217a5e4,meas,beta,writes,other,mortgage,55225.14,9320.92,49620.6,USD,verification_expired
+5d8b88c2-76ca-4a88-8ea6-a60310044e75,toni,interactiv,buffer,depository,auto,91292.99,46144.79,6755.84,GBP,manually_verified
+4baa631b-b46b-4ee8-ae36-59db78605a8f,sock,lane,publishing,other,savings,83214.32,49837.55,36113.56,EUR,manually_verified
+4851686d-36df-4c5e-a31c-fecc553e362e,lega,dos,something,loan,roth,50887.2,27342.49,41901.47,CAD,manually_verified
+afa1da67-a164-4c9f-9a8e-9d9ee3803558,wiki,departure,meal,other,auto,98024.46,24373.09,28011.99,AUD,pending_automatic_verification
+8f3dad18-f391-42cc-97c0-91175fff1a9c,genr,trained,lee,loan,savings,38358.6,92186.81,25903.8,GBP,manually_verified
+38944a19-fbd0-4b9f-a4fc-63c7aca922a3,swis,studied,drawn,depository,savings,87932.63,86402.69,14536.12,CAD,verification_failed
+fa18e074-310d-4030-9fe4-9b258afa73fb,sche,help,tx,investment,ira,79000.62,41494.24,46778.17,AUD,verification_expired
+401fc67d-ccf7-4592-900f-ab0479464dbb,leba,significan,dynamics,loan,checking,50773.77,82054.95,14859.11,EUR,verification_failed
+2264478f-3150-4322-88ed-eaa99d2cdd1e,empl,multiple,zimbabwe,depository,401k,29855.58,58693.77,49946.21,CAD,verification_expired
+fe7f6906-0596-47c7-852f-fc8fa6f77ab0,kg,characters,making,investment,cd,48964.03,14859.54,27390.45,GBP,verification_failed
+08b951b3-6372-42cb-b7c5-a003ad118e4b,few,means,marine,credit,money market,34512.39,55191.74,27628.07,CAD,verification_expired
+df780f6e-7035-4b84-b4e5-5c333aca17d2,insi,exchange,conducted,investment,checking,45534.46,32177.74,10243.97,AUD,pending_manual_verification
+f3592049-1f7e-4452-b730-c5f1c4e1d105,prim,mistake,debate,other,hsa,69749.84,57179.76,12444.56,GBP,verification_failed
+889ff0b0-0a5b-4889-8d03-54b4a7334f29,roof,anybody,regular,investment,student,77554.45,4364.73,37490.55,CAD,pending_automatic_verification
+b5b5eab5-fc7c-402c-9907-bc6b4f30512d,prod,sharon,gift,credit,savings,70522.79,81140.89,19917.86,CAD,pending_automatic_verification
+d9ef6a2e-c928-42f6-8dfd-b7ddc368ea52,phil,silent,will,other,hsa,66368.88,82074.76,49060.09,CAD,manually_verified
+a9d25ee5-2f71-4ff0-aa19-65e9b9c2e935,lab,analysis,launched,brokerage,roth,49532.86,3701.96,25612.27,GBP,verification_expired
+c7299b60-7f4f-4be4-96f4-3b08e3cd1ca4,name,suffering,suppliers,loan,mortgage,59018.04,86970.03,43835.33,EUR,verification_expired
+669c2c52-9e0a-454d-a333-b1be285efaa5,img,lodging,instant,brokerage,hsa,44030.62,52595.11,23389.48,CAD,pending_manual_verification
+44ee098a-8127-466b-8489-4e1be63f25e2,quee,hazardous,pearl,brokerage,student,72244.38,40997.86,33084.28,EUR,pending_automatic_verification
+4152309b-d805-429f-b08a-8be58512fedd,chil,isbn,watch,depository,brokerage,15436.12,46949.06,48490.98,CAD,manually_verified
+6fa08488-6ee8-453c-9e49-73492c63c927,farm,preparatio,password,brokerage,money market,33856.12,69270.46,32842.0,USD,manually_verified
+45af498d-1a03-4f5f-b768-9b7eb416ecb0,star,starts,story,other,money market,85176.53,85234.13,43107.77,AUD,verification_failed
+b962142f-a402-4534-8b50-e734284e1196,gate,event,purchasing,other,mortgage,38000.94,31666.12,36217.15,EUR,verification_expired
+10098989-66ed-416b-8243-bd77d82dd27d,reso,sun,amounts,brokerage,mortgage,75940.18,87238.3,2759.06,GBP,manually_verified
+07265e8b-e54e-4b5f-969e-bbea46289c3e,auct,original,traditiona,brokerage,brokerage,6842.07,63116.1,46125.53,AUD,verification_expired
+14ab2bb9-ad96-453d-a815-3e273639d9e8,youn,relatively,hurricane,loan,credit card,99742.59,74676.64,22264.6,EUR,pending_manual_verification
+227c9aa2-4cf2-404c-8af3-85b287f95774,bird,outdoors,sunday,brokerage,auto,9844.31,63374.78,43756.38,EUR,verification_expired
+e3646a9b-9004-4e49-a6ea-99a1d3e8117c,in,presentati,though,investment,credit card,44367.86,69400.12,45267.78,CAD,verification_expired
+ec7e80b8-31a1-4377-8707-3b98fcf6cb63,api,second,election,loan,ira,4599.1,79614.35,15375.02,EUR,verification_expired
+eaabf5d6-dc28-4014-9860-a522e9180bb7,fund,chairs,lounge,investment,hsa,37484.11,14556.98,27027.15,AUD,verification_failed
+0002fad7-1b47-479b-9daf-87c41ab0bf24,mili,scottish,code,depository,savings,56592.81,79251.95,9329.2,CAD,pending_automatic_verification
+4c470695-3730-48ea-b993-c8db5e759c63,band,suicide,oh,brokerage,mortgage,7896.84,87083.96,31365.81,USD,pending_manual_verification
+2b51bd56-5d30-469d-bc48-64ebee6ed01e,dema,tones,centres,loan,ira,24082.98,91282.9,8012.77,EUR,pending_automatic_verification
+c5f33a08-6b18-47d0-aa87-a648bba26210,inte,diameter,diego,loan,brokerage,46114.99,25397.73,13511.01,GBP,manually_verified
+48bfc544-aaed-4ec7-88bb-f851c285e7b7,acti,seo,thin,brokerage,roth,939.74,80463.31,45159.26,CAD,pending_automatic_verification
+b72a1c4a-5d40-47e0-9852-9be5fac3122f,plug,cinema,implemente,depository,ira,67761.09,15797.56,22644.76,AUD,verification_expired
+a8494ba6-3e8f-42ac-aaef-581b5a5450df,ff,muscle,packs,depository,ira,34556.56,58757.17,32308.0,CAD,verification_failed
+37db8ff7-ba5a-456a-a5ba-33c62aa853fd,holi,determine,spoke,investment,401k,42430.89,25009.82,42419.89,USD,pending_manual_verification
+c881a72d-41af-4503-816b-ebf610d14ac7,cont,germany,judges,other,ira,19921.7,38469.32,24677.19,GBP,pending_manual_verification
+4e59c2f9-9963-4e4b-b27d-5ee66ab63233,defe,mit,modem,other,savings,23720.57,57192.27,29165.78,CAD,pending_automatic_verification
+f37e5c4f-beed-4680-980c-21676d1dfbd5,writ,eligible,while,other,roth,99269.2,29523.08,48919.28,USD,verification_expired
+dc0b8421-0cc0-48e2-8eda-a276f0ee83ab,perh,download,military,credit,roth,65822.98,27448.04,28730.52,GBP,pending_automatic_verification
+e5b1750e-eea8-477c-86d0-5924ce050097,poss,regular,applied,investment,credit card,68579.95,74466.88,3403.17,USD,manually_verified
+40d89a87-ec8e-4c0b-9f0e-412a7f739ecf,note,laid,thread,depository,credit card,60640.65,49672.73,45303.61,CAD,pending_manual_verification
+6f438de0-3a7a-4914-8091-87e32da986be,ebay,seeds,noted,credit,student,28619.42,79886.01,30746.18,CAD,verification_failed
+6b8dd65a-3542-421f-a794-134f0b4035d6,firm,owners,older,other,brokerage,35232.1,63661.79,31423.67,EUR,pending_manual_verification
+73d4b371-e393-4218-a746-36908de6cd57,plug,qualificat,permanent,credit,savings,67776.45,72092.84,33299.9,AUD,verification_expired
+c3f8c3b4-f3ad-4dc7-97a0-5fb806ff4dcc,sout,order,though,brokerage,ira,83833.71,62824.81,45266.78,EUR,verification_expired
+42004b69-9628-41b8-a1c2-aa341bd41b89,part,equal,immigratio,brokerage,hsa,64634.06,30893.29,22600.34,EUR,verification_expired
+60eabc5f-fac1-4aaf-862f-0d1850d26fdf,moor,readers,behind,other,money market,57957.38,73235.98,5416.54,CAD,manually_verified
+eaff7de7-28ce-4dad-8b6b-6cca4883e8c4,elig,relevant,comes,other,checking,29511.05,74748.09,9606.36,CAD,manually_verified
+cbbf88a9-047a-46a5-b0c7-44dcee574c79,carb,manage,weapons,other,student,13215.98,53940.78,48602.99,EUR,pending_automatic_verification
+69c51740-b61a-45f4-b870-63c5d0fd8864,loui,too,smoke,loan,credit card,53085.24,91348.7,41693.16,AUD,manually_verified
+7813b3c2-be91-486b-b9b5-0bcbc0f3bdd6,dige,sitting,journals,other,auto,25697.01,82468.98,24610.54,GBP,verification_expired
+f8e6f226-6989-4679-af71-294e213dfca4,serv,relationsh,fashion,depository,cd,80648.85,74655.94,17597.05,CAD,verification_expired
+9b3b7b56-1470-45aa-9fd5-1a86acafb436,brok,von,cds,investment,cd,11516.97,96289.33,7897.09,CAD,verification_failed
+4ce1ae9b-50df-44fd-af9d-ff6e357ab81f,want,strategic,quiz,depository,401k,96650.02,86014.06,36486.62,GBP,manually_verified
+b85db1ae-e0ec-4a79-82f0-7d610d4465f2,widt,ward,seo,investment,ira,97994.22,96726.97,40424.79,CAD,manually_verified
+76646b6e-07de-4b12-a473-0b9b86e6ed52,foru,schools,administra,investment,401k,36577.5,79068.2,1682.01,USD,verification_failed
+9c092cfc-0f70-487a-bc27-66ec36028d6e,main,ins,planned,other,mortgage,53657.23,45478.6,33968.59,GBP,pending_manual_verification
+8d2a2a11-588b-49d7-b099-b05e3047c5c5,plan,moving,since,brokerage,brokerage,67234.08,58456.01,41298.45,GBP,pending_manual_verification
+9109ba58-b4d4-4927-99d7-4cc7ca14a326,unli,boxes,debian,other,cd,94029.19,10834.61,12457.27,AUD,manually_verified
+4213d23b-c411-439c-8735-00ef4c12023e,aim,talk,meter,other,brokerage,2502.46,88423.48,28508.96,EUR,pending_automatic_verification
+6ae33a8a-fa7a-47ac-bd23-fe484da0a085,tosh,cst,astronomy,other,ira,91525.59,22136.72,4097.64,USD,manually_verified
+6f3ad338-6fde-4da3-b4d7-e9b4ecace2e8,sist,tips,engagement,loan,checking,82385.54,90938.76,15807.32,AUD,manually_verified
+a1658276-fcb7-4299-904b-28153cb29935,harr,caused,ut,other,hsa,40829.59,13977.7,47366.82,USD,manually_verified
+318407b8-d24a-4ac4-a599-adf6974dccbe,enou,kits,bin,depository,roth,30436.46,49262.46,5762.41,CAD,pending_manual_verification
+db8c501b-e15a-41de-b5bc-84162af92231,tcp,cartoon,inkjet,credit,hsa,88725.93,13566.4,23228.54,AUD,manually_verified
+b7c4d9f5-955d-4e41-bebf-13816308c02b,pipe,regardless,usual,brokerage,student,67048.62,74314.01,47352.73,GBP,pending_manual_verification
+11ea0be5-96d5-42c4-84ab-a42478afff24,high,reform,chile,depository,mortgage,41912.68,74226.9,8571.62,GBP,manually_verified
+4fd1f447-d768-4c2f-8033-48be656e26ef,help,birthday,keyword,investment,mortgage,41488.45,9902.16,24978.0,USD,pending_manual_verification
+52d6b30e-2a20-420f-bdd6-25e9d0fd380a,harr,vehicle,alternativ,credit,ira,40811.59,95152.15,2603.1,CAD,verification_failed
+53884e4e-177a-4fb8-b7c3-ef228dc9aea2,freq,improvemen,vary,depository,savings,37053.0,44338.31,47577.2,CAD,pending_automatic_verification
+e3589e2e-7cc5-49ea-9ccc-fd1c0d9d9228,step,bit,possible,depository,student,85545.02,9935.46,34598.33,USD,verification_expired
+6465aa78-2508-4d9f-849f-ecd946ad144a,mark,which,flying,depository,ira,54446.59,97784.25,18575.02,GBP,verification_failed
+c9b5f1c1-14e1-4da6-88d0-db49bcbbf407,grew,configure,by,loan,ira,39813.96,18980.86,6985.83,GBP,pending_automatic_verification
+1c816f52-21ec-484d-869b-d33a3cd08053,src,inquiry,pharmaceut,other,cd,84803.32,45471.74,33475.67,CAD,pending_automatic_verification
+ebe4723e-dc6c-4324-8e69-a0ef1285ab19,pana,netherland,against,brokerage,student,64170.45,59714.6,2046.52,GBP,verification_failed
+e55ea147-e0c8-4268-815b-90b66393f965,saud,department,calls,credit,ira,78679.46,24356.89,7170.27,USD,verification_expired
+a3c6dca9-e564-4565-a84d-4e39b729fa63,mid,aud,revenues,other,money market,56457.8,6861.02,38492.71,CAD,pending_automatic_verification
+63515dca-2880-4127-ba3f-73a58f320b4b,corp,create,suffering,credit,checking,20715.74,21595.14,43615.08,USD,manually_verified
+288cffd3-de0b-4f3f-8b16-a2defab8b733,expo,channels,these,loan,savings,32855.96,14755.42,45126.02,USD,pending_manual_verification
+535effb7-ba85-4138-95ae-09b1b92d8432,acad,storage,cf,brokerage,hsa,283.56,85840.61,8089.71,CAD,verification_expired
+06732a63-4c84-490d-96ff-3a45b0ab715b,canv,detroit,combat,depository,ira,12999.21,25065.42,9550.36,AUD,verification_expired
+268cabac-02d4-46aa-b72b-4594e87233ce,pers,airlines,adopt,brokerage,roth,66105.76,2578.01,1728.16,EUR,verification_expired
+697bbaee-be57-4e57-acdf-5392fe90a446,sche,definitely,exists,other,savings,78998.47,23793.16,16864.8,CAD,verification_failed
+9b7c0916-00ef-4058-bb0a-40a29621170b,com,arcade,refinance,loan,money market,17424.62,5239.9,37344.18,USD,manually_verified
+3fc31160-f9e7-4b58-8a26-c256e1d87567,log,related,jeff,credit,mortgage,52608.55,74566.53,24336.05,CAD,pending_manual_verification
+a2bb88a2-8f90-41c7-9697-372f30657506,roy,liberal,bracelet,depository,savings,77801.7,51323.8,6343.65,GBP,verification_failed
+94bd2e4a-6e45-4f60-987b-0c24a286f50c,laye,uses,antonio,other,credit card,50383.87,94541.56,3124.89,USD,verification_expired
+a364e8f2-9c7f-4df7-ab63-778ef0f011f2,sala,subscribe,literary,depository,cd,78322.7,86698.09,26551.11,USD,verification_expired
+05a08753-c0bb-4c70-b181-d67bde903727,inst,wa,assets,investment,ira,45804.25,96402.62,3980.44,EUR,verification_failed
+b975f8cc-9177-40fa-a956-5d4dd830a79f,jobs,guests,post,investment,checking,47898.19,40161.73,34618.78,GBP,pending_manual_verification
+f1a99f1e-8708-484c-bf8b-ae174a1ad1ed,kids,tissue,average,credit,brokerage,49026.89,90970.08,4601.05,AUD,pending_manual_verification
+1f769866-45c8-410f-b62c-45b8d43fd4e3,barg,nov,attacks,investment,brokerage,8079.05,60829.74,4218.43,AUD,pending_manual_verification
+e5198460-83cc-4f91-b61f-459f223794a4,down,out,mathematic,brokerage,cd,27501.6,63307.67,27869.47,EUR,manually_verified
+00ba0491-f3d3-4b70-a618-d959c4e7f48b,expe,yahoo,lots,credit,brokerage,32518.54,99462.78,26997.29,AUD,pending_automatic_verification
+b4745543-9e34-4728-aedc-0043cf3b7f65,inkj,northern,bishop,depository,hsa,45371.54,60542.68,5859.74,EUR,verification_failed
+6453ed3b-617f-4815-acd6-1db9c5b0aaf6,proc,statement,patient,depository,brokerage,70177.94,85279.27,32894.92,EUR,pending_automatic_verification
+cfceea3a-ab6b-4e1d-91be-1a0a2e2e9b45,ridi,qualificat,crafts,other,checking,76896.27,72083.99,11536.13,EUR,pending_automatic_verification
+21b9f41e-aae7-414a-a5e9-9dc068e4b027,info,data,fast,depository,brokerage,45155.49,22849.36,17607.65,EUR,verification_failed
+64f055ba-82d2-4eb5-9d38-e04327c45cc7,ink,henry,bids,depository,checking,45349.89,41598.97,5659.21,EUR,manually_verified
+e4230a94-a891-4813-8eb1-f2b3da9cce83,hope,photo,fund,investment,hsa,42676.4,66510.79,19340.75,CAD,verification_failed
+a5a6cffb-76fb-494c-8bf7-95973254815c,chem,transfer,attorneys,investment,roth,15263.89,92298.5,4289.53,USD,verification_expired
+94ddb731-25df-4204-ab77-486595e31bed,soci,beta,billion,loan,brokerage,83177.19,9323.01,5731.66,GBP,verification_failed
+8e1e2cbc-5698-4e75-9194-015e3c632fed,reco,shaved,member,brokerage,savings,73879.6,81176.93,28262.17,CAD,verification_failed
+d2b58e2a-7260-4bd1-9b73-8d85a0b5f0f8,much,method,extend,credit,401k,58646.51,56158.64,17152.65,USD,verification_failed
+f562469c-2050-4025-a236-48acae892c6c,by,fitness,photograph,depository,mortgage,12223.13,35359.81,33601.69,USD,pending_automatic_verification
+6e39df79-f8cb-4108-ac60-739fe97f7690,rent,substance,qualified,loan,auto,75028.43,86809.21,36331.97,CAD,pending_automatic_verification
+5eff2abe-a7fb-45fd-a1c3-ee03a9d7e10b,wars,nh,fire,loan,roth,96839.86,60041.01,18230.66,CAD,pending_automatic_verification
+4a81ad24-4555-4f5b-93ae-db69cb88b6fe,moni,courses,percent,investment,credit card,57791.85,21273.88,33180.08,AUD,pending_manual_verification
+202c8eb1-904b-4b19-b935-e03e9074e3cf,cust,box,sponsor,investment,hsa,22424.49,10821.84,42423.3,GBP,verification_failed
+d8df464c-967b-40e8-9189-9b0787989665,fox,result,mode,other,401k,36756.11,76260.56,29130.9,AUD,manually_verified
+969fdb46-b22b-44d9-8e77-9788a07141be,serv,split,weight,loan,401k,80722.14,84515.52,48752.78,AUD,manually_verified
+d023b4dc-08b9-4c2b-8758-f78655341544,side,obligation,paperback,loan,student,81842.69,61357.33,32492.26,AUD,verification_expired
+b2107ed1-32f8-4969-8890-5d25fb9aa304,ak,truly,sm,investment,brokerage,2625.38,92908.43,41643.58,USD,verification_failed
+eeb99c35-f532-4200-8008-10efbde64a7e,divi,community,processed,other,cd,26744.77,18041.61,35432.24,CAD,verification_expired
+eec257f8-75ed-4b51-b3d7-c124f9f25e15,equa,favor,accurate,credit,auto,30898.47,33982.47,1299.18,GBP,verification_expired
+dbf1fdec-429a-409b-abde-7af58dfa82af,suff,miller,guard,loan,auto,86986.27,56632.11,20638.43,USD,manually_verified
+b8080110-cf8f-468e-8389-90e6eab55247,ceme,out,allow,loan,credit card,14187.47,63317.2,2502.2,GBP,manually_verified
+63391a80-53d6-41c0-9ec5-1d1a3b459531,rela,crafts,hills,credit,ira,74611.18,21513.29,21571.79,CAD,pending_automatic_verification
+28e6dd07-4163-403a-b15b-9c8cde898db5,feat,freedom,quantum,investment,savings,34089.6,37005.31,36358.2,USD,verification_expired
+48a984bf-0b03-4e59-a698-4a8e88837986,roug,mine,beach,investment,roth,77683.56,56759.36,5162.89,GBP,pending_manual_verification
+f4f9e2ae-bfa1-4387-a680-52ad7dec713e,arch,church,offering,brokerage,checking,5260.88,15740.99,31274.07,AUD,verification_failed
+8afb23ea-e79c-4901-bd31-d6e2b12b24dc,plas,donald,peter,brokerage,credit card,67396.87,27210.28,33435.0,USD,verification_expired
+5099bf7b-7060-4c94-902c-c8d6b7bb4293,kans,implicatio,doors,depository,ira,48566.17,44204.42,14385.18,CAD,pending_automatic_verification
+6040175c-c273-4197-86bd-69fd58e69191,requ,broadband,houses,depository,401k,75494.31,11381.75,22065.77,GBP,manually_verified
+ff31d85f-e768-49bb-9b7c-da5fcfeed685,eagl,po,keeping,investment,401k,28324.65,67848.63,24845.0,AUD,pending_manual_verification
+106d9bc0-5a3d-4ed4-adbc-05071b23cb47,phys,apart,grant,credit,ira,66713.26,4541.74,20367.91,CAD,pending_manual_verification
+bdc79238-c0f1-40f6-b64e-d8fb4c9bf18a,news,acres,enemy,investment,credit card,59932.5,768.71,15769.55,AUD,manually_verified
+0c524701-e933-4723-954f-958bff1641a2,coun,cassette,diesel,investment,brokerage,21123.4,13723.48,13520.46,GBP,verification_failed
+8676b76b-7103-4fda-97fe-35f1ab6b2344,expl,acres,release,credit,brokerage,32812.24,772.99,37603.69,CAD,verification_failed
+7b478eb8-0432-4c34-82f9-a28b62e12b49,come,gathering,produce,brokerage,401k,17569.48,38020.74,35479.89,AUD,pending_automatic_verification
+d22ae366-73c9-4310-91b5-8cd9e5bfb787,lase,sole,seriously,brokerage,ira,50026.23,83335.42,40503.81,GBP,pending_automatic_verification
+e52493a8-5ee4-460e-82cf-a0522a436763,auto,string,answers,credit,money market,7207.55,86176.44,3072.81,GBP,manually_verified
+865d4227-31cc-4dc2-a5a2-6e8f50e089e6,affe,trail,strip,depository,checking,1874.15,92116.24,43243.39,EUR,pending_manual_verification
+42087fb4-d04d-4aea-b739-7f96369461bd,modi,mo,proof,brokerage,ira,57575.92,57339.97,35765.45,CAD,pending_automatic_verification
+5819c5da-a71e-429b-807c-1aeafcf65bdd,hi,brokers,afternoon,credit,roth,41769.4,11517.34,2021.97,USD,pending_automatic_verification
+5d7fe222-77eb-49d0-8512-405c31745c91,expe,self,office,other,student,32476.82,80132.22,31288.14,EUR,verification_expired
+882dd10e-0ef7-4ef6-a0b3-2d36bb8427c3,sock,tracking,beds,loan,mortgage,83202.59,91976.98,5318.36,GBP,pending_manual_verification
+d187529b-5541-44cf-9d20-e5900e3d431e,spin,department,mutual,depository,money market,84448.44,24331.65,29854.69,GBP,verification_failed
+86bf39c1-a035-464f-8146-e4dcf48963dd,load,graph,era,brokerage,savings,52396.25,39576.67,16203.45,USD,pending_manual_verification
+e113da52-ac9a-42e4-ac6b-14db12a72203,faul,facility,cm,credit,brokerage,33951.33,33306.86,9238.5,AUD,pending_automatic_verification
+d43dcfec-b760-4bda-8fa3-7f4b98fb822c,lens,broadcast,leisure,other,savings,51048.33,11402.66,25987.65,GBP,verification_expired
+16e89319-4d69-4d0f-8e3a-a24a27ff5568,thu,finally,ram,other,auto,90592.27,34937.53,36641.58,CAD,verification_failed
+ac2c0dad-614e-40e4-825f-ddca67c84017,sier,shoppers,decrease,loan,auto,81894.86,81503.7,12577.17,GBP,pending_manual_verification
+f63d95c8-bf89-4096-8834-f1ca80d3cc6e,chan,contain,nj,brokerage,savings,14644.42,19727.18,30517.55,GBP,verification_expired
+bb620fdc-a0f9-4ae0-80be-3acd7c2e5f60,resp,penalty,commentary,investment,money market,76021.53,65550.9,9680.16,AUD,verification_expired
+2a6d55d6-b9a4-4441-835d-d6ed500e4183,rock,knows,republican,brokerage,ira,77284.81,49411.7,37967.85,GBP,pending_automatic_verification
+059766fe-c64e-4cd4-b0b6-182222e8ad24,reso,indicators,translatio,credit,auto,75987.71,44890.53,46283.56,AUD,pending_automatic_verification
+161f93b2-9d1d-48a3-909d-e35d0b6e3b7c,mid,over,operationa,investment,cd,56449.18,63529.83,31601.57,GBP,pending_manual_verification
+5c0c35d0-7ba8-48b8-8b33-8babd7419674,stud,options,chat,credit,brokerage,86424.69,62721.74,8396.91,GBP,manually_verified
+10ec060a-5f86-43fe-acab-bf94e507aecf,auct,import,engineers,depository,savings,6828.63,44220.81,15838.2,USD,verification_expired
+330fbdfd-2fee-4164-91b7-23928d72c404,down,arrival,leaves,other,auto,27467.37,5617.21,25859.51,EUR,pending_manual_verification
+99552530-45e8-47ce-a4a4-53c1ecb2e9a3,eric,ing,art,loan,student,31040.79,45191.39,3787.61,EUR,verification_failed
+a10cbba5-0342-4177-be50-70be5dd435ce,soci,back,studio,brokerage,ira,83169.66,7673.1,43348.25,GBP,pending_automatic_verification
+33174083-fa22-4b67-a54f-cc19a59c3983,stem,occupation,leather,loan,roth,85529.34,61500.84,25846.32,USD,verification_expired
+711dfc82-0b7e-4e66-8789-3c201e69b480,inte,median,score,investment,mortgage,46271.17,55431.64,39799.07,USD,manually_verified
+4d670b3b-e3aa-44fc-ad3a-63d07655dcb2,texa,induced,shadow,brokerage,auto,89587.68,44973.37,40680.98,AUD,verification_expired
+3fd1a38f-475f-485a-9365-fce9041bdd5e,paul,excess,jay,other,ira,65183.75,32152.68,24305.82,CAD,manually_verified
+a950fa6b-3a15-47cb-a1e8-a153b97fa554,chat,associated,boats,investment,auto,15086.11,6187.37,6071.59,USD,manually_verified
+17fdef15-ae56-4171-b29b-1875f71f46cd,them,feelings,proxy,credit,brokerage,89912.68,34343.78,36001.46,AUD,verification_expired
+755c4c5b-bd4b-4423-9440-d65fe8c00baa,lcd,colleges,desired,other,credit card,50454.9,17255.89,13139.44,USD,verification_expired
+cc846277-7b6c-4adc-94fc-727c0e9defa8,if,illustrate,lives,investment,cd,43775.83,43942.18,26614.65,CAD,verification_failed
+ed600d17-f96a-4bf7-b4cb-c7fca04e593c,cite,ftp,dynamics,loan,student,15874.62,37285.2,14861.79,USD,verification_expired
+7caeef87-af38-49c3-bb35-037e5d0f0eac,hat,farmer,networks,depository,roth,40876.94,33836.71,30296.41,GBP,pending_manual_verification
+f51b8283-3ad5-46f7-969b-8b9e0be49770,scen,parties,attempts,depository,brokerage,78922.69,64730.54,4229.68,EUR,pending_automatic_verification
+7b001fb8-790e-4795-8691-43329768193f,bibl,po,earned,brokerage,ira,9450.59,67837.93,14923.2,USD,verification_failed
+ca2b78e5-cf5e-4275-909e-0719e2723788,quie,per,thursday,brokerage,cd,72373.37,65656.41,45410.79,GBP,manually_verified
+ee1862b1-ba9b-45bd-b2f5-7bff3ab60ce0,supe,fact,mountain,other,ira,87327.97,33336.2,29554.24,EUR,pending_manual_verification
+29c1ae3e-3b99-4751-a91f-5aa21d31fef1,cell,financing,warner,investment,hsa,14142.84,34982.08,48417.13,GBP,pending_manual_verification
+ef7103c6-ed18-42e9-88ca-26bd4e3b2c9c,prin,google,necessaril,credit,401k,69848.0,39195.8,30157.02,EUR,pending_automatic_verification
+37a333bf-bfe2-48fc-9ed8-83be58435106,unio,equipped,gadgets,credit,brokerage,93800.22,30958.19,19457.29,CAD,verification_expired
+cdfe525c-7188-4ce0-8fad-9a8b3063f7f6,scop,shipping,pink,brokerage,brokerage,79166.2,81318.48,33835.7,AUD,verification_expired
+e83eeb63-debc-449a-ba9e-8e82bcf58897,slot,records,positive,other,401k,82895.9,73877.47,34585.31,AUD,manually_verified
+e059fefc-4f15-42de-a9db-80d8e66cfa00,logi,partial,holders,other,credit card,52639.33,64602.48,21746.91,EUR,verification_expired
+8c5f25e1-84b6-4276-828d-de7cddc4becb,forc,forest,communitie,investment,mortgage,36182.81,36259.77,9832.88,CAD,manually_verified
+63fe974f-ddf5-42c5-8b7e-23ef063a93a9,cp,vacuum,kb,depository,401k,21419.27,94766.83,24827.28,USD,manually_verified
+0b3a14fe-e404-4dfe-9706-ce6402f7f601,dako,castle,backup,brokerage,savings,22654.3,13756.54,4781.09,GBP,verification_expired
+5778aae7-4f5c-4dd2-a077-0c817cf921d5,spen,blogger,river,loan,checking,84442.84,10114.08,38772.86,USD,manually_verified
+4bc0c323-df50-42f9-a0d0-9ae8546594ea,some,taking,anderson,depository,savings,83511.98,88368.22,2849.63,USD,verification_failed
+47ec213d-f3ad-4327-9d89-887adb31a8d6,fami,revision,capacity,brokerage,student,33676.44,76630.76,7421.4,CAD,verification_expired
+b32a976c-748d-4747-a83b-5629dc412282,gadg,classroom,soap,brokerage,student,37671.99,16224.72,41735.91,USD,verification_expired
+0dabda42-5742-41f1-a308-6b0daa082232,rive,seven,clip,brokerage,ira,77109.78,80904.37,9111.42,EUR,manually_verified
+b0aec516-f5e7-44c7-87b8-cfb598e94791,ieee,header,plc,brokerage,mortgage,43767.34,41085.86,34141.78,AUD,pending_manual_verification
+72bdb1b1-f0c6-4da8-9376-eb5d06f0b62d,defe,inches,easier,investment,mortgage,23753.02,44419.87,14961.47,USD,manually_verified
+2537f838-cd5b-4274-9cfc-39fd56173202,rema,indicators,ma,other,savings,74853.65,44892.8,27166.55,AUD,pending_manual_verification
+368c49b0-f866-4535-9a04-0e7743ff533d,equi,settlement,irish,investment,cd,30946.79,80862.39,23981.76,CAD,verification_expired
+d10ed65e-001d-4b1f-9167-942ee85b36c1,some,frame,va,brokerage,student,83511.34,36784.1,47409.38,AUD,pending_manual_verification
+3946a11a-017d-4d2e-96f7-619baa9960e4,wisd,interested,duties,depository,credit card,98443.98,46168.0,14806.81,GBP,verification_expired
+d3f4bdf0-31ae-4e83-9ab0-8916d478d0c9,gene,london,walls,loan,brokerage,38187.24,52745.98,48347.14,GBP,verification_failed
+79347986-234d-45f1-9477-6399287bd8b1,show,self,catch,investment,brokerage,81689.12,80125.92,7781.53,GBP,pending_automatic_verification
+c1d97a12-02dd-4789-87df-d472d94d1732,dete,palestinia,supplier,depository,savings,25000.32,64117.9,43831.73,AUD,verification_expired
+ecc74908-4207-4045-a927-a8faa1a436d1,medi,bluetooth,sport,depository,money market,55454.07,10258.97,42448.72,AUD,pending_manual_verification
+b3010df2-300f-4c36-96c9-9adf89d7dbee,stan,easier,results,depository,savings,85116.6,28506.3,38392.72,AUD,pending_manual_verification
+b591bb2c-eee7-4b14-8436-2ddfb87fd26a,dont,through,channel,depository,money market,27279.13,90530.62,8220.08,CAD,pending_manual_verification
+c402fec9-f6b9-4c64-8c38-9a62a0b4a6aa,ie,ut,culture,brokerage,roth,43747.26,94641.33,11879.86,USD,manually_verified
+2dd8a205-a935-4cec-9dbf-9ba002148843,info,finance,alabama,brokerage,auto,45112.8,34958.51,2306.84,GBP,pending_manual_verification
+25543dd9-cfb1-4d08-af70-bbb1924c6f50,area,latter,declared,other,roth,5325.69,50200.71,12553.13,AUD,pending_automatic_verification
+94bba9fe-80ec-4fa9-bc10-7e5f914e8169,ya,funds,alcohol,other,ira,99452.54,37491.27,2381.19,CAD,verification_failed
+4b58aef1-b305-4bc1-bfb1-10af6122896f,tube,space,past,depository,checking,93082.59,83917.63,32848.07,GBP,manually_verified
+bf9cd84f-4f0d-44f1-abd2-f7e0b049f6ce,scie,castle,ecommerce,credit,cd,79138.06,13759.96,15057.09,GBP,verification_expired
+c08b7e10-6fa0-411b-a978-59f2ecf89ecb,smal,previous,category,credit,cd,82976.16,69607.2,7800.84,EUR,pending_manual_verification
+68319b8d-c532-4111-b2ab-b822d4bbacbf,prof,indicates,according,investment,money market,70553.62,44860.15,1257.31,USD,verification_failed
+5fd2f0cf-517f-499f-98a1-9642916a5da6,bank,diff,sometimes,brokerage,roth,7922.58,25592.39,41913.19,AUD,pending_automatic_verification
+2d3368f7-a5c2-4d1a-bb15-62eb44584ac0,matt,ram,longer,other,credit card,54880.42,72723.48,26860.8,AUD,pending_manual_verification
+4a760613-1d05-4844-a919-5dd4c1d71f35,brea,edit,ends,brokerage,auto,11118.69,28810.16,15756.41,EUR,pending_manual_verification
+e98d6f1e-67c7-44f1-a2da-d74a65f0ab25,appe,hills,sea,credit,roth,4774.94,41982.55,39901.06,AUD,pending_manual_verification
+3a7bf476-cd26-44a0-8263-1bf7dac8baad,inst,break,through,other,mortgage,45711.36,11085.79,45352.2,USD,verification_expired
+5753610e-5b75-4b6b-8f3f-0a480c6ae64a,nels,advantages,lifetime,depository,ira,59673.9,1643.54,26253.41,EUR,verification_expired
+f415670e-2d8c-4264-a2a9-c37d94b315bc,demo,certain,hour,brokerage,money market,24193.81,14357.68,22032.71,CAD,pending_manual_verification
+a27279f3-a687-4ad5-a501-e99d263b090d,obvi,delta,herein,brokerage,cd,61480.96,24056.42,21411.81,GBP,verification_expired
+5dad8e83-b876-4819-81b0-05c431257781,phil,bearing,weird,credit,credit card,66437.13,8561.4,48758.07,AUD,verification_expired
+ad62fde4-2ce1-4f63-b3c2-9d8e6d3078cb,attr,log,leave,loan,brokerage,6767.93,52605.94,25859.06,GBP,verification_expired
+3ecb86d8-618a-4683-a66e-f3877902006a,work,media,goes,brokerage,student,98833.15,55415.2,20132.23,CAD,pending_manual_verification
+e4908b01-1bdd-487a-9d45-5ccf690e2380,isla,overnight,william,credit,brokerage,47013.51,63567.08,49070.93,AUD,pending_manual_verification
+2bf2be23-6ce1-419a-a7d0-8ff7f4bd113c,dial,advantage,sc,depository,checking,25365.03,1624.22,39637.48,CAD,manually_verified
+ac81414c-972d-40d9-9a90-27e415d3fafb,fest,real,order,brokerage,savings,34480.25,73294.1,31784.59,AUD,pending_automatic_verification
+7bfac8e6-7831-40f2-8fa7-de9b6d59a90f,road,receiver,facial,depository,savings,77150.14,73518.7,17293.41,EUR,manually_verified
+61fe75a1-511b-4f6c-b4ac-8943714343c4,anyt,maryland,shirt,loan,student,4433.57,54601.37,40861.93,EUR,verification_expired
+2eae3ce6-712c-4bba-a1d9-7b8bfd082882,comb,rubber,introduce,investment,cd,17508.91,77914.26,23766.52,CAD,manually_verified
+1fd7aed3-a7ee-4d7c-b480-45e54496bb36,prev,os,sharp,investment,auto,69538.93,63173.58,40763.39,USD,verification_expired
+e56ea597-ab33-4d67-92ff-2de90e2cfb37,assu,roots,institutio,brokerage,credit card,6310.05,77619.04,23426.3,EUR,verification_expired
+2a4bf073-535d-4347-95e0-da5c0f12aac0,elec,anybody,continued,investment,credit card,29344.26,4380.63,10774.02,EUR,pending_automatic_verification
+713743dc-496e-4ea4-be1c-5a668df54770,anot,twenty,lifetime,depository,savings,4190.59,93337.1,26253.8,GBP,pending_manual_verification
+8c02a8f4-e3c7-403f-8c25-e32a8a4c293a,work,margaret,diagnosis,credit,checking,98912.27,54303.07,13412.37,GBP,verification_expired
+e69d4854-ef92-4e5a-b182-16b8eff88fcf,repr,connecticu,florida,other,hsa,75329.09,19110.34,18491.73,CAD,verification_expired
+73e58d2a-d623-44e2-9693-67fc95806f2d,russ,subject,eyes,brokerage,checking,78084.16,86579.83,17264.31,USD,pending_automatic_verification
+cf4d2b61-60ef-461c-b1ee-ec24a993dce2,calc,framed,technologi,depository,cd,12447.5,36801.92,44584.84,EUR,verification_failed
+4aea8ce8-67d2-4191-98ce-c20d966a6ce8,rega,terrorism,girls,other,401k,74330.77,89463.75,19945.59,AUD,verification_expired
+ef551f34-c9ae-47fe-886b-e304f985687d,week,labs,lamps,investment,brokerage,97372.36,49620.32,25378.65,GBP,pending_manual_verification
+409be615-5956-4611-9f77-1c81d113783e,tran,linux,selection,depository,savings,92431.05,51927.59,40256.26,USD,pending_manual_verification
+0704cf72-02b9-4dc7-99c3-0a2fd6d80cee,ralp,bandwidth,nj,loan,ira,72708.13,7892.7,30520.21,AUD,verification_expired
+c583e215-9b5b-42a2-8b2e-6b3ff6394ab2,sin,marshall,exception,investment,savings,82234.13,54547.44,16739.36,CAD,verification_failed
+57ba2889-fd99-425e-8290-ad3f3dcc5f7d,bar,personals,entities,brokerage,checking,8006.89,66091.92,16018.3,AUD,verification_failed
+45580271-21a6-44a6-b00e-494882caa045,nl,honor,powers,credit,roth,60262.16,42611.61,34798.48,EUR,manually_verified
+09e00676-9642-48fe-9ce2-7079c4c4e1c2,finl,answers,sugar,loan,checking,35154.7,4235.52,43631.82,AUD,manually_verified
+193b104e-6429-4c01-a507-988d883fd49f,firs,yr,download,credit,401k,35255.93,99815.06,14453.21,CAD,pending_manual_verification
+950982e6-3687-4428-83f5-58f3961038b4,wife,val,away,other,ira,98002.73,94790.44,4677.02,USD,verification_failed
+33a1d69b-82cd-4f2c-8402-2d2bd00b6c22,pa,forgotten,selection,depository,savings,63751.25,36331.11,40253.7,AUD,verification_failed

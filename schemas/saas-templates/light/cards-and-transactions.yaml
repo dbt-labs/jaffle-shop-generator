@@ -1,0 +1,118 @@
+system:
+  name: "light-cards-transactions"
+  version: "1.0.0"
+  seed: 42
+  output:
+    format: ["csv", "json"]
+    path: "light"
+
+entities:
+  cards:
+    count: 200
+    attributes:
+      card_id:
+        type: "uuid"
+        unique: true
+        required: true
+      user_id:
+        type: "uuid"
+        required: true
+      card_number_masked:
+        type: "text.word"
+        required: true
+        constraints:
+          length: 4
+      card_type:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["physical", "virtual"]
+      status:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["active", "inactive", "blocked", "expired"]
+      spending_limit:
+        type: "decimal"
+        required: true
+        constraints:
+          min_value: 500.0
+          max_value: 10000.0
+          precision: 2
+      currency:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["USD", "EUR", "GBP", "CAD"]
+      issued_date:
+        type: "datetime.date"
+        required: true
+      expiry_date:
+        type: "datetime.date"
+        required: true
+      created_at:
+        type: "datetime.datetime"
+        required: true
+
+  card_transactions:
+    count: 5000
+    attributes:
+      transaction_id:
+        type: "uuid"
+        unique: true
+        required: true
+      card_id:
+        type: "link"
+        link_to: "light-cards-transactions.cards.card_id"
+        required: true
+      user_id:
+        type: "uuid"
+        required: true
+      amount:
+        type: "decimal"
+        required: true
+        constraints:
+          min_value: 1.0
+          max_value: 5000.0
+          precision: 2
+      currency:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["USD", "EUR", "GBP", "CAD"]
+      merchant_name:
+        type: "text.sentence"
+        required: true
+      merchant_category:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["travel", "meals", "office_supplies", "software", "marketing", "gas_stations", "groceries", "other"]
+      transaction_date:
+        type: "datetime.datetime"
+        required: true
+      posted_date:
+        type: "datetime.datetime"
+        required: false
+      status:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["pending", "posted", "declined", "refunded"]
+      description:
+        type: "text.sentence"
+        required: true
+      receipt_required:
+        type: "boolean"
+        required: true
+      receipt_uploaded:
+        type: "boolean"
+        required: true
+      expense_category:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["travel", "meals", "office", "software", "marketing", "training", "other"]
+      created_at:
+        type: "datetime.datetime"
+        required: true

@@ -1,0 +1,1001 @@
+security_id,isin,cusip,ticker_symbol,name,type,close_price,close_price_date,is_cash_equivalent,iso_currency_code
+d8ccf5a4-2e55-4d8c-b123-816510d2d29a,designs,request,super,basic,cash,3397.06,2019-06-25,True,CAD
+e6d2b707-25fb-46f1-920c-1dbffbb3ecd7,indeed,produce,ball,micro,fixed income,4763.95,2014-10-27,True,CAD
+55baba81-0096-4e7b-9372-3670f9e08bfd,associate,matching,leadi,mixed,derivative,713.91,2023-09-14,False,CAD
+9dd5b3c1-323b-45d8-8e9c-c59e250992ec,charlotte,explore,liste,browser,equity,3037.87,2017-08-29,True,CAD
+ffde0bf1-1d3f-415e-b619-decd8286d49c,coordinator,mounted,belie,lenses,other,3906.56,2005-12-28,True,AUD
+45422074-b2ca-4a78-b272-e00f9cd709c9,settlement,ink,liber,instant,mutual fund,174.0,2015-08-09,True,USD
+ad06394f-0f81-475c-beab-91b112d3a746,artist,interface,serve,questions,derivative,336.18,2024-04-27,True,AUD
+3e147c4b-6ed1-4158-9b4f-52719d24c0e0,graphic,should,relat,montana,equity,3892.58,2020-05-25,False,AUD
+addb103b-949d-44a1-9314-3d8f8c515fb7,apache,felt,athle,xml,fixed income,1831.65,2024-09-16,False,CAD
+9cdcd042-f9f3-4f6a-a97a-c1d91bd8fdd2,types,audio,twiki,alpha,other,1914.28,2020-04-09,False,CAD
+71562db8-9544-4e8d-8f06-2e5e7c843c09,hat,riding,revie,who,fixed income,2836.23,2014-02-23,True,EUR
+97ef9a26-94e9-4873-8d5e-0bf91d5b2c22,part,himself,wrong,generation,mutual fund,3025.48,2009-04-09,False,AUD
+01f92360-682c-4989-87d2-51138b29bb27,suffering,ticket,furth,population,fixed income,3395.31,2010-06-29,False,AUD
+993deab7-1892-4745-8539-df01790793f0,pet,man,pcs,files,fixed income,4744.12,2017-02-05,False,GBP
+de6b6b12-cdd1-4aa2-8e88-d88a87bc8fbb,committed,maintaini,loop,random,mutual fund,1860.07,2004-04-13,False,EUR
+deeac2f4-7e72-419e-b86f-697666e6ea9e,current,acceptanc,ages,employee,equity,3815.42,2022-03-23,False,GBP
+abbda769-fac0-4c6d-898e-42c4c5e9c981,plant,markets,low,single,other,2869.61,2006-02-14,False,GBP
+01167c0e-3387-4c2e-8f6f-1ece3b9347e6,designs,field,drago,understood,equity,2647.3,2013-06-18,True,GBP
+00555ed3-9cab-46bf-89a0-b89ad2175ddb,racing,brings,sf,highway,etf,1990.18,2014-07-02,True,EUR
+bc5c137f-8cd8-41b6-a3f4-888aa9d78032,reviews,talent,adult,copyright,mutual fund,3247.81,2006-07-13,False,GBP
+618a67a2-8948-4766-9959-dbc6e89c93ad,blocks,am,netwo,processors,mutual fund,1248.07,2024-10-31,False,GBP
+0ed6fdf2-da56-434d-bf20-befb75208720,applicants,ref,guide,decade,other,567.25,2022-01-28,False,GBP
+5e98c6a0-a6b0-4c57-89c4-437c7b1c69c4,credits,students,arriv,layer,etf,3678.38,2024-10-13,True,USD
+1ab5cce2-668f-45ea-9970-f5f595396a5f,editors,short,reach,ex,other,2495.22,2015-01-31,True,CAD
+fe144fa0-ef68-4bd7-99cb-71d8fd65c85e,networks,plane,excel,enforcemen,loan,1934.94,2011-05-25,True,GBP
+a5e3cbfb-08ba-4150-946d-ab1253c002aa,century,personal,cs,encycloped,derivative,2808.37,2012-07-18,True,GBP
+41c3bf99-fae5-47c8-b55c-9731806cf459,assigned,valuable,switz,tokyo,cash,1308.89,2023-12-18,False,GBP
+b7688c54-596d-4a1c-a1e4-c6fa6b761d3e,opposition,horse,label,webcam,cryptocurrency,1301.46,2025-10-29,True,GBP
+d3a68a64-1506-4092-8e84-a8a4b511d1f3,update,pl,sat,evolution,mutual fund,2231.37,2007-08-08,True,GBP
+a2ef829a-f48a-49f2-8843-0fc8c6aed0d1,herald,charges,ga,republican,mutual fund,4981.83,2008-07-16,False,EUR
+6aefbda2-b673-4b5c-9dc9-e14254cb7839,jacksonville,stack,end,progressiv,equity,1427.89,2000-07-11,False,AUD
+237ca6ca-8d7c-49ce-9d5f-487f92c87668,series,topics,metro,warner,etf,4582.4,2021-11-26,False,AUD
+290f83ba-ad56-4fca-af3c-f0a1c6c68468,memories,carolina,densi,convert,etf,2456.01,2012-12-06,True,EUR
+74522e1c-9540-4c5c-9280-3772cdc07b63,participatio,tramadol,sprin,berlin,cryptocurrency,613.2,2014-03-20,False,AUD
+2877b693-505b-4d4e-8b7c-883fa360adf0,quotes,conflict,do,plants,equity,4264.13,2017-01-30,False,EUR
+6b0962db-b3cb-4813-a6df-61e677aca0df,no,supplemen,condi,restaurant,cash,2260.22,2012-10-19,True,AUD
+8ea13f87-cf06-43ce-9c44-1e5513031b2f,quiz,mercedes,johnn,sue,equity,4493.4,2021-01-03,False,EUR
+0fa8d32a-fd80-4bb6-9d68-c7e6d0398d99,facility,villa,ads,understand,cash,2225.56,2020-07-05,False,USD
+7815d980-2046-408c-8c8d-e7c158982d29,voltage,buffalo,zoom,jobs,loan,438.96,2014-03-02,False,GBP
+a60fd280-fb00-40b4-a4aa-525fcb25925f,denmark,nor,cool,torture,mutual fund,3409.65,2008-07-11,False,USD
+da08c248-fdd1-4da3-a1c5-46ab399c5e8d,meant,roof,gbp,lycos,derivative,4227.61,2006-08-11,False,USD
+95fe4e7b-d759-4ff7-8af0-26f5ab8292f2,folder,disclosur,liabi,lamp,other,1597.95,2010-07-09,True,EUR
+1761b7ed-309a-40b8-853d-8931c2e19432,birmingham,willing,isbn,spam,loan,1737.13,2024-07-09,True,CAD
+6f91f2a3-9943-431b-876e-8e16fbdedd8b,top,frequent,heavy,mexican,mutual fund,324.7,2002-08-01,False,EUR
+c68d2548-9f20-4689-935a-49636097d9c1,cst,chamber,disas,typical,etf,2710.86,2023-09-02,False,GBP
+d85a869c-9a59-4fe9-8a59-88d63aefa67d,mood,hey,chemi,extended,etf,4456.66,2011-04-21,False,USD
+23516e09-0a01-49fe-9805-54244d4dcf46,gates,solid,large,peak,cryptocurrency,4256.81,2002-11-02,False,AUD
+b9737a06-2001-415d-82eb-e318880c5a37,portuguese,dildos,simpl,want,equity,3559.05,2024-01-31,False,AUD
+f7feb0c9-c73c-418f-95b5-02d256dadf22,panama,killed,cnet,season,cash,4636.62,2007-04-27,True,EUR
+44895164-bfd0-4004-a312-0d280681df75,coast,puzzle,kerne,tournament,loan,3188.5,2000-10-05,False,EUR
+2d1e2fe1-fff7-4561-b998-caeedb8e7a0a,mapping,panasonic,asian,amateur,cash,3968.48,2007-03-16,True,CAD
+ee861094-1177-48d1-8d3f-c08e9daaa9cf,spread,username,picks,returning,mutual fund,2543.78,2021-02-19,False,EUR
+d1932996-de87-4c65-b40d-376a8cd421e7,healthy,specifica,de,programs,etf,606.82,2006-08-23,False,USD
+cc985ee4-54cd-4f7a-852e-05d8b122889f,activities,leads,full,offering,cash,1004.91,2008-06-06,False,GBP
+ee1d4858-8416-473b-a9c2-5388bc3963aa,physician,odd,judge,kentucky,cryptocurrency,694.39,2019-10-31,True,GBP
+704ffe18-24c8-4d81-912d-b1921358966e,achieved,meaning,addit,lose,etf,3951.87,2023-12-04,False,CAD
+05bc0d0e-55df-467c-b1e1-8fa6444b400f,downloaded,whereas,adver,shipping,other,131.43,2024-03-31,True,AUD
+ac805390-feb3-489d-a0d3-50b7393eb3e9,plastic,seriously,tissu,both,mutual fund,2770.11,2009-02-19,False,EUR
+99240869-be3c-4afd-a350-17a8716889a4,bill,charged,conse,logic,other,1844.56,2000-05-19,False,CAD
+47f54d65-b706-46d7-bf19-68b526181a21,shopping,diversity,great,full,etf,4018.31,2021-07-13,True,EUR
+27747d53-81da-43f0-bfa0-27d3fcee1f2f,handle,might,worse,czech,cryptocurrency,2758.24,2022-04-03,True,GBP
+3d17830b-24d3-4c00-81a6-5eaae7ad9d48,portions,sr,pda,stopped,derivative,3059.75,2018-12-27,False,CAD
+7711e5e4-c27e-4d43-8028-4b07f16f98db,resource,better,garde,measuremen,etf,431.09,2020-04-04,False,EUR
+907c194a-4cef-47c3-804b-175fda3cfc6a,arrival,actor,colle,largest,cash,1546.46,2022-05-28,False,GBP
+ad7fabde-aa36-43e2-a949-32f1ce07361e,hurricane,samples,milit,stood,etf,4997.98,2021-10-26,True,AUD
+f413a45b-867b-413e-b3ef-73ccd88f9350,big,looked,anten,country,equity,3594.35,2003-10-26,True,EUR
+b7e8c960-b658-4ec9-b214-8370940e2c1f,substance,te,jay,appeal,loan,2628.48,2001-06-18,False,CAD
+9e26b4f8-3715-4d48-8a4f-ec0035c98abc,awarded,treatment,then,mice,other,3845.83,2013-11-12,True,GBP
+88d0a00c-c698-43f2-8c3f-6ad266fb20f1,although,trucks,ethic,void,cryptocurrency,4116.7,2002-09-21,False,CAD
+fff7bc58-f15a-4529-9b55-f017bd33d1bb,municipal,reported,prove,grey,cryptocurrency,368.76,2010-01-28,False,EUR
+23390536-95f9-4aef-9e1f-c5d5bf1fdc65,background,clay,delta,someone,derivative,4861.9,2013-08-04,False,CAD
+15eaaa3d-bcd7-431a-afbc-051471ca17a9,gm,texts,eye,requiremen,fixed income,3211.7,2013-06-21,True,EUR
+9daa888d-4274-4af9-a060-ccb8cad8ad10,causes,workers,quite,late,cash,2249.88,2014-12-05,True,GBP
+2ea18805-3fcf-4704-8884-924491cf76c0,weeks,arena,ident,southwest,loan,3400.55,2013-03-24,True,EUR
+3f12b10a-ea71-419a-98c3-a7ec09c0dc63,fear,right,vice,great,mutual fund,1722.58,2016-11-09,True,GBP
+93f7d3db-9e38-4dde-8a3c-f91e128a6ae7,role,alive,dos,writing,fixed income,4389.8,2019-09-25,False,GBP
+e6d60bbf-4c05-4a9a-a8eb-94d256cb63f0,killed,flexible,unusu,http,cash,3901.32,2015-08-14,True,GBP
+49b9ede8-a5a5-4e8c-b5a7-ab04149921ac,pointer,personall,beari,offices,fixed income,3198.97,2023-10-09,False,EUR
+3e9c385f-ff5a-4bb1-8f7f-8944a6adf9b5,secured,provider,basic,childhood,cash,909.82,2010-04-27,True,USD
+7c123ad6-ba6e-4f70-984a-06945af00df0,protein,outer,red,event,mutual fund,4831.32,2002-05-29,True,GBP
+e359e4ca-a892-485a-ab6c-81cec56bd5db,born,accordanc,epa,followed,derivative,2163.1,2014-04-25,True,CAD
+8e1d9c32-8c01-4e74-bc1a-96b5d1cc1684,dodge,cards,concl,indicator,other,4553.56,2014-10-20,False,GBP
+7fe44ed4-c438-4ef1-8fe8-dba6ef78095d,medication,hardware,ak,five,cryptocurrency,277.07,2021-07-11,True,GBP
+57dbc4ff-3e33-4e63-9d77-e4be84684b10,bet,neutral,expan,getting,fixed income,620.81,2000-08-28,True,AUD
+265bfdba-9d64-4e9f-8a06-6f4d1b532e02,efforts,glasgow,bc,thin,equity,765.09,2010-03-16,False,EUR
+970ec1f6-9cf8-44ee-839a-4c322bfe8dd7,through,white,mit,coat,derivative,823.29,2006-06-26,False,CAD
+28de563f-7043-4160-bfe1-d28a3d68affc,gbp,catering,ends,knife,derivative,1613.31,2008-06-09,False,CAD
+700d88e5-a0c2-4b91-8ca5-1ea7d03471df,astronomy,ia,hist,jump,fixed income,3546.66,2019-12-29,False,CAD
+257cc004-13f0-43bd-a19b-aaa758bcb209,background,developer,desig,operators,other,1730.12,2008-09-01,False,CAD
+46e8593f-6d55-4fed-9288-feff82770e9c,ne,consult,bosto,ensure,other,4704.52,2016-04-03,False,EUR
+45b7bf0d-fcb3-4a49-8d24-21ea17034a44,values,face,ok,sensor,equity,4474.63,2007-12-14,True,AUD
+5cf052cd-52c4-43f2-a403-4676d838c816,ext,fails,shops,straight,cryptocurrency,4229.67,2015-09-25,False,AUD
+003dce0c-0dbf-4ae5-a1a3-8230276116d7,weeks,cartridge,excel,vacation,mutual fund,1253.03,2007-12-16,True,AUD
+590766e3-53de-471a-a6c5-6b35fdf29d60,contribute,ethernet,waiti,wash,fixed income,3175.29,2020-12-16,False,USD
+df1dbc96-d749-4876-ae8f-df26656af276,efficiency,press,kim,modified,cryptocurrency,2754.21,2014-01-03,True,USD
+92493cbe-d77f-4684-9bf0-16c201eb12de,denied,fusion,shoul,governance,other,625.86,2009-04-13,True,AUD
+491feda9-7198-4ea2-ba09-b18295176fa8,broadband,michelle,natur,martin,equity,1514.13,2022-04-10,True,AUD
+386ee0a2-52ff-4322-980d-a5a2ddee7485,pollution,may,vermo,interest,other,2667.39,2021-10-12,False,EUR
+a64e7c93-759e-4252-87f3-303586a90c54,promise,il,effic,preparatio,derivative,2512.87,2015-09-17,False,GBP
+9099fada-3fae-427b-be1d-e3532b40571e,sierra,seats,hats,large,other,843.19,2011-07-24,False,CAD
+e78b6e75-7f7b-4efc-a7e4-418c4965738b,outcome,demonstra,perip,pt,cryptocurrency,4708.04,2017-06-12,False,EUR
+09290514-9fdc-4c7d-b0fa-300c3c0260d0,scene,aviation,worst,john,mutual fund,770.98,2022-08-09,True,USD
+e8ea3a39-dbf9-4c3f-aead-b95fe1ef2f3e,guard,learning,trade,preferred,other,3293.67,2009-05-08,False,CAD
+455cba74-d506-46eb-9c85-69d5c40e8670,mark,schools,folk,testimonia,cash,3603.17,2003-12-07,False,CAD
+e947017e-a447-448b-bb8d-7d4e816244b3,maintain,package,beach,riding,derivative,3025.7,2010-02-24,False,AUD
+1bf437c5-1b07-4018-bd99-25a21f8ce0fd,performance,flash,parti,anything,loan,4212.65,2017-12-06,True,CAD
+5f730033-0103-49fc-aff8-6c1530b61785,wins,plot,grow,reports,cash,2818.09,2006-04-24,False,AUD
+9dfa1896-4765-4ba4-a7d6-84cbc408bec8,wall,houston,ad,directed,mutual fund,4126.18,2015-05-24,False,GBP
+da377523-606e-42a4-9637-4ad2f496e017,les,linking,morri,modern,cash,141.88,2018-09-20,False,CAD
+7854767a-b2b8-44d3-8855-a40de5845430,increase,golf,robin,must,etf,227.32,2009-02-27,False,USD
+1ecb8d20-1c10-431e-bf39-872fd5481cc6,last,fetish,ai,bonds,equity,3207.27,2006-05-08,False,AUD
+37c7276f-c350-467b-bef6-640fb8969fc8,henry,voip,brows,unsubscrib,cryptocurrency,2883.86,2011-03-10,False,USD
+8683abf4-58e3-4910-b348-7f0635c083c9,cells,essays,insid,corner,loan,3255.65,2000-12-18,False,GBP
+43ff244a-a90a-414b-bd12-837ef8e68bb2,judge,jeff,ii,prices,cryptocurrency,3834.8,2004-05-02,True,AUD
+3ec9d749-ca27-427d-a79f-175ac6843eea,ex,encourage,shape,brokers,cash,2082.94,2001-09-10,True,USD
+82376dc3-93b7-4ada-8e8e-d6a0235117ad,stable,partnersh,pleas,client,mutual fund,3194.96,2022-03-21,False,USD
+e0c5feea-2c24-4154-8c45-38a8c81589ae,wire,dependent,comba,claim,etf,2490.2,2024-08-04,True,CAD
+b5831acb-95d8-4d2c-91c6-a8b07231db82,mesh,virginia,deal,halloween,derivative,3135.82,2000-10-10,False,EUR
+26bae538-17d3-4ab4-bfdf-ae3f7ed63b00,comply,paintings,hub,alice,loan,1448.37,2015-08-15,True,GBP
+1e1b5c9a-aead-4b78-b91c-fbfbf660678c,observed,contained,natur,glossary,loan,4783.25,2010-03-31,False,CAD
+96c3e7b3-6d1b-451f-8d69-b1fb9fa900bb,production,copper,repor,settlement,loan,2414.73,2001-05-31,False,CAD
+0761e9ce-c0fc-4554-bc2c-d52adda31d7a,assume,blonde,summe,concerning,cryptocurrency,4023.44,2015-02-27,False,AUD
+ac7f907f-8d51-47b2-8a52-2c181d117b26,experienced,instituti,disco,strongly,derivative,3424.96,2002-07-16,False,GBP
+507f138a-c851-4385-809c-ddcacd8ff90b,long,pad,net,nv,cryptocurrency,1487.18,2002-10-21,True,EUR
+8b77316b-74c1-43b3-8e9e-5553e2ca2a04,multiple,files,spons,offer,other,364.87,2021-01-05,False,CAD
+97e5505f-8705-45d1-b7ad-ef26ab88f17f,shirts,profiles,emiss,obtained,other,299.57,2004-10-31,True,EUR
+92bf64eb-dea3-4978-ae7b-5e7a1230a08f,be,carol,bugs,entered,equity,2198.03,2009-02-08,True,USD
+ee83cce5-37c8-4f40-82aa-020b4f11b079,complaints,prescript,less,high,cash,2421.26,2003-09-25,False,GBP
+96ed7571-d6bd-4bb3-980f-3b40d7156c8c,cat,genuine,compu,overall,mutual fund,1020.12,2013-10-20,True,AUD
+2b56bd0d-59d5-4b1d-9a8d-56f0c86782d6,prescription,parker,zus,medicine,loan,3033.31,2025-10-08,False,AUD
+36a60bf0-c399-4e39-8c73-0979c36f4440,kg,cb,ethni,info,loan,1562.92,2024-09-13,True,EUR
+05a5f79a-a2bc-4aa4-81fe-07ca80101f05,arena,focus,actor,cases,equity,3591.82,2014-08-10,False,CAD
+eb59ab6b-9d50-4c8b-b7ca-5044ac9dc94b,shopping,vt,leade,ky,fixed income,3671.0,2018-07-10,True,EUR
+df71523b-831a-4e32-9f87-104d29072938,portugal,helps,spani,kevin,etf,4303.89,2018-10-02,True,EUR
+74f3e008-1414-45b0-9525-3fe02de7355d,basket,allowing,respo,eg,cryptocurrency,4876.87,2019-12-04,False,USD
+e04ff7f9-b0f2-432b-84c5-3f9e7fa90a45,downloads,major,cnet,institute,loan,653.84,2024-04-21,True,AUD
+173f5bb4-c720-46c3-823c-e1de80af4b7c,refund,reviewer,max,britain,cash,1852.71,2006-05-22,True,EUR
+0dd21916-565a-460e-a254-9a55c872428a,broadcasting,rome,singl,founded,equity,2808.26,2002-03-08,False,USD
+703abe30-ea1a-46ae-8ad0-b93471e15e35,sing,annual,purpl,mass,cryptocurrency,1595.59,2005-09-03,False,AUD
+5fd06ec6-b6d3-426b-be63-0b475566bd4b,worlds,blues,smile,replaced,cash,2332.37,2005-01-14,False,CAD
+c6254bf0-06cd-49c2-ae94-c3a0ed92fc79,emotional,zone,induc,film,cash,1337.37,2014-12-20,False,EUR
+d63342be-c398-4986-a141-f05d2b58c529,show,illinois,xl,room,cash,1239.6,2015-05-02,True,CAD
+61df7a4c-f138-4a13-bea1-683f414fac2b,default,shared,museu,findings,mutual fund,484.07,2007-05-23,False,EUR
+8e78e464-b714-414c-a8b3-ba3cc8eb45c0,prospective,our,close,cats,other,1451.07,2009-12-28,False,EUR
+eba2021b-bdc3-4d35-bcec-58fa821604e6,corn,corp,askin,fine,cash,1920.76,2014-02-22,False,EUR
+1d384fda-4970-4259-b43d-9df3225e2378,durham,malaysia,exist,producer,other,3076.89,2007-05-26,False,GBP
+25ab3660-2caa-40aa-88aa-50713e85f5ee,edt,diversity,stop,without,equity,1241.36,2025-11-19,True,AUD
+53f7d442-1ba4-45d7-850b-c59a56124bee,point,big,von,sat,fixed income,4326.54,2021-04-14,True,AUD
+2cd17b4f-6226-48c2-b67d-9b84c51a262a,tr,writing,subsc,camel,fixed income,798.51,2003-09-08,True,EUR
+e16f431e-7bd6-4559-bcb7-fd8d7d21f151,sublime,detected,prote,slip,etf,1637.19,2020-03-30,False,EUR
+a7e92ef6-2bf6-412f-af90-908450d6df8c,rest,plaza,keywo,money,other,2888.44,2008-03-03,True,EUR
+e8b3fa5d-298b-4813-9b34-f9e1b16051e4,doc,heights,ing,outdoor,loan,1563.58,2001-03-26,True,GBP
+2a6c8c68-b8ec-47d3-9701-0e59bc17cab9,symbol,bet,light,drives,etf,3815.61,2009-10-24,False,USD
+32128316-1e66-41ed-a1c0-5a5c950931e6,under,francisco,varie,explain,other,2491.33,2018-05-15,True,AUD
+cfbce56e-297b-44e6-b0da-6b5c0bddfee4,ac,rolling,reads,rc,derivative,2573.63,2003-08-23,True,CAD
+cda9d2f4-a173-4d8e-9051-f655d543f20f,instructor,philippin,fluid,astronomy,other,2493.8,2009-12-13,False,CAD
+356253cf-ee3f-4bbb-add5-ce817f762508,machine,cricket,house,couple,cash,1542.71,2008-09-18,True,GBP
+84bb196d-39bd-42b1-9e67-ddbb053901da,do,slightly,faq,monitors,loan,115.89,2015-08-03,False,AUD
+8cca6e79-342a-4d97-beaa-2f06a9538144,mill,justice,fees,popular,fixed income,4726.16,2019-01-29,True,CAD
+5286fea1-4a95-4a0c-8718-fb2adec376b5,applicant,bits,sam,integratio,loan,2527.23,2013-12-11,True,EUR
+067ec451-842d-4e36-bd25-7868e865b466,cal,stones,imple,ability,etf,4833.43,2019-05-01,False,CAD
+3d549974-3eca-4647-a865-5df40bcf1e64,violence,convenien,pound,capture,derivative,1075.73,2002-04-22,True,AUD
+829ef7a8-43a9-4f57-b7c4-7fffe7022cbf,past,cities,tutor,doubt,mutual fund,1764.48,2018-10-31,False,EUR
+d0a59aa7-7a86-43eb-b2b9-5c389cec384c,peace,determini,frien,thousand,equity,252.71,2000-11-27,False,GBP
+f7d3cd68-9007-4368-99a4-0f4971b7dc41,clip,gratis,enter,printing,derivative,2474.48,2008-10-02,False,CAD
+4b5c76a3-a63c-4601-8d94-3624e749ad03,dec,penalty,produ,about,cash,4411.7,2024-03-16,False,AUD
+2fec5379-f954-466e-b309-fbd0a3a8e56b,jennifer,care,dad,poker,loan,3271.3,2016-11-15,True,CAD
+7b4a134c-21b8-4f7d-b685-39b2f06417d7,activity,prevent,showe,worked,other,2352.94,2008-03-19,True,AUD
+ef281152-a5b6-4f99-9c44-4d3a867fee7e,ho,carbon,autho,genes,derivative,2683.46,2013-11-27,False,CAD
+d4039c7f-d263-4e56-af87-75ba3cc426b0,ray,blues,estim,system,equity,4235.86,2015-02-16,True,GBP
+f313c4d6-6b6a-43ed-8976-b004c6468280,casinos,roger,repre,careful,equity,2154.64,2011-07-11,True,GBP
+5b307dce-9f18-4bf2-9d18-9ecc63cd0279,wrote,central,lots,action,cryptocurrency,4412.28,2010-11-04,True,CAD
+e8648cd4-6659-4f01-8179-65edf7b3a6d7,past,imagine,queen,orchestra,fixed income,3637.54,2005-06-14,True,USD
+197fe393-2c0a-4ccf-8de6-ab5c6e7fe743,check,headset,poste,strap,other,3819.29,2022-08-10,False,EUR
+a1ce67ca-da2e-4ca9-a488-a441cf1a8cc1,became,blind,repor,mystery,cash,1829.69,2021-07-27,True,GBP
+2326f8ce-fdd7-4e82-a442-b2deaa1c4437,geography,voted,ethic,caused,loan,2002.91,2024-09-02,False,AUD
+39b982a0-9b1a-4292-b495-0efd0c9efa92,drew,bb,mecha,nfl,cash,2851.41,2014-02-11,True,USD
+194a6bed-83cd-4208-8d78-c26bc6ad10e7,noticed,rt,pract,sr,equity,973.28,2008-06-04,True,AUD
+507f6cab-95a1-4f4c-957c-bb952ccd8cef,period,enforceme,linda,legislatur,other,2766.12,2024-07-28,False,EUR
+2145b5bf-f9c4-4993-a1a0-f2c93c0a07a8,reliable,elite,arizo,theater,mutual fund,367.67,2016-01-22,False,EUR
+25993949-ac6d-4cb5-8314-4830a29f141d,vi,ky,bring,larger,fixed income,2521.28,2017-08-14,False,GBP
+32902575-50b7-4c31-94d6-e97ca7cb1e31,ne,looking,wheth,wonderful,cash,3822.02,2001-04-17,False,EUR
+a326bcb0-1b80-4f53-9595-303174758b4c,twin,car,stree,mining,equity,1398.61,2011-10-25,True,USD
+1494bd4a-9a9f-4056-b010-9517d36e79a1,fortune,populatio,resul,vhs,mutual fund,4945.45,2015-11-15,False,EUR
+31e703f2-713b-425a-b135-ce27f2c1d711,rising,adventure,attra,discovered,equity,3402.0,2024-01-07,False,CAD
+88d3085b-7429-4861-ac1d-386d9d1e188d,ann,assessmen,scene,learning,equity,594.06,2008-09-05,True,AUD
+41aac681-3e8d-44f2-861f-8e319f415d85,ordering,later,helpi,procedure,fixed income,4875.41,2009-08-29,True,GBP
+69344554-49c8-450e-b5b4-81c2218efc31,basis,maine,oclc,drinks,loan,1969.52,2022-08-04,False,CAD
+e8125869-a9f3-43ed-817a-145cdd9d6a79,equivalent,let,conve,set,other,3974.49,2000-11-20,False,GBP
+3cbcd3b0-146f-4ed0-b98e-7757447c5978,main,going,outli,somebody,etf,1695.43,2025-04-23,False,GBP
+3f3c3a13-6f2b-4908-890e-53221f08af79,politics,attend,print,rather,fixed income,4694.74,2005-05-18,False,AUD
+3ce2550e-e45f-43ac-b40f-39b33048a8a2,spot,artists,beat,hybrid,mutual fund,3774.83,2000-09-14,False,CAD
+98688db2-e140-4ee9-a9fd-0169671dc231,injury,november,equat,refers,cryptocurrency,995.3,2002-04-27,False,CAD
+794dec81-9415-4c0d-9c43-1892b45e6eee,ref,bulletin,proje,problem,fixed income,2545.62,2003-08-31,False,EUR
+ca0172b2-3af9-44b8-bf00-31eac7f20cdc,cleveland,vermont,ll,saint,fixed income,2500.39,2003-11-27,True,GBP
+c6de98b6-9b4a-40df-9a82-4550cad2493b,qty,clothes,camel,russia,loan,226.53,2004-08-30,False,USD
+e86f485d-6e70-4474-a991-7d36eab024bb,doctor,taught,road,alien,equity,685.19,2022-05-17,False,EUR
+3467590b-6716-4111-955a-68c128ea42f8,service,donald,athle,proud,cash,1665.21,2022-05-14,True,GBP
+509e7f29-a633-4120-bfed-fa4451226af1,mom,backup,insid,following,other,2368.73,2015-08-08,True,AUD
+e2a0dd85-f3b9-45a0-8ecd-9be9887499cf,larger,mills,fr,died,loan,2284.95,2014-09-05,False,GBP
+d2d8986d-9005-437d-915e-af57d6ac1698,bmw,mod,query,dark,derivative,3031.31,2012-04-30,False,EUR
+eed103e9-f84f-4963-9a82-3e9c1e2f0120,legacy,anyone,struc,depression,fixed income,2577.53,2019-09-24,False,EUR
+8971bb54-8fa7-4a9f-826f-1e33458f6ff0,italian,generic,charm,tuesday,loan,1639.84,2004-02-09,False,AUD
+0310d1df-184c-4b3f-bb24-a6a3cfb2c4bc,stone,measures,toolb,ref,equity,3065.34,2024-07-11,True,CAD
+78445a02-a840-4a1d-96da-123e25ddb9cd,highway,exchange,heral,putting,other,812.52,2025-09-09,False,GBP
+5225ac82-a6cf-4586-bef2-ec1efc4f3d59,dolls,balance,ftp,latter,etf,4953.08,2000-05-24,False,CAD
+1537e619-a442-44e1-a0c9-cbe293057785,third,commons,sent,willing,mutual fund,3696.6,2009-10-19,True,CAD
+a51ca05b-09ba-42dd-b71e-90c051742fe5,verzeichnis,audio,inven,dvd,derivative,1496.18,2021-08-28,True,GBP
+483fd7f6-0b67-4804-b923-abb3b2fd7071,spiritual,explain,measu,across,derivative,1681.87,2004-08-18,False,EUR
+a90c5ded-93ce-48d5-a5cc-e2142ae7b8db,contracts,michelle,enjoy,onto,other,4141.45,2015-06-11,False,CAD
+27d201dd-ac5f-4cb0-80f4-fea97691f7de,interview,nations,know,robot,derivative,2661.7,2017-09-13,True,AUD
+ee888bab-a439-4cf7-938c-b47ceb123ede,construction,these,respo,der,cash,3543.7,2014-06-28,False,AUD
+485c3291-6600-4a75-8b22-c5fbc6506e09,ace,hazardous,dean,fifth,cash,1498.96,2006-12-08,True,USD
+c27f5d24-9d19-4e2c-9e39-6ef63c797f1b,spain,survey,vbull,abroad,cash,4078.75,2018-07-08,True,USD
+91ada1f4-ef40-45a8-9683-bd50d84a5b40,perform,stability,ram,bodies,loan,1841.8,2024-07-02,False,EUR
+fabf958e-db77-4932-8fa2-d44ce5335eb9,loss,definitio,kiss,aspects,equity,3369.04,2010-12-16,True,USD
+c65a59ac-e5dd-4be3-8738-0d106a8af885,yorkshire,protein,bet,trail,derivative,4899.49,2022-07-13,True,USD
+029f7a40-0a49-44e8-a333-6a08abdd3591,thank,lisa,prize,fruit,equity,2918.51,2021-11-05,True,AUD
+052fed53-da42-4b64-8338-1efcab04a6e7,weight,be,bigge,caribbean,mutual fund,3983.78,2015-01-05,False,GBP
+345af791-1967-4ccd-8a3a-b69176bba4f9,signature,awareness,mini,ibm,cash,3626.62,2016-10-11,False,AUD
+950bfb18-a5fc-450a-8df8-63b36ce672e0,wage,def,disc,eur,mutual fund,3440.22,2003-08-04,True,CAD
+cb022aa5-0e5f-412f-8a54-69bd3ba5b0a5,selected,private,recei,everything,cash,133.25,2016-08-01,False,USD
+f2c904ad-b5b8-48a9-8fe0-431516d392df,donald,aware,conve,rules,other,2372.96,2023-03-14,True,AUD
+c64942a6-058a-413b-8612-94d6feb46b1d,mozilla,chocolate,clien,investors,loan,4835.35,2020-03-03,True,USD
+9f8ecd38-6d9f-440a-854a-3596359b474c,hang,magnetic,wake,corps,cash,3914.52,2015-05-11,False,AUD
+ed1cda02-97d2-4c6e-9048-7ff0f60c2010,epa,display,burn,churches,etf,3880.81,2019-12-13,False,AUD
+472f93f0-959c-4ff0-98bd-8c8427acec8d,post,skills,price,anniversar,etf,2888.18,2020-02-28,False,USD
+27699904-e546-4669-85f5-ff2d7c302220,sons,explanati,bell,desktops,other,3607.0,2010-11-28,True,CAD
+9d491df1-d61b-42de-b754-dc7c149f9064,flexible,liberty,plent,disabiliti,derivative,2917.62,2017-07-31,True,USD
+3400b225-a017-48c2-ad35-3ee88b3886b6,worst,allows,hairy,ingredient,cryptocurrency,852.57,2010-11-23,True,AUD
+e2338e92-9541-4f9b-89d7-f62c726db0bb,relief,detection,inter,sensitive,derivative,3145.13,2024-08-28,False,EUR
+a8ee61fe-4147-4f93-8d52-6ef15e53b256,caused,additiona,smoke,wine,equity,3098.68,2017-01-20,False,AUD
+119f13a0-a89a-45b4-a16c-292349aed4c9,capability,sir,front,organizati,other,4205.84,2002-04-21,True,GBP
+62cfbb12-3052-4381-a366-455b7fde9a65,paris,motors,direc,shift,fixed income,738.89,2021-05-08,False,GBP
+efc45b66-7209-4046-9ba1-2b17fabd1a8f,agencies,atlas,thoma,improvemen,loan,3403.64,2023-02-14,False,USD
+478745dc-28d9-47b1-9003-a3013faa009c,canadian,throat,sm,extremely,fixed income,157.86,2003-11-23,False,CAD
+b99c0c28-f85e-4d50-b75a-e6615aaaa963,anthony,interacti,cm,mod,mutual fund,4741.03,2003-08-06,False,AUD
+1410f4a9-9bdf-423a-8d94-e9ed627c73c9,simple,grand,alien,port,equity,549.49,2022-05-29,True,EUR
+49782fb8-86a4-447b-8a3f-a9389f4cc3cd,collins,crack,conce,ds,etf,94.7,2000-01-11,False,USD
+20060b42-aa15-4504-a6b7-c0ef1c315cea,takes,amended,offli,described,cash,1568.47,2025-01-10,True,USD
+fb1436a2-5563-46d6-906b-c0f2ddde03f3,eligibility,health,mc,assigned,loan,757.16,2011-06-14,True,CAD
+f6929483-b1e7-4a61-8925-3d60fc72a251,ds,cassette,conti,tall,loan,3452.5,2004-04-17,True,AUD
+b7807b9d-7422-40a6-9b04-b2803aac4a75,lodge,oriented,semes,searching,mutual fund,2051.89,2013-10-22,False,USD
+690f4dfa-8d14-45ed-8df6-0ad0a7efbe0f,workshops,sa,focus,markets,cash,3874.86,2025-03-06,False,EUR
+fd4965d7-6e54-4927-b574-9b7f030a2170,junior,toner,launc,globe,cryptocurrency,4602.61,2005-02-20,True,CAD
+dd2bd285-3042-4a00-9318-543a1185b0c7,communicatio,ex,criti,tests,loan,4364.09,2012-10-22,False,GBP
+c5fef37f-3f91-4e2c-9183-238f227b0ff8,rr,asia,wrest,lose,cryptocurrency,3679.19,2007-08-30,True,AUD
+55e03c32-b76d-4504-8248-e50fde17524c,rfc,zoom,weeke,blade,cash,311.42,2018-03-08,False,EUR
+76943db3-9718-4332-b392-711eecbd8ed3,percentage,distribut,shots,toward,equity,690.42,2014-11-09,True,AUD
+142881c9-d0ad-4cb3-906f-55ca1e893060,arrangements,yield,crop,spray,mutual fund,1036.72,2014-05-22,False,GBP
+bc602404-1f3d-411c-8098-464454e4b6b4,sections,flags,space,spoke,cash,1625.25,2000-08-29,False,USD
+565c3f55-9376-4f83-adf2-ffa6cb59cf1b,comic,nature,serio,prime,etf,3311.14,2009-11-18,False,AUD
+b05d5d1f-abd8-4f5f-a749-eb9731a1efb3,toolbar,alcohol,priva,vacations,cash,2627.39,2005-02-15,False,EUR
+939387a6-a8a5-474c-ad4b-2ea650bbb08f,michael,mi,condi,work,fixed income,1568.77,2011-10-10,False,USD
+fa74c0ac-1da8-4c2f-af68-45d529fd1f8a,table,kit,equal,kill,equity,865.92,2020-07-23,True,AUD
+3ec6615e-5006-491f-b8dd-cf4083678f42,being,deals,criti,logic,derivative,4560.62,2008-08-28,True,CAD
+df12ae2f-b142-4713-8a20-49227fcf9f1f,ability,towns,contr,capabiliti,cryptocurrency,1711.64,2009-04-13,False,GBP
+8ac22e4f-2dff-4ad8-9996-9d899633a108,puerto,tr,spend,existing,derivative,1771.44,2015-02-08,True,AUD
+e9001987-4797-422a-825e-2e9356814cfa,agency,multi,towar,rom,equity,3859.95,2012-10-12,False,AUD
+637e22a3-de7f-47d6-b72d-97254bd0fd05,spot,street,vista,function,loan,3604.63,2018-05-23,True,AUD
+51f41254-a98c-4a7e-97bb-a8f956e4cb83,updates,grants,blog,enforcemen,fixed income,3216.55,2009-01-27,True,CAD
+6a585a2b-5cb0-472c-a98e-0d3228ddf1e5,case,church,value,score,derivative,3466.57,2021-07-09,False,USD
+84f8b9b9-c2af-41a4-8a24-1ee4962c5709,visual,passenger,colum,wash,other,3050.39,2000-10-28,False,GBP
+6d663ecc-8215-45da-8c43-ac604491b75e,presence,trucks,save,curve,cash,961.33,2021-12-02,False,USD
+50948c68-3307-4761-bba6-a88610916e90,mx,come,entit,pounds,loan,1232.6,2019-12-16,True,EUR
+07c367c8-8e14-4c4e-9a0a-e459a4d20047,cameras,rapid,value,value,cryptocurrency,2790.44,2009-04-20,True,GBP
+c5b5c2e5-0852-4481-b29d-107112136d1e,good,xp,walke,alternate,loan,1124.34,2025-06-08,True,GBP
+b3492225-b335-4d48-bbc4-88062a369aec,nj,traffic,warm,cs,cash,4864.55,2020-04-20,True,GBP
+134da625-4cf1-41b2-9afd-95149491e569,mile,undergrou,cd,regulatory,mutual fund,1488.08,2008-11-25,False,CAD
+821b173b-395a-4d13-af5c-b4eb13cf54c1,definitely,winds,clust,target,equity,1445.03,2023-11-22,False,GBP
+80539e58-6766-4c7a-b126-a7f9dd464f40,beer,promotion,pad,taxes,other,1036.4,2004-11-04,True,CAD
+75843c5f-6055-47d5-b90d-7e8057510ae0,incredible,displayin,detec,attribute,loan,3524.94,2020-11-02,True,EUR
+7a1cc0a7-ddbb-48b3-8840-03dd02a4386e,difficulties,bowl,above,giant,loan,1585.21,2009-08-02,True,USD
+749bd7ed-2e73-4061-a70a-2db27ddfc8cd,reading,waste,talks,knife,etf,1744.02,2018-06-24,True,EUR
+5ac66605-7e16-4081-90af-65d92fafa7c1,garage,maryland,blogg,johnny,cryptocurrency,4668.5,2004-02-10,False,USD
+91972b07-80f3-420f-8d1f-c8ef1e40b522,studies,patient,postp,clean,etf,3977.03,2010-12-14,False,EUR
+0c7c9bcc-5e6d-4785-aba4-0a5db7e11e90,avg,sponsors,eleme,evolution,loan,1367.29,2005-04-05,False,EUR
+53c315d8-1ffa-4b21-a1a9-a994f382da81,vehicles,award,codes,furniture,loan,609.38,2025-09-29,False,GBP
+cb48f35b-af4a-43e6-9e60-ba911f9e2605,read,master,theat,bet,fixed income,3383.11,2011-09-17,True,USD
+2cbf49f7-35a1-4fae-b064-676dd823b15b,near,obligatio,juan,allowing,cryptocurrency,1898.48,2008-03-09,False,USD
+90560841-96de-4ff9-9a70-bd33f722491a,upon,clinic,techn,christophe,etf,4900.8,2015-05-24,True,CAD
+eada3306-7dac-454f-939d-12b05b563ccc,blogger,coordinat,confi,pride,fixed income,4091.89,2010-02-15,False,GBP
+b8af11ec-3b08-4817-8e2c-2ae3a4975d13,que,rather,displ,dust,cryptocurrency,4773.04,2002-03-25,False,EUR
+c80fd204-81c9-4adf-84c7-797c7cf13d79,defense,applying,mista,spanish,cryptocurrency,4023.08,2007-11-24,False,EUR
+df4f8a54-7749-470b-a135-a84b3806ffde,chicago,food,hospi,element,loan,1452.27,2021-07-31,True,CAD
+6ca841c3-a984-4214-af31-b2f33e9089b6,petition,ng,conti,airline,other,1438.16,2025-09-12,False,AUD
+a46f3c8e-b727-4759-904c-5054799079dc,cold,effort,basic,speech,other,3570.71,2002-07-01,True,CAD
+06d16865-378b-4c55-b92b-2b9168b47ff3,epinions,greece,keybo,personnel,cryptocurrency,1731.82,2008-09-04,False,USD
+c02acbfc-0263-491b-95fb-91da0b46e199,believes,marketing,compo,targeted,cryptocurrency,2211.89,2014-06-22,False,GBP
+fe540503-b0de-459b-9c21-1267cba4df60,franklin,increase,discu,inventory,other,1282.23,2023-11-09,True,USD
+6fa406a1-757f-43bd-93e6-86c6654d922e,dad,do,assis,reported,fixed income,2395.4,2018-07-27,False,CAD
+da78976f-e2d4-4b8f-b377-11c633a858fd,piano,bearing,fees,manufactur,cash,1010.35,2020-06-04,True,GBP
+d19ed1e8-d8e9-4e4e-9ce3-251c933aba14,ways,na,mecha,spears,loan,2692.89,2021-04-16,False,CAD
+c1ae8ff3-0623-46b6-8895-7da505a3fefd,side,highest,magaz,subscribe,cryptocurrency,4665.12,2000-10-29,False,AUD
+992f2f78-5b93-40ac-a1cf-c5d29575f06c,japanese,table,jeff,bandwidth,equity,3480.86,2017-06-30,True,AUD
+b8478098-0f0f-4a6f-a31f-fb939a61af57,thompson,proxy,latte,these,other,686.37,2019-04-21,False,EUR
+67acd870-90f1-4dc1-9e6b-2321c34b4659,segment,plug,okay,bus,loan,3078.39,2002-11-27,False,EUR
+6b4fb8dc-12bf-4476-be5c-bcaf6aa886f4,reservations,colombia,wisdo,web,derivative,2934.16,2014-12-10,True,GBP
+2ec5ffc2-85e4-4fb6-baa5-6ab6ed92af34,settings,cam,holde,worker,etf,1212.3,2020-07-04,True,GBP
+0b7df5ec-2950-4f52-8b7e-daaa37c65a06,icon,young,optio,solve,mutual fund,3349.17,2004-01-31,False,EUR
+fba22409-7aa7-4c23-b17a-01b20148ab6c,dimensions,to,tools,attorney,cryptocurrency,2655.21,2001-05-16,True,EUR
+9cec32a9-6aa6-4f9d-8de3-987afcfe7f90,glasses,greece,exper,drawn,loan,3189.73,2003-02-08,True,GBP
+c3432b6f-7266-4842-b360-21b3cbf5a303,instructions,supplemen,sauce,open,loan,262.47,2017-03-13,True,GBP
+431b0421-75ef-4e90-bfcd-e1c9aba9c848,liver,hill,held,character,mutual fund,2066.51,2014-06-22,True,USD
+ac4b70d3-5322-4633-b6c3-617bd517c08a,museums,residents,unive,traveler,fixed income,3586.79,2023-12-31,False,GBP
+e2463cca-b2df-4f93-9b6c-38dc008ec7f1,mexico,blog,eatin,magazines,equity,502.73,2017-07-19,True,CAD
+f142380c-0fea-48b7-93d4-4f10f010035e,fees,header,genes,juvenile,equity,3853.83,2023-12-05,True,CAD
+c68c41ff-72ec-437c-9004-dc64ac8b1a3c,now,ancient,draft,certainly,cryptocurrency,25.92,2013-11-04,True,EUR
+9ae5bda0-273f-4bda-a142-d0ba5e8f5793,novel,presence,angle,technologi,etf,2751.77,2015-10-14,True,USD
+c40c76fc-b715-48e0-962c-39b4f0178b15,extremely,define,relat,traditiona,loan,4645.5,2008-01-23,True,GBP
+e952324c-8c79-4e85-9659-5330411f0c0f,thailand,africa,shown,engines,loan,2034.54,2011-04-15,True,GBP
+2118b7c5-05e7-4d1a-bcc0-1ed09853fb9a,dual,king,previ,biology,mutual fund,4675.16,2014-04-28,True,GBP
+219cfe33-05a5-40b9-a19c-19fde150eb7d,successful,carried,weekl,improved,loan,4392.0,2011-02-22,False,AUD
+5b2fb372-4884-4b28-9522-b836a0f92d53,ski,documenta,herit,parks,derivative,2387.25,2011-09-29,True,GBP
+bacb58b0-a909-4ea1-9ae7-7aa1e77f0057,condition,country,sit,reference,fixed income,997.29,2020-06-02,True,AUD
+6cee6f64-9e5d-4946-a577-301e9491b4b8,resorts,subscribe,silk,lifetime,equity,4819.57,2012-05-07,False,CAD
+67e310a2-7b1f-492c-bda2-24db90e6177b,cities,es,lease,cartoon,fixed income,1605.85,2003-08-03,True,EUR
+9a0adcf3-ccc6-476e-87bc-ed8abeb3fbf5,star,swiss,alexa,considerat,loan,3229.49,2021-04-21,True,GBP
+68fcc011-1ddb-46a2-9aad-094047437e8b,sold,sought,detai,installing,etf,4539.69,2020-10-01,False,CAD
+2cc7325e-fb82-4f03-bb66-c2b04547296c,township,productio,doubt,singles,equity,447.31,2001-06-08,True,GBP
+77f883c7-bf63-4578-ab86-71c789c1ca6f,leader,overall,cafe,allow,loan,2870.67,2004-10-07,True,GBP
+038dd66d-c0a9-488b-8812-a3d4ad20dd94,fruit,near,comme,suggestion,loan,2675.77,2002-09-07,True,GBP
+4ea441a0-10a3-497d-8841-8a7db97376f4,multiple,financial,clear,terror,cryptocurrency,3615.59,2018-04-27,True,AUD
+f0c97344-a7b2-4528-b788-926a5f580f47,remains,poverty,easie,girls,equity,4683.35,2007-06-25,True,AUD
+a9820680-7f38-4118-a7ee-c84c86198132,cleaner,mitsubish,wales,still,other,4566.15,2004-10-01,False,EUR
+82887476-a88c-47a2-b587-edf13f214453,partly,plugin,docum,haven,other,875.33,2008-03-05,True,USD
+4f844013-b17d-432c-883e-914f9c2925f8,afraid,runs,rice,activation,mutual fund,4411.23,2017-05-26,False,EUR
+87a88e97-7260-496c-b140-93438ee99d65,together,partly,niger,action,mutual fund,878.95,2005-02-22,True,GBP
+ae6e5d67-36f6-4155-b8ea-b9b5f367c0d0,developments,september,enter,war,cryptocurrency,4598.17,2000-03-01,True,CAD
+cb88b629-8522-48df-a6a7-7c207f74561d,paperback,holds,ga,films,mutual fund,4985.86,2011-04-19,False,EUR
+1cca972c-d3a9-4669-9c56-c83f87a25126,developing,involve,plent,sitemap,etf,1984.98,2010-01-06,True,EUR
+94fd8cbf-8b69-4be0-84a0-65ee2c5f6f72,greatly,blues,lets,pg,etf,2476.92,2008-01-05,True,EUR
+919cd43f-ae72-4461-bed9-43f8c5324c5d,specs,fund,parti,now,loan,4683.04,2023-07-17,False,CAD
+36726c97-b7e6-42e9-ac94-d0286296e40f,employees,bowl,athle,worker,cryptocurrency,4810.66,2003-12-03,True,CAD
+e606917f-f02a-453f-8d40-68b2447d61b9,paintings,stretch,disch,protected,mutual fund,4630.2,2015-08-25,True,AUD
+4f778a96-d3f3-4957-80fe-0d91fe17f883,templates,employers,charl,review,loan,4383.72,2011-09-19,False,AUD
+c3da1795-017d-42b2-8744-05fd8276aa06,theory,sequences,semin,nfl,other,46.35,2003-08-17,False,CAD
+0ec061a5-a104-41d0-894a-33b3dec68b10,personalized,polish,quali,pen,other,2839.81,2007-10-02,False,USD
+3d04bf1b-136f-413a-9ca9-c7da88ba6e6a,younger,director,highe,global,fixed income,536.51,2023-11-17,True,AUD
+90321d8b-671b-4d3e-8704-1cdcd3db9643,american,projectio,mitch,confirm,cryptocurrency,4914.97,2009-08-21,False,USD
+0f59b32e-8828-4610-90d3-0d819e345acf,raise,cup,machi,samuel,equity,1422.82,2000-01-16,True,GBP
+4947709b-87d1-4db7-87c7-9c1a115d296d,thus,placement,leave,sponsor,derivative,4945.5,2012-07-22,True,AUD
+ca4988ef-47d6-4b33-814f-e4465af2c6e9,speaking,surface,compa,bio,cash,2716.51,2003-08-23,False,AUD
+da92973b-fd8b-4a08-9900-2fc27e0e549c,camping,directed,setti,resulted,loan,2469.57,2014-02-03,False,GBP
+fa0552db-fabf-443b-9a88-c55e4a08a894,complaints,points,fall,begin,loan,4692.8,2010-10-05,True,USD
+e7fd3da7-51c6-45a2-a45e-da08264117d7,flat,registere,entra,says,cash,4255.3,2002-03-09,True,USD
+07565a8a-9adc-4dae-a6b2-924f27150683,extreme,disabled,elect,stands,etf,2340.11,2019-11-19,False,EUR
+5b20ca94-78f4-479d-bfeb-5d50b1607509,isp,submissio,move,usd,other,964.07,2017-12-11,False,AUD
+e37742d2-c9d6-46e2-b345-45151afbd493,authors,technique,last,subscripti,other,563.24,2012-10-17,False,AUD
+1fb67275-9e03-4e80-8fdf-b1494b825863,gene,employee,argum,stats,equity,812.48,2009-08-17,True,CAD
+890396b4-21bc-4b26-b62f-cafc81501e2d,cast,contracto,hats,minority,fixed income,2294.58,2019-07-04,False,CAD
+5e1e7db2-4b1d-4e02-b26b-bc6c604311c0,thus,instituti,even,publicatio,mutual fund,1286.33,2025-12-04,False,AUD
+76957523-77ce-41d0-97ef-94734cd31037,rt,kennedy,origi,commands,other,931.0,2020-11-29,True,EUR
+09c202d3-d89a-4671-a9e2-307cfbd3a3cd,outlook,accident,dose,responsibi,fixed income,3683.09,2024-09-24,True,USD
+9fb254f8-4623-4a5d-8ff4-0edcefbef44c,coach,returns,keywo,retail,mutual fund,3953.84,2006-07-15,False,USD
+887449d2-10cf-42f8-8863-e0633db96f5a,bedrooms,obtained,outco,guy,etf,2838.91,2007-07-11,True,CAD
+f252a26c-3372-4ea2-90e9-1702ffe4352a,walker,genetic,and,continued,cryptocurrency,3786.42,2014-07-14,True,USD
+93840369-ae15-48e1-94a5-60b4c3d969eb,full,administr,execu,sole,derivative,877.48,2023-02-11,True,GBP
+d6933bf2-3d8e-4669-92a3-8be3d6244f5e,congress,please,optim,destinatio,etf,4280.73,2013-06-22,False,GBP
+d1426484-2bfa-4952-80ac-ad1dbf954146,presence,fellow,cance,genre,mutual fund,4485.21,2008-06-05,False,EUR
+89d0a1ba-3a12-4a7c-a6ff-63c0d5a3a5b9,must,clothing,siste,employed,other,4134.95,2021-08-03,False,CAD
+de6e36af-11d8-4b33-a420-299f989464e2,effectively,random,neil,faqs,fixed income,2576.41,2002-02-03,False,CAD
+aa3001ca-11ab-4923-9f0d-b621de619668,teacher,years,feedi,thing,cryptocurrency,433.7,2013-02-24,False,CAD
+7feeea24-f196-4804-af5b-0f89719321f6,folder,conduct,valen,toy,mutual fund,3346.28,2023-06-26,False,GBP
+a3ac85a1-952f-46d8-bcbe-64f4b8058f5c,guy,dark,ralph,cape,cryptocurrency,923.91,2004-09-02,True,GBP
+0f328405-3011-4eb6-b9b3-95adfd70bb7d,reason,mystery,coal,found,cash,703.07,2018-09-18,True,USD
+5e5448cc-b828-4f85-a70e-ef396c61a42a,patches,anarchist,surge,diff,cash,1618.02,2010-11-04,True,GBP
+90778563-8ee9-439c-b893-058325d26281,machines,applicant,yahoo,peter,cryptocurrency,1240.24,2013-06-28,False,EUR
+bc41c4ed-caef-41da-8c18-f40e99db6968,pcs,affordabl,power,heritage,equity,1303.93,2021-07-28,False,AUD
+5e5a803b-1dd7-4986-abe7-6da8e4e80504,gathering,match,jane,chest,derivative,1177.61,2023-01-31,True,AUD
+9cf988b9-2dc2-46c9-8690-8a5d0accd513,pressure,organizat,ends,peru,derivative,3768.79,2009-10-10,False,GBP
+09144bef-4945-4fd5-8a37-3836595ccb44,pg,does,north,cassette,other,4770.17,2011-02-19,False,CAD
+9cb1440c-6fe0-4f77-b280-f85e8ded7231,smoking,bonus,purch,bug,mutual fund,1509.74,2016-04-05,False,EUR
+da7b4476-7833-4098-8400-b5368f6c13f5,broadcast,boots,conte,continuing,loan,3614.42,2021-08-08,False,EUR
+cde720c6-eb72-4df0-9633-d80e44a4d652,discuss,ll,contr,processors,derivative,57.19,2003-06-28,False,CAD
+a2b12640-b140-4a55-a7f9-f67581ff04cd,eligible,animated,lack,corps,loan,3268.42,2017-06-04,True,USD
+11a7344e-2702-4f33-aeec-c46fad8088ce,twelve,external,acade,placed,equity,3463.85,2024-05-19,False,CAD
+f21bd67f-a575-4adf-a51a-5b5eb8648833,tickets,somewhere,piece,charges,loan,310.63,2007-07-28,False,CAD
+c7ce5e6a-5c5b-4e25-a8e2-05b82e4449e9,behind,letter,quick,blogging,cash,591.13,2017-10-20,False,EUR
+77b43524-81a7-4af2-a7e5-5d7333e3576c,diff,dc,workf,else,equity,1534.04,2021-11-18,False,GBP
+b9207c20-734a-439d-a4d5-a930bb3e9546,into,black,combi,animation,cryptocurrency,2027.09,2000-10-30,False,AUD
+c78e357f-ad8a-4ee8-b586-2fb4dbdf6120,effect,seller,estab,recordings,cryptocurrency,2512.61,2021-12-09,True,AUD
+d1bed2c0-8cc0-4b69-9d7c-eb4f5040df08,bidding,residenti,api,started,derivative,4475.59,2000-03-09,False,GBP
+9c0c0bab-d18b-44a2-8c6b-fe88f2655c16,phentermine,coffee,flow,ieee,fixed income,3517.79,2022-05-30,True,EUR
+046ac998-1989-4bf4-9ecc-cb1ff7c10c6b,ones,sweden,bests,shopper,mutual fund,1554.9,2010-06-01,True,USD
+0d7fcf07-f421-4afe-bf39-0fd5304316da,complaint,guard,volun,don,etf,587.09,2005-03-19,True,CAD
+f4e1aefe-22a0-4615-b3da-3d27d6fc52e6,gi,standard,seeme,passage,other,4580.65,2021-07-03,True,GBP
+a1a956ed-fb4e-415e-9a83-b2d62c6adeed,secretary,bristol,previ,asian,loan,1475.2,2004-12-21,False,AUD
+834761e7-c743-4dd1-bc92-e309d9e6b6fa,upon,city,her,narrow,loan,3073.13,2000-02-24,True,AUD
+380fe6e9-a550-44d4-b9b4-6234c6467ce8,semi,po,compa,gate,cryptocurrency,1095.65,2016-04-13,False,GBP
+896c40e9-ebfa-4f61-99b6-2168eafca82e,flying,alexander,ports,southern,fixed income,667.85,2013-08-11,True,CAD
+8f9be243-b44a-4f83-a47a-392ecbeef293,weddings,capabilit,trade,bristol,derivative,765.94,2005-06-10,True,GBP
+a2d54ff8-c915-4b98-916f-41aa0928f14c,headlines,api,discl,ethical,cryptocurrency,3738.68,2023-06-25,False,EUR
+a1b96e2e-be37-42a2-8104-2baabb959f6c,product,plus,rice,mom,fixed income,3028.7,2018-10-03,True,USD
+7020d6a9-3f59-44d1-ba3c-fdb6d69e4957,might,which,pin,farm,equity,2079.23,2001-03-06,False,GBP
+50b144a8-cc71-42c6-b228-196e75a5acb1,ll,privacy,big,pet,cryptocurrency,2746.18,2024-10-02,False,EUR
+53748c48-08f5-45f6-80b7-017e542b8f4e,destination,fiber,plaza,get,fixed income,2354.15,2021-02-09,False,EUR
+1f05a377-18e9-404d-aa78-34aa978b228f,spa,mention,words,arizona,other,2687.59,2014-11-14,True,CAD
+036642b4-2c74-43c1-8c58-66864ae8815f,paradise,christmas,st,start,loan,3320.48,2015-10-15,False,AUD
+d1973d36-509d-494f-8eb9-240cb7303fd2,suddenly,awareness,king,demand,derivative,1092.07,2013-05-07,False,AUD
+c2cd1596-fb94-40fd-93a3-c3b7ade3df5b,wave,approach,curre,paradise,loan,1237.33,2024-09-04,False,CAD
+388c32c7-683d-4d81-bc99-a0c6339c14c4,guns,decided,int,self,derivative,3773.7,2011-07-04,True,CAD
+a7b2a6fa-a395-42ec-9334-c1bfaf3761b4,indianapolis,steven,indep,buildings,other,4365.68,2009-11-22,True,EUR
+42a0de86-c020-4232-809a-29e6ac0d12be,lamp,pci,blvd,healthy,other,409.36,2018-08-17,True,EUR
+80524d31-b613-4d7f-ae5e-068fdd837c5e,memorial,aaron,belie,non,mutual fund,2233.75,2021-05-02,False,GBP
+ffc6acee-c1a4-4183-9cba-1440bab869db,offline,enrollmen,lee,corner,derivative,3518.83,2007-07-20,True,EUR
+9d8cc051-9f94-46ca-8f55-077882cc8303,place,various,forgo,arising,fixed income,390.52,2001-01-07,True,CAD
+6745a96f-61b3-4080-98d1-c1476359e87b,curriculum,input,messa,ohio,cash,2820.85,2009-04-25,False,GBP
+e2767137-59d1-44b1-882a-0bad696e5b35,jacket,perfectly,publi,broadcast,cash,308.8,2004-05-10,False,CAD
+098bc2bf-b158-4986-9262-292bfd9ca2e6,resort,cultural,featu,smart,derivative,2738.25,2010-02-01,True,EUR
+7f953679-c174-4be7-9c2b-69076a4238a2,wait,efforts,littl,procedures,loan,2527.44,2015-12-14,False,AUD
+9879e396-06f9-4d23-88a8-76f60b692919,apartments,clicking,cc,pubmed,other,2863.51,2005-03-13,True,CAD
+3089426b-28d2-465f-84b6-61e3e09edbd9,quantum,boston,nurse,conclusion,loan,749.27,2017-12-08,False,CAD
+f267ecc5-95a4-4bb1-b572-52f2454c5179,trying,gourmet,insta,rv,loan,1640.59,2016-09-27,True,CAD
+26a4b232-1d6d-4c16-9578-143fc17d1173,pubmed,bound,held,trends,mutual fund,2601.71,2021-06-03,False,EUR
+680d0a0a-728e-46a6-893d-cfa7ce29526b,sounds,mutual,rober,infant,cryptocurrency,581.21,2012-12-02,True,AUD
+ff57bada-ff93-43bf-a883-3ea8b55d84cc,period,vietnam,carri,lanka,cash,1027.02,2013-01-15,True,EUR
+8a1ce111-a202-40f0-95c9-d312fec2cee5,lot,applicant,ultim,sp,etf,2915.74,2002-06-19,False,USD
+20d82e4a-5d64-4cc1-aedc-9a1a34be78f0,judge,lee,trail,commentary,etf,454.72,2013-10-13,False,EUR
+3a147709-cc56-4634-b788-b6562f427062,month,ratio,campu,glad,other,2551.88,2022-11-14,False,GBP
+beee9621-dedb-465b-9931-e836b1ad41f4,nhl,tags,layou,german,derivative,4043.46,2009-02-13,False,CAD
+fc6be098-58a4-410f-844a-8e8c339b7fd7,wide,totals,restr,dose,mutual fund,2267.17,2000-06-06,True,AUD
+23fbfe8c-de12-4bf3-b1ab-433848b86154,voting,way,initi,carefully,other,2566.24,2025-10-15,True,USD
+2dcae4c0-f325-4f5e-ab70-69bc778efccb,heard,prioritie,relig,employment,cryptocurrency,2284.0,2022-06-03,True,GBP
+c9ccd188-dd02-41fe-9a69-c336b7f80517,problem,street,prote,ultimately,other,288.69,2013-02-08,False,GBP
+1b37a6e1-2e7c-454a-8ac0-29face3a05c0,ottawa,contribut,opera,effect,other,2311.9,2013-10-13,True,USD
+c169c805-6425-4b29-b742-25ae7833fdf6,fewer,plan,willi,pat,mutual fund,4034.58,2016-02-13,True,AUD
+e105479f-e6b3-422c-8a6b-1b0554336065,virgin,layer,prese,executive,equity,3616.4,2009-12-11,True,CAD
+3e033b40-0ed4-49a9-874f-ab943e347eaa,brother,firm,joint,miscellane,cryptocurrency,1979.75,2007-06-25,True,EUR
+a481b1d0-bd3b-43ce-843a-444528041b1f,physics,hewlett,relia,specialist,etf,4082.27,2005-02-17,True,USD
+ac8c62ca-1799-449c-993c-10f9188dd976,eat,spy,setti,lives,mutual fund,3729.02,2020-02-17,False,GBP
+7e3a5081-f3b5-4728-aa8c-516880c21733,aims,chairman,pink,continuous,fixed income,2891.56,2016-04-29,False,USD
+3fed328f-7c9b-40a9-89ec-798616a083b6,rent,classes,echo,detroit,mutual fund,226.46,2024-06-12,False,USD
+2dd03579-1520-4650-8799-47c408ba9573,spaces,practices,eligi,represente,equity,1722.65,2023-11-27,False,EUR
+604b8068-ef75-419b-9ccb-b008f43024b6,also,shoe,bluet,subsequent,fixed income,318.81,2004-04-04,True,AUD
+84d1a07d-ea3b-4d2e-b779-4a88d3bf5257,recycling,stuff,refun,meter,loan,4970.62,2004-05-07,False,EUR
+05c9b95f-0813-4587-a192-271cee6ddfa7,define,sample,seeds,edge,derivative,4672.91,2005-10-05,False,EUR
+649ba876-50d6-4e63-9fe5-149e615c166e,philosophy,trend,glanc,views,equity,345.11,2024-11-03,False,USD
+0e0b41a4-e5fb-4bf9-a2ba-2472e22248c1,west,establish,meant,adequate,fixed income,4668.88,2005-11-16,True,AUD
+c47a1166-5d8e-4665-b57f-bcdfa98ecb88,develop,old,russe,suggest,etf,158.68,2014-10-25,True,AUD
+f28a9372-1316-4b12-a2bf-08ee372eb26f,smart,together,produ,partner,other,2044.34,2018-08-22,True,EUR
+f399d742-189c-40e1-997f-2219b63ab5aa,requests,massage,node,roots,fixed income,3844.86,2018-11-21,True,GBP
+e71ddc9a-ef67-483f-8595-fc04c7695719,wait,electrici,comme,popularity,etf,3829.14,2019-06-28,True,AUD
+30dc59cf-e1f8-4b77-8380-6ade16be3e52,concerning,columbus,libra,gallery,etf,4891.67,2020-06-05,True,AUD
+de9414e6-fd7f-4055-a347-f01b5d4febf9,hosts,members,canva,movement,cryptocurrency,3229.41,2014-02-16,False,EUR
+07da1736-4c3c-462b-a10d-e0734414674a,die,extent,prope,china,loan,2101.82,2014-11-10,False,USD
+e6f3d0ed-67d5-4ea9-9b1d-499e40530bda,chicken,exercise,appro,turns,etf,4964.28,2025-05-19,False,EUR
+f4849309-13b3-4692-aead-eca8d213221c,occurred,peter,kille,mixed,derivative,1912.4,2001-06-17,False,EUR
+dc3d873c-3f1a-4b15-8b8b-a4c210119b6f,flu,same,every,crowd,derivative,4348.1,2002-05-15,False,GBP
+39e5814d-ab72-40b2-83ab-40b4b2c6a6cc,complex,au,leade,henry,equity,4533.84,2014-01-02,False,CAD
+dc768f49-5a68-4f89-95af-9be26018e861,maintained,benefit,css,cover,mutual fund,1878.23,2011-05-03,False,EUR
+8c0616fd-879c-4168-8b3d-1f35661e2e31,eyes,food,crisi,reports,etf,3413.65,2020-02-20,True,CAD
+4908aae1-4d0b-4590-8de8-c0d37d9410b2,lots,york,sir,williams,loan,3308.97,2019-09-13,True,CAD
+197e5713-cc6a-4fa3-9179-ea4e970d9c73,activation,pieces,incre,threat,cryptocurrency,2696.51,2014-10-18,False,USD
+fba8ac92-37e4-4c19-8739-b833e56c8d44,observation,olympic,visa,popular,loan,3267.67,2025-12-29,False,AUD
+24568304-7600-4664-88c7-7dac0f23261b,excellent,touch,user,giant,etf,1738.86,2001-08-30,True,GBP
+eecc2069-61a1-4989-a3f0-46795cabb3b0,managing,dynamics,toe,simulation,mutual fund,892.38,2025-10-21,False,CAD
+0fb17636-5b24-469f-886e-c258eb819159,funds,senate,incor,anymore,fixed income,2686.3,2006-06-20,False,AUD
+1f5cbe9a-0034-477d-8f2e-b76358bd0d47,theft,consider,libra,valid,cash,2644.22,2015-09-05,False,USD
+a99f3130-d195-48c8-b5cb-f7ad42e832fa,cloudy,view,make,acquired,mutual fund,3639.29,2001-08-04,True,GBP
+b66ac2ec-b0cd-4162-9bb2-5bfda930b078,attack,pioneer,role,stupid,cryptocurrency,1113.46,2025-06-23,True,AUD
+e3d91838-12a0-40cd-a5d2-3b3959fa27c1,holiday,bodies,major,processed,loan,17.38,2002-09-21,False,EUR
+b977f9e5-462d-4103-93be-132bb2a1b9c3,wet,rome,parti,unix,loan,113.69,2005-01-08,True,EUR
+d2b2f460-0638-4120-bfe1-6d878524e43f,relatively,chicken,integ,eye,mutual fund,1491.82,2022-08-15,True,GBP
+9eba2ac7-04a5-495d-b399-7a8d818c20d7,bed,arising,seale,mental,fixed income,3367.5,2016-09-20,True,GBP
+c88d4217-9a7c-4624-9589-cb2227599e16,moderate,dancing,direc,glass,fixed income,2722.23,2005-06-12,False,AUD
+22ada7e0-73cf-4501-b47a-a7c9ab003d8f,organization,hundreds,adver,plans,derivative,2659.67,2009-07-14,True,AUD
+759520a2-a5f9-445a-9da7-1b3ba753689f,mad,palm,offic,requires,mutual fund,4116.8,2024-06-22,True,GBP
+df54f139-88e8-4bee-bac5-ca5eb4c0f957,mrs,prize,av,trips,cash,1237.57,2019-01-26,False,USD
+46b87fc4-ae6f-44b5-bd11-9581c1b0ac31,boot,save,enemy,beauty,cryptocurrency,1730.81,2020-11-11,False,CAD
+63b13441-4e49-4d2f-b55d-fc24532570ab,revenues,ieee,grand,personally,cash,1378.26,2002-06-04,False,USD
+820bf570-1274-4ef2-af05-6d398f83f318,james,luxury,case,golden,derivative,4687.05,2017-11-13,True,CAD
+05268512-5eb2-4014-a829-ef50fe99f263,sector,martin,visit,certificat,mutual fund,3625.12,2009-05-24,True,USD
+9b683f8f-c281-4318-8423-39dccad2cd90,plenty,tools,seaso,rat,loan,564.23,2021-10-28,False,EUR
+96613ebb-5a94-401c-9d2d-5efb2ad4f2eb,full,var,mecha,medium,derivative,4047.39,2004-06-03,False,GBP
+db527954-8822-4748-a882-b490a0f3654b,cables,accommoda,nelso,maintained,derivative,2096.21,2018-11-05,True,GBP
+5d54256e-0e1f-43f1-b33c-b4befff7a5a9,utility,ensure,relig,thought,cryptocurrency,3830.27,2011-05-31,True,GBP
+0174be26-3f25-4308-8ab2-f6edfc6604ea,fees,heard,part,li,etf,4418.78,2020-12-22,False,USD
+3f9f5f45-6d7f-452f-9b77-34aed444bbd0,classes,crystal,somet,constantly,fixed income,78.24,2012-03-20,True,EUR
+5a752b2b-dcce-45b2-bd4d-6525f4821b8a,compared,seeking,start,star,cash,1030.42,2022-02-10,False,CAD
+4c48976d-f0bc-4e8b-9aff-3fe161988140,turns,xp,inter,max,etf,504.49,2017-07-21,True,EUR
+ba49b1ce-bcb0-489d-abe9-5796b059e6cd,effective,attractio,biolo,radiation,loan,167.89,2025-06-27,False,USD
+37d9120c-54c2-420c-8b67-0d351b89e87a,kelly,extra,camps,penalty,cryptocurrency,2988.93,2004-11-23,True,USD
+c7061a8f-20a4-4632-a2d3-c5c7c198d1ab,blackjack,often,there,everyone,equity,3516.43,2023-11-30,False,CAD
+c0e38118-cf5d-4e1a-9544-a0f9f03f48c7,infection,oct,enter,movie,cryptocurrency,243.39,2016-02-21,True,EUR
+f014398c-f29f-41df-bf3d-834e45ba48d7,mile,former,even,hosting,equity,3702.71,2021-07-17,False,AUD
+cfb1c71d-2f0d-4cae-9c53-69711e6c87a9,accommodatio,descripti,ct,reduce,mutual fund,2011.33,2011-01-12,True,USD
+a270eff3-b443-4313-9def-e9d818a69d57,idea,speak,carri,real,cash,1171.7,2009-03-31,False,GBP
+42561fcc-ebea-40fa-a11b-03d6c5b47e1e,suspension,internal,fm,entered,cryptocurrency,1086.35,2006-06-25,False,CAD
+2248bc4f-f430-49f2-8ef4-17c05076c485,meaning,comfort,noteb,specialty,derivative,4318.65,2015-04-08,False,CAD
+c0e4809c-1339-4b63-9b53-75e697591ede,stored,causes,makin,discussion,cryptocurrency,282.23,2004-03-03,False,EUR
+20d1a4ae-2ef7-436f-8ac2-79910b1b2d85,taught,baby,axis,affairs,loan,2519.48,2009-02-17,False,USD
+957c53d1-f114-4316-b3b0-02b9c75ceacb,leave,almost,motor,hamilton,cryptocurrency,1446.32,2024-09-27,True,USD
+781daa9b-3ed1-467d-94b8-a7eb7d42c018,naked,thumbs,mean,marine,fixed income,4078.93,2023-09-02,False,GBP
+2fad36fa-5eab-40fb-b4b8-3c01aac82415,zero,item,rome,forward,etf,3657.59,2021-06-29,True,EUR
+8fcd86a2-67d7-4432-8bc3-096ba6e00c51,custom,roberts,reali,effectiven,loan,1594.53,2024-10-05,False,EUR
+7705055e-131d-40b9-b300-c71d1e85c0df,introduced,lenses,great,launch,derivative,2989.59,2019-07-05,True,USD
+ec8ac613-ba07-4589-8fec-1c9a48d307ff,ph,sr,serve,observed,other,3362.66,2005-03-27,False,AUD
+50c79bc2-b165-43ee-b102-1dceb405de50,clock,license,incre,commonly,cash,1603.33,2022-10-26,False,AUD
+2239dab9-54b1-469c-a2eb-b1c446b5b709,value,permissio,warne,recently,derivative,1508.83,2005-12-15,True,CAD
+6cfc689c-a29d-4aeb-a5c2-cf5ed12aac5a,judicial,fm,criti,kent,fixed income,716.31,2001-07-12,False,EUR
+bd2c3aa9-5ee5-4ffb-bc8e-1dfdb2a27a4a,assumes,franklin,anti,corner,derivative,3301.07,2021-12-08,True,CAD
+8cc50ecb-939f-4b54-ba0f-1a90ff6d8912,tight,football,islam,inquiry,mutual fund,1105.22,2014-10-10,True,EUR
+9e55d015-bd7c-4eb3-81ae-bcdfd14ba656,apparently,wild,exp,produce,cryptocurrency,1502.51,2024-12-26,False,USD
+0cee079f-d9ce-4627-b779-53964b37ec9a,literary,small,somet,discussion,derivative,304.8,2014-04-18,False,USD
+241fafeb-5469-41a7-93a2-6ea62d1e1795,marketplace,columbus,pda,fortune,loan,4742.6,2007-05-31,True,GBP
+56378b12-4422-4761-9ec2-d2edc24c86bb,pci,son,limit,fy,loan,4398.57,2025-08-29,False,GBP
+e814b466-b76a-408b-ad97-4ac0488aa231,ties,liked,fish,subscripti,derivative,4557.89,2006-06-22,False,EUR
+14d81510-817e-4c6e-8fe8-3beecd73feb1,keeps,joy,non,latinas,etf,3129.97,2018-08-15,False,USD
+65e62216-8d29-4eec-a3ff-fd3b358e79bf,catering,clip,backu,paragraph,equity,2136.01,2024-05-25,True,AUD
+a8bfe52a-6b2a-4257-8d78-c80167a1c80d,counts,concernin,ford,pulled,etf,2478.11,2012-09-17,False,USD
+1f926e54-d376-425e-9b84-3cabbf96e843,builders,dawn,shari,putting,etf,4861.45,2013-03-27,True,EUR
+91dfbe52-33e1-4450-8f63-a9fd83115a36,joseph,job,count,classic,other,4707.93,2006-10-05,True,AUD
+4b41e28c-8a68-4a01-97ff-3bc66fd78c78,solid,agents,antiq,mo,other,3356.72,2008-01-21,True,EUR
+5eae99f8-808b-4a76-b62f-0f942a346cc9,classic,organisat,anima,mitsubishi,loan,3929.03,2015-06-18,True,GBP
+b889be54-b472-4efb-8227-699f9fbc9c3d,arrangements,dinner,commu,virgin,cash,1593.68,2003-12-28,False,EUR
+5a7d77be-d52d-4fe9-8364-c2d66a1cd9a4,newsletters,mice,affai,pursuant,mutual fund,2081.63,2016-02-10,False,CAD
+8cd49c97-8cd3-43d6-9fe8-45f30d263aef,pet,ear,beari,individual,cryptocurrency,746.1,2002-03-09,True,EUR
+23ea43df-d0e2-437b-a067-9a2d6009752f,wrong,subscribe,coins,smoke,mutual fund,1882.31,2014-09-05,True,AUD
+061b0834-e2b5-43ae-bafb-af0c6be94a2b,nice,searches,signi,compatible,cryptocurrency,3772.08,2013-02-08,True,AUD
+9ea3cdd4-4ecd-4e64-91f8-3410815f6b40,permits,disorder,quiz,feedback,cash,2367.6,2014-06-30,True,GBP
+1bc9ba16-f224-427b-992a-103a1f5561b5,ink,nancy,daugh,ghost,fixed income,4246.71,2000-07-02,False,EUR
+1c2f80ea-b8ed-4004-a492-8d86425de1af,boy,convenien,strai,lbs,loan,1503.69,2012-09-12,True,AUD
+5af5008c-a1eb-4313-88d4-3488218a88cf,hills,charles,bill,jean,loan,3537.89,2007-07-03,True,GBP
+ee0e98ea-091b-42b1-8994-9c2a7620a683,obviously,animal,sam,lawyer,other,4028.88,2011-04-01,True,EUR
+de839e2b-4f65-4fc3-b2d5-f19e2b0253b7,buffer,jp,cap,node,mutual fund,4573.71,2010-02-27,True,USD
+ef1883a6-114a-4015-b8bf-4cd3e7418605,sleep,thailand,roman,passes,cash,2811.93,2022-11-11,True,AUD
+c90e9248-3b8e-44a4-9501-412b4d5dc6cf,live,french,anton,loss,cryptocurrency,4838.93,2025-03-05,False,USD
+b1d04c44-1c11-4177-bb5c-15a5899afe06,dating,semi,sched,gear,etf,2786.44,2001-05-30,False,EUR
+be6e9b18-85a7-48ac-9286-db7ea710ddda,my,referred,rest,priced,cash,670.47,2015-12-27,False,USD
+ceb3deda-f6b9-4cfa-a44c-77fd03dda11a,bio,carol,jerse,dealing,loan,1214.3,2004-12-16,False,AUD
+fff40644-a406-45e9-9a02-129b4606a8fe,stories,eagle,surpr,has,etf,1016.69,2014-10-01,False,AUD
+5875541b-6384-46b5-8ec6-ea4abe546ebc,conferences,promotion,sched,monitors,loan,3233.53,2002-01-09,True,CAD
+6999bcbc-0856-4d25-a850-792b4d6ab176,bugs,acoustic,peace,potential,loan,4611.13,2006-03-18,False,USD
+01712258-91f6-41f6-9747-6131bd3ecdbe,evaluation,forecast,china,patterns,other,4235.67,2023-10-17,True,AUD
+c8235378-8932-4fea-a512-fa2b8551d701,dial,steel,holdi,forums,derivative,462.33,2013-02-25,False,GBP
+d7b7bd55-18e0-4f07-88e2-562744d74464,dragon,policy,reque,hearts,cryptocurrency,3622.93,2009-04-10,False,GBP
+cda50407-120c-4917-896a-b427489eac86,salt,jpg,freew,medicine,cryptocurrency,952.42,2003-01-08,False,AUD
+3a9dc476-24d8-44af-894b-950da3b894e4,dialogue,entities,fello,profession,equity,1342.32,2013-11-26,False,EUR
+86fde136-2543-4e31-a904-d149ab826d35,recent,steel,perma,reliable,other,3368.36,2019-08-03,True,GBP
+e2f65b09-4703-4d1d-bda0-4818896af266,incredible,printers,class,cpu,loan,3014.61,2003-08-20,False,AUD
+3aa8a2fb-b9e1-464d-8d0d-1820a2e112fd,guaranteed,farmer,mb,pride,cryptocurrency,4368.1,2017-01-21,True,GBP
+f85bbe4c-fb12-4c99-a43f-4b852af95e1b,programme,clark,waiti,according,loan,940.82,2016-10-08,False,EUR
+4fcd9b26-2f5e-4bb0-a2d1-d206bd173376,believes,chairman,tree,ice,cash,3808.48,2022-03-10,False,EUR
+18783f76-c4cf-4ebb-b649-099cee663853,atlanta,cultural,bar,anderson,cryptocurrency,3621.53,2013-01-20,False,CAD
+b3221e92-6972-49d0-b823-727baf74fc84,george,wisdom,obser,lite,cryptocurrency,2794.26,2011-04-19,True,CAD
+2c3c58ef-57cb-47bf-885c-9f9e5ec18ccc,protein,netscape,using,significan,cash,2396.98,2013-03-22,True,GBP
+38273e3f-0cb3-4b6b-896a-f9e494b06985,painting,illinois,contr,percentage,derivative,4347.37,2021-02-17,False,USD
+fa152815-be95-4f5a-a8a4-b3d0c24230d7,sensitive,eating,am,newspaper,cash,1664.83,2011-02-17,False,EUR
+8a6444cc-525f-4e75-81b6-95a64222bf52,lighting,dead,coast,amp,cash,4785.1,2017-09-26,True,EUR
+dd7366ff-0dce-4931-aa26-7d6315347920,delay,aaron,churc,yorkshire,mutual fund,76.68,2016-09-01,True,GBP
+e30e6430-d576-4c22-b0fb-d06b4a32231d,rule,fisher,grant,msn,other,4685.8,2012-08-02,False,AUD
+928b8e41-a44c-4527-9c79-6e5a99eab803,linda,recognize,aud,being,etf,4810.39,2020-07-12,False,EUR
+3192c9cc-5b24-4685-a71b-e1ee59465bbf,earrings,smaller,toron,filing,fixed income,586.59,2008-12-01,True,EUR
+b499fdf2-cd8d-4e03-a679-c7612bfe1a99,votes,dreams,not,constitute,etf,4997.86,2011-02-12,False,USD
+197b79d6-e1f6-4db4-a422-296bab7e2bc6,trusted,moderate,disch,happens,cash,2394.61,2007-12-22,True,GBP
+0e39ad8b-a89c-4a5d-ba3b-e2c5a028987b,border,automotiv,elect,utility,loan,1212.97,2020-02-25,False,GBP
+c3fced50-7530-49ab-a479-c2da9b3cb1d7,senator,views,sure,shipping,other,3022.01,2018-12-25,False,USD
+12faac65-796b-43e4-93ff-b0749a218487,modem,presented,wallp,mi,etf,1022.57,2010-03-02,True,AUD
+f599ce5f-87f8-4d28-a0ea-b164ccfce0a2,ringtones,reserved,voice,insurance,cryptocurrency,4575.63,2011-09-11,True,CAD
+d45cfe30-33d7-49c0-9568-16e481910d11,intent,multimedi,alban,browsing,mutual fund,2760.4,2020-03-27,False,AUD
+49191b01-57f4-44a5-ac57-a9a9d8c5d680,attractions,outdoor,xml,pleased,fixed income,3877.57,2024-11-15,True,USD
+c9634f6e-2045-4cbf-ab64-390fdcec5c9d,dave,evaluate,victo,likely,mutual fund,1903.31,2022-08-21,False,AUD
+35995bc0-c578-45f7-995c-743a0d30cef0,actors,socket,deskt,bet,derivative,2668.26,2005-03-03,True,GBP
+ed366a2e-f7e8-41f3-ae8a-f3e0c8f2be19,plants,silver,babes,tune,derivative,1796.3,2022-08-02,True,GBP
+7ed1e259-506f-4aa5-b3cc-8920b2843f2d,jelsoft,fitness,terri,doctors,cryptocurrency,1307.82,2009-04-02,True,AUD
+7d70d6f3-016e-4960-8f4b-482091ec2c6f,va,port,titan,laptop,cryptocurrency,2564.09,2025-04-29,True,EUR
+2c124b09-2583-4d72-956c-eee566e30f25,continuing,receives,sungl,corner,other,2486.39,2001-06-30,False,USD
+5b0d3636-888d-4ad6-9474-b3da0236cee5,conventional,detected,offic,choose,cash,493.05,2009-09-13,False,USD
+78289f4b-db92-4b75-9691-9bcc2574cfe4,boss,trademark,playi,phentermin,equity,4906.59,2017-08-09,True,USD
+7614c363-4e38-4fce-ae6f-5c468976980b,observations,returned,manuf,answered,mutual fund,2347.46,2001-11-07,False,GBP
+b222d166-73bf-451e-bb3b-32f4d91f2301,jp,old,kitch,without,loan,4198.66,2009-06-28,False,EUR
+0021930c-464e-41a6-b564-627031a933c7,thailand,successfu,kille,wisdom,derivative,4571.65,2024-01-28,False,USD
+7b32ff58-b9a5-4626-b35d-5db78e0212b1,touch,dual,cultu,mom,other,1853.53,2020-06-09,False,CAD
+ca1e6789-2f3b-4a8e-a6a5-89ed5ef873eb,arguments,seek,jews,manhattan,equity,2069.66,2003-06-14,False,GBP
+96c79a31-623a-4c09-8f14-e505f55fb459,laura,gp,posta,combine,equity,2812.63,2012-12-15,False,CAD
+c53f13bb-db69-4d24-a10d-b032e9fab41c,whatever,principle,intel,power,fixed income,1106.38,2012-06-06,True,GBP
+cff97702-5646-4642-ad47-b7e62aeb7308,additional,counter,mosco,expenses,cryptocurrency,729.62,2015-12-16,False,AUD
+13d933ae-255c-4a53-ae1d-dce1b9b8541c,object,directors,mathe,defence,fixed income,1303.88,2011-09-09,True,USD
+db5ca90d-7e20-47ab-a04a-7c455e91fbe2,issues,objective,forwa,lanka,other,4673.79,2025-02-24,False,USD
+3eb14248-3dc2-49f8-9cef-09caa1af00a8,count,private,front,status,derivative,2895.72,2013-02-14,True,EUR
+f18fee0b-10c9-4f92-91ea-b063b388ff0e,dry,communica,cape,modified,other,2087.9,2019-03-18,False,USD
+fa130a81-274d-465b-81f3-d016491c0420,data,black,does,declared,loan,762.07,2009-06-04,False,USD
+1155cbbe-a264-4fba-b5e1-03a51ba1778b,huge,gcc,chall,visible,mutual fund,1649.33,2002-06-22,False,GBP
+3bc7c215-0d4c-4c78-8e97-eeb5b62abebd,charles,serial,comma,larger,etf,1899.21,2009-05-15,True,GBP
+8a0e5b70-3eef-43cd-891d-106f87e65f97,years,stadium,limit,python,cryptocurrency,4166.82,2019-12-14,False,AUD
+6642bd12-2b35-416a-b800-2c9a9ace37eb,sand,encoding,metro,mini,mutual fund,2496.51,2005-12-15,True,USD
+a41dd272-f514-4b08-b19f-958341077785,grid,practices,assem,shock,fixed income,3273.04,2011-08-02,True,EUR
+8902c858-0670-473f-9b8d-5b43cc6b4900,jelsoft,organizat,induc,fails,etf,3424.24,2023-06-20,False,AUD
+ae5307c0-7c35-447e-b205-2ce00e5b34e7,foods,messaging,turn,dimensiona,etf,1286.64,2013-05-21,False,AUD
+a4e3dc45-cba3-461a-8fa5-8fc1cf1c0920,affordable,button,subsc,voted,equity,4107.96,2025-01-03,False,CAD
+b346530d-4373-4107-b46f-993653dbf2a3,context,modified,passe,combat,fixed income,4832.54,2021-11-13,True,AUD
+f3318488-7fcb-49d2-869f-713ffd93c5a2,runs,flashing,plann,kennedy,mutual fund,3208.48,2011-09-26,True,EUR
+11147795-e10a-4c9d-a58a-869271c63616,recipient,technolog,ge,ec,other,2452.98,2023-11-06,False,EUR
+0bac69f1-cab6-42fb-a343-746912107564,os,ch,club,session,derivative,841.18,2000-03-28,False,USD
+56d30ecc-6135-4e26-a28e-c636e06091a2,fantastic,originall,misso,stability,loan,3974.88,2019-11-26,False,USD
+5777499b-0708-4983-a8b5-a66763c2dabf,auto,classifie,danie,events,equity,846.34,2014-01-05,True,AUD
+6d7f6338-6621-4395-8803-4da97f7c382c,efficiency,divided,paren,dolls,fixed income,3601.57,2002-04-25,True,USD
+920f3bcc-a52e-434e-9f87-e050616fca48,includes,struct,forgo,multiple,fixed income,2441.59,2020-06-12,False,USD
+0ac0214d-1ec5-4551-9283-a8fc09aa78ec,walking,height,compl,agree,loan,4584.5,2012-10-02,False,GBP
+ea239b93-431a-4064-97dc-2e8c7312dfce,random,petition,unlim,private,cryptocurrency,2710.69,2019-03-22,True,EUR
+17ab355e-07d6-4e59-b26d-6f955be8bc9c,bar,clothes,board,athletic,other,3209.05,2014-06-12,False,EUR
+074dfd0f-49c7-4876-9a70-9b3c8b7bfe7b,sweet,mathemati,aka,greatest,loan,293.67,2014-02-19,False,CAD
+6d51411f-0465-4cee-abbd-658b8fc211f3,revenue,bath,disco,chips,cash,169.13,2004-09-12,True,EUR
+c56363c9-1b83-41da-86cd-8ebf95a79334,pearl,targeted,equip,designs,etf,4233.49,2012-06-21,True,USD
+22c2685b-cd70-4669-8731-df14a2f9b55f,earned,optimal,capit,southern,cash,4725.94,2008-04-04,False,EUR
+574208c6-06d4-453d-93ce-16a231e384fa,alerts,phil,strat,expense,other,3341.08,2000-12-06,False,CAD
+caebcc63-46b8-4ec4-bd7e-51d962c434a3,jeans,welfare,manga,donation,fixed income,3821.7,2015-09-13,True,CAD
+c247790e-e4de-4a6e-a108-54f9e27e9ddf,includes,watching,prime,comment,cryptocurrency,2061.97,2017-02-09,True,AUD
+7e8af670-5281-4523-ae52-f2605b7645bc,network,original,overs,michigan,cryptocurrency,4212.73,2024-05-23,True,AUD
+04f31120-c778-4b62-93d4-3c6875c1dc1c,lo,pages,equip,figure,derivative,1157.17,2014-04-20,True,CAD
+a6fb3207-aa46-4cf7-b95d-015e9c205de1,managed,seo,imple,forums,cryptocurrency,3535.85,2009-12-30,True,AUD
+4174b59b-a0d9-4d95-aa8a-b4a3740e3510,directors,enhance,aa,shops,cash,45.72,2015-04-04,False,CAD
+af2a4a3f-6faa-4383-862e-3e78ccf3059e,sr,fees,iron,acting,derivative,2528.67,2004-02-15,True,EUR
+157a47d0-1217-41cf-b43d-36282300b5dd,training,utility,jerse,activities,etf,1866.01,2005-12-15,True,GBP
+f2397f35-6a5f-4e84-9111-9d55ef8f18e2,houston,either,dd,acoustic,fixed income,3089.18,2002-11-28,False,CAD
+e2dbf786-68b3-45ee-9aa4-1555496b76c6,function,headset,messe,graduate,fixed income,3333.78,2010-11-12,True,GBP
+0acb32a3-960f-4881-9554-f229c959f3b5,clearance,recognize,go,gang,mutual fund,3082.6,2022-02-18,False,GBP
+808aadfd-65b7-453e-93f0-13c70c95f29a,discuss,hiv,delet,returns,equity,2416.03,2017-05-29,True,USD
+7b11cc9f-9ae2-4446-ae8f-1ec7631338f7,titans,serving,portu,earth,equity,2439.28,2009-03-23,True,EUR
+e970deac-e6b9-4f26-ac30-b0cb0976403d,regarding,setup,heari,station,cryptocurrency,33.07,2022-12-21,True,EUR
+931b7e08-8d82-4a05-aa61-a1d1714fb009,competitive,education,owner,offering,cryptocurrency,2758.22,2005-06-17,True,EUR
+d067cba3-963e-4077-9364-fa4c14e87ff1,donate,op,concr,affiliates,mutual fund,59.26,2007-02-07,False,CAD
+e48580eb-4dcb-47d3-bea1-c4d4668d7f31,applying,made,con,blue,fixed income,2647.09,2025-03-08,True,CAD
+c3cdfadf-0ca5-4a7d-a3fe-7208258c3719,document,pt,ralph,dealtime,cryptocurrency,1373.71,2025-08-01,False,AUD
+9e946810-a357-4f4c-bbe1-504e6f85039b,chase,knowing,feder,espn,fixed income,4887.4,2011-09-19,False,EUR
+fc91cc1a-135b-44f4-ad92-3d780ea28a13,seeker,yourself,inter,scientists,mutual fund,85.72,2011-08-26,True,GBP
+3463522b-c4b7-4fbf-a328-681647f6e8b9,extensive,spectrum,vehic,array,mutual fund,4065.79,2017-03-20,False,GBP
+caf67f93-58fb-4bdc-922b-eaaec7fd4061,room,auto,islan,conservati,cryptocurrency,3370.17,2002-02-10,False,USD
+b8968579-6a8a-4747-ab49-ab7b86b40fb2,specialized,showing,slide,buyers,derivative,4030.84,2012-12-24,False,GBP
+7642a62c-52d3-407d-8fef-3b0e04a54311,richmond,destructi,rm,improve,cash,4548.87,2015-09-14,True,EUR
+780f3a0a-8039-459d-a6d0-fe932a18ddc6,recommendati,always,inter,river,fixed income,535.09,2024-07-27,True,EUR
+187b905c-db9a-4fc7-9dcf-e2a5fdef393f,lite,window,ja,polls,cryptocurrency,481.58,2018-02-05,False,EUR
+2e977bcf-2f88-4880-a706-c4f3b4b7aa5a,essential,exhibitio,org,answered,fixed income,744.5,2010-11-03,False,CAD
+5a31f524-60ee-4595-b51a-eaa4d7d21aaf,understood,lists,diagn,packaging,other,959.67,2014-08-22,True,USD
+f704b844-a8f5-4c55-a1a3-ac0598cfb769,contests,te,stude,cricket,etf,2632.28,2016-06-05,False,GBP
+7f51de3a-b2ac-4f18-92ec-57ac6d0f04f7,bristol,ourselves,expan,cloudy,derivative,4076.07,2024-09-21,False,USD
+69c4cc65-c97b-4244-8d64-0f7b7101fc7e,drawing,bureau,scene,activation,loan,1336.63,2018-03-25,False,CAD
+296de98e-68be-4dd3-b5ef-44535b789fac,answer,sale,java,neighborho,other,1984.49,2004-07-17,False,AUD
+b0d549cb-6d6f-45b8-bf1c-0fd668e77b94,friday,begins,churc,below,equity,1865.26,2001-02-17,False,USD
+999407b7-c524-43c8-82ac-a67cddc02f7e,offices,tube,you,opinion,mutual fund,2030.14,2004-05-06,False,USD
+51027357-938c-4097-8bc3-f91d21a827b3,aspect,parents,proba,scientists,derivative,2825.02,2005-06-30,True,USD
+147fd11c-9a2e-4fa9-b810-b94100dbef0d,calling,deals,win,scale,cash,4951.17,2022-04-12,True,USD
+36698bb3-e9f9-4566-b665-cdd1d22467df,research,sequences,ill,considered,equity,1129.29,2016-05-28,True,EUR
+3a1414bb-095f-4efb-86e3-5465c3eab24a,power,flu,carri,them,equity,3420.21,2002-05-07,False,CAD
+f09f13ad-107a-4e20-843e-bd3690d98fb6,justice,ie,eleme,pricing,fixed income,4239.34,2020-09-09,True,USD
+1a1f1f90-d211-4418-80bf-1c5ff8348c9c,configure,concern,filed,readers,etf,3268.68,2004-11-10,False,USD
+d0c21d27-56b4-4109-bcfc-6e40c465e3c5,draft,soap,topic,medicare,cash,4291.1,2019-09-03,False,USD
+eaab11ee-7940-4e65-b9b5-c57d4bf92f9b,audience,chip,elite,discussion,equity,3797.93,2016-11-06,True,CAD
+d34f92a8-8e06-4c1f-9024-eb2ddf75cca2,founder,ability,pack,gardening,derivative,467.51,2018-10-05,True,USD
+f68a189e-9684-4ac5-b19c-dce9d93c1d2a,computers,affect,stick,root,fixed income,1896.33,2005-11-20,False,USD
+9fca556f-5f01-4b78-9e6c-d7473f2af89d,del,qualified,perha,male,cash,2763.51,2023-10-11,True,CAD
+58467b09-90a9-483c-af48-dc2440bf7d6a,glad,loan,lamps,meals,cash,280.58,2018-01-27,True,EUR
+5ba9e6d2-fc08-48e8-8979-87a3e0bcda8b,objectives,exercise,pakis,brazil,loan,47.26,2000-02-02,False,CAD
+b4a1a996-1651-478f-9b89-da70bdb701e0,llc,attention,somew,canon,mutual fund,856.93,2020-10-09,False,USD
+a7bbc396-bd86-440c-8a08-2b01ff25d6e1,supplement,controls,justi,birth,loan,2499.3,2020-04-25,True,CAD
+fc4d636b-09b2-4201-8f03-f50adda6452c,missed,soon,perfo,lodge,derivative,2169.55,2018-07-20,False,GBP
+3feff3f1-64af-4266-9cc3-d3101ec15b38,probably,diff,fotos,norway,equity,3921.88,2020-01-16,True,EUR
+f9c62678-b0da-411a-bede-a73bf7d7672f,authority,trying,cosme,kinds,etf,2829.29,2020-09-10,True,GBP
+e6c70f9f-9d9b-44ea-9d9e-4c28f8565116,technology,banner,selec,assets,mutual fund,4289.8,2020-05-16,False,EUR
+769852d6-1d58-491e-866d-35cefd51357e,mens,uniprotkb,henry,francisco,cash,476.82,2007-11-13,False,AUD
+785aa097-5bec-4991-afea-9b2866df56c4,promise,sir,dispu,announce,equity,2640.8,2009-08-03,True,GBP
+72ba3640-04ab-40f5-ae17-8927049c1154,authenticati,enjoy,used,visual,mutual fund,212.77,2022-01-06,False,CAD
+2114afcb-c3e6-43f1-9ee4-61d7b4d6225f,bin,racing,lovel,config,other,1057.09,2014-07-16,True,CAD
+1dff9575-09e7-436e-a2ac-089143c10ff4,log,destinati,opini,committees,cash,4340.59,2014-04-11,False,USD
+059af982-4b71-4967-8a49-c62d165bfea6,remarks,helpful,books,packard,etf,4437.77,2019-03-11,False,CAD
+6db29712-8344-422a-a559-983bbf92f5af,flows,instrumen,photo,tail,derivative,2377.51,2022-06-24,True,CAD
+dcedd93b-b596-49eb-a403-8f6b91083ab4,clothes,community,guest,fantasy,equity,232.82,2011-07-05,False,AUD
+c75c8b3b-1b97-4cbd-a400-ed46ee12fb5d,circle,zdnet,impro,firms,equity,371.75,2024-06-17,True,AUD
+d9be4dce-a256-4c1b-bc88-4e5d81c92d1d,euro,wrestling,expan,friendly,cash,4627.92,2017-02-11,False,CAD
+24353701-ab74-4010-9e17-ac61fcc5f6d1,returned,how,rail,nov,fixed income,4496.56,2007-08-04,True,CAD
+211ebd09-8be2-471b-90d8-b37bc7c8d0c9,mi,covering,revie,trek,other,2817.55,2008-08-08,True,CAD
+0eec7330-d0d0-48f0-9fe1-0de2c12e7eac,diamond,voip,index,greatest,fixed income,164.52,2004-02-02,False,AUD
+9ed41191-e0de-4118-8d80-be2fd11e47ba,rain,wings,neede,linda,other,4643.83,2009-07-28,True,GBP
+6df10ced-a39c-4f20-830a-2fdbef13bcd1,www,eng,encou,cultural,loan,1572.43,2019-07-08,False,GBP
+2743da57-3ee7-4b79-a0e8-08de0361b9a3,stephen,aged,simps,powers,derivative,4807.35,2005-06-30,True,USD
+edbfda8c-d0e1-4a16-a021-df1a7fc498db,draw,mechanism,melis,trees,fixed income,2935.18,2018-12-11,True,AUD
+2ebc44ac-04e3-4efd-81dd-e64628111693,china,and,flexi,catch,equity,3761.27,2006-03-16,True,USD
+2ea1fcb7-85e0-4199-b5a4-1e630b5324d2,founder,motorola,dean,shareware,etf,3563.56,2016-08-16,False,USD
+cbeb0c52-df5f-487f-9d4f-eef1e4e017d7,benefit,growing,towns,reasonable,mutual fund,1991.49,2009-08-01,False,AUD
+2aaee870-5d39-4317-991b-c4ce4958a585,quickly,screening,colom,sizes,fixed income,384.7,2002-07-17,True,AUD
+19df3dad-068a-4a57-a1a3-2c4584e301b5,powerful,module,tiger,necessary,equity,812.26,2014-04-07,False,EUR
+81934084-e72e-44a5-9575-f4a340d6b3d2,encouraged,ray,modul,ban,cryptocurrency,1202.37,2018-06-02,False,EUR
+75167df0-d43a-4166-b0d8-9c22e55e29ff,arrangements,river,files,shower,equity,4173.25,2001-05-16,True,GBP
+0df13a27-00da-4679-94c8-39dbeb340ca7,herein,subsectio,suffi,dallas,other,1945.79,2019-11-22,True,USD
+75e49087-ffa2-4e7d-869c-6bac8e26615e,payments,nissan,added,route,equity,4482.63,2015-05-18,True,AUD
+e6a189bb-8100-43d4-b838-c62676d7d538,generation,ensure,annou,manager,loan,1658.66,2000-02-14,False,GBP
+83da144e-2b13-4872-99ac-c5f31ed47229,charles,launched,cryst,approaches,derivative,3778.05,2004-05-24,True,EUR
+1f258cc7-93a3-4a45-83ee-31454677281b,reach,gourmet,incor,necessary,equity,699.76,2011-07-12,True,AUD
+4814ca5a-8935-4298-a546-c9913fb51199,le,cultures,educa,grade,fixed income,4942.39,2001-07-02,False,GBP
+69677c54-cefe-4f99-9097-d5c879ae3646,carbon,basis,missi,applies,cash,3620.82,2018-09-07,True,GBP
+f04e4c09-81ba-4db9-95fd-ef9464f4c1a6,groups,beach,latin,roles,derivative,2503.97,2011-09-10,False,AUD
+e1562d90-c401-4862-ad00-e471057d5860,cap,carry,merch,kentucky,equity,4871.62,2002-07-17,True,CAD
+7c860138-ad89-4e40-aa25-7c25f1f51799,payday,consultat,ocean,recent,other,268.49,2014-09-09,False,GBP
+ae834bcb-417c-4a5f-983a-2863663a8ce7,descriptions,automatic,rough,existence,derivative,2185.45,2019-11-20,True,CAD
+1e82b860-d85d-42f9-b688-7e52f0e3644e,translation,begins,place,holding,cash,4193.37,2003-03-04,True,USD
+69ba4dcd-4155-499d-9eb3-12e1cc7caa83,filled,excellenc,ne,ah,cash,1702.97,2012-06-26,True,EUR
+96081e6e-0266-42ac-9dd8-fae149f16611,ensuring,word,oct,worry,equity,3845.03,2010-09-12,False,USD
+739731d1-9140-426c-bbd4-ddae28ba2416,import,challenge,aol,si,other,4774.29,2024-03-07,False,CAD
+5ea05181-9b54-4499-9e32-3dc38f251025,continuing,functiona,resid,statement,cash,1983.52,2019-09-13,True,GBP
+2c3da1ae-3b97-4b20-979c-85347942b7e4,bright,arizona,value,trial,equity,3867.78,2016-01-02,True,EUR
+6f644f89-f892-44e0-b687-71e88f13f6d5,successful,signed,admin,present,fixed income,148.14,2001-03-23,False,EUR
+75a08e5d-af57-421c-a2e1-9f1ee436ee64,breaks,industrie,aging,costa,fixed income,1366.64,2010-08-17,True,USD
+5a51499d-9e74-4059-806f-f9f4170de3de,maker,cook,llc,directed,cash,4962.93,2014-03-20,True,EUR
+426f0cb8-7ef6-406f-8c18-9c6303eea0d6,judge,rather,celeb,printable,derivative,2453.02,2016-03-11,True,USD
+cc97651b-4b58-48e8-a887-3e721e92a5d1,af,mounted,phil,any,other,1779.06,2019-06-06,False,GBP
+4d1b9314-9aef-492a-b696-d7b1f0775d99,coding,earn,scene,offers,cryptocurrency,4705.71,2012-10-24,False,GBP
+ec836478-230d-45e8-bace-0dbb2bd95aa0,are,peak,actin,glory,loan,2159.25,2009-10-11,True,AUD
+c53209b2-a385-425e-9973-c58785fd6df5,domain,starting,perso,studio,cryptocurrency,3398.48,2016-09-18,False,GBP
+b8525aac-e31c-49f5-a2f3-0bfd529edf58,affiliate,subscript,passi,dc,etf,3303.36,2015-12-19,True,GBP
+2422f93c-5a8d-4c0c-a75d-61316798e45b,gbp,wheel,biz,european,derivative,428.48,2009-08-27,False,EUR
+57ce19df-cabf-431b-83f0-d6a0db09e6fc,submitted,loved,conce,lat,loan,3093.08,2000-06-11,True,CAD
+53f9a382-152f-466e-ad39-0afbd789ac40,instruction,trembl,age,designs,fixed income,3990.28,2021-02-14,True,EUR
+3b0c9ebc-6e38-4500-bd54-4dec5b0f6c13,lose,factor,gover,christmas,other,3565.55,2018-05-26,False,AUD
+16180665-2471-4801-8034-84f8c5530f9c,fight,firefox,opini,decor,fixed income,410.2,2023-12-21,True,EUR
+e153bf07-52a7-496a-87dd-455e7e8c55ec,white,latest,she,opposite,derivative,771.11,2000-10-16,True,CAD
+924a3509-2799-408e-8478-10229b69437d,swedish,teens,shopp,alien,etf,3558.39,2008-11-26,False,GBP
+e7f585b4-afae-492a-a495-81e47cd7ce04,medicine,du,check,than,derivative,3169.51,2024-10-19,False,EUR
+5c1234b0-8d2f-4a11-93a0-05d8f3ccc629,percentage,bedroom,gener,visual,cash,3698.28,2007-12-02,True,AUD
+2c750989-4c67-4089-be9a-40a8e388ed4b,oak,opportuni,dan,dell,loan,1583.4,2018-08-06,False,AUD
+c5f647ce-9577-42cd-8a76-e34de4901d31,chemistry,wayne,tissu,expression,cash,532.76,2016-11-24,False,EUR
+61972acd-cd59-4d6b-b897-85c26042cb6e,maps,corner,categ,manufactur,fixed income,25.99,2019-07-05,False,AUD
+6a0063be-79a9-4996-a5e5-7cd16043b3cc,seems,strongly,equal,productivi,equity,1541.34,2021-04-02,True,AUD
+e086a842-1eb5-491c-8ce4-1914954090ed,loaded,cars,yello,west,cryptocurrency,1799.59,2018-12-04,False,CAD
+bac7a886-4d1d-4c07-811f-ccc1d491ff35,chair,tvs,towar,everybody,derivative,1348.84,2006-01-15,True,GBP
+12003f23-eeda-4721-815a-853fa43ec56a,memories,valuable,build,everybody,cryptocurrency,662.54,2010-07-05,False,EUR
+156d52b6-8dd9-4824-9bf4-492e8641b8cd,switches,ralph,rever,symbol,fixed income,936.97,2013-12-07,True,GBP
+06ac7d10-6536-4ee2-8ffa-619ec5ac2022,height,headlines,impro,twiki,derivative,2244.22,2013-09-25,True,USD
+3fb2ff9e-77cf-44ce-87ee-cb58421b2b65,territories,twelve,dot,rubber,fixed income,2773.7,2019-08-28,False,CAD
+2796324d-db09-4133-b492-e40533939dc4,boss,component,restr,nylon,cash,2040.23,2023-12-02,True,GBP
+e52881a1-b0ea-4111-b2bf-68b6dc20af13,district,milwaukee,db,dealers,equity,131.32,2022-03-17,True,EUR
+98252cff-0aba-413e-a7df-5076e6459262,posts,folder,potte,jelsoft,cryptocurrency,1769.58,2006-09-11,False,GBP
+ba431de5-7088-4a94-80a1-a9da60966d16,launched,norfolk,proto,functional,etf,465.33,2021-08-17,False,USD
+e221097c-fc02-4c4e-96e2-96b19a63bd96,starting,kinds,castl,considerin,cash,2990.22,2012-06-06,True,USD
+7fc2332b-0ddc-476d-ae31-84cdf793920f,also,returns,adopt,dodge,loan,1622.16,2014-09-11,False,CAD
+2052d340-56ae-48b0-aa8d-6564bd01654c,heart,reform,worke,residence,loan,1926.2,2017-06-22,False,EUR
+63233796-edfa-4dc5-b076-5dd0d443314f,attend,tried,witne,subscriber,loan,1459.24,2024-12-22,True,CAD
+333a2ec6-732e-4415-834a-3db6f62cec62,kick,expectati,insti,designated,loan,1939.0,2020-12-09,True,GBP
+2e265172-6f58-476a-b577-26e9cef9f611,hall,another,recei,gave,other,423.51,2019-08-07,True,CAD
+65fb4e85-956e-44af-9a04-6536045a3936,establishmen,nw,refun,ne,cryptocurrency,4505.68,2007-05-18,False,CAD
+358033fc-d2d6-4522-bb4e-1c22c8132c96,locator,supreme,save,listings,equity,4526.04,2009-04-10,True,EUR
+a27f449e-197a-40b5-88e9-0d043ab6c00b,informed,skype,answe,yes,mutual fund,4890.87,2024-05-23,False,USD
+c8636672-3144-412f-9553-8ac796ac4fb4,linked,grants,recei,memphis,cash,2859.81,2006-12-23,True,GBP
+061aa5ff-1f3f-4b11-be0b-0ce3c111d577,like,orientati,appli,effects,cash,847.92,2015-06-16,True,GBP
+9f61ed71-1d07-4309-8790-e5586da4829e,grew,enrollmen,sleep,interactiv,etf,1903.67,2011-09-30,True,USD
+6e923e59-837b-4cd0-8a55-13359902877d,hobbies,objective,arizo,limited,cryptocurrency,694.21,2025-12-09,True,GBP
+22aee5e6-c0b6-4e14-8e07-b2fa4c33a98c,cent,smart,infor,queries,derivative,1505.66,2009-02-19,False,CAD
+b5863c19-a4c4-402d-b570-a0dffe15de70,britain,rs,unifo,previous,derivative,2465.62,2021-09-13,False,USD
+8a782e2b-ddd1-4bd1-ac40-4a1a69864dd1,cart,heating,info,committees,other,316.35,2012-06-25,False,USD
+bea708ab-c677-4a34-b610-3cb20b701f2a,named,proven,contr,inquiry,fixed income,2173.39,2025-03-10,False,AUD
+36d3df75-e55e-44ec-a294-4ba764715f57,determine,preferred,ties,seconds,mutual fund,2105.52,2001-05-31,False,USD
+ba8d2a30-efd2-4aa6-82a6-a5ffd1081fb0,purchased,cached,broad,indonesia,loan,2421.16,2022-02-12,True,EUR
+52f509e2-1e2d-45f5-9345-5a31489b8bcc,forget,loaded,geogr,science,loan,384.62,2014-11-09,True,EUR
+350159e5-bdbb-4da1-b577-b181b8bd3049,letter,variable,garag,gb,cash,1258.51,2023-08-07,False,USD
+e98fb193-5813-4830-99c5-8f4447015475,rick,tomorrow,mile,permit,fixed income,1232.96,2006-09-09,False,EUR
+d0e9be6f-37cd-4858-9d74-9baa4f170423,charm,successfu,commi,protocols,equity,3125.17,2017-12-09,True,CAD
+020bc3a9-88c4-45a9-8ad2-49caedfa346a,hill,equipment,ride,increasing,other,2969.04,2004-02-20,False,AUD
+4ab114ad-d957-47f4-b437-32d47920118d,optical,buffer,caps,convention,etf,977.75,2023-10-08,False,GBP
+a014ea2e-94fc-4447-8f4e-91ecb72893e5,ontario,diabetes,instr,stem,etf,534.87,2007-01-22,True,EUR
+068ccf06-ee51-4411-bd97-ad99508cc28e,marine,accounts,tags,defined,cryptocurrency,1523.3,2016-04-21,False,USD
+21bbf765-0563-498c-8123-01c6f960b5ef,mutual,jazz,hb,banking,loan,4744.12,2007-01-04,False,AUD
+37926319-425e-4da5-bddb-d87804bbb37d,nfl,depth,match,ohio,other,1661.09,2013-06-23,False,CAD
+337a5ebb-4e37-459f-83cc-88a62d7aae0e,memphis,six,appli,character,derivative,3100.96,2015-02-22,False,USD
+6adfed33-5318-48d0-995d-6b06dc5502e7,pci,an,stati,physicians,fixed income,4020.38,2024-03-01,False,USD
+5a87623d-02b3-4234-953f-724db3ff957b,sources,employees,trade,applied,loan,1647.72,2017-03-14,False,USD
+ffe7e3b1-ae19-474e-b943-2a8d75faaee5,hero,commit,place,nursing,etf,1673.69,2020-08-16,True,AUD
+bb5fc029-2732-4a26-a6cf-5bfd487de302,preferences,necessari,savin,comments,mutual fund,4077.38,2020-04-25,False,EUR
+6209cd37-905c-4703-89d5-ec60b87bfb6a,insider,montreal,turke,bet,cryptocurrency,4297.54,2009-06-10,False,USD
+ee7c5fcb-cf0f-4054-94f4-f2463c7a7f75,en,france,garde,attractive,equity,4871.13,2020-01-30,False,EUR
+d1ca124f-5d42-45af-9c9e-6105fe18e5e1,horses,mb,eight,carrier,etf,680.63,2024-02-21,False,USD
+392a54ea-f100-43fd-aabc-5ec35254f660,president,down,logos,locate,mutual fund,1603.33,2018-04-18,True,USD
+5e1bba3f-ed8c-45b4-80d0-1918cb9cfc2b,prevention,nylon,brad,rated,etf,4736.4,2023-12-28,False,CAD
+690e123e-4da1-45be-b1bb-8874acfb8547,ordinary,wood,juice,pour,mutual fund,1004.27,2001-03-14,True,CAD
+3bc5bf24-b586-47d6-a9e5-3f2ab1903367,twin,women,econo,november,etf,1570.92,2005-01-27,False,USD
+7d5cd586-fbeb-4e49-a660-562a110ac031,evening,lock,yards,five,other,4822.87,2012-08-06,True,CAD
+b724878c-91c9-4af7-af8e-baef1c9548a6,candy,mexico,lisa,ot,derivative,4843.63,2023-05-29,False,GBP
+4b40d150-3cc3-41b9-8d9b-731ac6ba741e,kits,communica,ns,promote,loan,1457.25,2001-01-10,False,GBP
+0ceda18a-22e2-4ae0-a5ff-8fc594b36f6c,why,absence,agric,opportunit,derivative,3474.79,2018-10-04,True,CAD
+a2868ab0-1753-4987-9e29-e20897c5eb93,bugs,src,seeki,zimbabwe,cash,2455.04,2010-05-15,True,GBP
+bbc27804-126b-4930-95c5-6310de283d22,height,factory,messe,pa,mutual fund,2879.4,2020-09-17,False,CAD
+a90147d5-ce37-4eb5-93f0-aabad06ddaab,added,contribut,dutch,schemes,etf,1212.13,2015-03-28,False,EUR
+93161d38-affa-4d34-886a-d0eb4c3de470,environmenta,lease,exit,accurate,etf,1880.28,2016-08-09,False,AUD
+72059d52-7377-44ae-aa7e-c90ef94e0cd0,possibly,featuring,quote,ocean,cash,4082.47,2006-02-11,False,EUR
+58e616cc-81b0-4395-bd96-45953483db96,algorithm,comes,exten,faqs,cryptocurrency,1964.68,2005-12-15,False,USD
+567580ff-efef-4a69-9b0a-198c842937b4,plane,tough,secti,parks,fixed income,569.45,2020-05-23,True,AUD
+4205aef7-e3c0-4c3e-b4c7-2989d11f954e,joseph,options,tempe,maintain,loan,2819.26,2005-01-24,False,AUD
+92900d86-e880-4530-b8c8-3df06785cbf3,fair,sam,heavy,reg,equity,2961.14,2010-05-19,False,AUD
+6a554137-9510-4394-b4c9-26af2b7a1dc6,somewhat,en,race,european,cash,2728.15,2021-04-06,False,CAD
+8b5423ef-e42d-41c2-8d9b-2d4ca6b66e40,magnetic,correctly,possi,seeking,other,3408.57,2019-11-29,True,CAD
+b30ceca4-760e-4adc-b754-3164d35b6285,teacher,fitness,watch,dublin,other,2750.5,2012-07-17,False,CAD
+70cef6d4-3739-4c0d-9bc9-27f8b7c8341d,almost,wins,optim,specifical,equity,4765.02,2010-02-13,False,CAD
+0b6cc217-6fc9-49f4-bfb8-24f94877a9be,missed,gnu,neces,study,etf,2308.12,2021-02-06,False,USD
+d14f6f90-2023-44b8-aeee-b1f877a96f8b,replacement,products,ethic,along,loan,3541.84,2004-08-11,True,USD
+63c22970-6642-4ef8-b680-cb7cacc2de7c,heavy,lakes,defin,ing,other,2192.28,2007-01-09,True,AUD
+edd0f2d5-c442-4c24-9f79-0d1e5434a1ec,vast,created,engin,bright,other,1456.66,2012-04-15,False,AUD
+e7d991f5-7039-4c4a-8e01-968562b355d9,samuel,row,tony,in,derivative,3464.18,2024-05-31,False,USD
+dbc22336-6172-4163-808f-4f6525273e68,aids,jr,larry,confirmati,mutual fund,4094.83,2010-05-19,True,EUR
+02685094-3d66-4349-833a-5cc72c6d7d84,transit,reading,load,roof,derivative,3978.29,2023-10-01,True,EUR
+e44bee53-52a7-4d45-98fe-71450daae05d,century,summary,simul,union,equity,2045.71,2008-11-12,True,EUR
+80d6346d-3d98-43df-9135-65ac8d5b6d59,please,care,quote,integrated,cash,2496.52,2022-04-02,False,CAD
+2467d1d9-a97d-43c9-887a-6fb2853937ed,providing,lived,acces,turns,cryptocurrency,3166.68,2021-02-15,True,CAD
+44e70014-0bc6-456d-bf06-35fcabf74106,posting,nearest,becom,involved,equity,1210.11,2009-03-13,True,EUR
+04ec0b72-a213-4989-8833-1057df28a5f9,app,listing,perma,establish,etf,3293.32,2021-09-30,True,GBP
+0640ecf8-18ce-4a48-a4ce-fa0ab266b95a,money,essential,tempe,excellent,cryptocurrency,3576.18,2022-05-23,True,USD
+38828767-8e08-4727-9a2e-cef1c41b8b5d,consider,dreams,exact,impacts,loan,3945.39,2003-11-30,False,AUD
+97ef0793-4033-46a7-a361-c559a3a442cb,bug,charity,dot,adoption,loan,369.83,2009-06-20,False,AUD
+892a70fc-29eb-4344-b785-9d1fb9d2d896,open,licence,corn,finding,fixed income,4953.5,2007-04-05,False,GBP
+84bfbc16-a852-4678-9b31-4257b7d8f83b,evil,cells,produ,eagle,other,2396.18,2015-03-15,True,CAD
+1f1fa56a-2221-4c5b-8e11-b9364200b152,deputy,authors,objec,fashion,cash,2004.03,2023-10-12,True,AUD
+6d7d4fbc-53fa-40a0-a506-49c2bd097f7f,in,canvas,israe,players,other,2533.07,2013-12-18,False,CAD
+4f188e41-343e-44c1-a2e8-d15413c4dc1b,boost,argentina,hop,common,cryptocurrency,4601.96,2015-09-26,False,CAD
+271679a8-f59d-4a88-abba-6b81e0a821cc,negative,navigatio,sony,printers,derivative,3458.55,2021-04-25,False,EUR
+3e3f34b2-14a5-4d24-947c-785c3cf4b76d,oct,establish,shown,provided,cryptocurrency,2718.23,2007-11-25,False,USD
+e6a8ba71-b410-40a2-8647-a107f3514435,pittsburgh,luxury,wedne,requiremen,cryptocurrency,3953.61,2019-02-17,True,GBP
+1dfd284a-b398-422d-8c82-67a8710b26ec,investment,capture,ship,tracking,other,1797.65,2014-09-23,True,GBP
+bdbb1bb0-3eb2-4e22-b7ba-40a3a17aa407,iran,insight,ports,proposal,loan,4477.51,2011-02-19,False,GBP
+929680bc-3d29-462b-9f08-da58907417ed,investing,deadline,custo,strength,loan,2684.53,2003-01-27,False,CAD
+e71f3595-7661-49ae-a30e-04693c8c3809,oem,tones,googl,prints,mutual fund,3190.91,2017-09-07,False,USD
+9678a568-a8bb-4449-851b-c2cb8d9c3441,photo,scan,tagge,injury,derivative,424.92,2018-09-05,False,GBP
+5fcbdd31-aac5-4ab3-90b5-23c5638b1826,allocated,javascrip,finis,interactio,loan,3844.77,2005-06-28,True,EUR
+75f9533c-7e37-471e-8c5e-f8ba8b842607,cold,richard,nor,camp,loan,3288.01,2016-08-04,True,USD
+7d4da378-2a3b-4ac1-bd73-339fd63768b2,bmw,shows,secre,experience,loan,1775.05,2021-04-23,True,GBP
+943c1fd3-b724-4c7a-a8f6-1cc6657c9fec,passing,scottish,ltd,guard,equity,3235.0,2018-08-03,True,USD
+acb631e4-3eb6-4a84-bf99-3080e503d32c,heat,older,mater,weekend,mutual fund,221.49,2016-08-26,False,GBP
+b9a82b57-d7d1-4e82-8d99-5a2b79a21bf5,genuine,feature,shock,nasa,fixed income,4918.04,2001-08-05,False,USD
+87812b31-430d-4595-9cc4-c030c65356f9,sample,ice,savin,markets,fixed income,3387.36,2016-07-15,True,GBP
+a2f68e37-0aef-4c4a-a3f6-f933666305ee,decor,ph,balan,tube,etf,1998.09,2018-01-18,False,GBP
+d78203d4-166b-471c-a316-5052413c9f55,mode,keeping,natur,internal,mutual fund,3763.42,2014-11-26,False,USD
+def1a208-f3f0-4e47-a62d-502f663b57a4,medium,simpson,comic,videos,equity,4828.58,2009-12-01,False,EUR
+01fe1d80-d99e-4384-bc54-e6681cdddbad,austin,boys,shoe,rm,etf,2152.28,2012-05-27,True,CAD
+5c6e7501-544b-4500-b581-ca9f8587fcea,garden,kong,perso,belief,fixed income,52.75,2000-12-07,False,GBP
+bd3ca55b-bfbd-4cd3-b9dd-d4c0ab22dbcc,shower,tcp,thou,own,loan,1293.7,2018-02-02,False,AUD
+bd898a9a-58bc-4fb8-86c1-12598aa566e1,aaron,change,charg,love,cryptocurrency,2553.39,2013-06-23,True,EUR
+3d537c98-67a4-4d99-97f5-3d54cc0c00df,goal,monitors,consu,polls,mutual fund,2593.99,2002-09-02,True,EUR
+55911a73-63dd-49df-bba2-73f64dd6a1b7,event,mirror,tons,enrollment,loan,2902.6,2002-08-02,True,CAD
+8e224e7a-9f02-4791-b8d4-94bd77d1c805,urw,ian,wine,fellow,other,2876.18,2009-07-06,True,GBP
+2e26b6d8-95cc-4479-954c-87e3a5138f2d,begin,act,women,had,cash,2228.9,2024-03-25,False,AUD
+d715d942-2915-42d1-9bc7-aeec5bb4f8fb,campaign,electrici,frank,matt,derivative,1955.68,2020-12-21,True,USD
+aa56e48a-641f-40c5-ac91-3bd782e909f5,are,processor,silen,folder,etf,3861.71,2013-06-29,False,AUD
+4268d792-796d-419b-ab04-c27d1f6f96b8,stress,sub,decis,proceed,loan,2942.95,2012-08-28,True,EUR
+5a80b850-d78b-4e14-a1fb-b78b2d55d057,grace,everywher,gener,gender,other,2502.33,2012-07-03,False,AUD
+26b953b2-477f-41d2-8351-fd35ca0cd4ca,marriott,pg,japan,conditions,cash,1724.84,2021-11-28,False,EUR
+e25d95a8-fd39-4c07-a033-46cbce709311,german,transport,spank,childhood,equity,122.82,2017-03-21,True,EUR
+6ebc14e6-a624-440e-9649-e37684eb2759,younger,pine,carpe,automatic,cash,522.76,2011-02-06,False,EUR
+ef260105-3424-433f-8e9b-f6068eeb1fed,adults,quantity,keepi,identified,cash,2079.88,2017-07-17,False,CAD
+029a0e6d-bc08-4529-8c41-dc0ca2b707ca,worry,bc,pants,henry,cash,4808.64,2004-12-08,True,GBP
+677416f2-36e1-49ba-9fc2-d5c9885a6b58,install,scanner,nor,honest,equity,580.36,2000-01-10,True,GBP
+e5529574-e038-4e4a-b6f7-3e12b629e396,communicatio,legislati,meant,industries,fixed income,4703.38,2014-11-24,False,CAD
+39aa0004-ab1d-4a28-9065-90ed6c8405b1,flat,computing,norfo,monitors,other,708.38,2017-07-18,True,CAD
+dbc60155-6299-43c0-a4d9-0f97a92bb87b,spread,def,latin,header,cryptocurrency,1559.46,2012-04-08,True,USD
+176c553e-1705-44ef-92da-de02c21b1c73,mask,founded,white,minimal,equity,2276.67,2014-06-05,True,GBP
+c87b487d-2e37-4c67-8e5b-ccc211c1b592,productions,britain,josep,practices,mutual fund,1034.34,2008-04-30,True,AUD
+1938dbe4-68c4-4e78-8e72-7441b8ebc69e,census,re,wins,winter,mutual fund,2414.64,2023-02-02,True,EUR
+3cc0624e-a2a3-4a9c-9598-9e6f28d9f6ad,rss,introduct,balti,tee,mutual fund,2380.82,2025-11-14,False,AUD
+0a40e9b2-1d4c-4c0e-8419-5c40460e03e8,beef,itself,refer,vista,other,2190.84,2019-01-08,True,GBP
+707e5d30-7ab3-4aad-82d8-03eee2734432,ball,outdoor,secur,establish,fixed income,3483.82,2006-02-04,False,EUR
+f53c5d0f-331c-492d-9089-8f1ff4dcd0ab,archived,feelings,rr,ireland,etf,1594.55,2019-01-15,False,USD
+50220bce-d167-408b-817c-414ddbbaa25c,li,iron,rear,hispanic,etf,1501.33,2019-11-23,False,USD
+01b60b48-7c21-45c6-8f7d-79a6cdb74e55,visual,securitie,edito,american,loan,4050.93,2001-04-24,True,USD
+57ab7e76-1aec-4b3f-84a3-1e27a2f7e51e,transfer,remember,raisi,michael,derivative,575.44,2001-07-15,True,AUD
+2fa4494b-eca3-453d-9f6f-8adc5687f610,assistance,jacket,coali,ar,equity,4245.9,2007-09-07,True,EUR
+dea1b1d2-3cdc-4cac-b9ed-5297638c1f9c,worse,setup,opera,ecommerce,equity,3239.85,2024-01-05,False,EUR
+6bf590b6-2599-432e-af57-503d403d7bc2,basis,leading,starr,driver,etf,3385.7,2016-05-08,False,CAD
+d9257c5c-1881-4532-a3af-10a01211e481,cards,duration,stood,administra,other,821.78,2023-10-11,False,USD
+1bd19877-eb43-4cd5-a3cf-03860154b96d,breasts,combinati,natio,cheap,cash,4919.5,2018-10-25,False,CAD
+d2c3f52a-9dfc-42b9-a08c-b957ca37f230,incredible,sessions,disci,prize,derivative,1219.57,2021-06-08,False,EUR
+a3397727-febb-4461-8961-8e36ea2c8bf9,jurisdiction,seeker,strip,feeding,cash,872.27,2009-03-22,True,EUR
+cef7c2ac-69c5-47ea-a7f9-d90eca55905d,bb,chain,twin,child,etf,800.69,2016-04-14,True,AUD
+dbf56622-613e-49cb-843f-592b77bc2913,laboratory,wyoming,risin,definitely,etf,2799.25,2009-05-02,False,GBP
+d849ae39-f74f-485c-8165-4c9f70145b7e,imaging,pace,count,reasons,loan,4792.31,2017-10-29,True,CAD
+848a3744-a6a9-4e84-a3dd-b0eef53e69f5,few,pants,requi,browse,fixed income,1159.29,2023-03-21,False,CAD
+e9b4a477-592f-412a-931c-65346387c862,club,ground,enemy,relations,etf,2025.24,2021-07-18,False,EUR
+2b2e7134-cd9a-445f-bed8-76ab6c5de91d,reporter,lp,gates,profession,mutual fund,922.27,2015-01-12,False,GBP
+2f0ff19d-a04e-41a1-bc40-ebe8c439ccf4,january,chair,sugge,additional,other,3202.4,2020-11-13,True,AUD
+a1f607eb-9844-489a-a956-df32248d60e4,trim,indicator,po,vol,loan,2160.68,2025-09-11,True,AUD
+a61ef0cd-580d-4fb7-a70a-30ccea13b006,population,announcem,town,pa,cryptocurrency,145.97,2022-07-14,True,USD
+db5af48c-0636-477b-b19c-778b1c3fce5d,vietnam,html,towns,storage,other,3070.54,2004-05-13,False,GBP
+3fafb11d-a6a9-4cd3-a002-c8f3e0f2cea5,fair,diverse,bird,pe,other,986.63,2005-09-16,True,AUD
+e84700dd-87a9-4032-bf20-70acce8ca18a,golf,rocky,remai,reasons,etf,2961.02,2007-04-10,True,GBP
+e4064c40-9dc3-4126-96ae-bf6c99cd8805,mutual,constitut,fanta,practical,cryptocurrency,1944.19,2022-03-26,True,CAD
+5b6664f5-9aa9-4524-a8aa-be00c94e7416,communicatio,matching,plann,social,cryptocurrency,3523.68,2014-01-18,False,GBP
+b6f6f7b5-82fb-49fa-9d0b-c5d80923d2eb,additional,bio,bodie,increased,etf,1028.93,2013-07-18,True,GBP
+8247ae82-c506-44a1-aa98-3babc14898d6,crop,eagle,consi,agreements,etf,3761.63,2016-03-13,True,GBP
+417d17a6-d5b3-4437-a241-fa4f49884c29,benefit,unit,per,son,etf,4043.65,2007-05-07,False,EUR
+c83a4079-3f25-4b55-94d6-ef3adac0fb39,vary,package,proje,burning,derivative,312.83,2010-11-03,True,AUD
+a4d1fc63-7182-4b09-b9ca-daf51225e1bb,steve,canon,peopl,therapy,equity,508.77,2014-06-03,False,USD
+a926d4a5-084f-4aa4-9da4-bf7109f022cf,milk,ward,texas,prevent,loan,4359.9,2017-12-27,False,GBP
+d445878a-da1a-4844-99ad-2b3837c9282c,diagnosis,involveme,und,packet,derivative,934.81,2006-01-09,True,USD
+e218356d-f555-4069-947f-ca377add7506,transactions,dream,horro,though,mutual fund,1629.93,2012-11-20,False,GBP
+7b722770-1d51-4c23-9e14-ee6e47bc04ae,ringtones,existence,class,avoid,etf,2287.76,2019-01-28,True,CAD
+58d1ff49-5ecf-4e72-a122-9ee1ad44ded0,round,generator,facil,assembly,loan,1311.77,2002-04-26,False,CAD
+71165107-ec31-4991-9935-b4579c4f271e,victory,disorders,immed,kingdom,cash,4313.18,2024-10-24,True,AUD
+6edc1173-d2bc-4c87-8b65-dd5d31c85dcd,truck,numbers,commi,kiss,equity,2638.58,2021-09-07,False,GBP
+6f533f4c-82ad-49f3-b27a-c6bdeddcd451,certainly,ridge,crisi,paradise,equity,3195.55,2015-04-28,True,AUD
+d246d060-a6f8-4f45-ad52-02bc5fe464dd,toner,pub,boat,available,mutual fund,2984.86,2010-05-31,True,GBP
+e606479f-8db4-45ef-966a-581de3a960b4,mission,detroit,incre,texts,other,3056.55,2000-04-30,True,GBP
+ec43c047-dd47-48ef-ac56-ce0db723ef15,charged,painting,tv,phoenix,derivative,2935.03,2006-12-04,True,AUD
+10a7ca1b-fcae-4b08-9f55-850468410d35,distribution,prioritie,threa,models,derivative,1739.63,2023-08-30,False,GBP
+46153939-29a9-4ce3-bee5-c13f5907a7b8,lifetime,unknown,kille,idea,cryptocurrency,4227.59,2007-12-20,True,CAD
+5a6fa3f4-193d-440b-aab9-5f4e18583f95,spend,russell,santa,managers,derivative,3086.82,2022-04-13,True,GBP
+5dc7e3a5-8304-4261-9378-eed5196d4132,acceptable,verzeichn,shut,joy,other,4068.69,2007-09-11,True,EUR
+de41433e-698d-4da5-96b8-8c16b94416ca,min,uk,focus,polyphonic,fixed income,3529.94,2024-05-13,True,USD
+9e183c7f-5d2c-4feb-ad05-b4c787f5c9e1,guaranteed,others,virus,believe,equity,1487.23,2014-09-21,False,GBP
+ecf6f70b-f11a-4da5-ba8e-299779e8c883,machines,vitamin,barce,integratio,equity,3072.43,2011-05-09,True,GBP
+f8b7089f-49af-4b39-afb8-5c07c9ebe7ba,revolution,partners,comma,animated,loan,423.77,2011-09-29,False,GBP
+3ceeee5b-63e7-48c2-b074-c8fa7097968c,george,connected,previ,texts,fixed income,669.75,2015-08-04,True,GBP
+55cf58ff-91cc-464b-b8c4-1ec768bec9bf,orientation,folder,be,our,etf,589.32,2025-12-16,False,CAD
+f1d4b5d5-5bcf-4c1d-b04a-0c7bbb6f6c02,receives,causes,consi,push,cryptocurrency,1526.91,2024-06-30,False,CAD
+88f0f122-726d-45bf-82c3-08984c59597f,navy,keys,assum,manga,cash,915.23,2006-06-11,False,AUD
+72d3223c-238b-48b0-9a92-5be3d3f2eb39,environmenta,lyrics,some,individual,cryptocurrency,3467.19,2013-01-19,False,CAD
+7c39d0aa-65c8-4198-9e6a-9575ed5f4f8a,yes,analysis,array,say,equity,2554.13,2007-12-05,True,AUD
+0a666b70-c3b3-473b-8ad2-74e270a3f94b,anti,builder,servi,pi,cryptocurrency,2091.2,2000-05-18,False,CAD
+e9a4b93b-9d6a-4236-ba7c-05710ec5c431,instructor,pm,suppl,charger,other,689.35,2018-10-24,False,GBP
+82dd4e8d-2d02-4af1-a32f-f43329350d51,moon,travel,analo,cells,loan,1918.56,2013-05-05,False,USD
+80fa17c6-5443-4251-accf-fb9a60bf048e,pdas,issued,towns,apartments,derivative,928.78,2006-06-08,True,EUR
+ff571cd5-20f7-4f7b-a7fd-17ea951b158f,probably,capabilit,colle,appointmen,equity,3177.51,2012-10-27,True,GBP
+0f37d084-daf4-4faf-8ead-d6f900488ab9,entry,se,insta,cold,loan,3467.17,2007-08-18,True,AUD
+ff25de24-84d0-4b24-be97-4d0af0e00e42,nasa,showtimes,borde,lakes,mutual fund,3226.3,2020-11-11,False,EUR
+a8f632a5-1cb8-44f7-80d1-f0f6ea274e50,seek,cry,sente,hood,fixed income,4999.5,2008-08-31,False,EUR
+805c1fdd-c5cc-4783-93f1-a9aac2eda264,sharp,windows,po,expand,cryptocurrency,2774.57,2023-11-24,False,CAD
+455cdd62-2756-4bbb-950a-c95c0995eb1d,west,modify,cast,sorry,fixed income,2448.22,2015-08-06,False,EUR
+4a5448d3-0a8a-4ad7-80c9-2bbb0263d3e8,script,returned,navy,fall,fixed income,701.49,2023-06-06,True,USD
+3e480adb-eb13-4310-adcf-11f496498127,businesses,celebrity,helpe,previously,cash,1572.91,2004-12-18,False,CAD
+cb59cd8a-231f-44f3-96e5-9206be0099fc,mechanical,ill,treat,announce,etf,2255.01,2015-03-30,True,EUR
+24775c18-a2a0-4ed6-a1c8-f4aac0ab519a,blackjack,spyware,oak,routine,derivative,268.07,2017-11-02,False,AUD
+bfa70e72-82d5-4dac-abe7-f81f220ab4e7,adult,keith,ace,commons,derivative,1795.2,2016-01-27,False,CAD
+5b5b02b2-c748-4c8b-bdc9-acfa075b7881,begin,paul,taylo,herald,cryptocurrency,47.93,2002-11-02,False,EUR
+3ade3fed-1bd5-4e7d-a12d-4592ebd7f851,services,robot,premi,copyright,loan,682.68,2024-01-14,False,CAD
+5d89c685-0622-41e5-9ca3-97650668e16e,pain,ll,healt,union,loan,4076.08,2004-11-08,True,CAD
+173d1627-cae8-4757-ab86-d7d48fbecc3d,numerous,and,commu,largest,mutual fund,4819.15,2002-12-05,False,CAD
+e76b94a4-9adf-4f4f-a6cc-fbd91a6528e3,various,options,safe,files,cash,2527.2,2000-04-17,True,USD
+4c956e08-8d67-4f92-9604-b59060230032,accident,declarati,buffe,lost,other,2474.85,2014-06-02,False,EUR
+2d098fcf-bd6b-474d-b611-bad89ec8a005,biggest,forced,respo,management,fixed income,3423.49,2019-11-22,True,USD
+831eff5e-6c61-4461-a99a-c751a103b4db,croatia,rise,permi,dream,fixed income,2078.16,2019-08-22,False,AUD
+9ea150ff-5de9-4c87-b4fe-73bd7ffb213e,console,seconds,posit,was,equity,4199.46,2015-01-01,True,USD
+c1e36e41-b9fa-4106-b85e-c85e4abb012e,jane,comics,pink,antique,cash,2443.5,2017-09-14,False,EUR
+9b635900-6e76-4eca-807b-93608aa71276,parish,easier,ia,fail,equity,413.36,2000-01-17,False,GBP
+90fdfc86-686a-4441-9e75-2154eb273b5e,september,resistanc,anton,reed,etf,154.31,2023-05-18,True,EUR
+75088088-e950-4738-8296-7e118a64d437,traveler,comfort,santa,jury,cryptocurrency,3805.29,2009-01-17,True,CAD
+c55786d5-9641-462f-b991-816407a4398c,browse,test,quant,navigate,other,1460.46,2022-11-14,True,AUD
+4e4aa76f-f4ad-4b96-a61e-eb03ee300567,experienced,contests,pleas,expensive,etf,1374.27,2025-03-04,True,EUR
+c6853718-dbba-418e-b8dc-998453409a4c,rt,experienc,biolo,recommende,cryptocurrency,2688.05,2003-09-05,False,USD
+bbe2dd37-8976-41c4-90a7-df40f3631110,sufficient,furniture,cry,issue,etf,841.05,2007-04-20,False,GBP
+2bdf9bb8-5d51-4ee1-bc64-ff435e5b2f52,jun,tel,chain,trips,mutual fund,2286.61,2016-05-27,False,AUD
+376241e7-6cf6-4b59-b85d-0152c9f7d251,insert,giving,case,put,other,3712.59,2011-05-26,True,GBP
+4d222a35-871f-4dd5-8a06-63d5cfa5dd23,other,went,conve,cameras,loan,3829.6,2012-02-12,True,EUR
+e9fe9bfa-143a-4b82-a3d2-d730c9464ee5,preliminary,aspect,cases,stars,fixed income,2748.64,2012-08-19,False,CAD
+37bb2ec7-faae-4dc2-8efc-324df1dd6f35,instrument,collectab,feels,taught,fixed income,566.06,2007-12-08,False,EUR
+26004b9d-f8c9-4a55-a71f-fdc02da92ca6,nodes,schedule,pack,nw,derivative,571.04,2009-11-27,True,CAD
+3e16fafa-bbac-4c40-ad08-c94f96c18663,code,wave,steel,beauty,cash,3875.57,2002-11-28,True,EUR
+32290217-0c09-44b3-a27d-6773ec42212c,still,keys,yello,nations,equity,4116.42,2020-01-03,False,EUR
+8116a59c-1e29-46e6-9e27-e6f877deb085,sought,drugs,rathe,recipe,equity,1834.32,2012-07-13,False,USD
+29a89b6b-1b0c-4752-bf54-567905187a03,design,explain,moore,tells,other,4113.06,2017-08-02,False,EUR
+13186b5f-9ed0-457c-ad77-9ef86856989a,nationwide,charger,mobil,accordance,cryptocurrency,208.06,2020-01-23,False,GBP
+6b25a7c7-63b8-4bda-b1a4-ec10fc599614,wiki,anna,israe,ride,cash,3594.9,2005-02-16,False,CAD
+2a7e871c-5cfe-42b5-ba70-36e6eea6cfbd,am,lounge,john,secured,etf,2731.77,2013-11-26,True,AUD
+2f425f5b-b003-47d1-b460-7a7d83557ee3,similar,initially,delta,mentioned,cash,4948.88,2010-10-28,True,AUD
+b8efee6c-d53d-425c-b3de-1b0a9e0bbfad,addressed,reaction,varia,care,cash,512.09,2003-09-30,False,USD
+32db3aa4-8a9c-416c-ae4b-ad1f98305e49,elizabeth,partner,belie,join,cash,4150.36,2001-04-07,False,USD
+95c69981-965a-4e03-9890-cd7bd5435ce3,ensuring,processor,stood,releases,cryptocurrency,3756.73,2022-10-16,True,CAD
+2a2dc07c-b37a-49b9-8ef5-b245f34a5bf8,ahead,ins,rob,suppliers,mutual fund,1488.55,2008-01-30,True,CAD
+719869d7-c550-4255-bc56-2f60ec2d2a0e,hampshire,schedules,frenc,into,cryptocurrency,4996.56,2002-11-30,False,AUD
+c334717f-f024-499a-9c4e-e6639cf8a3e8,outcomes,strategy,autho,tennis,etf,2248.67,2008-09-19,True,CAD
+178debd6-fa4d-49ac-b574-26be42b48fcb,facilities,alternati,hong,dodge,derivative,1742.89,2021-01-06,True,EUR
+c4e62cd9-b0d6-4c75-a2e5-edf162d5a5e6,usually,mar,searc,saw,cash,4083.64,2010-01-31,False,GBP
+8b1e0535-486e-4e52-bf3b-6054983da40a,barry,syntax,recen,arm,loan,2195.36,2006-10-05,False,USD
+015beed4-5483-40b6-81bb-6678004105f0,users,platforms,teach,breakfast,other,4969.79,2024-12-27,False,GBP
+65e9e5d7-94b8-4aa1-8b1d-f92d6d777b9f,forum,offline,forum,come,derivative,3878.16,2012-02-10,False,CAD
+9532954f-7799-4bb4-aa0c-14c2239a90ef,mercedes,attorney,promo,cooling,cryptocurrency,1184.74,2005-10-08,True,AUD
+d5cbdef7-8af4-4faf-b274-d0b8e9f5f036,williams,degrees,britn,jim,cryptocurrency,4053.52,2018-07-22,True,GBP
+d4a25fcd-64f8-4207-b70d-a3df24665625,universal,morgan,visib,could,cryptocurrency,2939.62,2017-06-13,False,USD
+d86d2807-df81-4371-9543-57d1b5cc773c,regulation,cycle,fisca,diversity,mutual fund,1753.16,2024-12-05,True,EUR
+aa4a8e00-6771-4bfe-bfb2-f6c5592a4178,police,drink,at,few,equity,3553.77,2025-12-24,False,GBP
+dfa6ca01-bd46-48ca-9eda-0a8a94cb857f,katrina,logical,ca,properly,other,3163.86,2002-09-24,False,EUR
+086f685c-aabc-4dce-b051-34905af4ba54,pmid,luck,egg,oldest,fixed income,829.92,2011-01-04,False,CAD
+45708f4a-f9ff-4a64-b4c7-c08f06cab304,seemed,users,setup,untitled,etf,696.18,2013-04-27,False,EUR
+09b34106-5051-4df5-9375-fe99fbc483d5,attacks,temp,insti,bar,cash,1033.11,2002-06-20,True,AUD
+ab578c29-5a73-4e97-a638-cd205d03a2f8,theater,editing,viewi,brain,mutual fund,1034.72,2024-10-31,False,EUR
+15c562fd-5fa2-4e03-9910-a4bb6abcad2d,draw,pride,lack,supporting,mutual fund,296.8,2019-07-25,True,GBP
+b3abd85e-c533-44b7-9c61-364c15376ff5,listings,options,el,watching,equity,1754.08,2010-01-21,True,USD
+422f593a-8682-415b-a8c2-51e736b47457,manufacturer,car,fig,inc,cash,1405.43,2008-08-16,False,USD
+7d467e5b-e1d6-447b-8f7b-2103fb075ead,paris,efficient,assum,summary,cryptocurrency,2693.85,2007-06-18,False,AUD
+ccfa88bf-f91c-44a6-8c44-fd8638e4d9ad,dealers,vacations,paris,headset,mutual fund,1618.27,2012-07-06,True,EUR
+161ca00b-f37e-4f91-97e8-292757236cec,feeding,partial,exper,nc,cryptocurrency,3520.27,2021-10-22,False,AUD
+96fa77d5-5af3-4530-9c67-984987ea537c,prices,specialty,inclu,enjoyed,cryptocurrency,1446.67,2012-02-25,False,USD
+85e2dc0f-f3a1-4cb3-9899-dec42e116fe9,car,scenes,colle,dirty,etf,1336.72,2019-05-26,False,EUR
+ccb2acbf-9e47-4ebd-8c1d-fd4562931713,jump,ways,ringt,appeared,mutual fund,4290.09,2007-12-03,True,GBP
+e42654e7-2b1e-4a67-b35c-bb019d14dc57,fisher,inspired,close,translatio,etf,4927.44,2002-05-05,True,CAD
+d1d751b2-3fa0-4e78-a382-f6cc9ea3743d,proteins,easily,wed,spaces,cash,3396.5,2012-12-26,True,USD
+0490766a-21b0-49e9-9cae-4d1b910969d7,prepare,php,chi,defined,derivative,476.13,2020-03-24,False,USD
+b141b3e3-1f39-4bbc-bc3e-fef1dd0894e6,announcement,event,camco,disability,etf,4813.86,2012-06-12,False,GBP
+e27aa3be-a863-4dfc-8b36-0719c5728f20,comply,mexican,amend,eventually,fixed income,3928.46,2003-02-01,False,CAD
+ccde89be-3b0b-48e4-bdf5-ad85be4d7ac4,fees,fuel,manag,clean,cryptocurrency,4593.84,2009-08-12,False,USD
+bdc4c83a-4e70-4544-bd41-b959f7bbfe05,energy,trademark,half,largely,cash,4962.43,2024-05-04,True,USD
+5bb832c7-20a3-4d21-b25b-c1e2230258af,chairman,instructi,examp,accessorie,derivative,4335.24,2004-02-06,True,EUR
+d3aa5307-1df4-46d1-8250-ae9f3462f385,recording,were,extre,profession,fixed income,634.45,2013-08-18,False,GBP
+55b8cce2-321c-4a6a-8587-381a7d73bce4,jamaica,edward,usb,wildlife,mutual fund,4330.4,2017-09-14,True,AUD
+6cecbd4e-359e-49ec-9d20-161897a76517,mobility,changes,migra,tickets,etf,1248.39,2003-01-03,True,USD
+99203205-c93a-4e1c-b8e6-bf88072fbadf,implications,power,reach,therefore,fixed income,3556.98,2011-09-03,True,GBP
+054cfac2-ac77-4e42-a209-e4e5b3d114c9,caught,md,ep,guests,derivative,4142.41,2019-10-26,True,USD

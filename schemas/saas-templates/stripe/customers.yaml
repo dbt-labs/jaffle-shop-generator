@@ -1,0 +1,64 @@
+system:
+  name: "stripe-customers"
+  version: "1.0.0"
+  seed: 42
+  output:
+    format: ["csv", "json"]
+    path: "stripe"
+
+entities:
+  customers:
+    count: 1000
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      email:
+        type: "person.email"
+        unique: true
+        required: true
+      name:
+        type: "person.full_name"
+        required: false
+      phone:
+        type: "person.phone"
+        required: false
+      address_line1:
+        type: "address.street_name"
+        required: false
+      address_city:
+        type: "address.city"
+        required: false
+      address_state:
+        type: "address.state"
+        required: false
+      address_postal_code:
+        type: "address.postal_code"
+        required: false
+      address_country:
+        type: "address.country_code"
+        required: false
+      created:
+        type: "datetime.datetime"
+        required: true
+      currency:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["usd", "eur", "gbp", "cad", "aud"]
+      balance:
+        type: "integer"
+        required: true
+        constraints:
+          min_value: -10000
+          max_value: 50000
+      delinquent:
+        type: "boolean"
+        required: true
+      description:
+        type: "text.sentence"
+        required: false
+      metadata:
+        type: "text.word"
+        required: false

@@ -1,0 +1,482 @@
+version: "0.29.0"
+
+streams:
+  # Users and Authentication
+  - name: "users"
+    primary_key: "user_id"
+    json_schema:
+      type: object
+      properties:
+        user_id:
+          type: string
+          description: User ID
+        email:
+          type: string
+          format: email
+          description: User email
+        first_name:
+          type: string
+          description: First name
+        last_name:
+          type: string
+          description: Last name
+        role:
+          type: string
+          enum: ["admin", "manager", "employee", "accountant"]
+          description: User role
+        department:
+          type: string
+          description: Department
+        employee_id:
+          type: string
+          description: Employee ID
+        status:
+          type: string
+          enum: ["active", "inactive", "pending"]
+          description: User status
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update timestamp
+
+  # Corporate Cards
+  - name: "cards"
+    primary_key: "card_id"
+    json_schema:
+      type: object
+      properties:
+        card_id:
+          type: string
+          description: Card ID
+        user_id:
+          type: string
+          description: Card holder user ID
+        card_number_masked:
+          type: string
+          description: Masked card number
+        card_type:
+          type: string
+          enum: ["physical", "virtual"]
+          description: Card type
+        status:
+          type: string
+          enum: ["active", "inactive", "blocked", "expired"]
+          description: Card status
+        spending_limit:
+          type: number
+          description: Monthly spending limit
+        currency:
+          type: string
+          description: Card currency
+        issued_date:
+          type: string
+          format: date
+          description: Card issue date
+        expiry_date:
+          type: string
+          format: date
+          description: Card expiry date
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+
+  # Card Transactions
+  - name: "card_transactions"
+    primary_key: "transaction_id"
+    json_schema:
+      type: object
+      properties:
+        transaction_id:
+          type: string
+          description: Transaction ID
+        card_id:
+          type: string
+          description: Card ID
+        user_id:
+          type: string
+          description: User ID
+        amount:
+          type: number
+          description: Transaction amount
+        currency:
+          type: string
+          description: Transaction currency
+        merchant_name:
+          type: string
+          description: Merchant name
+        merchant_category:
+          type: string
+          enum: ["travel", "meals", "office_supplies", "software", "marketing", "other"]
+          description: Merchant category
+        transaction_date:
+          type: string
+          format: date-time
+          description: Transaction date
+        posted_date:
+          type: string
+          format: date-time
+          description: Posted date
+        status:
+          type: string
+          enum: ["pending", "posted", "declined", "refunded"]
+          description: Transaction status
+        description:
+          type: string
+          description: Transaction description
+        receipt_required:
+          type: boolean
+          description: Whether receipt is required
+        receipt_uploaded:
+          type: boolean
+          description: Whether receipt is uploaded
+        expense_category:
+          type: string
+          enum: ["travel", "meals", "office", "software", "marketing", "training", "other"]
+          description: Expense category
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+
+  # Expenses/Line Items
+  - name: "expenses"
+    primary_key: "expense_id"
+    json_schema:
+      type: object
+      properties:
+        expense_id:
+          type: string
+          description: Expense ID
+        transaction_id:
+          type: string
+          description: Related card transaction ID
+        user_id:
+          type: string
+          description: User ID
+        amount:
+          type: number
+          description: Expense amount
+        currency:
+          type: string
+          description: Currency
+        category:
+          type: string
+          enum: ["travel", "meals", "office_supplies", "software", "marketing", "training", "other"]
+          description: Expense category
+        subcategory:
+          type: string
+          description: Expense subcategory
+        description:
+          type: string
+          description: Expense description
+        business_purpose:
+          type: string
+          description: Business purpose
+        expense_date:
+          type: string
+          format: date
+          description: Expense date
+        status:
+          type: string
+          enum: ["draft", "submitted", "approved", "rejected", "reimbursed"]
+          description: Expense status
+        billable:
+          type: boolean
+          description: Whether expense is billable
+        project_id:
+          type: string
+          description: Project ID
+        tax_amount:
+          type: number
+          description: Tax amount
+        tax_rate:
+          type: number
+          description: Tax rate
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        submitted_at:
+          type: string
+          format: date-time
+          description: Submission timestamp
+        approved_at:
+          type: string
+          format: date-time
+          description: Approval timestamp
+
+  # Vendors/Suppliers
+  - name: "vendors"
+    primary_key: "vendor_id"
+    json_schema:
+      type: object
+      properties:
+        vendor_id:
+          type: string
+          description: Vendor ID
+        name:
+          type: string
+          description: Vendor name
+        email:
+          type: string
+          format: email
+          description: Vendor email
+        phone:
+          type: string
+          description: Vendor phone
+        address:
+          type: object
+          properties:
+            street:
+              type: string
+            city:
+              type: string
+            state:
+              type: string
+            postal_code:
+              type: string
+            country:
+              type: string
+        tax_id:
+          type: string
+          description: Tax ID/EIN
+        payment_terms:
+          type: string
+          enum: ["net_15", "net_30", "net_45", "net_60", "due_on_receipt"]
+          description: Payment terms
+        status:
+          type: string
+          enum: ["active", "inactive", "pending_approval"]
+          description: Vendor status
+        category:
+          type: string
+          enum: ["software", "office_supplies", "travel", "marketing", "consulting", "other"]
+          description: Vendor category
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+
+  # Invoices/Bills
+  - name: "invoices"
+    primary_key: "invoice_id"
+    json_schema:
+      type: object
+      properties:
+        invoice_id:
+          type: string
+          description: Invoice ID
+        vendor_id:
+          type: string
+          description: Vendor ID
+        invoice_number:
+          type: string
+          description: Invoice number
+        amount:
+          type: number
+          description: Invoice amount
+        currency:
+          type: string
+          description: Currency
+        tax_amount:
+          type: number
+          description: Tax amount
+        total_amount:
+          type: number
+          description: Total amount including tax
+        invoice_date:
+          type: string
+          format: date
+          description: Invoice date
+        due_date:
+          type: string
+          format: date
+          description: Due date
+        status:
+          type: string
+          enum: ["draft", "pending_approval", "approved", "paid", "overdue", "cancelled"]
+          description: Invoice status
+        description:
+          type: string
+          description: Invoice description
+        payment_method:
+          type: string
+          enum: ["ach", "wire", "check", "card"]
+          description: Payment method
+        paid_date:
+          type: string
+          format: date
+          description: Payment date
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        approved_at:
+          type: string
+          format: date-time
+          description: Approval timestamp
+
+  # Attachments/Receipts
+  - name: "attachments"
+    primary_key: "attachment_id"
+    json_schema:
+      type: object
+      properties:
+        attachment_id:
+          type: string
+          description: Attachment ID
+        expense_id:
+          type: string
+          description: Related expense ID
+        transaction_id:
+          type: string
+          description: Related transaction ID
+        invoice_id:
+          type: string
+          description: Related invoice ID
+        file_name:
+          type: string
+          description: File name
+        file_type:
+          type: string
+          enum: ["pdf", "jpg", "jpeg", "png", "gif"]
+          description: File type
+        file_size:
+          type: integer
+          description: File size in bytes
+        file_url:
+          type: string
+          format: uri
+          description: File URL
+        upload_date:
+          type: string
+          format: date-time
+          description: Upload date
+        status:
+          type: string
+          enum: ["uploaded", "processing", "processed", "failed"]
+          description: Processing status
+
+  # Accounting Documents
+  - name: "accounting_documents"
+    primary_key: "document_id"
+    json_schema:
+      type: object
+      properties:
+        document_id:
+          type: string
+          description: Document ID
+        document_type:
+          type: string
+          enum: ["invoice", "receipt", "expense_report", "journal_entry"]
+          description: Document type
+        document_number:
+          type: string
+          description: Document number
+        amount:
+          type: number
+          description: Document amount
+        currency:
+          type: string
+          description: Currency
+        date:
+          type: string
+          format: date
+          description: Document date
+        status:
+          type: string
+          enum: ["draft", "posted", "cancelled"]
+          description: Document status
+        description:
+          type: string
+          description: Document description
+        created_by:
+          type: string
+          description: Created by user ID
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+
+  # Projects (for expense allocation)
+  - name: "projects"
+    primary_key: "project_id"
+    json_schema:
+      type: object
+      properties:
+        project_id:
+          type: string
+          description: Project ID
+        name:
+          type: string
+          description: Project name
+        description:
+          type: string
+          description: Project description
+        client:
+          type: string
+          description: Client name
+        status:
+          type: string
+          enum: ["active", "completed", "on_hold", "cancelled"]
+          description: Project status
+        budget:
+          type: number
+          description: Project budget
+        currency:
+          type: string
+          description: Budget currency
+        start_date:
+          type: string
+          format: date
+          description: Project start date
+        end_date:
+          type: string
+          format: date
+          description: Project end date
+        manager_id:
+          type: string
+          description: Project manager user ID
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+
+  # Approval Workflows
+  - name: "approvals"
+    primary_key: "approval_id"
+    json_schema:
+      type: object
+      properties:
+        approval_id:
+          type: string
+          description: Approval ID
+        expense_id:
+          type: string
+          description: Related expense ID
+        invoice_id:
+          type: string
+          description: Related invoice ID
+        approver_id:
+          type: string
+          description: Approver user ID
+        status:
+          type: string
+          enum: ["pending", "approved", "rejected"]
+          description: Approval status
+        comments:
+          type: string
+          description: Approval comments
+        approved_at:
+          type: string
+          format: date-time
+          description: Approval timestamp
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp

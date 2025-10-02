@@ -1,0 +1,886 @@
+version: "0.29.0"
+
+streams:
+  # Accounts - Core banking account information
+  - name: "accounts"
+    primary_key: "account_id"
+    json_schema:
+      type: object
+      properties:
+        account_id:
+          type: string
+          description: Plaid's unique identifier for the account
+        balances:
+          type: object
+          properties:
+            available:
+              type: number
+              description: Available balance
+            current:
+              type: number
+              description: Current balance
+            limit:
+              type: number
+              description: Credit limit
+            iso_currency_code:
+              type: string
+              description: ISO currency code
+        mask:
+          type: string
+          description: Last 2-4 alphanumeric characters of account
+        name:
+          type: string
+          description: Official account name
+        official_name:
+          type: string
+          description: Official name from financial institution
+        type:
+          type: string
+          enum: ["investment", "credit", "depository", "loan", "brokerage", "other"]
+          description: Account type
+        subtype:
+          type: string
+          enum: ["checking", "savings", "hsa", "cd", "money market", "paypal", "prepaid", "cash management", "ebt", "credit card", "auto", "mortgage", "student", "401k", "403b", "457b", "529", "ira", "roth", "sep", "simple", "thrift", "keogh", "pension", "profit sharing", "stock plan", "mutual fund", "brokerage", "hsa", "529", "trust", "annuity", "ugma", "utma"]
+          description: Account subtype
+        verification_status:
+          type: string
+          enum: ["pending_automatic_verification", "pending_manual_verification", "manually_verified", "verification_expired", "verification_failed"]
+          description: Verification status
+
+  # Transactions - Financial transaction data
+  - name: "transactions"
+    primary_key: "transaction_id"
+    json_schema:
+      type: object
+      properties:
+        transaction_id:
+          type: string
+          description: Plaid's unique identifier for the transaction
+        account_id:
+          type: string
+          description: Account identifier
+        amount:
+          type: number
+          description: Transaction amount
+        iso_currency_code:
+          type: string
+          description: ISO currency code
+        unofficial_currency_code:
+          type: string
+          description: Unofficial currency code
+        category:
+          type: array
+          items:
+            type: string
+          description: Transaction category hierarchy
+        category_id:
+          type: string
+          description: Category ID
+        date:
+          type: string
+          format: date
+          description: Transaction date
+        datetime:
+          type: string
+          format: date-time
+          description: Transaction datetime
+        authorized_date:
+          type: string
+          format: date
+          description: Authorization date
+        authorized_datetime:
+          type: string
+          format: date-time
+          description: Authorization datetime
+        location:
+          type: object
+          properties:
+            address:
+              type: string
+            city:
+              type: string
+            region:
+              type: string
+            postal_code:
+              type: string
+            country:
+              type: string
+            lat:
+              type: number
+            lon:
+              type: number
+            store_number:
+              type: string
+        name:
+          type: string
+          description: Merchant name
+        merchant_name:
+          type: string
+          description: Merchant name from database
+        payment_meta:
+          type: object
+          properties:
+            reference_number:
+              type: string
+            ppd_id:
+              type: string
+            payee:
+              type: string
+            by_order_of:
+              type: string
+            payer:
+              type: string
+            payment_method:
+              type: string
+            payment_processor:
+              type: string
+            reason:
+              type: string
+        pending:
+          type: boolean
+          description: Whether transaction is pending
+        pending_transaction_id:
+          type: string
+          description: Pending transaction ID
+        account_owner:
+          type: string
+          description: Account owner
+        transaction_type:
+          type: string
+          enum: ["digital", "place", "special", "unresolved"]
+          description: Transaction type
+        transaction_code:
+          type: string
+          enum: ["adjustment", "atm", "bank charge", "bill payment", "cash", "cashback", "cheque", "direct debit", "interest", "purchase", "standing order", "transfer"]
+          description: Transaction code
+
+  # Items - Plaid Items (connections to financial institutions)
+  - name: "items"
+    primary_key: "item_id"
+    json_schema:
+      type: object
+      properties:
+        item_id:
+          type: string
+          description: Plaid Item ID
+        institution_id:
+          type: string
+          description: Institution ID
+        webhook:
+          type: string
+          format: uri
+          description: Webhook URL
+        error:
+          type: object
+          properties:
+            error_type:
+              type: string
+            error_code:
+              type: string
+            error_message:
+              type: string
+            display_message:
+              type: string
+        available_products:
+          type: array
+          items:
+            type: string
+            enum: ["transactions", "auth", "identity", "assets", "investments", "liabilities", "payment_initiation", "employment", "income_verification"]
+          description: Available products
+        billed_products:
+          type: array
+          items:
+            type: string
+          description: Billed products
+        consent_expiration_time:
+          type: string
+          format: date-time
+          description: Consent expiration
+        update_type:
+          type: string
+          enum: ["background", "user_present_required"]
+          description: Update type
+
+  # Institutions - Financial institution information
+  - name: "institutions"
+    primary_key: "institution_id"
+    json_schema:
+      type: object
+      properties:
+        institution_id:
+          type: string
+          description: Institution ID
+        name:
+          type: string
+          description: Institution name
+        products:
+          type: array
+          items:
+            type: string
+          description: Supported products
+        country_codes:
+          type: array
+          items:
+            type: string
+          description: Supported country codes
+        url:
+          type: string
+          format: uri
+          description: Institution website
+        primary_color:
+          type: string
+          description: Primary brand color
+        logo:
+          type: string
+          format: uri
+          description: Logo URL
+        routing_numbers:
+          type: array
+          items:
+            type: string
+          description: Routing numbers
+        oauth:
+          type: boolean
+          description: OAuth support
+        status:
+          type: object
+          properties:
+            item_logins:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum: ["HEALTHY", "DEGRADED", "DOWN"]
+                last_status_change:
+                  type: string
+                  format: date-time
+            transactions_updates:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum: ["HEALTHY", "DEGRADED", "DOWN"]
+                last_status_change:
+                  type: string
+                  format: date-time
+            auth:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum: ["HEALTHY", "DEGRADED", "DOWN"]
+                last_status_change:
+                  type: string
+                  format: date-time
+            identity:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum: ["HEALTHY", "DEGRADED", "DOWN"]
+                last_status_change:
+                  type: string
+                  format: date-time
+
+  # Identity - User identity information
+  - name: "identity"
+    primary_key: "account_id"
+    json_schema:
+      type: object
+      properties:
+        account_id:
+          type: string
+          description: Account ID
+        owners:
+          type: array
+          items:
+            type: object
+            properties:
+              names:
+                type: array
+                items:
+                  type: string
+                description: Account holder names
+              phone_numbers:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    data:
+                      type: string
+                    primary:
+                      type: boolean
+                    type:
+                      type: string
+                      enum: ["home", "work", "mobile"]
+              emails:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    data:
+                      type: string
+                      format: email
+                    primary:
+                      type: boolean
+                    type:
+                      type: string
+                      enum: ["primary", "secondary", "other"]
+              addresses:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        street:
+                          type: string
+                        city:
+                          type: string
+                        region:
+                          type: string
+                        postal_code:
+                          type: string
+                        country:
+                          type: string
+                    primary:
+                      type: boolean
+
+  # Investments - Investment account data
+  - name: "investments_accounts"
+    primary_key: "account_id"
+    json_schema:
+      type: object
+      properties:
+        account_id:
+          type: string
+          description: Account ID
+        balances:
+          type: object
+          properties:
+            available:
+              type: number
+            current:
+              type: number
+            iso_currency_code:
+              type: string
+        name:
+          type: string
+          description: Account name
+        official_name:
+          type: string
+          description: Official account name
+        type:
+          type: string
+          enum: ["investment", "brokerage"]
+          description: Account type
+        subtype:
+          type: string
+          enum: ["401k", "403b", "457b", "529", "brokerage", "cash isa", "education savings account", "gic", "health reimbursement arrangement", "hsa", "isa", "ira", "lif", "lira", "lrif", "lrsp", "non-taxable brokerage account", "other", "prif", "rdsp", "resp", "rlif", "rrif", "pension", "profit sharing plan", "retirement", "roth", "roth 401k", "rrsp", "sep", "simple ira", "sipp", "stock plan", "thrift savings plan", "tfsa", "trust", "ugma", "utma"]
+          description: Investment account subtype
+
+  # Investment Holdings
+  - name: "investments_holdings"
+    primary_key: "holding_id"
+    json_schema:
+      type: object
+      properties:
+        account_id:
+          type: string
+          description: Account ID
+        security_id:
+          type: string
+          description: Security ID
+        institution_price:
+          type: number
+          description: Institution price
+        institution_price_as_of:
+          type: string
+          format: date
+          description: Price as of date
+        institution_value:
+          type: number
+          description: Institution value
+        cost_basis:
+          type: number
+          description: Cost basis
+        quantity:
+          type: number
+          description: Quantity held
+        iso_currency_code:
+          type: string
+          description: Currency code
+        unofficial_currency_code:
+          type: string
+          description: Unofficial currency code
+
+  # Investment Securities
+  - name: "investments_securities"
+    primary_key: "security_id"
+    json_schema:
+      type: object
+      properties:
+        security_id:
+          type: string
+          description: Security ID
+        isin:
+          type: string
+          description: ISIN identifier
+        cusip:
+          type: string
+          description: CUSIP identifier
+        sedol:
+          type: string
+          description: SEDOL identifier
+        institution_security_id:
+          type: string
+          description: Institution security ID
+        institution_id:
+          type: string
+          description: Institution ID
+        proxy_security_id:
+          type: string
+          description: Proxy security ID
+        name:
+          type: string
+          description: Security name
+        ticker_symbol:
+          type: string
+          description: Ticker symbol
+        is_cash_equivalent:
+          type: boolean
+          description: Is cash equivalent
+        type:
+          type: string
+          enum: ["cash", "cryptocurrency", "derivative", "equity", "etf", "fixed income", "loan", "mutual fund", "other"]
+          description: Security type
+        close_price:
+          type: number
+          description: Close price
+        close_price_as_of:
+          type: string
+          format: date
+          description: Close price date
+        iso_currency_code:
+          type: string
+          description: Currency code
+
+  # Investment Transactions
+  - name: "investments_transactions"
+    primary_key: "investment_transaction_id"
+    json_schema:
+      type: object
+      properties:
+        investment_transaction_id:
+          type: string
+          description: Investment transaction ID
+        account_id:
+          type: string
+          description: Account ID
+        security_id:
+          type: string
+          description: Security ID
+        date:
+          type: string
+          format: date
+          description: Transaction date
+        name:
+          type: string
+          description: Transaction name
+        quantity:
+          type: number
+          description: Quantity
+        amount:
+          type: number
+          description: Amount
+        price:
+          type: number
+          description: Price per share
+        fees:
+          type: number
+          description: Fees
+        type:
+          type: string
+          enum: ["buy", "sell", "cancel", "cash", "fee", "transfer"]
+          description: Transaction type
+        subtype:
+          type: string
+          enum: ["account fee", "adjustment", "assignment", "buy", "buy to cover", "contribution", "deposit", "distribution", "dividend", "dividend reinvestment", "exercise", "expire", "fund fee", "interest", "interest receivable", "interest reinvestment", "legal fee", "loan payment", "long-term capital gain", "long-term capital gain reinvestment", "management fee", "margin expense", "merger", "miscellaneous fee", "non-qualified dividend", "non-resident tax", "pending credit", "pending debit", "qualified dividend", "rebalance", "return of principal", "sell", "sell short", "send", "short-term capital gain", "short-term capital gain reinvestment", "spin off", "split", "stock distribution", "tax", "tax withheld", "trade", "transfer", "transfer fee", "trust fee", "unqualified gain", "withdrawal"]
+          description: Transaction subtype
+        iso_currency_code:
+          type: string
+          description: Currency code
+
+  # Liabilities - Debt and liability information
+  - name: "liabilities"
+    primary_key: "account_id"
+    json_schema:
+      type: object
+      properties:
+        account_id:
+          type: string
+          description: Account ID
+        credit:
+          type: object
+          properties:
+            account_id:
+              type: string
+            aprs:
+              type: array
+              items:
+                type: object
+                properties:
+                  apr_percentage:
+                    type: number
+                  apr_type:
+                    type: string
+                    enum: ["balance_transfer_apr", "cash_apr", "purchase_apr", "special"]
+                  balance_subject_to_apr:
+                    type: number
+                  interest_charge_amount:
+                    type: number
+            is_overdue:
+              type: boolean
+            last_payment_amount:
+              type: number
+            last_payment_date:
+              type: string
+              format: date
+            last_statement_issue_date:
+              type: string
+              format: date
+            last_statement_balance:
+              type: number
+            minimum_payment_amount:
+              type: number
+            next_payment_due_date:
+              type: string
+              format: date
+        mortgage:
+          type: object
+          properties:
+            account_id:
+              type: string
+            account_number:
+              type: string
+            current_late_fee:
+              type: number
+            escrow_balance:
+              type: number
+            has_pmi:
+              type: boolean
+            has_prepayment_penalty:
+              type: boolean
+            interest_rate:
+              type: object
+              properties:
+                percentage:
+                  type: number
+                type:
+                  type: string
+                  enum: ["fixed", "variable"]
+            last_payment_amount:
+              type: number
+            last_payment_date:
+              type: string
+              format: date
+            loan_type_description:
+              type: string
+            loan_term:
+              type: string
+            maturity_date:
+              type: string
+              format: date
+            next_monthly_payment:
+              type: number
+            next_payment_due_date:
+              type: string
+              format: date
+            origination_date:
+              type: string
+              format: date
+            origination_principal_amount:
+              type: number
+            past_due_amount:
+              type: number
+            property_address:
+              type: object
+              properties:
+                city:
+                  type: string
+                country:
+                  type: string
+                postal_code:
+                  type: string
+                region:
+                  type: string
+                street:
+                  type: string
+            ytd_interest_paid:
+              type: number
+            ytd_principal_paid:
+              type: number
+        student:
+          type: object
+          properties:
+            account_id:
+              type: string
+            account_number:
+              type: string
+            disbursement_dates:
+              type: array
+              items:
+                type: string
+                format: date
+            expected_payoff_date:
+              type: string
+              format: date
+            guarantor:
+              type: string
+            interest_rate_percentage:
+              type: number
+            is_overdue:
+              type: boolean
+            last_payment_amount:
+              type: number
+            last_payment_date:
+              type: string
+              format: date
+            last_statement_issue_date:
+              type: string
+              format: date
+            loan_name:
+              type: string
+            loan_status:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum: ["cancelled", "charged off", "claim", "consolidated", "deferment", "delinquent", "discharged", "extension", "forbearance", "in grace", "in military", "in school", "not in grace", "other", "paid in full", "refunded", "repayment", "transferred"]
+                end_date:
+                  type: string
+                  format: date
+            minimum_payment_amount:
+              type: number
+            next_payment_due_date:
+              type: string
+              format: date
+            origination_date:
+              type: string
+              format: date
+            origination_principal_amount:
+              type: number
+            outstanding_interest_amount:
+              type: number
+            payment_reference_number:
+              type: string
+            pslf_status:
+              type: object
+              properties:
+                estimated_eligibility_date:
+                  type: string
+                  format: date
+                payments_made:
+                  type: integer
+                payments_remaining:
+                  type: integer
+            repayment_plan:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum: ["extended graduated", "extended standard", "graduated", "income-contingent repayment", "income-based repayment", "income-driven repayment", "interest only", "other", "pay as you earn", "revised pay as you earn", "standard", "temporary covid-19 forbearance"]
+                description:
+                  type: string
+            sequence_number:
+              type: string
+            servicer_address:
+              type: object
+              properties:
+                city:
+                  type: string
+                country:
+                  type: string
+                postal_code:
+                  type: string
+                region:
+                  type: string
+                street:
+                  type: string
+            ytd_interest_paid:
+              type: number
+            ytd_principal_paid:
+              type: number
+
+  # Payment Initiation - Payment data
+  - name: "payment_initiation_payments"
+    primary_key: "payment_id"
+    json_schema:
+      type: object
+      properties:
+        payment_id:
+          type: string
+          description: Payment ID
+        payment_token:
+          type: string
+          description: Payment token
+        reference:
+          type: string
+          description: Payment reference
+        amount:
+          type: object
+          properties:
+            currency:
+              type: string
+            value:
+              type: number
+        status:
+          type: string
+          enum: ["PAYMENT_STATUS_INPUT_NEEDED", "PAYMENT_STATUS_INITIATED", "PAYMENT_STATUS_INSUFFICIENT_FUNDS", "PAYMENT_STATUS_FAILED", "PAYMENT_STATUS_BLOCKED", "PAYMENT_STATUS_AUTHORISING", "PAYMENT_STATUS_CANCELLED", "PAYMENT_STATUS_EXECUTED", "PAYMENT_STATUS_SETTLED", "PAYMENT_STATUS_ESTABLISHED", "PAYMENT_STATUS_REJECTED"]
+          description: Payment status
+        recipient_id:
+          type: string
+          description: Recipient ID
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        last_status_update:
+          type: string
+          format: date-time
+          description: Last status update
+
+  # Assets - Asset report data
+  - name: "assets_reports"
+    primary_key: "asset_report_id"
+    json_schema:
+      type: object
+      properties:
+        asset_report_id:
+          type: string
+          description: Asset report ID
+        client_report_id:
+          type: string
+          description: Client report ID
+        date_generated:
+          type: string
+          format: date-time
+          description: Generation date
+        days_requested:
+          type: integer
+          description: Days of data requested
+        user:
+          type: object
+          properties:
+            client_user_id:
+              type: string
+            first_name:
+              type: string
+            middle_name:
+              type: string
+            last_name:
+              type: string
+            ssn:
+              type: string
+            phone_number:
+              type: string
+            email:
+              type: string
+              format: email
+
+  # Income Verification - Employment and income data
+  - name: "employment"
+    primary_key: "employment_id"
+    json_schema:
+      type: object
+      properties:
+        employment_id:
+          type: string
+          description: Employment ID
+        account_id:
+          type: string
+          description: Account ID
+        employer:
+          type: object
+          properties:
+            employer_id:
+              type: string
+            name:
+              type: string
+            address:
+              type: object
+              properties:
+                data:
+                  type: object
+                  properties:
+                    street:
+                      type: string
+                    city:
+                      type: string
+                    region:
+                      type: string
+                    postal_code:
+                      type: string
+                    country:
+                      type: string
+            confidence_score:
+              type: number
+        employment_type:
+          type: string
+          enum: ["full time", "part time", "contractor", "temporary", "other"]
+          description: Employment type
+        last_paystub_date:
+          type: string
+          format: date
+          description: Last paystub date
+        start_date:
+          type: string
+          format: date
+          description: Employment start date
+        end_date:
+          type: string
+          format: date
+          description: Employment end date
+        title:
+          type: string
+          description: Job title
+
+  # Income streams
+  - name: "income"
+    primary_key: "income_source_id"
+    json_schema:
+      type: object
+      properties:
+        income_source_id:
+          type: string
+          description: Income source ID
+        account_id:
+          type: string
+          description: Account ID
+        category:
+          type: string
+          enum: ["salary", "unemployment", "cash", "gig economy", "rental", "child support", "military", "retirement", "long term disability", "bank interest", "cash deposit", "transfer", "other"]
+          description: Income category
+        description:
+          type: string
+          description: Income description
+        frequency:
+          type: string
+          enum: ["WEEKLY", "BIWEEKLY", "SEMI_MONTHLY", "MONTHLY", "ANNUAL", "UNKNOWN"]
+          description: Income frequency
+        monthly_income:
+          type: number
+          description: Monthly income amount
+        last_amount:
+          type: number
+          description: Last income amount
+        last_date:
+          type: string
+          format: date
+          description: Last income date
+        transaction_ids:
+          type: array
+          items:
+            type: string
+          description: Related transaction IDs

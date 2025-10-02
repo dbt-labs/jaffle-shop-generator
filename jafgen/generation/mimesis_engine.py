@@ -27,6 +27,14 @@ class MimesisEngine(MimesisEngineInterface):
         # Maximum retries for unique value generation
         self._max_retries = 1000
 
+    def reset_seed(self, seed: Optional[int] = None) -> None:
+        """Reset the engine with a new seed."""
+        if seed is not None:
+            self.seed = seed
+        self.generic = Generic(locale=Locale.EN, seed=self.seed)
+        random.seed(self.seed)
+        self.reset_unique_values()
+
     def reset_unique_values(self) -> None:
         """Reset the unique values tracking for fresh generation."""
         self._unique_values.clear()
@@ -92,7 +100,7 @@ class MimesisEngine(MimesisEngineInterface):
             return str(self.generic.cryptographic.uuid())
         elif provider_name == "int" or provider_name == "integer":
             min_val = constraints.get("min_value", 1)
-            max_val = constraints.get("max_value", 1000)
+            max_val = constraints.get("max_value", 100000)  # Increased range for unique IDs
             return self.generic.numeric.integer_number(start=min_val, end=max_val)
         elif provider_name == "float" or provider_name == "decimal":
             min_val = constraints.get("min_value", 0.0)
@@ -100,6 +108,32 @@ class MimesisEngine(MimesisEngineInterface):
             precision = constraints.get("precision", 2)
             value = self.generic.numeric.float_number(start=min_val, end=max_val)
             return round(value, precision)
+        elif provider_method == "numeric.decimal":
+            # Handle numeric.decimal specifically - mimesis uses 'decimals' not 'decimal'
+            min_val = constraints.get("min_value", 0.0)
+            max_val = constraints.get("max_value", 1000.0)
+            precision = constraints.get("precision", 2)
+            value = self.generic.numeric.float_number(start=min_val, end=max_val)
+            return round(value, precision)
+        elif provider_method == "code.ean13":
+            # Handle EAN13 codes - mimesis uses EANFormat enum
+            from mimesis.enums import EANFormat
+            return self.generic.code.ean(fmt=EANFormat.EAN13)
+        elif provider_method == "person.phone":
+            # Handle phone numbers - mimesis uses phone_number not phone
+            return self.generic.person.phone_number()
+        elif provider_method == "address.street_name":
+            return self.generic.address.street_name()
+        elif provider_method == "address.city":
+            return self.generic.address.city()
+        elif provider_method == "address.state":
+            return self.generic.address.state()
+        elif provider_method == "address.postal_code":
+            return self.generic.address.postal_code()
+        elif provider_method == "address.country_code":
+            return self.generic.address.country_code()
+        elif provider_method == "internet.url":
+            return self.generic.internet.url()
         elif provider_name == "string" or provider_name == "text":
             length = constraints.get("length", 10)
             return self.generic.text.word()[:length]
@@ -108,6 +142,11 @@ class MimesisEngine(MimesisEngineInterface):
         elif provider_name == "choice":
             choices = constraints.get("choices", ["option1", "option2", "option3"])
             return self.generic.choice(choices)
+        elif provider_method == "numeric.integer":
+            # Handle numeric.integer specifically
+            min_val = constraints.get("min_value", 1)
+            max_val = constraints.get("max_value", 100000)  # Increased range for unique IDs
+            return self.generic.numeric.integer_number(start=min_val, end=max_val)
 
         # Handle provider.method format
         if method_name:

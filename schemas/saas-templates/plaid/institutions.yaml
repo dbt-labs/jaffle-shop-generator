@@ -1,0 +1,87 @@
+system:
+  name: "plaid-institutions"
+  version: "1.0.0"
+  seed: 42
+  output:
+    format: ["csv", "json"]
+    path: "plaid"
+
+entities:
+  institutions:
+    count: 100
+    attributes:
+      institution_id:
+        type: "uuid"
+        unique: true
+        required: true
+      name:
+        type: "text.sentence"
+        required: true
+      url:
+        type: "internet.url"
+        required: false
+      primary_color:
+        type: "text.word"
+        required: false
+      logo_url:
+        type: "internet.url"
+        required: false
+      country_code:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["US", "CA", "GB", "FR", "ES", "NL", "IE"]
+      oauth_support:
+        type: "boolean"
+        required: true
+      products_transactions:
+        type: "boolean"
+        required: true
+      products_auth:
+        type: "boolean"
+        required: true
+      products_identity:
+        type: "boolean"
+        required: true
+      products_assets:
+        type: "boolean"
+        required: true
+      products_investments:
+        type: "boolean"
+        required: true
+      products_liabilities:
+        type: "boolean"
+        required: true
+      routing_number_1:
+        type: "text.word"
+        required: false
+        constraints:
+          length: 9
+      routing_number_2:
+        type: "text.word"
+        required: false
+        constraints:
+          length: 9
+      status_item_logins:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["HEALTHY", "DEGRADED", "DOWN"]
+      status_transactions:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["HEALTHY", "DEGRADED", "DOWN"]
+      status_auth:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["HEALTHY", "DEGRADED", "DOWN"]
+      status_identity:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["HEALTHY", "DEGRADED", "DOWN"]
+      last_status_change:
+        type: "datetime.datetime"
+        required: true

@@ -1,0 +1,49 @@
+# Docker Compose Override for Jaffle Shop Generator Integration
+# Place this file in your Airflow directory to add Jaffle Shop support
+
+version: '3.8'
+
+services:
+  # Common configuration for all Airflow services
+  x-airflow-common: &airflow-common-jafgen
+    volumes:
+      # Mount Jaffle Shop Generator
+      - ./jaffle-shop-generator:/opt/airflow/jafgen:ro
+      # Mount schemas directory
+      - ./schemas:/opt/airflow/schemas:rw
+      # Mount data output directory
+      - ./data:/opt/airflow/data:rw
+      # Mount DAGs
+      - ./dags:/opt/airflow/dags:ro
+    environment:
+      # Add Jaffle Shop to Python path
+      - PYTHONPATH=/opt/airflow/jafgen:${PYTHONPATH:-}
+      # Jaffle Shop configuration
+      - JAFGEN_BASE_PATH=/opt/airflow/jafgen
+      - JAFGEN_OUTPUT_PATH=/opt/airflow/data
+      - JAFGEN_SCHEMA_PATH=/opt/airflow/schemas
+
+  airflow-webserver:
+    <<: *airflow-common-jafgen
+
+  airflow-scheduler:
+    <<: *airflow-common-jafgen
+
+  airflow-worker:
+    <<: *airflow-common-jafgen
+
+  airflow-triggerer:
+    <<: *airflow-common-jafgen
+
+  airflow-init:
+    <<: *airflow-common-jafgen
+
+  airflow-cli:
+    <<: *airflow-common-jafgen
+
+# Optional: Add volume for persistent data storage
+volumes:
+  jafgen-data:
+    driver: local
+  jafgen-schemas:
+    driver: local

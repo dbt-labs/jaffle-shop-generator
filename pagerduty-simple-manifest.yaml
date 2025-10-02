@@ -1,0 +1,342 @@
+version: "0.29.0"
+
+streams:
+  - name: "users"
+    primary_key: "id"
+    json_schema:
+      type: object
+      properties:
+        id:
+          type: string
+          description: User ID
+        type:
+          type: string
+          description: Object type
+        summary:
+          type: string
+          description: User summary
+        name:
+          type: string
+          description: Full name
+        email:
+          type: string
+          format: email
+          description: Email address
+        time_zone:
+          type: string
+          description: User timezone
+        color:
+          type: string
+          description: User color
+        role:
+          type: string
+          enum: ["admin", "user", "read_only_user", "observer"]
+          description: User role
+        avatar_url:
+          type: string
+          format: uri
+          description: Avatar URL
+        description:
+          type: string
+          description: User description
+        job_title:
+          type: string
+          description: Job title
+        teams:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              type:
+                type: string
+              summary:
+                type: string
+
+  - name: "teams"
+    primary_key: "id"
+    json_schema:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Team ID
+        type:
+          type: string
+          description: Object type
+        summary:
+          type: string
+          description: Team summary
+        name:
+          type: string
+          description: Team name
+        description:
+          type: string
+          description: Team description
+        default_role:
+          type: string
+          enum: ["manager", "responder", "observer"]
+          description: Default role for team members
+        parent:
+          type: object
+          properties:
+            id:
+              type: string
+            type:
+              type: string
+            summary:
+              type: string
+
+  - name: "services"
+    primary_key: "id"
+    json_schema:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Service ID
+        type:
+          type: string
+          description: Object type
+        summary:
+          type: string
+          description: Service summary
+        name:
+          type: string
+          description: Service name
+        description:
+          type: string
+          description: Service description
+        status:
+          type: string
+          enum: ["active", "warning", "critical", "maintenance", "disabled"]
+          description: Service status
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update timestamp
+        escalation_policy:
+          type: object
+          properties:
+            id:
+              type: string
+            type:
+              type: string
+            summary:
+              type: string
+        incident_urgency_rule:
+          type: object
+          properties:
+            type:
+              type: string
+            urgency:
+              type: string
+              enum: ["high", "low"]
+        acknowledgement_timeout:
+          type: integer
+          description: Acknowledgement timeout in seconds
+        auto_resolve_timeout:
+          type: integer
+          description: Auto resolve timeout in seconds
+
+  - name: "incidents"
+    primary_key: "id"
+    json_schema:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Incident ID
+        type:
+          type: string
+          description: Object type
+        summary:
+          type: string
+          description: Incident summary
+        incident_number:
+          type: integer
+          description: Incident number
+        title:
+          type: string
+          description: Incident title
+        description:
+          type: string
+          description: Incident description
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update timestamp
+        status:
+          type: string
+          enum: ["triggered", "acknowledged", "resolved"]
+          description: Incident status
+        incident_key:
+          type: string
+          description: Incident key
+        service:
+          type: object
+          properties:
+            id:
+              type: string
+            type:
+              type: string
+            summary:
+              type: string
+        assignees:
+          type: array
+          items:
+            type: object
+            properties:
+              assignee:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  type:
+                    type: string
+                  summary:
+                    type: string
+        escalation_policy:
+          type: object
+          properties:
+            id:
+              type: string
+            type:
+              type: string
+            summary:
+              type: string
+        teams:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              type:
+                type: string
+              summary:
+                type: string
+        priority:
+          type: object
+          properties:
+            id:
+              type: string
+            type:
+              type: string
+            summary:
+              type: string
+        urgency:
+          type: string
+          enum: ["high", "low"]
+          description: Incident urgency
+        html_url:
+          type: string
+          format: uri
+          description: Incident URL
+
+  - name: "priorities"
+    primary_key: "id"
+    json_schema:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Priority ID
+        type:
+          type: string
+          description: Object type
+        summary:
+          type: string
+          description: Priority summary
+        name:
+          type: string
+          description: Priority name
+        description:
+          type: string
+          description: Priority description
+        color:
+          type: string
+          description: Priority color
+
+  - name: "incident_logs"
+    primary_key: "id"
+    json_schema:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Log entry ID
+        type:
+          type: string
+          description: Object type
+        summary:
+          type: string
+          description: Log entry summary
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        agent:
+          type: object
+          properties:
+            id:
+              type: string
+            type:
+              type: string
+            summary:
+              type: string
+        channel:
+          type: object
+          properties:
+            type:
+              type: string
+        incident:
+          type: object
+          properties:
+            id:
+              type: string
+            type:
+              type: string
+            summary:
+              type: string
+        teams:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              type:
+                type: string
+              summary:
+                type: string
+        contexts:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+              href:
+                type: string
+                format: uri
+              text:
+                type: string
+        service:
+          type: object
+          properties:
+            id:
+              type: string
+            type:
+              type: string
+            summary:
+              type: string

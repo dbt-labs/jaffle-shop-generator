@@ -1,0 +1,62 @@
+system:
+  name: "stripe-charges"
+  version: "1.0.0"
+  seed: 42
+  output:
+    format: ["csv", "json"]
+    path: "stripe"
+
+entities:
+  charges:
+    count: 5000
+    attributes:
+      id:
+        type: "uuid"
+        unique: true
+        required: true
+      customer_id:
+        type: "link"
+        link_to: "stripe-customers.customers.id"
+        required: true
+      amount:
+        type: "integer"
+        required: true
+        constraints:
+          min_value: 100
+          max_value: 100000  # Amount in cents
+      currency:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["usd", "eur", "gbp", "cad", "aud"]
+      status:
+        type: "choice"
+        required: true
+        constraints:
+          choices: ["succeeded", "pending", "failed"]
+      paid:
+        type: "boolean"
+        required: true
+      refunded:
+        type: "boolean"
+        required: true
+      created:
+        type: "datetime.datetime"
+        required: true
+      description:
+        type: "text.sentence"
+        required: false
+      failure_code:
+        type: "choice"
+        required: false
+        constraints:
+          choices: ["card_declined", "insufficient_funds", "expired_card", "processing_error"]
+      failure_message:
+        type: "text.sentence"
+        required: false
+      receipt_email:
+        type: "person.email"
+        required: false
+      receipt_url:
+        type: "internet.url"
+        required: false
