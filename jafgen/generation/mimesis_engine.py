@@ -1,6 +1,7 @@
 """Concrete implementation of MimesisEngine for deterministic data generation."""
 
 import random
+import uuid
 from typing import Any, Callable, Optional, Set
 
 from mimesis import Generic
@@ -97,10 +98,14 @@ class MimesisEngine(MimesisEngineInterface):
 
         # Handle special cases and common types
         if provider_name == "uuid":
-            return str(self.generic.cryptographic.uuid())
+            # Use seeded random bytes for deterministic UUID generation
+            random_bytes = bytes([random.randint(0, 255) for _ in range(16)])
+            return str(uuid.UUID(bytes=random_bytes, version=4))
         elif provider_name == "int" or provider_name == "integer":
             min_val = constraints.get("min_value", 1)
-            max_val = constraints.get("max_value", 100000)  # Increased range for unique IDs
+            max_val = constraints.get(
+                "max_value", 100000
+            )  # Increased range for unique IDs
             return self.generic.numeric.integer_number(start=min_val, end=max_val)
         elif provider_name == "float" or provider_name == "decimal":
             min_val = constraints.get("min_value", 0.0)
@@ -118,6 +123,7 @@ class MimesisEngine(MimesisEngineInterface):
         elif provider_method == "code.ean13":
             # Handle EAN13 codes - mimesis uses EANFormat enum
             from mimesis.enums import EANFormat
+
             return self.generic.code.ean(fmt=EANFormat.EAN13)
         elif provider_method == "person.phone":
             # Handle phone numbers - mimesis uses phone_number not phone
@@ -145,7 +151,9 @@ class MimesisEngine(MimesisEngineInterface):
         elif provider_method == "numeric.integer":
             # Handle numeric.integer specifically
             min_val = constraints.get("min_value", 1)
-            max_val = constraints.get("max_value", 100000)  # Increased range for unique IDs
+            max_val = constraints.get(
+                "max_value", 100000
+            )  # Increased range for unique IDs
             return self.generic.numeric.integer_number(start=min_val, end=max_val)
 
         # Handle provider.method format

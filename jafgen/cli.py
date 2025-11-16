@@ -67,13 +67,13 @@ def main(
     ] = None,
 ):
     """Jafgen - A flexible synthetic data generator
-    
+
     🚀 Quick start with schema-driven generation:
-    
+
     1. List available schemas: [bold]jafgen list-schemas[/bold]
     2. Generate data: [bold]jafgen generate[/bold]
     3. Validate schemas: [bold]jafgen validate-schema[/bold]
-    
+
     📚 For detailed documentation and examples, visit:
     https://github.com/dbt-labs/jaffle-shop-generator
     """
@@ -99,21 +99,25 @@ def run(
     ] = "raw",
 ) -> None:
     """Generate synthetic data using the legacy Jaffle Shop simulation.
-    
+
     [yellow]⚠️  DEPRECATION WARNING:[/yellow] The 'run' command uses the legacy hardcoded simulation.
     For more flexible data generation, consider using the new schema-driven approach:
-    
+
     • [bold]jafgen generate[/bold] - Generate data from YAML schemas
-    • [bold]jafgen list-schemas[/bold] - View available schemas  
+    • [bold]jafgen list-schemas[/bold] - View available schemas
     • [bold]jafgen validate-schema[/bold] - Validate schema files
-    
+
     See the migration guide: https://github.com/dbt-labs/jaffle-shop-generator#migration-guide
     """
-    
+
     # Show deprecation warning
     console.print("[yellow]⚠️  Using legacy simulation mode.[/yellow]")
-    console.print("[dim]Consider migrating to schema-driven generation with 'jafgen generate'[/dim]")
-    console.print("[dim]For help migrating, see: https://github.com/dbt-labs/jaffle-shop-generator#migration-guide[/dim]\n")
+    console.print(
+        "[dim]Consider migrating to schema-driven generation with 'jafgen generate'[/dim]"
+    )
+    console.print(
+        "[dim]For help migrating, see: https://github.com/dbt-labs/jaffle-shop-generator#migration-guide[/dim]\n"
+    )
 
     # To keep the default value for backwards compatibility.
     if years == 0 and days == 0:
@@ -594,17 +598,11 @@ def import_airbyte(
     ] = Path("./schemas"),
     detect_relationships: Annotated[
         bool,
-        typer.Option(
-            "--detect-relationships/--no-detect-relationships",
-            "-r",
-            help="Automatically detect and create relationships between entities",
-        ),
+        typer.Option(help="Automatically detect and create relationships between entities"),
     ] = True,
     validate: Annotated[
         bool,
-        typer.Option(
-            "--validate/--no-validate", help="Validate translated schemas before saving"
-        ),
+        typer.Option(help="Validate translated schemas before saving"),
     ] = True,
 ) -> None:
     """Import Airbyte source manifest.yaml file and convert to jafgen schemas."""

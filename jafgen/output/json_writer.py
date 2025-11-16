@@ -74,9 +74,6 @@ class JSONWriter(OutputWriter):
             return obj.isoformat()
         elif isinstance(obj, UUID):
             return str(obj)
-        elif hasattr(obj, "__dict__"):
-            # Handle custom objects by converting to dict
-            return self._make_serializable(obj.__dict__)
         else:
             return obj
 
@@ -93,14 +90,12 @@ class JSONWriter(OutputWriter):
             TypeError: If object is not serializable
         """
         from decimal import Decimal
-        
+
         if isinstance(obj, (datetime, date)):
             return obj.isoformat()
         elif isinstance(obj, UUID):
             return str(obj)
         elif isinstance(obj, Decimal):
             return float(obj)
-        elif hasattr(obj, "__dict__"):
-            return obj.__dict__
         else:
             raise TypeError(f"Object of type {type(obj)} is not JSON serializable")
