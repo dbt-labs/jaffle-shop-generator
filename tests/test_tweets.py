@@ -1,5 +1,4 @@
-from jafgen.time import Day
-from jafgen.customers.customers import (
+from jafgen.customers.customer import (
     BrunchCrowd,
     Casuals,
     Commuter,
@@ -9,6 +8,7 @@ from jafgen.customers.customers import (
     Student,
 )
 from jafgen.stores.store import Store
+from jafgen.time import Day
 
 
 def test_tweets(default_store: Store):
@@ -27,7 +27,9 @@ def test_tweets(default_store: Store):
                 assert tweet.order == order
                 assert (
                     tweet.day.date
-                    <= tweet.order.day.at_minute(tweet.order.day.total_minutes + 20).date
+                    <= tweet.order.day.at_minute(
+                        tweet.order.day.total_minutes + 20
+                    ).date
                 )
             if not order:
                 assert not tweet
