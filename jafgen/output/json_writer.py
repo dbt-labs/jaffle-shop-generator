@@ -16,8 +16,10 @@ class JSONWriter(OutputWriter):
         """Initialize JSON writer with formatting options.
 
         Args:
+        ----
             indent: Number of spaces for indentation (default: 2)
             ensure_ascii: Whether to escape non-ASCII characters (default: False)
+
         """
         self.indent = indent
         self.ensure_ascii = ensure_ascii
@@ -26,12 +28,15 @@ class JSONWriter(OutputWriter):
         """Write generated data to JSON files.
 
         Args:
+        ----
             data: Dictionary mapping entity names to lists of records
             output_path: Base directory path for output files
 
         Raises:
+        ------
             OSError: If directory creation or file writing fails
             TypeError: If data contains non-serializable types
+
         """
         # Ensure output directory exists
         output_path.mkdir(parents=True, exist_ok=True)
@@ -61,10 +66,13 @@ class JSONWriter(OutputWriter):
         """Convert object to JSON-serializable format.
 
         Args:
+        ----
             obj: Object to convert
 
         Returns:
+        -------
             JSON-serializable representation of the object
+
         """
         if isinstance(obj, dict):
             return {key: self._make_serializable(value) for key, value in obj.items()}
@@ -78,16 +86,20 @@ class JSONWriter(OutputWriter):
             return obj
 
     def _json_serializer(self, obj: Any) -> Any:
-        """Default JSON serializer for non-standard types.
+        """Serialize non-standard types to JSON-compatible formats.
 
         Args:
+        ----
             obj: Object to serialize
 
         Returns:
+        -------
             Serializable representation
 
         Raises:
+        ------
             TypeError: If object is not serializable
+
         """
         from decimal import Decimal
 

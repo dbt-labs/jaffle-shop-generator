@@ -13,7 +13,7 @@ from .interfaces import MimesisEngine as MimesisEngineInterface
 
 
 class MimesisEngine(MimesisEngineInterface):
-    """Concrete implementation of Mimesis-based data generation with deterministic seeding."""
+    """Concrete implementation of Mimesis-based data generation."""
 
     def __init__(self, seed: Optional[int] = None):
         """Initialize the engine with optional seed for reproducibility."""
@@ -71,9 +71,11 @@ class MimesisEngine(MimesisEngineInterface):
             return value
 
         except Exception as e:
-            raise AttributeGenerationError(
-                f"Failed to generate value for attribute type '{attribute_config.type}': {str(e)}"
-            ) from e
+            msg = (
+                f"Failed to generate value for attribute type "
+                f"'{attribute_config.type}': {str(e)}"
+            )
+            raise AttributeGenerationError(msg) from e
 
     def ensure_unique(self, generator_func: Callable, seen_values: Set) -> Any:
         """Generate a unique value using the given generator function."""
@@ -114,7 +116,7 @@ class MimesisEngine(MimesisEngineInterface):
             value = self.generic.numeric.float_number(start=min_val, end=max_val)
             return round(value, precision)
         elif provider_method == "numeric.decimal":
-            # Handle numeric.decimal specifically - mimesis uses 'decimals' not 'decimal'
+            # Handle numeric.decimal - mimesis uses 'decimals' not 'decimal'
             min_val = constraints.get("min_value", 0.0)
             max_val = constraints.get("max_value", 1000.0)
             precision = constraints.get("precision", 2)

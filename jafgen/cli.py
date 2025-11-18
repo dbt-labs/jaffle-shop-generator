@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Annotated, List, Optional
+from typing import Annotated, Optional
 
 import typer
 from rich.console import Console
@@ -109,7 +109,6 @@ def run(
 
     See the migration guide: https://github.com/dbt-labs/jaffle-shop-generator#migration-guide
     """
-
     # Show deprecation warning
     console.print("[yellow]⚠️  Using legacy simulation mode.[/yellow]")
     console.print(
@@ -151,7 +150,6 @@ def generate(
     ] = None,
 ) -> None:
     """Generate synthetic data from YAML schema definitions."""
-
     try:
         # Validate input directories
         if not schema_dir.exists():
@@ -332,7 +330,6 @@ def validate_schema(
     ] = Path("./schemas"),
 ) -> None:
     """Validate YAML schema files for syntax and logical errors."""
-
     try:
         # Validate input directory
         if not schema_dir.exists():
@@ -416,7 +413,7 @@ def validate_schema(
 
         # Show schema summary if valid
         if validation_result.is_valid and schemas:
-            console.print(f"\n[green]Schema Summary:[/green]")
+            console.print("\n[green]Schema Summary:[/green]")
 
             summary_table = Table(show_header=True, header_style="bold blue")
             summary_table.add_column("Schema")
@@ -467,7 +464,6 @@ def list_schemas(
     ] = False,
 ) -> None:
     """List discovered schema files with basic information."""
-
     try:
         # Validate input directory
         if not schema_dir.exists():
@@ -518,7 +514,7 @@ def list_schemas(
                 )
 
                 if schema.entities:
-                    console.print(f"  [dim]Entities:[/dim]")
+                    console.print("  [dim]Entities:[/dim]")
                     for entity_name, entity_config in schema.entities.items():
                         link_count = sum(
                             1
@@ -530,7 +526,7 @@ def list_schemas(
                             f"    • {entity_name}: {entity_config.count} records, {len(entity_config.attributes)} attributes{link_info}"
                         )
                 else:
-                    console.print(f"  [dim]Entities:[/dim] None")
+                    console.print("  [dim]Entities:[/dim] None")
         else:
             # Show summary table
             summary_table = Table(show_header=True, header_style="bold blue")
@@ -572,7 +568,7 @@ def list_schemas(
         # Show validation warnings/errors if any
         if validation_result.warnings or validation_result.errors:
             console.print(
-                f"\n[yellow]Note:[/yellow] Run 'jafgen validate-schema' for detailed validation information."
+                "\n[yellow]Note:[/yellow] Run 'jafgen validate-schema' for detailed validation information."
             )
 
     except typer.Exit:
@@ -598,7 +594,9 @@ def import_airbyte(
     ] = Path("./schemas"),
     detect_relationships: Annotated[
         bool,
-        typer.Option(help="Automatically detect and create relationships between entities"),
+        typer.Option(
+            help="Automatically detect and create relationships between entities"
+        ),
     ] = True,
     validate: Annotated[
         bool,
@@ -606,7 +604,6 @@ def import_airbyte(
     ] = True,
 ) -> None:
     """Import Airbyte source manifest.yaml file and convert to jafgen schemas."""
-
     try:
         # Validate input file
         if not manifest_file.exists():
@@ -743,14 +740,14 @@ def import_airbyte(
                 raise typer.Exit(1)
 
         # Display success summary
-        console.print(f"\n[green]Successfully imported Airbyte manifest![/green]")
+        console.print("\n[green]Successfully imported Airbyte manifest![/green]")
         console.print(f"[green]Created {len(saved_files)} schema file(s):[/green]")
 
         for schema_path in saved_files:
             console.print(f"  [green]✓[/green] {schema_path}")
 
         # Display schema summary
-        console.print(f"\n[blue]Schema Summary:[/blue]")
+        console.print("\n[blue]Schema Summary:[/blue]")
 
         summary_table = Table(show_header=True, header_style="bold blue")
         summary_table.add_column("Schema")
@@ -783,16 +780,16 @@ def import_airbyte(
         console.print(summary_table)
 
         # Show next steps
-        console.print(f"\n[blue]Next Steps:[/blue]")
+        console.print("\n[blue]Next Steps:[/blue]")
         console.print(f"  1. Review the generated schema files in: {output_dir}")
-        console.print(f"  2. Adjust entity counts and constraints as needed")
+        console.print("  2. Adjust entity counts and constraints as needed")
         console.print(
             f"  3. Generate data with: [bold]jafgen generate --schema-dir {output_dir}[/bold]"
         )
 
         if translation_result.warnings:
             console.print(
-                f"\n[yellow]Note:[/yellow] Review the translation warnings above and adjust schemas if needed."
+                "\n[yellow]Note:[/yellow] Review the translation warnings above and adjust schemas if needed."
             )
 
     except typer.Exit:
