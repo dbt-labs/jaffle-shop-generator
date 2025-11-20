@@ -102,7 +102,7 @@ class SchemaDiscoveryEngine:
             validation_result.is_valid and compatibility_result.is_valid
         )
 
-        return validation_result
+        return validation_result  # type: ignore[no-any-return]
 
     def get_schema_summary(
         self, schemas: List[SystemSchema]

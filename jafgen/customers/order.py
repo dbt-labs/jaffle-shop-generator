@@ -20,7 +20,7 @@ class Order:
     day: Day
     store: Store
     items: list[Item]
-    id: OrderId = field(default_factory=lambda: OrderId(fake.uuid4()))
+    id: OrderId = field(default_factory=lambda: OrderId(fake.uuid4()))  # type: ignore[arg-type]
 
     subtotal: float = field(init=False)
     tax_paid: float = field(init=False)
@@ -31,10 +31,11 @@ class Order:
         self.tax_paid = self.store.tax_rate * self.subtotal
         self.total = self.subtotal + self.tax_paid
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.customer.name} bought {str(self.items)} at {self.day}"
 
     def to_dict(self) -> dict[str, Any]:
+        """Convert order to dictionary representation."""
         return {
             "id": str(self.id),
             "customer": str(self.customer.id),
@@ -49,4 +50,5 @@ class Order:
         }
 
     def items_to_dict(self) -> list[dict[str, Any]]:
+        """Convert order items to list of dictionaries."""
         return [item.to_dict() for item in self.items]

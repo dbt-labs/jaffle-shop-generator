@@ -13,13 +13,14 @@ class Supply:
     perishable: bool
     skus: list[StorageKeepingUnit]
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"<{self.name} @ ${self.cost}>"
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return self.__str__()
 
     def to_dict(self, sku: StorageKeepingUnit) -> dict[str, str | int]:
+        """Convert supply to dictionary representation for a specific SKU."""
         return {
             "id": str(self.id),
             "name": str(self.name),

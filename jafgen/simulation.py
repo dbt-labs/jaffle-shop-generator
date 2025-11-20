@@ -62,7 +62,8 @@ class Simulation:
         self.tweets: list[Tweet] = []
         self.sim_days = 365 * self.years + self.days
 
-    def run_simulation(self):
+    def run_simulation(self) -> None:
+        """Run the simulation for all configured days and markets."""
         for i in track(
             range(self.sim_days),
             description=f"🥪 Pressing {self.sim_days} days of fresh jaffles...",
@@ -78,6 +79,7 @@ class Simulation:
                         self.tweets.append(tweet)
 
     def save_results(self) -> None:
+        """Save simulation results to output files."""
         stock: Stock = Stock()
         inventory: Inventory = Inventory()
         entities: dict[str, list[dict[str, Any]]] = {

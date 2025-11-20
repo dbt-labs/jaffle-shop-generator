@@ -48,6 +48,7 @@ class Market:
         fake.random.shuffle(self.addressable_customers)
 
     def sim_day(self, day: Day) -> Iterator[tuple[Order | None, Tweet | None]]:
+        """Simulate market activity for a single day."""
         days_since_open = self.store.days_since_open(day)
         if days_since_open < 0:
             yield None, None

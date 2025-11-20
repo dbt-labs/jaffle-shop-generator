@@ -1,7 +1,7 @@
 """Link resolution implementation for entity relationships."""
 
 import random
-from typing import Any, Dict, List, Optional, Set
+from typing import Any, Dict, List, Optional
 
 from ..schema.models import SystemSchema
 from .exceptions import LinkResolutionError
@@ -23,9 +23,11 @@ class LinkResolver(LinkResolverInterface):
         """Register generated entity data for link resolution.
 
         Args:
+        ----
             schema_name: Name of the schema containing the entity
             entity_name: Name of the entity
             data: List of generated entity records
+
         """
         if schema_name not in self._entity_data:
             self._entity_data[schema_name] = {}
@@ -36,13 +38,17 @@ class LinkResolver(LinkResolverInterface):
         """Resolve a link specification to an actual value.
 
         Args:
+        ----
             link_spec: Link specification in format "schema.entity.attribute"
 
         Returns:
+        -------
             A random value from the specified entity's attribute
 
         Raises:
+        ------
             LinkResolutionError: If the link cannot be resolved
+
         """
         try:
             parts = link_spec.split(".")
@@ -93,13 +99,17 @@ class LinkResolver(LinkResolverInterface):
         """Build dependency graph from schemas.
 
         Args:
+        ----
             schemas: List of system schemas to analyze
 
         Returns:
+        -------
             DependencyGraph with entity dependencies
 
         Raises:
+        ------
             LinkResolutionError: If circular dependencies are detected
+
         """
         graph = DependencyGraph()
 
@@ -155,11 +165,14 @@ class LinkResolver(LinkResolverInterface):
     def get_generation_order(self) -> List[str]:
         """Get the order in which entities should be generated.
 
-        Returns:
+        Returns
+        -------
             List of entity keys in generation order
 
-        Raises:
+        Raises
+        ------
             LinkResolutionError: If dependency graph hasn't been built
+
         """
         if self._dependency_graph is None:
             raise LinkResolutionError(
@@ -172,10 +185,13 @@ class LinkResolver(LinkResolverInterface):
         """Validate that all link specifications in schemas are valid.
 
         Args:
+        ----
             schemas: List of schemas to validate
 
         Returns:
+        -------
             List of validation error messages (empty if all valid)
+
         """
         errors = []
 

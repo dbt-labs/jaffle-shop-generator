@@ -1,11 +1,11 @@
 """YAML-based schema loader implementation."""
 
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 import yaml
 
-from .exceptions import SchemaLoadError, SchemaValidationError
+from .exceptions import SchemaLoadError
 from .interfaces import SchemaLoader
 from .models import (
     AttributeConfig,
@@ -403,7 +403,11 @@ class YAMLSchemaLoader(SchemaLoader):
                 errors.append(
                     ValidationError(
                         type="invalid_link_format",
-                        message=f"Invalid link_to format '{attr_config.link_to}' for {entity_name}.{attr_name}. Expected format: 'schema.entity.attribute'",
+                        message=(
+                            f"Invalid link_to format '{attr_config.link_to}' "
+                            f"for {entity_name}.{attr_name}. "
+                            "Expected format: 'schema.entity.attribute'"
+                        ),
                         location=f"entities.{entity_name}.attributes.{attr_name}.link_to",
                         suggestion="Use format: 'schema.entity.attribute'",
                     )

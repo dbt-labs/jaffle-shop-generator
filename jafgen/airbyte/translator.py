@@ -1,8 +1,7 @@
 """Airbyte manifest translator for converting Airbyte source manifests to jafgen schemas."""
 
-import warnings
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional
 
 import yaml
 
@@ -41,25 +40,28 @@ class AirbyteTranslator:
         ("string", None): "text.word",
     }
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Initialize the Airbyte translator."""
         self.warnings: List[ValidationWarning] = []
         self.errors: List[ValidationError] = []
 
     def translate_manifest(self, manifest_path: Path) -> List[SystemSchema]:
-        """
-        Translate an Airbyte source manifest.yaml file to jafgen schemas.
+        """Translate an Airbyte source manifest.yaml file to jafgen schemas.
 
         Args:
+        ----
             manifest_path: Path to the Airbyte manifest.yaml file
 
         Returns:
+        -------
             List of SystemSchema objects (typically one)
 
         Raises:
+        ------
             FileNotFoundError: If manifest file doesn't exist
             yaml.YAMLError: If manifest file has invalid YAML syntax
             ValueError: If manifest structure is invalid
+
         """
         self.warnings.clear()
         self.errors.clear()
@@ -309,17 +311,19 @@ class AirbyteTranslator:
         return constraints
 
     def detect_relationships(self, schemas: List[SystemSchema]) -> List[SystemSchema]:
-        """
-        Detect and create relationships between entities based on naming conventions.
+        """Detect and create relationships between entities based on naming conventions.
 
         This method analyzes field names to detect foreign key relationships
         and updates the schemas with link_to attributes.
 
         Args:
+        ----
             schemas: List of SystemSchema objects to analyze
 
         Returns:
+        -------
             Updated list of SystemSchema objects with relationships
+
         """
         if not schemas:
             return schemas
@@ -398,12 +402,13 @@ class AirbyteTranslator:
         return schemas
 
     def save_schema(self, schema: SystemSchema, output_path: Path) -> None:
-        """
-        Save a SystemSchema to a YAML file.
+        """Save a SystemSchema to a YAML file.
 
         Args:
+        ----
             schema: SystemSchema to save
             output_path: Path where to save the schema file
+
         """
         # Convert schema to dictionary format suitable for YAML
         schema_dict = {
@@ -432,9 +437,9 @@ class AirbyteTranslator:
                 if attr_config.constraints:
                     attr_dict["constraints"] = attr_config.constraints
 
-                entity_dict["attributes"][attr_name] = attr_dict
+                entity_dict["attributes"][attr_name] = attr_dict  # type: ignore[index]
 
-            schema_dict["entities"][entity_name] = entity_dict
+            schema_dict["entities"][entity_name] = entity_dict  # type: ignore[assignment]
 
         # Ensure output directory exists
         output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -446,11 +451,12 @@ class AirbyteTranslator:
             )
 
     def get_validation_result(self) -> ValidationResult:
-        """
-        Get the validation result from the last translation operation.
+        """Get the validation result from the last translation operation.
 
-        Returns:
+        Returns
+        -------
             ValidationResult containing any errors and warnings
+
         """
         return ValidationResult(
             is_valid=len(self.errors) == 0,

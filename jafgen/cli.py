@@ -19,7 +19,7 @@ from jafgen.schema.discovery import SchemaDiscoveryEngine
 from jafgen.simulation import Simulation
 
 
-def version_callback(value: bool):
+def version_callback(value: bool) -> None:
     """Show version information."""
     if value:
         console.print("jafgen version 0.4.14")
@@ -36,14 +36,14 @@ app = typer.Typer(
    • Support multiple output formats (CSV, JSON, Parquet, DuckDB)
    • Deterministic with seeding
    • Link entities with foreign keys
-   
+
    Commands: generate, validate-schema, list-schemas, import-airbyte
 
 2. [bold]Legacy Jaffle Shop simulation[/bold]:
    • Hardcoded entities (customers, orders, products, etc.)
    • CSV output only
    • Time-based simulation
-   
+
    Command: run (deprecated)
 
 For new projects, use schema-driven generation with 'jafgen generate'.
@@ -65,8 +65,8 @@ def main(
             help="Show version information",
         ),
     ] = None,
-):
-    """Jafgen - A flexible synthetic data generator
+) -> None:
+    """Jafgen - A flexible synthetic data generator.
 
     🚀 Quick start with schema-driven generation:
 

@@ -18,13 +18,14 @@ class Tweet:
     day: Day
     customer: "customer.Customer"
     order: Order
-    id: TweetId = field(default_factory=lambda: TweetId(fake.uuid4()))
+    id: TweetId = field(default_factory=lambda: TweetId(fake.uuid4()))  # type: ignore[arg-type]
     content: str = field(init=False)
 
     def __post_init__(self) -> None:
         self.content = self._construct_tweet()
 
     def to_dict(self) -> dict[str, str]:
+        """Convert tweet to dictionary representation."""
         return {
             "id": str(self.id),
             "user_id": str(self.customer.id),

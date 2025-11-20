@@ -34,7 +34,7 @@ class DataGenerator(DataGeneratorInterface):
 
             # Validate all links before generation if link resolver is available
             if self.link_resolver:
-                link_errors = self.link_resolver.validate_all_links([schema])
+                link_errors = self.link_resolver.validate_all_links([schema])  # type: ignore[attr-defined]
                 if link_errors:
                     raise GenerationError(
                         f"Link validation failed for schema '{schema.name}':\n"
@@ -76,7 +76,7 @@ class DataGenerator(DataGeneratorInterface):
             # Create metadata
             metadata = GenerationMetadata(
                 generated_at=datetime.now(),
-                seed_used=schema.seed or getattr(self.mimesis_engine, "seed", 42),
+                seed_used=schema.seed or getattr(self.mimesis_engine, "seed", 42),  # type: ignore[arg-type]
                 total_records=total_records,
                 entity_counts=entity_counts,
             )
@@ -94,13 +94,17 @@ class DataGenerator(DataGeneratorInterface):
         """Generate data for multiple system schemas with cross-schema dependencies.
 
         Args:
+        ----
             schemas: List of system schemas to generate
 
         Returns:
+        -------
             List of GeneratedSystem objects in dependency order
 
         Raises:
+        ------
             GenerationError: If generation fails or dependencies cannot be resolved
+
         """
         try:
             if not self.link_resolver:
@@ -108,10 +112,10 @@ class DataGenerator(DataGeneratorInterface):
                 return [self.generate_system(schema) for schema in schemas]
 
             # Validate all links across all schemas
-            link_errors = self.link_resolver.validate_all_links(schemas)
+            link_errors = self.link_resolver.validate_all_links(schemas)  # type: ignore[attr-defined]
             if link_errors:
                 raise GenerationError(
-                    f"Link validation failed across schemas:\n"
+                    "Link validation failed across schemas:\n"
                     + "\n".join(f"  - {error}" for error in link_errors)
                 )
 
@@ -140,7 +144,7 @@ class DataGenerator(DataGeneratorInterface):
                 # Initialize generated system if not exists
                 if schema_name not in generated_systems:
                     generated_systems[schema_name] = GeneratedSystem(
-                        schema=schema, entities={}, metadata=None
+                        schema=schema, entities={}, metadata=None  # type: ignore[arg-type]
                     )
 
                 # Generate entity data
@@ -173,7 +177,7 @@ class DataGenerator(DataGeneratorInterface):
                     generated_system.metadata = GenerationMetadata(
                         generated_at=datetime.now(),
                         seed_used=schema.seed
-                        or getattr(self.mimesis_engine, "seed", 42),
+                        or getattr(self.mimesis_engine, "seed", 42),  # type: ignore[arg-type]
                         total_records=total_records,
                         entity_counts=entity_counts,
                     )
@@ -188,7 +192,7 @@ class DataGenerator(DataGeneratorInterface):
                             metadata=GenerationMetadata(
                                 generated_at=datetime.now(),
                                 seed_used=schema.seed
-                                or getattr(self.mimesis_engine, "seed", 42),
+                                or getattr(self.mimesis_engine, "seed", 42),  # type: ignore[arg-type]
                                 total_records=0,
                                 entity_counts={},
                             ),

@@ -113,9 +113,9 @@ def calculate_schema_hash(schema: SystemSchema) -> str:
                     dict(sorted(attr.constraints.items())) if attr.constraints else {}
                 ),
             }
-            entity_dict["attributes"][attr_name] = attr_dict
+            entity_dict["attributes"][attr_name] = attr_dict  # type: ignore
 
-        schema_dict["entities"][entity_name] = entity_dict
+        schema_dict["entities"][entity_name] = entity_dict  # type: ignore
 
     # Convert to JSON string and hash
     schema_json = json.dumps(schema_dict, sort_keys=True)
@@ -128,7 +128,7 @@ class GeneratedSystem:
 
     schema: SystemSchema
     entities: Dict[str, List[Dict[str, Any]]] = field(default_factory=dict)
-    metadata: GenerationMetadata = None
+    metadata: GenerationMetadata = None  # type: ignore[assignment]
 
 
 @dataclass

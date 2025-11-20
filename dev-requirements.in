@@ -3,3 +3,4 @@ pytest
 pyright
 setuptools
 psutil
+pandas-stubs

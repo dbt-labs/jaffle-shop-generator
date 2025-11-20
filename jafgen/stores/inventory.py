@@ -12,18 +12,21 @@ class Inventory:
     inventory: dict[ItemType, list[Item]] = {}
 
     @classmethod
-    def update(cls, inventory_list: list[Item]):
+    def update(cls, inventory_list: list[Item]) -> None:
+        """Update the inventory with a new list of items."""
         cls.inventory[ItemType.JAFFLE] = []
         cls.inventory[ItemType.BEVERAGE] = []
         for item in inventory_list:
             cls.inventory[item.type].append(item)
 
     @classmethod
-    def get_item_type(cls, type: ItemType, count: int = 1):
+    def get_item_type(cls, type: ItemType, count: int = 1) -> list[Item]:
+        """Get random items of a specific type from inventory."""
         return [fake.random.choice(cls.inventory[type]) for _ in range(count)]
 
     @classmethod
     def to_dict(cls) -> list[dict[str, Any]]:
+        """Convert all inventory items to dictionary representation."""
         all_items: list[dict[str, Any]] = []
         for key in cls.inventory:
             all_items += [item.to_dict() for item in cls.inventory[key]]

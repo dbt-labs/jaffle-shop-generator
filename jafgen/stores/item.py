@@ -18,13 +18,14 @@ class Item:
     type: ItemType
     price: float
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"<{self.name} @ ${self.price}>"
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return self.__str__()
 
     def to_dict(self) -> dict[str, Any]:
+        """Convert item to dictionary representation."""
         return {
             "sku": self.sku,
             "name": str(self.name),

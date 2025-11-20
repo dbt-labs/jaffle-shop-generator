@@ -43,6 +43,7 @@ class Season(str, Enum):
 
     @classmethod
     def from_date(cls, date: dt.date) -> "Season":
+        """Determine the season from a given date."""
         month_no = date.month
         day_no = date.day
 
@@ -75,29 +76,35 @@ class Day:
         ]
 
     def at_minute(self, minutes: int) -> "Day":
+        """Create a new Day instance at a specific minute offset."""
         return Day(self.date_index, minutes=minutes)
 
     def get_effect(self) -> float:
+        """Calculate the combined effect of all curves for this day."""
         total = 1
         for effect in self.effects:
-            total = total * effect
+            total = total * effect  # type: ignore[assignment]
         return total
 
     @property
     def day_of_week(self) -> int:
+        """Get the day of week (0=Monday, 6=Sunday)."""
         return self.date.weekday()
 
     @property
     def is_weekend(self) -> bool:
+        """Check if this day is a weekend."""
         # 5 + 6 are weekends
         return self.date.weekday() >= 5
 
     @property
     def season(self) -> Season:
+        """Get the season for this day."""
         return Season.from_date(self.date)
 
     @property
     def total_minutes(self) -> int:
+        """Get total minutes elapsed since midnight."""
         return self.date.hour * 60 + self.date.minute
 
 
@@ -108,13 +115,16 @@ class DayHoursOfOperation:
 
     @property
     def total_minutes_open(self) -> int:
+        """Calculate total minutes the location is open."""
         time_open = time_delta_sub(self.closes_at, time_to_delta(self.opens_at))
         return total_minutes_elapsed(time_open)
 
     def is_open(self, time: dt.time) -> bool:
+        """Check if the location is open at a specific time."""
         return time >= self.opens_at and time < self.closes_at
 
     def iter_minutes(self) -> Iterator[int]:
+        """Iterate over all minutes the location is open."""
         for minute in range(self.total_minutes_open):
             yield minute
 
@@ -128,17 +138,22 @@ class WeekHoursOfOperation:
         return self.weekends if day.is_weekend else self.week_days
 
     def opens_at(self, day: Day) -> dt.time:
+        """Get the opening time for the given day."""
         return self._get_todays_schedule(day).opens_at
 
     def closes_at(self, day: Day) -> dt.time:
+        """Get the closing time for the given day."""
         return self._get_todays_schedule(day).closes_at
 
     def total_minutes_open(self, day: Day) -> int:
+        """Get total minutes open for the given day."""
         return self._get_todays_schedule(day).total_minutes_open
 
     def is_open(self, day: Day) -> bool:
+        """Check if open at the specific time on the given day."""
         time = time_from_total_minutes(day.total_minutes)
         return self._get_todays_schedule(day).is_open(time)
 
     def iter_minutes(self, day: Day) -> Iterator[int]:
+        """Iterate over all minutes open on the given day."""
         yield from self._get_todays_schedule(day).iter_minutes()

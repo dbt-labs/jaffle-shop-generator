@@ -16,8 +16,10 @@ class ParquetWriter(OutputWriter):
         """Initialize Parquet writer with compression options.
 
         Args:
+        ----
             compression: Compression algorithm (default: snappy)
                         Options: snappy, gzip, brotli, lz4, zstd
+
         """
         self.compression = compression
 
@@ -25,12 +27,15 @@ class ParquetWriter(OutputWriter):
         """Write generated data to Parquet files.
 
         Args:
+        ----
             data: Dictionary mapping entity names to lists of records
             output_path: Base directory path for output files
 
         Raises:
+        ------
             OSError: If directory creation or file writing fails
             ArrowInvalid: If data cannot be converted to Arrow format
+
         """
         # Ensure output directory exists
         output_path.mkdir(parents=True, exist_ok=True)
@@ -69,10 +74,13 @@ class ParquetWriter(OutputWriter):
         """Flatten complex types in a record for Parquet compatibility.
 
         Args:
+        ----
             record: Record dictionary to flatten
 
         Returns:
+        -------
             Flattened record with complex types converted to strings
+
         """
         flattened: Dict[str, Any] = {}
 

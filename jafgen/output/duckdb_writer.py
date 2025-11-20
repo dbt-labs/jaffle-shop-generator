@@ -16,7 +16,9 @@ class DuckDBWriter(OutputWriter):
         """Initialize DuckDB writer with database configuration.
 
         Args:
+        ----
             database_name: Name of the DuckDB database file (default: generated_data.duckdb)
+
         """
         self.database_name = database_name
 
@@ -24,12 +26,15 @@ class DuckDBWriter(OutputWriter):
         """Write generated data to DuckDB database file.
 
         Args:
+        ----
             data: Dictionary mapping entity names to lists of records
             output_path: Base directory path for output files
 
         Raises:
+        ------
             OSError: If directory creation or database file creation fails
             duckdb.Error: If database operations fail
+
         """
         # Ensure output directory exists
         output_path.mkdir(parents=True, exist_ok=True)
@@ -75,10 +80,13 @@ class DuckDBWriter(OutputWriter):
         """Prepare a record for DuckDB insertion.
 
         Args:
+        ----
             record: Record dictionary to prepare
 
         Returns:
+        -------
             Prepared record with DuckDB-compatible types
+
         """
         prepared: Dict[str, Any] = {}
 

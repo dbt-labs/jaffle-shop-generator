@@ -8,7 +8,8 @@ class Stock:
     stock: dict[SKU, list[Supply]] = {}
 
     @classmethod
-    def update(cls, stock_list: list[Supply]):
+    def update(cls, stock_list: list[Supply]) -> None:
+        """Update the stock with a new list of supplies."""
         for supply in stock_list:
             skus = supply.skus
             for sku in skus:
@@ -18,6 +19,7 @@ class Stock:
 
     @classmethod
     def to_dict(cls) -> list[dict[str, Any]]:
+        """Convert all stock items to dictionary representation."""
         all_items: list[dict[str, Any]] = []
         for key in cls.stock:
             all_items += [item.to_dict(key) for item in cls.stock[key]]

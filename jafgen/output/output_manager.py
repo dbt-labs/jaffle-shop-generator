@@ -1,12 +1,15 @@
 """Output manager for idempotent file generation and directory management."""
 
-import json
 import os
 import stat
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from ..generation.models import GenerationMetadata, calculate_schema_hash
+from ..generation.models import (
+    GeneratedSystem,
+    GenerationMetadata,
+    calculate_schema_hash,
+)
 from ..schema.models import FormatConfig, SystemSchema
 from .exceptions import OutputError
 from .interfaces import OutputWriter
@@ -19,7 +22,9 @@ class OutputManager:
         """Initialize output manager with available writers.
 
         Args:
+        ----
             output_writers: Dictionary mapping format names to writer instances
+
         """
         self.output_writers = output_writers
 
@@ -29,11 +34,14 @@ class OutputManager:
         """Prepare output directory with proper permissions.
 
         Args:
+        ----
             output_path: Path to the output directory
             force_recreate: Whether to recreate the directory if it exists
 
         Raises:
+        ------
             OutputError: If directory creation or permission setting fails
+
         """
         try:
             if force_recreate and output_path.exists():
@@ -62,22 +70,26 @@ class OutputManager:
 
     def write_system_data(
         self,
-        generated_system: "GeneratedSystem",
+        generated_system: GeneratedSystem,
         base_output_path: Path,
         overwrite: bool = True,
     ) -> GenerationMetadata:
         """Write system data with idempotent behavior.
 
         Args:
+        ----
             generated_system: The generated system data to write
             base_output_path: Base output directory path
             overwrite: Whether to overwrite existing files (default: True for idempotency)
 
         Returns:
+        -------
             GenerationMetadata: Metadata about the generation run
 
         Raises:
+        ------
             OutputError: If writing fails or format is unsupported
+
         """
         schema = generated_system.schema
 
@@ -175,12 +187,15 @@ class OutputManager:
         """Get output configuration for a specific entity.
 
         Args:
+        ----
             entity_name: Name of the entity
             schema: System schema containing output configuration
             default_output_dir: Default output directory
 
         Returns:
+        -------
             Tuple of (formats, output_directory)
+
         """
         # Check for entity-specific configuration
         if entity_name in schema.output.per_entity:
@@ -204,8 +219,8 @@ class OutputManager:
             output_dir = default_output_dir
 
         # Ensure formats is a list
-        if isinstance(formats, str):
-            formats = [formats]
+        if isinstance(formats, str):  # type: ignore[unreachable]
+            formats = [formats]  # type: ignore[unreachable]
 
         return formats, output_dir
 
@@ -215,12 +230,15 @@ class OutputManager:
         """Get format-specific configuration for an entity.
 
         Args:
+        ----
             format_name: Name of the output format
             entity_name: Name of the entity
             schema: System schema containing format configuration
 
         Returns:
+        -------
             FormatConfig if found, None otherwise
+
         """
         # Check entity-specific format config first
         if entity_name in schema.output.per_entity:
@@ -244,10 +262,12 @@ class OutputManager:
         """Write data using format-specific configuration.
 
         Args:
+        ----
             data: Entity data to write
             output_path: Output directory path
             format_name: Output format name
             format_config: Format-specific configuration
+
         """
         writer = self.output_writers[format_name]
 
@@ -270,8 +290,10 @@ class OutputManager:
         """Apply format-specific options to a writer.
 
         Args:
+        ----
             writer: Output writer instance
             options: Format-specific options to apply
+
         """
         # Apply options based on writer type
         for option_name, option_value in options.items():
@@ -289,11 +311,13 @@ class OutputManager:
         """Write data using custom filename patterns.
 
         Args:
+        ----
             data: Entity data to write
             output_path: Output directory path
             writer: Output writer instance
             filename_pattern: Custom filename pattern
             format_name: Output format name for extension
+
         """
         # Get file extension for format
         extensions = {
@@ -347,13 +371,16 @@ class OutputManager:
         """Verify that all expected output files exist.
 
         Args:
+        ----
             entities: Dictionary of entity data
             output_path: Output directory path
             formats: List of output formats to check
             schema: Optional schema for custom filename patterns
 
         Returns:
+        -------
             True if all expected files exist, False otherwise
+
         """
         if schema:
             # Check files using schema-driven configuration
@@ -391,9 +418,11 @@ class OutputManager:
         """Remove existing files for a specific format.
 
         Args:
+        ----
             entities: Dictionary of entity data
             output_path: Output directory path
             format_name: Format name to remove files for
+
         """
         for entity_name in entities.keys():
             existing_file = self._get_expected_filename(
@@ -412,12 +441,15 @@ class OutputManager:
         """Get the expected filename for an entity and format.
 
         Args:
+        ----
             entity_name: Name of the entity
             format_name: Output format name
             output_path: Output directory path
 
         Returns:
+        -------
             Path to the expected file
+
         """
         extensions = {
             "csv": ".csv",
@@ -439,13 +471,16 @@ class OutputManager:
         """Get the expected filename for an entity with format configuration.
 
         Args:
+        ----
             entity_name: Name of the entity
             format_name: Output format name
             output_path: Output directory path
             format_config: Format-specific configuration
 
         Returns:
+        -------
             Path to the expected file
+
         """
         if format_config and format_config.filename_pattern:
             # Use custom filename pattern
@@ -471,11 +506,14 @@ class OutputManager:
         """Verify that output matches expected metadata for reproducibility.
 
         Args:
+        ----
             output_path: Path to check for output files
             expected_metadata: Expected metadata to compare against
 
         Returns:
+        -------
             True if output is reproducible, False otherwise
+
         """
         # Load existing metadata
         existing_metadata = GenerationMetadata.load_from_file(output_path)
@@ -491,11 +529,14 @@ class OutputManager:
         """Clean output directory of generated files.
 
         Args:
+        ----
             output_path: Path to clean
             keep_metadata: Whether to keep metadata files (default: False)
 
         Raises:
+        ------
             OutputError: If cleaning fails
+
         """
         try:
             if not output_path.exists():
