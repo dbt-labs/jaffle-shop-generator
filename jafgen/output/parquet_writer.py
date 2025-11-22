@@ -55,13 +55,17 @@ class ParquetWriter(OutputWriter):
                 pq.write_table(table, parquet_file_path, compression=self.compression)
 
             except (pa.ArrowInvalid, pa.ArrowTypeError) as e:
-                # If direct conversion fails, try with schema inference
+                # If direct conversion fails, try with schema inference by flattening all values to strings
                 try:
-                    # Flatten complex types to strings for Parquet compatibility
                     flattened_records = [
                         self._flatten_record(record) for record in records
                     ]
-                    table = pa.Table.from_pylist(flattened_records)
+                    
+                    # Create a schema where all fields are strings
+                    fields = [(key, pa.string()) for key in flattened_records[0].keys()]
+                    schema = pa.schema(fields)
+
+                    table = pa.Table.from_pylist(flattened_records, schema=schema)
                     pq.write_table(
                         table, parquet_file_path, compression=self.compression
                     )
@@ -71,31 +75,14 @@ class ParquetWriter(OutputWriter):
                     ) from e
 
     def _flatten_record(self, record: Dict[str, Any]) -> Dict[str, Any]:
-        """Flatten complex types in a record for Parquet compatibility.
-
-        Args:
-        ----
-            record: Record dictionary to flatten
-
-        Returns:
-        -------
-            Flattened record with complex types converted to strings
-
-        """
+        """Flatten a record by converting all values to strings."""
         flattened: Dict[str, Any] = {}
-
         for key, value in record.items():
             if value is None:
                 flattened[key] = None
             elif isinstance(value, (list, dict)):
-                # Convert complex types to JSON strings
                 import json
-
                 flattened[key] = json.dumps(value)
-            elif hasattr(value, "isoformat"):
-                # Convert datetime objects to ISO format strings
-                flattened[key] = value.isoformat()
             else:
-                flattened[key] = value
-
+                flattened[key] = str(value)
         return flattened

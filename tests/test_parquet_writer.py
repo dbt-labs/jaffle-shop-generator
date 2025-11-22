@@ -4,6 +4,7 @@ from datetime import date, datetime
 from pathlib import Path
 
 import pyarrow.parquet as pq
+import pytest
 
 from jafgen.output.parquet_writer import ParquetWriter
 
@@ -257,3 +258,28 @@ class TestParquetWriter:
         assert row["int_val"] == 42
         assert row["float_val"] == 3.14
         assert bool(row["bool_val"]) is True
+    
+    def test_write_with_mixed_column_types_triggers_flattening(self, tmp_path: Path):
+        """Test that data with mixed types in a column triggers the flattening logic."""
+        writer = ParquetWriter()
+
+        # This data will cause a pyarrow.ArrowTypeError because of mixed types (int and str) in the 'value' column.
+        data = {
+            "mixed_data": [
+                {"id": 1, "value": 100},
+                {"id": 2, "value": "a string"},
+            ]
+        }
+
+        writer.write(data, tmp_path)
+
+        parquet_file = tmp_path / "mixed_data.parquet"
+        assert parquet_file.exists()
+
+        table = pq.read_table(parquet_file)
+        df = table.to_pandas()
+
+        assert len(df) == 2
+        # After flattening, the integer should be converted to a string.
+        assert df.iloc[0]["value"] == "100"
+        assert df.iloc[1]["value"] == "a string"
