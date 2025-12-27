@@ -2,6 +2,7 @@ from typing import Any
 
 from faker import Faker
 
+from jafgen.customers.order_item import OrderItem
 from jafgen.stores.item import Item, ItemType
 from jafgen.stores.supply import StorageKeepingUnit as SKU
 
@@ -19,8 +20,8 @@ class Inventory:
             cls.inventory[item.type].append(item)
 
     @classmethod
-    def get_item_type(cls, type: ItemType, count: int = 1):
-        return [fake.random.choice(cls.inventory[type])for _ in range(count)]
+    def get_order_item_type(cls, type: ItemType, count: int = 1):
+        return [OrderItem(item=item) for item in [fake.random.choice(cls.inventory[type])for _ in range(count)]]
 
     @classmethod
     def to_dict(cls) -> list[dict[str, Any]]:

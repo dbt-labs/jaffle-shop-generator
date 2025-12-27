@@ -1,24 +1,22 @@
-import uuid
 from dataclasses import dataclass, field
-from typing import Any, NewType
+from typing import Any
 
 from faker import Faker
 
 import jafgen.customers.customers as customer
-from jafgen.stores.item import Item
+from jafgen.customers.order_id import OrderId
+from jafgen.customers.order_item import OrderItem
 from jafgen.stores.store import Store
 from jafgen.time import Day
 
 fake = Faker()
-
-OrderId = NewType("OrderId", uuid.UUID)
 
 @dataclass
 class Order:
     customer: "customer.Customer"
     day: Day
     store: Store
-    items: list[Item]
+    items: list[OrderItem]
     id: OrderId = field(default_factory=lambda: OrderId(fake.uuid4()))
 
     subtotal: float = field(init=False)
@@ -46,6 +44,3 @@ class Order:
             # "order_total": int(self.order_total * 100),
             "order_total": int(int(self.subtotal * 100) + int(self.tax_paid * 100)),
         }
-
-    def items_to_dict(self) -> list[dict[str, Any]]:
-        return [item.to_dict() for item in self.items]

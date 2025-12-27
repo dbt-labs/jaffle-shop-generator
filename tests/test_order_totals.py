@@ -1,9 +1,9 @@
-from jafgen.time import Day
-from jafgen.customers.customers import Customer, BrunchCrowd, RemoteWorker, Student
+from jafgen.customers.customers import BrunchCrowd, Customer, RemoteWorker, Student
 from jafgen.customers.order import Order
-from jafgen.stores.item import ItemType
 from jafgen.stores.inventory import Inventory
+from jafgen.stores.item import ItemType
 from jafgen.stores.store import Store
+from jafgen.time import Day
 
 
 def test_order_totals(default_store: Store):
@@ -17,8 +17,8 @@ def test_order_totals(default_store: Store):
                 Order(
                     customer=CustType(store=default_store),
                     items=
-                        inventory.get_item_type(ItemType.JAFFLE, 2) +
-                        inventory.get_item_type(ItemType.BEVERAGE, 1),
+                        inventory.get_order_item_type(ItemType.JAFFLE, 2) +
+                        inventory.get_order_item_type(ItemType.BEVERAGE, 1),
                     store=default_store,
                     day=Day(date_index=i),
                 )
