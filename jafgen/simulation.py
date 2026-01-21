@@ -4,7 +4,7 @@ from typing import Any
 
 from rich.progress import track
 
-from jafgen.customers.customers import Customer, CustomerId
+from jafgen.customers.customer import Customer, CustomerId
 from jafgen.customers.order import Order
 from jafgen.customers.tweet import Tweet
 from jafgen.stores.inventory import Inventory
@@ -22,6 +22,7 @@ T_7AM = time_from_total_minutes(60 * 7)
 T_8AM = time_from_total_minutes(60 * 8)
 T_3PM = time_from_total_minutes(60 * 15)
 T_8PM = time_from_total_minutes(60 * 20)
+
 
 class Simulation:
     def __init__(self, years: int, days: int, prefix: str):
@@ -63,7 +64,8 @@ class Simulation:
 
     def run_simulation(self):
         for i in track(
-            range(self.sim_days), description=f"🥪 Pressing {self.sim_days} days of fresh jaffles..."
+            range(self.sim_days),
+            description=f"🥪 Pressing {self.sim_days} days of fresh jaffles...",
         ):
             for market in self.markets:
                 day = Day(i)
@@ -81,7 +83,11 @@ class Simulation:
         entities: dict[str, list[dict[str, Any]]] = {
             "customers": [customer.to_dict() for customer in self.customers.values()],
             "orders": [order.to_dict() for order in self.orders],
-            "items": [item.to_dict() for order in self.orders for item in order.items],
+            "order_items": [
+                item_dict
+                for order in self.orders
+                for item_dict in order.order_items_to_dict()
+            ],
             "stores": [market.store.to_dict() for market in self.markets],
             "supplies": stock.to_dict(),
             "products": inventory.to_dict(),
@@ -95,6 +101,8 @@ class Simulation:
         ):
             if data:
                 file = f"./jaffle-data/{self.prefix}_{entity}.csv"
-                writer = csv.DictWriter(open(file, "w", newline=""), fieldnames=data[0].keys())
+                writer = csv.DictWriter(
+                    open(file, "w", newline=""), fieldnames=data[0].keys()
+                )
                 writer.writeheader()
                 writer.writerows(data)

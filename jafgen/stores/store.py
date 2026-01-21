@@ -11,6 +11,7 @@ fake = Faker()
 
 StoreId = NewType("StoreId", uuid.UUID)
 
+
 @dataclass(frozen=True)
 class Store:
     name: str
@@ -18,7 +19,7 @@ class Store:
     hours_of_operation: WeekHoursOfOperation
     opened_day: Day
     tax_rate: float
-    id: StoreId = field(default_factory=lambda: StoreId(fake.uuid4()))
+    id: StoreId = field(default_factory=lambda: StoreId(uuid.UUID(fake.uuid4())))
 
     def p_buy(self, day: Day) -> float:
         return self.base_popularity * day.get_effect()
